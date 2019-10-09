@@ -20,6 +20,7 @@ namespace NegociosElectronicosII.Controllers
 
         public AccountController()
         {
+            //Modificar el codigo
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
