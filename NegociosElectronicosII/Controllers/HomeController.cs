@@ -26,5 +26,9 @@ namespace NegociosElectronicosII.Controllers
 
             return View();
         }
+
+        public ActionResult Example() {
+            return View();
+        }
     }
 }
