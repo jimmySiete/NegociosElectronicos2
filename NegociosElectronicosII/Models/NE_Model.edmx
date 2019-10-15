@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="NE_Category">
+          <Key>
+            <PropertyRef Name="Id_Category" />
+          </Key>
+          <Property Name="Id_Category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Producto">
+          <Key>
+            <PropertyRef Name="Id_Producto" />
+          </Key>
+          <Property Name="Id_Producto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Codigo" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Stock" Type="int" Nullable="false" />
+          <Property Name="Precio_Venta" Type="money" Nullable="false" />
+          <Property Name="Precio_Compra" Type="money" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="Id_Category" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_NE_Producto_NE_Category">
+          <End Role="NE_Category" Type="Self.NE_Category" Multiplicity="1" />
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Category">
+              <PropertyRef Name="Id_Category" />
+            </Principal>
+            <Dependent Role="NE_Producto">
+              <PropertyRef Name="Id_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A453B0_fabiancastanonModelStoreContainer">
+          <EntitySet Name="NE_Category" EntityType="Self.NE_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_Producto" EntityType="Self.NE_Producto" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NE_Producto_NE_Category" Association="Self.FK_NE_Producto_NE_Category">
+            <End Role="NE_Category" EntitySet="NE_Category" />
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A453B0_fabiancastanonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="NE_Category">
+          <Key>
+            <PropertyRef Name="Id_Category" />
+          </Key>
+          <Property Name="Id_Category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="NE_Producto" Relationship="Self.FK_NE_Producto_NE_Category" FromRole="NE_Category" ToRole="NE_Producto" />
+        </EntityType>
+        <EntityType Name="NE_Producto">
+          <Key>
+            <PropertyRef Name="Id_Producto" />
+          </Key>
+          <Property Name="Id_Producto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Stock" Type="Int32" Nullable="false" />
+          <Property Name="Precio_Venta" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Precio_Compra" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="Id_Category" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Category" Relationship="Self.FK_NE_Producto_NE_Category" FromRole="NE_Producto" ToRole="NE_Category" />
+        </EntityType>
+        <Association Name="FK_NE_Producto_NE_Category">
+          <End Role="NE_Category" Type="Self.NE_Category" Multiplicity="1" />
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Category">
+              <PropertyRef Name="Id_Category" />
+            </Principal>
+            <Dependent Role="NE_Producto">
+              <PropertyRef Name="Id_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NE_Entity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="NE_Category" EntityType="Self.NE_Category" />
+          <EntitySet Name="NE_Producto" EntityType="Self.NE_Producto" />
+          <AssociationSet Name="FK_NE_Producto_NE_Category" Association="Self.FK_NE_Producto_NE_Category">
+            <End Role="NE_Category" EntitySet="NE_Category" />
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A453B0_fabiancastanonModelStoreContainer" CdmEntityContainer="NE_Entity">
+          <EntitySetMapping Name="NE_Category">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Category">
+              <MappingFragment StoreEntitySet="NE_Category">
+                <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Producto">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Producto">
+              <MappingFragment StoreEntitySet="NE_Producto">
+                <ScalarProperty Name="Id_Producto" ColumnName="Id_Producto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Precio_Venta" ColumnName="Precio_Venta" />
+                <ScalarProperty Name="Precio_Compra" ColumnName="Precio_Compra" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Id_Category" ColumnName="Id_Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
