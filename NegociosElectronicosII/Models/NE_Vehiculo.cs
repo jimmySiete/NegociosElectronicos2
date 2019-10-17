@@ -12,30 +12,33 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_Producto
+    public partial class NE_Vehiculo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NE_Producto()
+        public NE_Vehiculo()
         {
-            this.NE_ComentarioProducto = new HashSet<NE_ComentarioProducto>();
-            this.NE_ProductoImagen = new HashSet<NE_ProductoImagen>();
+            this.NE_ComentarioVehiculo = new HashSet<NE_ComentarioVehiculo>();
+            this.NE_VehiculoImagen = new HashSet<NE_VehiculoImagen>();
         }
     
-        public int ProductoId { get; set; }
-        public string Nombre { get; set; }
-        public byte[] Descripcion { get; set; }
+        public int VehiculoId { get; set; }
+        public int CategoriaId { get; set; }
         public int MarcaId { get; set; }
+        public int Modelo { get; set; }
+        public int TransmisionId { get; set; }
         public int ColorId { get; set; }
-        public int Stock { get; set; }
         public decimal PrecioVenta { get; set; }
         public decimal PrecioCompra { get; set; }
+        public string Descripcion { get; set; }
         public bool Activo { get; set; }
     
+        public virtual NE_Categoria NE_Categoria { get; set; }
         public virtual NE_Color NE_Color { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_ComentarioProducto> NE_ComentarioProducto { get; set; }
+        public virtual ICollection<NE_ComentarioVehiculo> NE_ComentarioVehiculo { get; set; }
         public virtual NE_Marca NE_Marca { get; set; }
+        public virtual NE_Transmision NE_Transmision { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_ProductoImagen> NE_ProductoImagen { get; set; }
+        public virtual ICollection<NE_VehiculoImagen> NE_VehiculoImagen { get; set; }
     }
 }

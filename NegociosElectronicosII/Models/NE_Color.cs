@@ -12,30 +12,21 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_Producto
+    public partial class NE_Color
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NE_Producto()
+        public NE_Color()
         {
-            this.NE_ComentarioProducto = new HashSet<NE_ComentarioProducto>();
-            this.NE_ProductoImagen = new HashSet<NE_ProductoImagen>();
+            this.NE_Vehiculo = new HashSet<NE_Vehiculo>();
+            this.NE_Producto = new HashSet<NE_Producto>();
         }
     
-        public int ProductoId { get; set; }
-        public string Nombre { get; set; }
-        public byte[] Descripcion { get; set; }
-        public int MarcaId { get; set; }
         public int ColorId { get; set; }
-        public int Stock { get; set; }
-        public decimal PrecioVenta { get; set; }
-        public decimal PrecioCompra { get; set; }
-        public bool Activo { get; set; }
+        public string Color { get; set; }
     
-        public virtual NE_Color NE_Color { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_ComentarioProducto> NE_ComentarioProducto { get; set; }
-        public virtual NE_Marca NE_Marca { get; set; }
+        public virtual ICollection<NE_Vehiculo> NE_Vehiculo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_ProductoImagen> NE_ProductoImagen { get; set; }
+        public virtual ICollection<NE_Producto> NE_Producto { get; set; }
     }
 }
