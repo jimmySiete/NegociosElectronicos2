@@ -11,7 +11,8 @@ namespace NegociosElectronicosII.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class NE_Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,8 @@ namespace NegociosElectronicosII.Models
         }
     
         public int Id_Category { get; set; }
+       // [Display(Name ="Category")]
+        [Required(ErrorMessage ="El campo {0} es requerido")]
         public string Category { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
