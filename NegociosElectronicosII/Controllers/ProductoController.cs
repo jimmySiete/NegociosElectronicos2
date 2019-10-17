@@ -17,8 +17,9 @@ namespace NegociosElectronicosII.Controllers
         // GET: Producto
         public ActionResult Index()
         {
-            var nE_Producto = db.NE_Producto.Include(n => n.NE_Category);
-            return View(nE_Producto.ToList());
+            return View(new List<NE_Producto>());
+            //var nE_Producto = db.NE_Producto.Include(n => n.NE_Category);
+            //return View(nE_Producto.ToList());
         }
 
         // GET: Producto/Details/5
