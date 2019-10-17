@@ -22,7 +22,7 @@ namespace NegociosElectronicosII.Models
         }
     
         public int Id_Category { get; set; }
-        [Display(Name ="Category")]
+       // [Display(Name ="Category")]
         [Required(ErrorMessage ="El campo {0} es requerido")]
         public string Category { get; set; }
     
