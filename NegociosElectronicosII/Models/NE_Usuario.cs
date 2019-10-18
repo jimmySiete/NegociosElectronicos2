@@ -21,6 +21,7 @@ namespace NegociosElectronicosII.Models
             this.NE_Bitacora = new HashSet<NE_Bitacora>();
             this.NE_ComentarioProducto = new HashSet<NE_ComentarioProducto>();
             this.NE_EncabezadoChat = new HashSet<NE_EncabezadoChat>();
+            this.NE_Visita = new HashSet<NE_Visita>();
         }
     
         public int UsuarioId { get; set; }
@@ -45,5 +46,7 @@ namespace NegociosElectronicosII.Models
         public virtual ICollection<NE_EncabezadoChat> NE_EncabezadoChat { get; set; }
         public virtual NE_Rol NE_Rol { get; set; }
         public virtual NE_Sexo NE_Sexo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NE_Visita> NE_Visita { get; set; }
     }
 }

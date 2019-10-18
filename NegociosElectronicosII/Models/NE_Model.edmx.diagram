@@ -45,6 +45,8 @@
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" Width="1.5" PointX="5.25" PointY="32" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
