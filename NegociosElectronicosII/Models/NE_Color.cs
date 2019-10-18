@@ -12,18 +12,21 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_Sexo
+    public partial class NE_Color
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NE_Sexo()
+        public NE_Color()
         {
-            this.NE_Usuario = new HashSet<NE_Usuario>();
+            this.NE_Vehiculo = new HashSet<NE_Vehiculo>();
+            this.NE_Producto = new HashSet<NE_Producto>();
         }
     
-        public int SexoId { get; set; }
-        public string Sexo { get; set; }
+        public int ColorId { get; set; }
+        public string Color { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_Usuario> NE_Usuario { get; set; }
+        public virtual ICollection<NE_Vehiculo> NE_Vehiculo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NE_Producto> NE_Producto { get; set; }
     }
 }

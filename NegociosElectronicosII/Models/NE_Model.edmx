@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="NE_Accion">
           <Key>
             <PropertyRef Name="AccionId" />
@@ -100,8 +100,8 @@
           <Property Name="FechaDeInicio" Type="datetime" Nullable="false" />
           <Property Name="FechaDeCierre" Type="datetime" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Encuesta' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A453B0_fabiancastanon.dbo.NE_Encuesta' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="NE_Encuesta">
           <Key>
             <PropertyRef Name="EncuestaId" />
@@ -137,7 +137,7 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Encuesta' no
           </Key>
           <Property Name="ProductoId" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="varbinary" MaxLength="250" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="MarcaId" Type="int" Nullable="false" />
           <Property Name="ColorId" Type="int" Nullable="false" />
           <Property Name="Stock" Type="int" Nullable="false" />
@@ -226,8 +226,8 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Encuesta' no
           <Property Name="Extension" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="VehiculoId" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A453B0_fabiancastanon.dbo.NE_Visita' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="NE_Visita">
           <Key>
             <PropertyRef Name="VisitaId" />
@@ -583,7 +583,8 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
             <End Role="NE_ComentarioVehiculo" EntitySet="NE_ComentarioVehiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_A453B0_fabiancastanonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -720,7 +721,7 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
           </Key>
           <Property Name="ProductoId" Type="Int32" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="Binary" MaxLength="250" FixedLength="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MarcaId" Type="Int32" Nullable="false" />
           <Property Name="ColorId" Type="Int32" Nullable="false" />
           <Property Name="Stock" Type="Int32" Nullable="false" />
@@ -797,7 +798,7 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
           <NavigationProperty Name="NE_EncabezadoChat" Relationship="Self.FK_Usuario" FromRole="NE_Usuario" ToRole="NE_EncabezadoChat" />
           <NavigationProperty Name="NE_Rol" Relationship="Self.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
           <NavigationProperty Name="NE_Sexo" Relationship="Self.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
-          <NavigationProperty Name="NE_Visita" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
+          <NavigationProperty Name="NE_Visita" Relationship="Self.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
         </EntityType>
         <EntityType Name="NE_Vehiculo">
           <Key>
@@ -842,6 +843,19 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
           <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FechaDeCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_Visita">
+          <Key>
+            <PropertyRef Name="VisitaId" />
+            <PropertyRef Name="FechaDeRegistro" />
+            <PropertyRef Name="Origen" />
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="VisitaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaDeRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Origen" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="Self.FK_UsuarioVisita" FromRole="NE_Visita" ToRole="NE_Usuario" />
         </EntityType>
         <Association Name="FK_AccionId">
           <End Role="NE_Accion" Type="Self.NE_Accion" Multiplicity="1" />
@@ -1047,6 +1061,18 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UsuarioVisita">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_Visita" Type="Self.NE_Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Visita">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NE_VehiculoImagen_NE_Vehiculo">
           <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="1" />
           <End Role="NE_VehiculoImagen" Type="Self.NE_VehiculoImagen" Multiplicity="*" />
@@ -1059,7 +1085,7 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DB_NE_Negocios" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="NE_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="NE_Accion" EntityType="Self.NE_Accion" />
           <EntitySet Name="NE_Autenticacion" EntityType="Self.NE_Autenticacion" />
           <EntitySet Name="NE_Bitacora" EntityType="Self.NE_Bitacora" />
@@ -1082,6 +1108,7 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
           <EntitySet Name="NE_Vehiculo" EntityType="Self.NE_Vehiculo" />
           <EntitySet Name="NE_VehiculoImagen" EntityType="Self.NE_VehiculoImagen" />
           <EntitySet Name="NE_Encuesta" EntityType="Self.NE_Encuesta" />
+          <EntitySet Name="NE_Visita" EntityType="Self.NE_Visita" />
           <AssociationSet Name="FK_AccionId" Association="Self.FK_AccionId">
             <End Role="NE_Accion" EntitySet="NE_Accion" />
             <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
@@ -1150,47 +1177,21 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
             <End Role="NE_Transmision" EntitySet="NE_Transmision" />
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
           </AssociationSet>
+          <AssociationSet Name="FK_UsuarioVisita" Association="Self.FK_UsuarioVisita">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Visita" EntitySet="NE_Visita" />
+          </AssociationSet>
           <AssociationSet Name="FK_NE_VehiculoImagen_NE_Vehiculo" Association="Self.FK_NE_VehiculoImagen_NE_Vehiculo">
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_VehiculoImagen" EntitySet="NE_VehiculoImagen" />
           </AssociationSet>
-          <EntitySet Name="NE_Visita" EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" />
-          <AssociationSet Name="FK_UsuarioVisita" Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_Visita" EntitySet="NE_Visita" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="NE_Visita">
-          <Key>
-            <PropertyRef Name="VisitaId" />
-            <PropertyRef Name="FechaDeRegistro" />
-            <PropertyRef Name="Origen" />
-            <PropertyRef Name="UsuarioId" />
-          </Key>
-          <Property Name="VisitaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FechaDeRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Origen" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" FromRole="NE_Visita" ToRole="NE_Usuario" />
-        </EntityType>
-        <Association Name="FK_UsuarioVisita">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Visita" Role="NE_Visita" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_Visita">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DB_A453B0_fabiancastanonModelStoreContainer" CdmEntityContainer="DB_NE_Negocios">
+        <EntityContainerMapping StorageEntityContainer="DB_A453B0_fabiancastanonModelStoreContainer" CdmEntityContainer="NE_Entities">
           <EntitySetMapping Name="NE_Accion">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Accion">
               <MappingFragment StoreEntitySet="NE_Accion">
@@ -1432,10 +1433,10 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
           <EntitySetMapping Name="NE_Visita">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Visita">
               <MappingFragment StoreEntitySet="NE_Visita">
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-                <ScalarProperty Name="Origen" ColumnName="Origen" />
-                <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
                 <ScalarProperty Name="VisitaId" ColumnName="VisitaId" />
+                <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
+                <ScalarProperty Name="Origen" ColumnName="Origen" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1456,7 +1457,7 @@ advertencia 6002: La tabla o vista 'DB_A453B0_fabiancastanon.dbo.NE_Visita' no t
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

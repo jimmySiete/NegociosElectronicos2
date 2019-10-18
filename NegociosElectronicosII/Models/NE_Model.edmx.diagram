@@ -4,29 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92ca32238b15467e8f43f9b509e68075" Name="Diagram1" ZoomLevel="71">
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Accion" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Width="1.5" PointX="5.25" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Bitacora" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrusel" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Categoria" Width="1.5" PointX="3.75" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Color" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_CuerpoChat" Width="1.5" PointX="7.5" PointY="28.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Width="1.5" PointX="5.25" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_FAQS" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Marca" Width="1.5" PointX="3.75" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Producto" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ProductoImagen" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Rol" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Sexo" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Template" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Width="1.5" PointX="6" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Encuesta" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+      <Diagram DiagramId="48bdb175a8754c97a80f76ae25710f6d" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Accion" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Bitacora" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrusel" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Categoria" Width="1.5" PointX="7.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Color" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Width="1.5" PointX="8.25" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Width="1.5" PointX="12.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_CuerpoChat" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_FAQS" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Marca" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Producto" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ProductoImagen" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Rol" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Sexo" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Template" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" Width="1.5" PointX="7.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Width="1.5" PointX="10" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" Width="1.5" PointX="12.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Encuesta" Width="1.5" PointX="10.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AccionId" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" ManuallyRouted="false" />
@@ -44,9 +45,8 @@
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" Width="1.5" PointX="5.25" PointY="32" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
