@@ -38,7 +38,7 @@
                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
                 @*<input type="password" class="form-control" placeholder="contrasena" id="Password" name="Password">*@
-                @Html.EditorFor(x=>x.Password,new { htmlAttributes= new { @class = "form-control", @placeholder = Recursos.Placeholder } })
+                @Html.EditorFor(x=>x.Password,new { htmlAttributes= new { @class = "form-control", @placeholder = Recursos.Placeholder, @Type="Password" } })
                 <br />
                 @Html.ValidationMessageFor(x => x.Password)
             </div>
