@@ -1,0 +1,81 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Vehiculo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Categoria.CategoriaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Color.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Marca.MarcaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Transmision.Transmision)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Categoria.CategoriaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Color.Color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Marca.MarcaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Transmision.Transmision)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VehiculoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VehiculoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VehiculoId })
+        </td>
+    </tr>
+}
+
+</table>

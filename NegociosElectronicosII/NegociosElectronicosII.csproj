@@ -204,6 +204,8 @@
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -659,6 +661,11 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_LandingLayout.cshtml" />
     <Content Include="Views\Landing\Index.cshtml" />
+    <Content Include="Views\Vehiculo\Create.cshtml" />
+    <Content Include="Views\Vehiculo\Delete.cshtml" />
+    <Content Include="Views\Vehiculo\Details.cshtml" />
+    <Content Include="Views\Vehiculo\Edit.cshtml" />
+    <Content Include="Views\Vehiculo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

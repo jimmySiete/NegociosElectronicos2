@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Index</h2>
@@ -13,28 +12,28 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Codigo)
+            @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Stock)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Precio_Venta)
+            @Html.DisplayNameFor(model => model.PrecioVenta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Precio_Compra)
+            @Html.DisplayNameFor(model => model.PrecioCompra)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Activo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NE_Category.Category)
+            @Html.DisplayNameFor(model => model.NE_Color.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Marca.MarcaId)
         </th>
         <th></th>
     </tr>
@@ -42,33 +41,33 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Codigo)
+            @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Stock)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Precio_Venta)
+            @Html.DisplayFor(modelItem => item.PrecioVenta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Precio_Compra)
+            @Html.DisplayFor(modelItem => item.PrecioCompra)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Activo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NE_Category.Category)
+            @Html.DisplayFor(modelItem => item.NE_Color.Color)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Producto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Producto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Producto })
+            @Html.DisplayFor(modelItem => item.NE_Marca.MarcaId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductoId })
         </td>
     </tr>
 }
