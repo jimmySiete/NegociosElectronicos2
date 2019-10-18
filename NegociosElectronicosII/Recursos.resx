@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CategoriaId" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
+  <data name="ColorId" xml:space="preserve">
+    <value>Color</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Correo electronico</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Olvidaste tu contrasena?</value>
+  </data>
+  <data name="MarcaId" xml:space="preserve">
+    <value>Marca</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contrasena</value>
@@ -132,7 +141,16 @@
   <data name="PlaceholderEmail" xml:space="preserve">
     <value>Escribe tu correo electronico</value>
   </data>
+  <data name="PrecioCompra" xml:space="preserve">
+    <value>Precio de compra</value>
+  </data>
+  <data name="PrecioVenta" xml:space="preserve">
+    <value>Precio de venta</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>Este campo es requerido</value>
+  </data>
+  <data name="TransmisionId" xml:space="preserve">
+    <value>Transmision</value>
   </data>
 </root>
