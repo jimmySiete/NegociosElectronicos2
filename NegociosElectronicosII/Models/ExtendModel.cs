@@ -24,7 +24,7 @@ namespace NegociosElectronicosII.Models
         [Display(Name = "MarcaId", ResourceType = (typeof(Recursos)))]
         public int MarcaId { get; set; }
         public int Modelo { get; set; }
-        [Display(Name = "TransmisionId", ResourceType = (typeof(Recursos)))]
+        [Display(Name = "TransmId", ResourceType = (typeof(Recursos)))]
         public int TransmisionId { get; set; }
         [Display(Name = "ColorId", ResourceType = (typeof(Recursos)))]
         public int ColorId { get; set; }
@@ -59,6 +59,34 @@ namespace NegociosElectronicosII.Models
         [Display(Name = "PrecioCompra", ResourceType = (typeof(Recursos)))]
         public decimal PrecioCompra { get; set; }
         public bool Activo { get; set; }
+    }
+    #endregion
+    #region NE_Usuario
+    [MetadataType(typeof(MetadataUsuario))]
+    public partial class NE_Usuario
+    {
+
+    }
+    public class MetadataUsuario
+    {
+        [Key]
+        public int UsuarioId { get; set; }
+        public string Nombre { get; set; }
+        [Display(Name ="Apellido Paterno")]
+        public string ApellidoPaterno { get; set; }
+        [Display(Name = "Apellido Materno")]
+        public string ApellidoMaterno { get; set; }
+        [Display(Name = "SexoId", ResourceType = (typeof(Recursos)))]
+        public int SexoId { get; set; }
+        public int Edad { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+        [Display(Name = "Email", ResourceType = (typeof(Recursos)))]
+        public string CorreoElectronico { get; set; }
+        public bool Activo { get; set; }
+        [Display(Name = "RolId", ResourceType = (typeof(Recursos)))]
+        public int RolId { get; set; }
+
     }
     #endregion
 }

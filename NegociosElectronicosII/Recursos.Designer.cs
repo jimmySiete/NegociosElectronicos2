@@ -160,11 +160,29 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Rol.
+        /// </summary>
+        public static string RolId {
+            get {
+                return ResourceManager.GetString("RolId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sexo.
+        /// </summary>
+        public static string SexoId {
+            get {
+                return ResourceManager.GetString("SexoId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Transmision.
         /// </summary>
-        public static string TransmisionId {
+        public static string TransmId {
             get {
-                return ResourceManager.GetString("TransmisionId", resourceCulture);
+                return ResourceManager.GetString("TransmId", resourceCulture);
             }
         }
     }
