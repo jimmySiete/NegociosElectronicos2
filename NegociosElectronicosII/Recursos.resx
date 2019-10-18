@@ -129,14 +129,20 @@
   <data name="ForgotPassword" xml:space="preserve">
     <value>Olvidaste tu contrasena?</value>
   </data>
+  <data name="InicioSesion" xml:space="preserve">
+    <value>Inicio de Sesión</value>
+  </data>
   <data name="MarcaId" xml:space="preserve">
     <value>Marca</value>
+  </data>
+  <data name="NoCuenta" xml:space="preserve">
+    <value>No tienes cuenta?</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Contrasena</value>
   </data>
   <data name="Placeholder" xml:space="preserve">
-    <value>Escribe tu contrasena</value>
+    <value>Escribe tu contraseña</value>
   </data>
   <data name="PlaceholderEmail" xml:space="preserve">
     <value>Escribe tu correo electronico</value>
@@ -146,6 +152,12 @@
   </data>
   <data name="PrecioVenta" xml:space="preserve">
     <value>Precio de venta</value>
+  </data>
+  <data name="RecordarPass" xml:space="preserve">
+    <value>Recuerdame</value>
+  </data>
+  <data name="Registrate" xml:space="preserve">
+    <value>Registrate</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>Este campo es requerido</value>

@@ -97,11 +97,29 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Inicio de Sesión.
+        /// </summary>
+        public static string InicioSesion {
+            get {
+                return ResourceManager.GetString("InicioSesion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Marca.
         /// </summary>
         public static string MarcaId {
             get {
                 return ResourceManager.GetString("MarcaId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No tienes cuenta?.
+        /// </summary>
+        public static string NoCuenta {
+            get {
+                return ResourceManager.GetString("NoCuenta", resourceCulture);
             }
         }
         
@@ -115,7 +133,7 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Escribe tu contrasena.
+        ///   Busca una cadena traducida similar a Escribe tu contraseña.
         /// </summary>
         public static string Placeholder {
             get {
@@ -147,6 +165,24 @@ namespace NegociosElectronicosII {
         public static string PrecioVenta {
             get {
                 return ResourceManager.GetString("PrecioVenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Recuerdame.
+        /// </summary>
+        public static string RecordarPass {
+            get {
+                return ResourceManager.GetString("RecordarPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Registrate.
+        /// </summary>
+        public static string Registrate {
+            get {
+                return ResourceManager.GetString("Registrate", resourceCulture);
             }
         }
         
