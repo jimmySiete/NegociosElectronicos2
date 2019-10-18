@@ -211,9 +211,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\NE_Category.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\NE_Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -228,9 +225,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NE_Model.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NE_Producto.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource1.Designer.cs">
