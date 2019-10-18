@@ -9,6 +9,6 @@ namespace NegociosElectronicosII.Controllers
 {
     public class BaseController : Controller
     {
-        public NE_Entities db = new NE_Entities();
+        public DB_NE_Entitties db = new DB_NE_Entitties();
     }
 }

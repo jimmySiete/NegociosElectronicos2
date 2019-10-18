@@ -211,6 +211,90 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NE_Accion.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Autenticacion.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Bitacora.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Carrusel.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Categoria.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Color.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_ComentarioProducto.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_ComentarioVehiculo.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_CuerpoChat.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_EncabezadoChat.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Encuesta.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_FAQS.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Marca.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NE_Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NE_Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Producto.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_ProductoImagen.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Rol.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Sexo.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Template.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Transmision.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Usuario.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Vehiculo.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_VehiculoImagen.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Visita.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recursos.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -336,6 +420,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\NE_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NE_Model.edmx</DependentUpon>
+      <LastGenOutput>NE_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NE_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NE_Model.edmx</DependentUpon>
+      <LastGenOutput>NE_Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -495,6 +589,13 @@
     <Content Include="Content\ui-ecommerce\sass\ui-assets\_base.scss" />
     <Content Include="Content\ui-ecommerce\sass\ui.scss" />
     <Content Include="Content\ui-ecommerce\sass\_variables-custom.scss" />
+    <EntityDeploy Include="Models\NE_Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NE_Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NE_Model.edmx.diagram">
+      <DependentUpon>NE_Model.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
