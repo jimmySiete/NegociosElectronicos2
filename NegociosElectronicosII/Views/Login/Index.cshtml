@@ -1,9 +1,13 @@
-﻿
+﻿@model NegociosElectronicosII.Models.LoginModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-
+<style>
+    .field-validation-error {
+        color:white !important;
+    }
+</style>
 
 <div class="card">
     <div class="card-header">
@@ -15,35 +19,51 @@
         </div>
     </div>
     <div class="card-body">
-        <form>
+        @using (Html.BeginForm()) {
+        <!--<form method="post">-->
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="username">
-
+                @*<input type="text" class="form-control" placeholder="username" id="Email" name="Email">*@
+                @Html.EditorFor(x=>x.Email, new { htmlAttributes = new { @class = "form-control", @placeholder= Recursos.PlaceholderEmail } })
+                
+            </div>
+            <br />
+            <div>
+                @Html.ValidationMessageFor(x => x.Email)
             </div>
             <div class="input-group form-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                 </div>
-                <input type="password" class="form-control" placeholder="password">
+                @*<input type="password" class="form-control" placeholder="contrasena" id="Password" name="Password">*@
+                @Html.EditorFor(x=>x.Password,new { htmlAttributes= new { @class = "form-control", @placeholder = Recursos.Placeholder } })
+                <br />
+                @Html.ValidationMessageFor(x => x.Password)
             </div>
             <div class="row align-items-center remember">
                 <input type="checkbox">Remember Me
             </div>
             <div class="form-group">
-                <input type="submit" value="Login" class="btn float-right login_btn">
+                <input type="submit" value="Iniciar sesion" class="btn float-right login_btn">
             </div>
-        </form>
+        <!--</form>-->
+        }
     </div>
     <div class="card-footer">
         <div class="d-flex justify-content-center links">
-            Don't have an account?<a href="#">Sign Up</a>
+            Don't have an account?<a href="#">Registrate</a>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="#">Forgot your password?</a>
+            <a href="#">@Recursos.ForgotPassword</a>
             
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    @if(!String.IsNullOrEmpty(ViewBag.Message))
+    {
+        @:alert('@ViewBag.Message');
+    }
+</script>
