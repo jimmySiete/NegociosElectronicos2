@@ -205,6 +205,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -421,6 +422,7 @@
     <Content Include="Content\ui-ecommerce\starter-page-listing.html" />
     <Content Include="Content\ui-ecommerce\starter-page-order.html" />
     <Content Include="favicon.ico" />
+    <Content Include="Imagenes\fondo.JPG" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -673,6 +675,8 @@
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Registro\Index.cshtml" />
+    <Content Include="Views\Shared\_RegistroLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
