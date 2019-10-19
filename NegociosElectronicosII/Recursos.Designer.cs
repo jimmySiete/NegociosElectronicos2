@@ -97,7 +97,7 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Inicio de Sesión.
+        ///   Busca una cadena traducida similar a Iniciar Sesión.
         /// </summary>
         public static string InicioSesion {
             get {
