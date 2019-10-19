@@ -1,78 +1,87 @@
-﻿@model NegociosElectronicosII.Models.LoginModel
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_Usuario>
+
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_RegistroLayout.cshtml";
 }
 
-<style>
-    .field-validation-error {
-        color: white !important;
-    }
+<h2>Index</h2>
 
-    .btn {
-        width: 150px;
-        height: 40px;
-        position: center;
-    }
-</style>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoPaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoMaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CorreoElectronico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Rol.Rol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NE_Sexo.Sexo)
+        </th>
+        <th></th>
+    </tr>
 
-<div class="card">
-    <div class="card-header">
-        <h3>@Recursos.InicioSesion</h3>
-    </div>
-    <div class="card-body">
-        @using (Html.BeginForm())
-        {
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CorreoElectronico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Rol.Rol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NE_Sexo.Sexo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UsuarioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UsuarioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UsuarioId })
+        </td>
+    </tr>
+}
 
-            <div class="input-group form-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                </div>
-                <input type="text" class="form-control" placeholder="username">
-
-            </div>
-            <div class="input-group form-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                </div>
-                <input type="password" class="form-control" placeholder="contrasena">
-            </div>
-            <div class="input-group form-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                </div>
-                <input type="text" class="form-control" placeholder="username">
-
-            </div>
-            <div class="input-group form-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                </div>
-                <input type="password" class="form-control" placeholder="contrasena">
-            </div>
-            <div class="row align-items-center remember">
-                <input type="checkbox">@Recursos.RecordarPass
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Iniciar sesion" class="btn float-right login_btn">
-            </div>
-
-            
-        }
-    </div>
-    <div class="card-footer">
-        <div class="d-flex justify-content-center links">
-            @Recursos.NoCuenta<a href="#">@Recursos.Registrate</a>
-        </div>
-        <div class="d-flex justify-content-center">
-            <a href="#">@Recursos.ForgotPassword</a>
-
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    @if(!String.IsNullOrEmpty(ViewBag.Message))
-    {
-        @:alert('@ViewBag.Message');
-    }
-</script>
+</table>

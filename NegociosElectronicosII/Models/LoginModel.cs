@@ -17,7 +17,7 @@ namespace NegociosElectronicosII.Models
         public String Password { get; set; }
 
     }
-    public class Registro
+    public class RegisterModel
     {
         public String Name { get; set; }
         public String ApellidoPaterno { get; set; }
