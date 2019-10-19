@@ -48,7 +48,7 @@ namespace NegociosElectronicosII.Controllers
                     if (userAuth.CuentaBloqueada)
                     {
                         ViewBag.Message = "Cuenta Bloqueada";
-                        return View(model);
+                        return RedirectToAction("Index","Home");
                     }
                     else
                     {
