@@ -739,7 +739,7 @@
             <PropertyRef Name="MarcaId" />
           </Key>
           <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Marca" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="Self.FK_AutoMarcaId" FromRole="NE_Marca" ToRole="NE_Vehiculo" />
           <NavigationProperty Name="NE_Producto" Relationship="Self.FK_MarcaId" FromRole="NE_Marca" ToRole="NE_Producto" />
         </EntityType>

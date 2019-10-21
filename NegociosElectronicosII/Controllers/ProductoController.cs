@@ -40,7 +40,7 @@ namespace NegociosElectronicosII.Controllers
         public ActionResult Create()
         {
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color");
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId");
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace NegociosElectronicosII.Controllers
             }
 
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Producto.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId", nE_Producto.MarcaId);
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Producto.MarcaId);
             return View(nE_Producto);
         }
 
@@ -76,7 +76,7 @@ namespace NegociosElectronicosII.Controllers
                 return HttpNotFound();
             }
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Producto.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId", nE_Producto.MarcaId);
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Producto.MarcaId);
             return View(nE_Producto);
         }
 
@@ -94,7 +94,7 @@ namespace NegociosElectronicosII.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Producto.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId", nE_Producto.MarcaId);
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Producto.MarcaId);
             return View(nE_Producto);
         }
 
