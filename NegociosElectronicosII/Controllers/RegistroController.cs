@@ -65,7 +65,7 @@ namespace NegociosElectronicosII.Controllers
                             UsuarioId = nE_Usuario.UsuarioId,
                             Intentos = 0,
                             CuentaBloqueada = false,
-                            Contrasena =   nE_Usuario.password,
+                            Contrasena =  Security.Security.Encrypt( nE_Usuario.password),
                             UltimoInicioSesion = DateTime.Now,
                         };
 
