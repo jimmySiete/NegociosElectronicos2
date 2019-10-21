@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using NegociosElectronicosII.Models;
+
 
 namespace NegociosElectronicosII.Controllers
 {
@@ -48,13 +46,44 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsuarioId,Nombre,ApellidoPaterno,ApellidoMaterno,SexoId,Edad,Direccion,Telefono,CorreoElectronico,Activo,RolId,password")] NE_Usuario nE_Usuario)
+        public ActionResult Create([Bind(Include = "UsuarioId,Nombre,ApellidoPaterno,ApellidoMaterno,SexoId,Edad,Direccion,Telefono,CorreoElectronico,Activo,RolId,Password")] NE_Usuario nE_Usuario)
         {
             if (ModelState.IsValid)
             {
-                db.NE_Usuario.Add(nE_Usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index","Login");
+
+               
+                using (DbContextTransaction dbTran = db.Database.BeginTransaction())
+                {
+                    NE_Autenticacion userAuth = new NE_Autenticacion();
+
+                    try
+                    {
+                        db.NE_Usuario.Add(nE_Usuario);
+                        db.SaveChanges();
+                        userAuth = new NE_Autenticacion()
+                        {
+                            UsuarioId = nE_Usuario.UsuarioId,
+                            Intentos = 0,
+                            CuentaBloqueada = false,
+                            Contrasena =   nE_Usuario.password,
+                            UltimoInicioSesion = DateTime.Now,
+                        };
+
+                        db.NE_Autenticacion.Add(userAuth);
+                        db.SaveChanges();
+                        dbTran.Commit();
+
+                        return Json(new { Success = true });
+                    }
+                    catch (Exception e)
+                    {
+                        dbTran.Rollback();
+                        return Json(new { Success = false });
+                    }
+
+
+                }
+                
             }
 
             ViewBag.RolId = new SelectList(db.NE_Rol, "RolId", "Rol", nE_Usuario.RolId);
@@ -131,5 +160,11 @@ namespace NegociosElectronicosII.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public void SendPassToAccount(Int32 ID_User, string password)
+        {
+           
+        }
+
     }
 }

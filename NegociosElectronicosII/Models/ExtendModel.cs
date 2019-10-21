@@ -41,7 +41,6 @@ namespace NegociosElectronicosII.Models
     [MetadataType(typeof(MetadataProducto))]
     public partial class NE_Producto
     {
-        public string password { get; set; }
     }
     public class MetadataProducto
     {
@@ -65,7 +64,7 @@ namespace NegociosElectronicosII.Models
     [MetadataType(typeof(MetadataUsuario))]
     public partial class NE_Usuario
     {
-
+        public string password { get; set; }
     }
     public class MetadataUsuario
     {
