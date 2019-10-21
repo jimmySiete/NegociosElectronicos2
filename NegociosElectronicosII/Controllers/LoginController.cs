@@ -21,12 +21,14 @@ namespace NegociosElectronicosII.Controllers
         {
             NE_Autenticacion userAuth = new NE_Autenticacion();
             NE_Usuario user = new NE_Usuario();
+            string pass;
             String Message = String.Empty;
 
             if (db.NE_Usuario.Any(x => x.CorreoElectronico == model.Email && x.Activo))
             {
                 user = db.NE_Usuario.Where(x => x.CorreoElectronico == model.Email).First();
-                if (!db.NE_Autenticacion.Any(x => x.UsuarioId == user.UsuarioId && x.Contrasena == model.Password))
+                pass = Security.Security.Encrypt(model.Password);
+                if (!db.NE_Autenticacion.Any(x => x.UsuarioId == user.UsuarioId && x.Contrasena == pass))
                 {
                     userAuth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
                     userAuth.Intentos = userAuth.Intentos + 1;
