@@ -281,6 +281,9 @@
     <Compile Include="Models\NE_ProductoImagen.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NE_RecoveryPassword.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NE_Rol.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
