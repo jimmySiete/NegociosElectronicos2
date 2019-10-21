@@ -17,4 +17,16 @@ namespace NegociosElectronicosII.Models
         public String Password { get; set; }
 
     }
+    public class RegisterModel
+    {
+        public String Name { get; set; }
+        public String ApellidoPaterno { get; set; }
+        public String ApellidoMAterno { get; set; }
+        public String Sexo { get; set; }
+        public String Edad { get; set; }
+        public String Direccion { get; set; }
+        public String Telefono { get; set; }
+        public String Correo { get; set; }
+        public String Contrasena { get; set; }
+    }
 }

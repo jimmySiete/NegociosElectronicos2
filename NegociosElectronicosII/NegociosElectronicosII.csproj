@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CastanionUtils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\CastanionUtils.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -204,6 +208,7 @@
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -306,6 +311,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\Security.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -426,6 +432,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Library\CastanionUtils.dll" />
     <Content Include="Models\NE_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NE_Model.edmx</DependentUpon>
@@ -675,7 +682,13 @@
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Shared\_RegistroLayout.cshtml" />
+    <Content Include="Views\Registro\Create.cshtml" />
+    <Content Include="Views\Registro\Delete.cshtml" />
+    <Content Include="Views\Registro\Details.cshtml" />
+    <Content Include="Views\Registro\Edit.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
+    <Content Include="Views\Panel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
