@@ -14,6 +14,7 @@ namespace NegociosElectronicosII.Controllers
         // GET: Registro
         public ActionResult Index()
         {
+            ViewBag.Message = String.Empty;
             var nE_Usuario = db.NE_Usuario.Include(n => n.NE_Rol).Include(n => n.NE_Sexo);
             return View(nE_Usuario.ToList());
         }
@@ -38,6 +39,7 @@ namespace NegociosElectronicosII.Controllers
         {
             ViewBag.RolId = new SelectList(db.NE_Rol, "RolId", "Rol");
             ViewBag.SexoId = new SelectList(db.NE_Sexo, "SexoId", "Sexo");
+            ViewBag.Message = String.Empty;
             return View();
         }
 
@@ -48,6 +50,7 @@ namespace NegociosElectronicosII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UsuarioId,Nombre,ApellidoPaterno,ApellidoMaterno,SexoId,Edad,Direccion,Telefono,CorreoElectronico,Activo,RolId,Password")] NE_Usuario nE_Usuario)
         {
+            ViewBag.Message = String.Empty;
             if (ModelState.IsValid)
             {
 
@@ -73,12 +76,13 @@ namespace NegociosElectronicosII.Controllers
                         db.SaveChanges();
                         dbTran.Commit();
 
-                        return Json(new { Success = true });
+                        ViewBag.Message = "Cuenta creada";
+                        return RedirectToAction("Index", "Login");
                     }
                     catch (Exception e)
                     {
-                        dbTran.Rollback();
-                        return Json(new { Success = false });
+                        ViewBag.Message = "La cuenta no se pudo crear";
+                        return RedirectToAction("Create", "Registro");
                     }
 
 

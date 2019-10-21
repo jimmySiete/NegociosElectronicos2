@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<h2>Create</h2>
+
 
 <style>
     .card {
@@ -23,7 +23,6 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="card">
         <header class="card-header">
-            <a href="" class="float-right btn btn-outline-primary mt-1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iniciar sesión</font></font></a>
             <h4 class="card-title mt-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Regístrate</font></font></h4>
         </header>
         <article class="card-body">
@@ -80,7 +79,7 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label" })
-                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @Type="password" } })
                     @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                 </div>
                 @Html.HiddenFor(m => m.Activo, new { @Value = true })
@@ -94,9 +93,16 @@
                 <small class="text-muted"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Al hacer clic en el botón 'Registrarse', confirma que acepta nuestros </font></font><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Términos de uso y Política de privacidad.</font></font></small>
             </form>
         </article> <!-- card-body end .// -->
-        <div class="border-top card-body text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Tener una cuenta? </font></font><a href=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Iniciar sesión</font></font></a></div>
+        <div class="border-top card-body text-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Tener una cuenta? </font></font><a href=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@Html.ActionLink("Iniciar Sesión", "Index", "Login")</font></font></a></div>
     </div> <!-- card.// -->
 }
+<script type="text/javascript">
+    @if(!String.IsNullOrEmpty(ViewBag.Message))
+    {
+        @:alert('@ViewBag.Message');
+    }
+</script>
+
 @*
     @using (Html.BeginForm())
     {
@@ -204,6 +210,6 @@
     </div>
     }*@
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@

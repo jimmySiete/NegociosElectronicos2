@@ -60,7 +60,7 @@ namespace NegociosElectronicosII.Controllers
                         userAuth.UltimoInicioSesion = DateTime.Now;
                         db.SaveChanges();
                         ViewBag.Message = "Bienvenido";
-                        return View(model);
+                        return RedirectToAction("Index", "Panel");
                     }
 
 
