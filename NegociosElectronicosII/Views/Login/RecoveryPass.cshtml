@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "RecoveryPass";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<p class="text-white">
+    Recuera contraseña
+    @*@Resources.LegendRecoveryPass*@
+</p>
+<br />
+@*@Resources.UserCodeRequired*@
+<div class="wrap-input100 validate-input m-b-10" data-validate="User code requerido">
+    @*@Resources.UserCodeTag*@
+    <input id="userCode" class="input100" type="text" name="username" placeholder="Codigo de usuario">
+    <span class="focus-input100"></span>
+    <span class="symbol-input100">
+        <i class="fa fa-user"></i>
+    </span>
+</div>
+
+<div class="wrap-input100 validate-input m-b-10" data-validate="Email Requerido">
+    <input id="email" class="input100" type="text" name="username" placeholder="Email">
+    <span class="focus-input100"></span>
+    <span class="symbol-input100">
+        <i class="fa fa-user"></i>
+    </span>
+</div>
+
+
+<div class="container-login100-form-btn p-t-10">
+    <button class="login100-form-btn" id="btnStartSession"> Recuperar contraseña</button>
+</div>
+
+<div class="text-center w-full p-t-25 p-b-230">
+    <a href="@Url.Action("Index","Login")" class="txt1">
+        Regresar al Login
+    </a>
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#btnStartSession').click(function () {
+            if ($('#userCode').val() == "" || $('#userCode').val() == undefined || $('#userCode').val() == null) {
+                alert('Ingresa el Codigo');
+                return false;
+            }
+
+            if ($('#email').val() == "" || $('#email').val() == email || $('#email').val() == null) {
+                alert('Ingresa el Email');
+                return false;
+            }
+
+            fnLoader();
+
+            $.ajax({
+                url: '@Url.Action("IsEmailValid", "Login")',
+                data: { userCode: $('#userCode').val(), email: $('#email').val() },
+                type: 'POST',
+                success: function (response) {
+                    $.unblockUI();
+                    alert(response.Message);
+
+                    if (response.Success)
+                        window.location.href = '@Url.Action("Index","Login")';
+                },
+                error: function () {
+                    alert('@Resources.AlertErrorMessage');
+                }
+            });
+        });
+    });
+    </script>
+}
