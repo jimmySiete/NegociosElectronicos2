@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="NE_Accion">
           <Key>
             <PropertyRef Name="AccionId" />
@@ -51,7 +51,7 @@
             <PropertyRef Name="CategoriaId" />
           </Key>
           <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Categoria" Type="varbinary" MaxLength="20" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="NE_Color">
           <Key>
@@ -124,7 +124,7 @@
             <PropertyRef Name="MarcaId" />
           </Key>
           <Property Name="MarcaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Marca" Type="varbinary" MaxLength="20" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="NE_Producto">
           <Key>
@@ -149,6 +149,16 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Extension" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_RecoveryPassword">
+          <Key>
+            <PropertyRef Name="RecoveryPassId" />
+          </Key>
+          <Property Name="RecoveryPassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+          <Property Name="IsConfirmed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="NE_Rol">
           <Key>
@@ -434,6 +444,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Usuario_Recovery">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_RecoveryPassword" Type="Self.NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UsuariosId_Autenticacion">
           <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
           <End Role="NE_Autenticacion" Type="Self.NE_Autenticacion" Multiplicity="*" />
@@ -486,6 +508,7 @@
           <EntitySet Name="NE_Marca" EntityType="Self.NE_Marca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Producto" EntityType="Self.NE_Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_ProductoImagen" EntityType="Self.NE_ProductoImagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_RecoveryPassword" EntityType="Self.NE_RecoveryPassword" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Rol" EntityType="Self.NE_Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Sexo" EntityType="Self.NE_Sexo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Template" EntityType="Self.NE_Template" Schema="dbo" store:Type="Tables" />
@@ -562,6 +585,10 @@
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Recovery" Association="Self.FK_Usuario_Recovery">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
           <AssociationSet Name="FK_UsuariosId_Autenticacion" Association="Self.FK_UsuariosId_Autenticacion">
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_Autenticacion" EntitySet="NE_Autenticacion" />
@@ -575,8 +602,7 @@
             <End Role="NE_ComentarioVehiculo" EntitySet="NE_ComentarioVehiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_A453B0_fabiancastanonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -630,7 +656,7 @@
             <PropertyRef Name="CategoriaId" />
           </Key>
           <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Categoria" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
+          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="Self.FK_AutoCategoriaId" FromRole="NE_Categoria" ToRole="NE_Vehiculo" />
         </EntityType>
         <EntityType Name="NE_Color">
@@ -713,7 +739,7 @@
             <PropertyRef Name="MarcaId" />
           </Key>
           <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Marca" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="Self.FK_AutoMarcaId" FromRole="NE_Marca" ToRole="NE_Vehiculo" />
           <NavigationProperty Name="NE_Producto" Relationship="Self.FK_MarcaId" FromRole="NE_Marca" ToRole="NE_Producto" />
         </EntityType>
@@ -802,6 +828,7 @@
           <NavigationProperty Name="NE_Rol" Relationship="Self.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
           <NavigationProperty Name="NE_Sexo" Relationship="Self.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
           <NavigationProperty Name="NE_Visita" Relationship="Self.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
+          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
         </EntityType>
         <EntityType Name="NE_Vehiculo">
           <Key>
@@ -1189,7 +1216,35 @@
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_VehiculoImagen" EntitySet="NE_VehiculoImagen" />
           </AssociationSet>
+          <EntitySet Name="NE_RecoveryPassword" EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" />
+          <AssociationSet Name="FK_Usuario_Recovery" Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="NE_RecoveryPassword">
+          <Key>
+            <PropertyRef Name="RecoveryPassId" />
+          </Key>
+          <Property Name="RecoveryPassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery" FromRole="NE_RecoveryPassword" ToRole="NE_Usuario" />
+        </EntityType>
+        <Association Name="FK_Usuario_Recovery">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Role="NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1441,6 +1496,17 @@
                 <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
                 <ScalarProperty Name="Origen" ColumnName="Origen" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_RecoveryPassword">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword">
+              <MappingFragment StoreEntitySet="NE_RecoveryPassword">
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RecoveryPassId" ColumnName="RecoveryPassId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

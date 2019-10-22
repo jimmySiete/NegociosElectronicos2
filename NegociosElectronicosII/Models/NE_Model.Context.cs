@@ -48,5 +48,6 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_Vehiculo> NE_Vehiculo { get; set; }
         public virtual DbSet<NE_VehiculoImagen> NE_VehiculoImagen { get; set; }
         public virtual DbSet<NE_Visita> NE_Visita { get; set; }
+        public virtual DbSet<NE_RecoveryPassword> NE_RecoveryPassword { get; set; }
     }
 }

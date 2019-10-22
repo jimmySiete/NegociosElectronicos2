@@ -12,18 +12,14 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_Categoria
+    public partial class NE_RecoveryPassword
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NE_Categoria()
-        {
-            this.NE_Vehiculo = new HashSet<NE_Vehiculo>();
-        }
+        public int RecoveryPassId { get; set; }
+        public int UsuarioId { get; set; }
+        public System.DateTime RecordDate { get; set; }
+        public System.DateTime ExpiredDate { get; set; }
+        public bool IsConfirmed { get; set; }
     
-        public int CategoriaId { get; set; }
-        public string Categoria { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_Vehiculo> NE_Vehiculo { get; set; }
+        public virtual NE_Usuario NE_Usuario { get; set; }
     }
 }
