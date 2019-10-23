@@ -838,7 +838,7 @@
           <NavigationProperty Name="NE_Rol" Relationship="Self.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
           <NavigationProperty Name="NE_Sexo" Relationship="Self.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
           <NavigationProperty Name="NE_Visita" Relationship="Self.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
-          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
+          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
         </EntityType>
         <EntityType Name="NE_Vehiculo">
           <Key>
@@ -1226,27 +1226,34 @@
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_VehiculoImagen" EntitySet="NE_VehiculoImagen" />
           </AssociationSet>
+          <EntitySet Name="NE_EmailTemplate" EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" />
           <EntitySet Name="NE_RecoveryPassword" EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" />
-          <AssociationSet Name="FK_Usuario_Recovery" Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery">
+          <AssociationSet Name="FK_Recovery_User" Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User">
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
           </AssociationSet>
-          <EntitySet Name="NE_EmailTemplate" EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" />
         </EntityContainer>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="NE_RecoveryPassword">
           <Key>
-            <PropertyRef Name="RecoveryPassId" />
             <PropertyRef Name="RecoveryPasswordId" />
           </Key>
-          <Property Name="RecoveryPassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecoveryPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
           <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery" FromRole="NE_RecoveryPassword" ToRole="NE_Usuario" />
-          <Property Name="RecoveryPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_RecoveryPassword" ToRole="NE_Usuario" />
         </EntityType>
-        <Association Name="FK_Usuario_Recovery">
+        <Association Name="FK_Recovery_User">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Role="NE_RecoveryPassword" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1258,15 +1265,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="NE_EmailTemplate">
-          <Key>
-            <PropertyRef Name="EmailTemplateId" />
-          </Key>
-          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1521,17 +1519,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NE_RecoveryPassword">
-            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword">
-              <MappingFragment StoreEntitySet="NE_RecoveryPassword">
-                <ScalarProperty Name="RecoveryPasswordId" ColumnName="RecoveryPasswordId" />
-                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
-                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
-                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="NE_EmailTemplate">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_EmailTemplate">
               <MappingFragment StoreEntitySet="NE_EmailTemplate">
@@ -1539,6 +1526,17 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="EmailTemplate" ColumnName="EmailTemplate" />
                 <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_RecoveryPassword">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword">
+              <MappingFragment StoreEntitySet="NE_RecoveryPassword">
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RecoveryPasswordId" ColumnName="RecoveryPasswordId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

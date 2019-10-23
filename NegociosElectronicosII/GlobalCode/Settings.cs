@@ -27,10 +27,10 @@ namespace NegociosElectronicosII.GlobalCode
 
         #endregion
 
-        private static String GetValueFromSettings(String Key)
-        {
-            return db.Tb_Settings.Where(x => x.Key == Key).First().Value;
-        }
+        //private static String GetValueFromSettings(String Key)
+        //{
+        //    return db.Tb_Settings.Where(x => x.Key == Key).First().Value;
+        //}
 
         public static NE_Usuario LoggedUser
         {
@@ -46,57 +46,57 @@ namespace NegociosElectronicosII.GlobalCode
             }
         }
 
-        public static string ACCOUNT_SERVER
-        {
-            get
-            {
-                return Settings.GetValueFromSettings("ACCOUNT_SERVER");
-            }
-        }
+        //public static string ACCOUNT_SERVER
+        //{
+        //    get
+        //    {
+        //        return Settings.GetValueFromSettings("ACCOUNT_SERVER");
+        //    }
+        //}
 
-        public static string FROM
-        {
-            get
-            {
-                return Settings.GetValueFromSettings("FROM_SERVER");
-            }
-        }
+        //public static string FROM
+        //{
+        //    get
+        //    {
+        //        return Settings.GetValueFromSettings("FROM_SERVER");
+        //    }
+        //}
 
-        public static string HOST_SERVER
-        {
-            get
-            {
-                return Settings.GetValueFromSettings("HOST_SERVER");
-            }
-        }
+        //public static string HOST_SERVER
+        //{
+        //    get
+        //    {
+        //        return Settings.GetValueFromSettings("HOST_SERVER");
+        //    }
+        //}
 
-        public static string PASSWORD_SERVER
-        {
-            get
-            {
-                return Settings.GetValueFromSettings("PASSWORD_SERVER");
-            }
-        }
+        //public static string PASSWORD_SERVER
+        //{
+        //    get
+        //    {
+        //        return Settings.GetValueFromSettings("PASSWORD_SERVER");
+        //    }
+        //}
 
-        public static int? PORT_SERVER
-        {
-            get
-            {
-                String PORT = Settings.GetValueFromSettings("PORT_SERVER");
-                if (String.IsNullOrEmpty(PORT))
-                    return null;
-                else
-                    return Int32.Parse(PORT);
-            }
-        }
+        //public static int? PORT_SERVER
+        //{
+        //    get
+        //    {
+        //        String PORT = Settings.GetValueFromSettings("PORT_SERVER");
+        //        if (String.IsNullOrEmpty(PORT))
+        //            return null;
+        //        else
+        //            return Int32.Parse(PORT);
+        //    }
+        //}
 
-        public static string URL_TOConfirmEmail
-        {
-            get
-            {
-                return WebConfigurationManager.AppSettings["URL_TOConfirmEmail"];
-            }
-        }
+        //public static string URL_TOConfirmEmail
+        //{
+        //    get
+        //    {
+        //        return WebConfigurationManager.AppSettings["URL_TOConfirmEmail"];
+        //    }
+        //}
 
         //Generate new code to new user
         public static string GetNewSuggestCode()
@@ -106,9 +106,9 @@ namespace NegociosElectronicosII.GlobalCode
             return String.Format("X_{0}", CoreCode);
         }
 
-        public static Int32 GetPermission(String KEY)
-        {
-            return db.Tb_Permission.Where(x => x.Description == KEY).First().ID_Permission;
-        }
+        //public static Int32 GetPermission(String KEY)
+        //{
+        //    return db.Tb_Permission.Where(x => x.Description == KEY).First().ID_Permission;
+        //}
     }
 }

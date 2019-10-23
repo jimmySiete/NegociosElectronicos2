@@ -48,9 +48,9 @@
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" ManuallyRouted="false" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Width="1.5" PointX="5.25" PointY="27.875" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" Width="1.5" PointX="10.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Width="1.5" PointX="5.25" PointY="27.875" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

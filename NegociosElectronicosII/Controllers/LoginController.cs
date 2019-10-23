@@ -105,21 +105,21 @@ namespace NegociosElectronicosII.Controllers
 
                     //fill template
                     String template = db.NE_EmailTemplate.Where(x => x.Name == "RecoveryPass").First().EmailTemplate;
-                    template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno, Settings.URL_TOConfirmEmail + recovery.RecoveryPassId.ToString(), "leo_aguila9876@hotmail.com");
+                    //template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno, Settings.URL_TOConfirmEmail + recovery.RecoveryPassId.ToString(), "leo_aguila9876@hotmail.com");
                     //create Instance
                    
-                    Mail mail = new Mail()
-                    {
-                        AccountServer = Settings.ACCOUNT_SERVER,
-                        Subject = "Titulo del email",
-                        From = Settings.FROM,
-                        Host = Settings.HOST_SERVER,
-                        PasswordServer = Settings.PASSWORD_SERVER,
-                        Body = template,
-                        To = new List<string>() { user.CorreoElectronico },
-                        Port = Settings.PORT_SERVER
-                    };
-                    mail.Send();
+                    //Mail mail = new Mail()
+                    //{
+                    //    AccountServer = Settings.ACCOUNT_SERVER,
+                    //    Subject = "Titulo del email",
+                    //    From = Settings.FROM,
+                    //    Host = Settings.HOST_SERVER,
+                    //    PasswordServer = Settings.PASSWORD_SERVER,
+                    //    Body = template,
+                    //    To = new List<string>() { user.CorreoElectronico },
+                    //    Port = Settings.PORT_SERVER
+                    //};
+                    //mail.Send();
 
                     return Json(new { Success = true, Message = "Confirme su correo electronico" }, JsonRequestBehavior.DenyGet);
                 }
