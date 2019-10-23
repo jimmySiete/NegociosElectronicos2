@@ -107,7 +107,7 @@ namespace NegociosElectronicosII.Controllers
 
                     //fill template
                     String template = db.NE_EmailTemplate.Where(x => x.Name == "RecoveryPass").First().EmailTemplate;
-                    template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno,Settings.URL_TOConfirmEmail + recovery.RecoveryPasswordId.ToString(), " carsold22141024@gmail. com");
+                    template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno,Settings.URL_TOConfirmEmail + recovery.RecoveryPasswordId.ToString(), "carsold22141024@gmail.com");
                     //create Instance
                    
                     Mail mail = new Mail()
