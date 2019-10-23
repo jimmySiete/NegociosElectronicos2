@@ -81,7 +81,7 @@
 
             $.ajax({
                 url: '@Url.Action("ChangePass", "Login")',
-                data: { newPass: $('#newPass').val(), ID: @ViewBag.ID },
+                data: { newPass: $('#newPass').val() },
                 type: 'POST',
                 success: function (response) {
                     $.unblockUI();

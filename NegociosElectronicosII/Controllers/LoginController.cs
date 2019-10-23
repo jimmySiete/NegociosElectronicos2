@@ -86,7 +86,7 @@ namespace NegociosElectronicosII.Controllers
 
 
         [HttpPost]
-        public JsonResult IsEmailValid(String userCode, String email)
+        public JsonResult IsEmailValid(String email)
         {
             try
             {
@@ -148,16 +148,16 @@ namespace NegociosElectronicosII.Controllers
         }
 
         [HttpPost]
-        public JsonResult ChangePass(String newPass, Int32 ID)
+        public JsonResult ChangePass(String newPass)
         {
             try
             {
-               // NE_RecoveryPassword model = db.NE_RecoveryPassword.Find(ID);
-               //NE_Usuario user = db.NE_Usuario.Where(x => x.UsuarioId == model.UsuarioId ).First(); DUDAAAAA
-               // NE_Autenticacion auth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
-               // model.IsConfirmed = true;
-               // auth.Contrasena = Security.Security.Encrypt(newPass);
-               // db.SaveChanges();
+                NE_RecoveryPassword model = db.NE_RecoveryPassword.Find(ID);
+                NE_Usuario user = db.NE_Usuario.Where(x => x.UsuarioId == model.UsuarioId ).First(); DUDAAAAA
+                NE_Autenticacion auth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
+                model.IsConfirmed = true;
+                auth.Contrasena = Security.Security.Encrypt(newPass);
+                db.SaveChanges();
 
                 return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
             }

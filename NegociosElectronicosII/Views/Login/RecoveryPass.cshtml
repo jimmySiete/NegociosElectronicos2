@@ -55,7 +55,7 @@
            
             $.ajax({
                 url: '@Url.Action("IsEmailValid", "Login")',
-                data: { userCode: $('#userCode').val(), email: $('#email').val() },
+                data: { email: $('#email').val() },
                 type: 'POST',
                 success: function (response) {
                     //$.unblockUI();
