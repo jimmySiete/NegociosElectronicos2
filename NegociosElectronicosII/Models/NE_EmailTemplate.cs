@@ -12,15 +12,11 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_RecoveryPassword
+    public partial class NE_EmailTemplate
     {
-        public int RecoveryPassId { get; set; }
-        public int UsuarioId { get; set; }
-        public System.DateTime RecordDate { get; set; }
-        public System.DateTime ExpiredDate { get; set; }
-        public bool IsConfirmed { get; set; }
-        public int RecoveryPasswordId { get; set; }
-    
-        public virtual NE_Usuario NE_Usuario { get; set; }
+        public int EmailTemplateId { get; set; }
+        public string EmailTemplate { get; set; }
+        public string Name { get; set; }
+        public bool Active { get; set; }
     }
 }

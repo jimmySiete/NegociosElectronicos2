@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NegociosElectronicosII.Email;
+using NegociosElectronicosII.GlobalCode;
+
 
 namespace NegociosElectronicosII.Controllers
 {
@@ -90,42 +93,43 @@ namespace NegociosElectronicosII.Controllers
                     //get user
                     NE_Usuario user = db.NE_Usuario.Where(x => x.CorreoElectronico.ToUpper() == email.ToUpper()).First();
                     //add confirmed request
-                    NE_R recovery = new Tb_RecoveryPass()
+                    NE_RecoveryPassword recovery = new NE_RecoveryPassword()
                     {
-                        Email = user.Email,
+                        UsuarioId = user.UsuarioId,
                         RecordDate = DateTime.Now,
                         ExpiredDate = DateTime.Now.AddDays(1),
                         IsConfirmed = false,
                     };
-                    db.Tb_RecoveryPass.Add(recovery);
+                    db.NE_RecoveryPassword.Add(recovery);
                     db.SaveChanges();
 
                     //fill template
-                    String template = db.Tb_EmailsTemplate.Where(x => x.Name == "RecoveryPass").First().EmailTemplate;
-                    template = String.Format(template, user.Name + " " + user.LastName, Settings.URL_TOConfirmEmail + recovery.ID_RecoveryPass.ToString(), "jf.castanion@hotmail.com");
+                    String template = db.NE_EmailTemplate.Where(x => x.Name == "RecoveryPass").First().EmailTemplate;
+                    template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno, Settings.URL_TOConfirmEmail + recovery.RecoveryPassId.ToString(), "leo_aguila9876@hotmail.com");
                     //create Instance
+                   
                     Mail mail = new Mail()
                     {
                         AccountServer = Settings.ACCOUNT_SERVER,
-                        Subject = Resources.TitleEmail_1,
+                        Subject = "Titulo del email",
                         From = Settings.FROM,
                         Host = Settings.HOST_SERVER,
                         PasswordServer = Settings.PASSWORD_SERVER,
                         Body = template,
-                        To = new List<string>() { user.Email },
+                        To = new List<string>() { user.CorreoElectronico },
                         Port = Settings.PORT_SERVER
                     };
                     mail.Send();
 
-                    return Json(new { Success = true, Message = Resources.AlertEmailAccountConfirm }, JsonRequestBehavior.DenyGet);
+                    return Json(new { Success = true, Message = "Confirme su correo electronico" }, JsonRequestBehavior.DenyGet);
                 }
                 else
-                    return Json(new { Success = false, Message = Resources.AlertEmailCodeIncorrect }, JsonRequestBehavior.DenyGet);
+                    return Json(new { Success = false, Message = "Codigo Incorrecto" }, JsonRequestBehavior.DenyGet);
 
             }
             catch (Exception ex)
             {
-                return Json(new { Success = false, Message = Resources.AlertErrorMessage }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Message = "Error de Mensaje" }, JsonRequestBehavior.DenyGet);
             }
         }
     }

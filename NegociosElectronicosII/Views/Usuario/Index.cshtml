@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -9,10 +10,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model=>model.Nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ApellidoPaterno)

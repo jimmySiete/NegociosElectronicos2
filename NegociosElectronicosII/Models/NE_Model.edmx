@@ -90,6 +90,15 @@
           <Property Name="Mensaje" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="EsCliente" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailTemplate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="NE_EncabezadoChat">
           <Key>
             <PropertyRef Name="ChatId" />
@@ -152,9 +161,9 @@
         </EntityType>
         <EntityType Name="NE_RecoveryPassword">
           <Key>
-            <PropertyRef Name="RecoveryPassId" />
+            <PropertyRef Name="RecoveryPasswordId" />
           </Key>
-          <Property Name="RecoveryPassId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecoveryPasswordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UsuarioId" Type="int" Nullable="false" />
           <Property Name="RecordDate" Type="datetime" Nullable="false" />
           <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
@@ -408,6 +417,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Recovery_User">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_RecoveryPassword" Type="Self.NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TransmisionId">
           <End Role="NE_Transmision" Type="Self.NE_Transmision" Multiplicity="1" />
           <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="*" />
@@ -440,18 +461,6 @@
               <PropertyRef Name="UsuarioId" />
             </Principal>
             <Dependent Role="NE_ComentarioProducto">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario_Recovery">
-          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
-          <End Role="NE_RecoveryPassword" Type="Self.NE_RecoveryPassword" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_RecoveryPassword">
               <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
@@ -502,6 +511,7 @@
           <EntitySet Name="NE_ComentarioProducto" EntityType="Self.NE_ComentarioProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_ComentarioVehiculo" EntityType="Self.NE_ComentarioVehiculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_CuerpoChat" EntityType="Self.NE_CuerpoChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_EmailTemplate" EntityType="Self.NE_EmailTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_EncabezadoChat" EntityType="Self.NE_EncabezadoChat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Encuesta" EntityType="Self.NE_Encuesta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_FAQS" EntityType="Self.NE_FAQS" Schema="dbo" store:Type="Tables" />
@@ -573,6 +583,10 @@
             <End Role="NE_Producto" EntitySet="NE_Producto" />
             <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Recovery_User" Association="Self.FK_Recovery_User">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
           <AssociationSet Name="FK_TransmisionId" Association="Self.FK_TransmisionId">
             <End Role="NE_Transmision" EntitySet="NE_Transmision" />
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
@@ -584,10 +598,6 @@
           <AssociationSet Name="FK_Usuario_Comentario" Association="Self.FK_Usuario_Comentario">
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Recovery" Association="Self.FK_Usuario_Recovery">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
           </AssociationSet>
           <AssociationSet Name="FK_UsuariosId_Autenticacion" Association="Self.FK_UsuariosId_Autenticacion">
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
@@ -1221,10 +1231,12 @@
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
           </AssociationSet>
+          <EntitySet Name="NE_EmailTemplate" EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" />
         </EntityContainer>
         <EntityType Name="NE_RecoveryPassword">
           <Key>
             <PropertyRef Name="RecoveryPassId" />
+            <PropertyRef Name="RecoveryPasswordId" />
           </Key>
           <Property Name="RecoveryPassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
@@ -1232,6 +1244,7 @@
           <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Recovery" FromRole="NE_RecoveryPassword" ToRole="NE_Usuario" />
+          <Property Name="RecoveryPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_Usuario_Recovery">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
@@ -1245,6 +1258,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1502,11 +1524,21 @@
           <EntitySetMapping Name="NE_RecoveryPassword">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword">
               <MappingFragment StoreEntitySet="NE_RecoveryPassword">
+                <ScalarProperty Name="RecoveryPasswordId" ColumnName="RecoveryPasswordId" />
                 <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
                 <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
                 <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-                <ScalarProperty Name="RecoveryPassId" ColumnName="RecoveryPassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_EmailTemplate">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_EmailTemplate">
+              <MappingFragment StoreEntitySet="NE_EmailTemplate">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailTemplate" ColumnName="EmailTemplate" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

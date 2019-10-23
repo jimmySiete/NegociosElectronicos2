@@ -213,9 +213,11 @@
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
+    <Compile Include="Email\Mail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalCode\Settings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExtendModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -246,6 +248,9 @@
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_CuerpoChat.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_EmailTemplate.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_EncabezadoChat.cs">

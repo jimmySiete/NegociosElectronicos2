@@ -46,31 +46,26 @@
     $(document).ready(function () {
 
         $('#btnStartSession').click(function () {
-            if ($('#userCode').val() == "" || $('#userCode').val() == undefined || $('#userCode').val() == null) {
-                alert('Ingresa el Codigo');
-                return false;
-            }
 
-            if ($('#email').val() == "" || $('#email').val() == email || $('#email').val() == null) {
+            if ($('#email').val() == "" || $('#email').val() == undefined || $('#email').val() == null) {
                 alert('Ingresa el Email');
                 return false;
             }
 
-            fnLoader();
-
+           
             $.ajax({
                 url: '@Url.Action("IsEmailValid", "Login")',
                 data: { userCode: $('#userCode').val(), email: $('#email').val() },
                 type: 'POST',
                 success: function (response) {
-                    $.unblockUI();
+                    //$.unblockUI();
                     alert(response.Message);
 
                     if (response.Success)
                         window.location.href = '@Url.Action("Index","Login")';
                 },
                 error: function () {
-                    alert('@Resources.AlertErrorMessage');
+                    alert('A ocurrido un error');
                 }
             });
         });
