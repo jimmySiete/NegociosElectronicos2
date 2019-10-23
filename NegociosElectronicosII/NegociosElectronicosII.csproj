@@ -698,6 +698,7 @@
     <Content Include="Views\Producto\Edit.cshtml" />
     <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Login\RecoveryPass.cshtml" />
+    <Content Include="Views\Login\Confirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
