@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using NegociosElectronicosII.Models;
 
 namespace NegociosElectronicosII.GlobalCode
@@ -46,57 +47,57 @@ namespace NegociosElectronicosII.GlobalCode
             }
         }
 
-        //public static string ACCOUNT_SERVER
-        //{
-        //    get
-        //    {
-        //        return Settings.GetValueFromSettings("ACCOUNT_SERVER");
-        //    }
-        //}
+        public static string ACCOUNT_SERVER
+        {
+            get
+            {
+                return WebConfigurationManager.AppSettings["ACCOUNT_SERVER"];
+            }
+        }
 
-        //public static string FROM
-        //{
-        //    get
-        //    {
-        //        return Settings.GetValueFromSettings("FROM_SERVER");
-        //    }
-        //}
+        public static string FROM
+        {
+            get
+            {
+                return WebConfigurationManager.AppSettings["FROM_SERVER"];
+            }
+        }
 
-        //public static string HOST_SERVER
-        //{
-        //    get
-        //    {
-        //        return Settings.GetValueFromSettings("HOST_SERVER");
-        //    }
-        //}
+        public static string HOST_SERVER
+        {
+            get
+            {
+                return WebConfigurationManager.AppSettings["HOST_SERVER"];
+            }
+        }
 
-        //public static string PASSWORD_SERVER
-        //{
-        //    get
-        //    {
-        //        return Settings.GetValueFromSettings("PASSWORD_SERVER");
-        //    }
-        //}
+        public static string PASSWORD_SERVER
+        {
+            get
+            {
+                return WebConfigurationManager.AppSettings["PASSWORD_SERVER"];
+            }
+        }
 
-        //public static int? PORT_SERVER
-        //{
-        //    get
-        //    {
-        //        String PORT = Settings.GetValueFromSettings("PORT_SERVER");
-        //        if (String.IsNullOrEmpty(PORT))
-        //            return null;
-        //        else
-        //            return Int32.Parse(PORT);
-        //    }
-        //}
+        public static int? PORT_SERVER
+        {
+            get
+            {
+                String PORT = WebConfigurationManager.AppSettings["PORT_SERVER"];
+                if (String.IsNullOrEmpty(PORT))
+                    return null;
+                else
+                    return Int32.Parse(PORT);
+            }
+        }
+        public static string URL_TOConfirmEmail
+        {
+            get
+            {
+                return WebConfigurationManager.AppSettings["URL_TOConfirmEmail"];
+            }
+        }
 
-        //public static string URL_TOConfirmEmail
-        //{
-        //    get
-        //    {
-        //        return WebConfigurationManager.AppSettings["URL_TOConfirmEmail"];
-        //    }
-        //}
 
         //Generate new code to new user
         public static string GetNewSuggestCode()

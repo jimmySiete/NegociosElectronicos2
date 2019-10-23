@@ -58,10 +58,10 @@
     </div>
     <div class="card-footer">
         <div class="d-flex justify-content-center links">
-            @Recursos.NoCuenta @Html.ActionLink(Recursos.Registrate, "Create", "Registro")
+            @Recursos.NoCuenta<p><a href="@Html.ActionLink("Create","Registro")">Registrate</a>
         </div>
         <div class="d-flex justify-content-center">
-            <a href="@Html.Action( "RecoveryPass", "Login")">@Recursos.ForgotPassword</a>
+            <p>@Html.ActionLink( Recursos.ForgotPassword,"RecoveryPass", "Login")</p>
             
         </div>
     </div>
