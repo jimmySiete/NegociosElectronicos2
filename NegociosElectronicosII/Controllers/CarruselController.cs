@@ -10,7 +10,7 @@ using NegociosElectronicosII.Models;
 
 namespace NegociosElectronicosII.Controllers
 {
-    public class CarruselController : Controller
+    public class CarruselController : BaseController
     {
         private DB_NE_Entitties db = new DB_NE_Entitties();
 
