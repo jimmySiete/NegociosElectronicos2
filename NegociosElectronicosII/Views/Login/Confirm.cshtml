@@ -6,30 +6,45 @@
 
 @if (ViewBag.IsConfirmValid)
 {
-    <p class="text-white">
-        Ingrese una nueva contrasena
-    </p>
-    <br />
-    <div class="wrap-input100 validate-input m-b-10" data-validate="Agregue nueva contrasena">
-        <input id="newPass" class="input100" type="password" name="username" placeholder="Agregue nueva contrasena">
-        <span class="focus-input100"></span>
-        <span class="symbol-input100">
-            <i class="fa fa-user"></i>
-        </span>
-    </div>
 
-    <div class="wrap-input100 validate-input m-b-10" data-validate="Confirme contrasena">
-        <input id="ConfirmPass" class="input100" type="password" name="username" placeholder="Confirme contrasena">
-        <span class="focus-input100"></span>
-        <span class="symbol-input100">
-            <i class="fa fa-user"></i>
-        </span>
-    </div>
+    <div class="card">
+        <div class="card-header">
+            <h3 style="color:black">Ingresa nueva contraseña</h3>
+            <div class="d-flex justify-content-end social_icon">
+                <span><i class="fab fa-facebook-square"></i></span>
+                <span><i class="fab fa-google-plus-square"></i></span>
+                <span><i class="fab fa-twitter-square"></i></span>
+            </div>
+        </div>
+        <div class="card-body">
+           
+            <div class="input-group form-group">
+                <div class="wrap-input100 validate-input m-b-10" data-validate="Agregue nueva contrasena">
+                    <input id="newPass" class="input100" type="password" name="username" placeholder="Agregue nueva contrasena">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </div>
+            </div>
+                
+            <div class="input-group form-group">
+                <div class="wrap-input100 validate-input m-b-10" data-validate="Confirme contrasena">
+                    <input id="ConfirmPass" class="input100" type="password" name="username" placeholder="Confirme contrasena">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-user"></i>
+                    </span>
+                </div>
 
-
-    <div class="container-login100-form-btn p-t-10">
-        <button class="login100-form-btn" id="btnChangePassword"> Cambiar contrasena </button>
-    </div>
+            </div>
+            <div class="card-footer">
+                <div class="container-login100-form-btn p-t-10">
+                    <button class="login100-form-btn" id="btnChangePassword"> Cambiar contrasena </button>
+                </div>
+            </div>
+        </div> 
+   </div>
 }
 <div class="text-center w-full p-t-25 p-b-230">
     <a href="@Url.Action("Index","Login")" class="txt1">
@@ -45,7 +60,7 @@
     </div>*@
 
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
     $(document).ready(function () {
 
