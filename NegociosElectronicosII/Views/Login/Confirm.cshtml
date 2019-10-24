@@ -44,7 +44,7 @@
         </a>
     </div>*@
 
-@section scripts{
+
     <script type="text/javascript">
 
     $(document).ready(function () {
@@ -81,10 +81,10 @@
 
             $.ajax({
                 url: '@Url.Action("ChangePass", "Login")',
-                data: { newPass: $('#newPass').val() },
+                data: { newPass: $('#newPass').val(), ID: @ViewBag.ID },
                 type: 'POST',
                 success: function (response) {
-                    $.unblockUI();
+                    //$.unblockUI();
                     if (response.Success){
                         alert('Su contrasena fue modificada correctamente');
                         window.location.href = '@Url.Action("Index","Login")';
@@ -98,5 +98,4 @@
             });
         });
     });
-    </script>
-}
+</script>
