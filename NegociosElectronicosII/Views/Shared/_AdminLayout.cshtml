@@ -37,8 +37,12 @@
     <!-- custom javascript -->
     @*<script src="js/script.js" type="text/javascript"></script>*@
     <script src="~/Content/ui-ecommerce/js/script.js"></script>
+    @Scripts.Render("~/bundles/ChartJS")
+
     <script type="text/javascript">
 /// some script
+
+        
 
 // copy text
 function copyToClipboard(element) {
@@ -264,14 +268,17 @@ $(document).ready(function() {
             <div class="main-content">
                 <!-- ============ main content inner start ============ -->
 
-              
+                <section>
+                    @RenderBody()
+                </section>
 
-                <div class="jumbotron">
+
+                @*<div class="jumbotron">
                     <section>
                         @RenderBody()
                     </section>
 
-                </div>
+                </div>*@
                 <!-- ============ main content inner .end ============ -->
             </div> <!-- main content.// -->
             
