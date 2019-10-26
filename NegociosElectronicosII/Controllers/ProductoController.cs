@@ -13,6 +13,7 @@ namespace NegociosElectronicosII.Controllers
     public class ProductoController : Controller
     {
         private DB_NE_Entitties db = new DB_NE_Entitties();
+        
 
         // GET: Producto
         public ActionResult Index()
@@ -51,8 +52,26 @@ namespace NegociosElectronicosII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductoId,Nombre,Descripcion,MarcaId,ColorId,Stock,PrecioVenta,PrecioCompra,Activo")] NE_Producto nE_Producto)
         {
+            string mensaje;
+            HttpPostedFileBase postedFile = Request.Files[0];
+
             if (ModelState.IsValid)
             {
+                if (postedFile != null && postedFile.ContentLength > 0)
+                {
+                    IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                    var extension = ext.ToLower();
+                    if (!AllowedFileExtensions.Contains(extension))
+                    {
+                        mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                    }
+                    else
+                    {
+                        var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
+                        postedFile.SaveAs(filePath);
+                    }
+                }
                 db.NE_Producto.Add(nE_Producto);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +79,10 @@ namespace NegociosElectronicosII.Controllers
 
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Producto.ColorId);
             ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Producto.MarcaId);
+
+           
+
+            
             return View(nE_Producto);
         }
 
