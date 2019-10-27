@@ -95,7 +95,7 @@
             <PropertyRef Name="EmailTemplateId" />
           </Key>
           <Property Name="EmailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EmailTemplate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailTemplate" Type="varchar(max)" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
@@ -154,7 +154,7 @@
             <PropertyRef Name="ProductoImagenId" />
           </Key>
           <Property Name="ProductoImagenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ruta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Extension" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductoId" Type="int" Nullable="false" />
@@ -776,7 +776,7 @@
             <PropertyRef Name="ProductoImagenId" />
           </Key>
           <Property Name="ProductoImagenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ruta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductoId" Type="Int32" Nullable="false" />
@@ -1238,7 +1238,7 @@
             <PropertyRef Name="EmailTemplateId" />
           </Key>
           <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>

@@ -52,38 +52,60 @@ namespace NegociosElectronicosII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ProductoId,Nombre,Descripcion,MarcaId,ColorId,Stock,PrecioVenta,PrecioCompra,Activo")] NE_Producto nE_Producto)
         {
-            string mensaje;
-            HttpPostedFileBase postedFile = Request.Files[0];
-
-            if (ModelState.IsValid)
+            try
             {
-                if (postedFile != null && postedFile.ContentLength > 0)
+                string mensaje;
+                HttpPostedFileBase postedFile = Request.Files[0];
+
+                if (ModelState.IsValid)
                 {
-                    IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
-                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
-                    var extension = ext.ToLower();
-                    if (!AllowedFileExtensions.Contains(extension))
+                    if (postedFile != null && postedFile.ContentLength > 0)
                     {
-                        mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                        var extension = ext.ToLower();
+                        if (!AllowedFileExtensions.Contains(extension))
+                        {
+                            mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                        }
+                        else
+                        {
+                            db.NE_Producto.Add(nE_Producto);
+                            db.SaveChanges();
+
+                            var name = String.Format("Product_{0}",nE_Producto.ProductoId);
+                            //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
+                            var filePath = Server.MapPath("~/Imagenes/Productos/" + name + extension);
+
+                            NE_ProductoImagen imagen = new NE_ProductoImagen()
+                            {
+                                Extension = extension,
+                                Nombre = name,
+                                ProductoId = nE_Producto.ProductoId,
+                                Ruta = filePath,
+                            };
+                            db.NE_ProductoImagen.Add(imagen);
+                            db.SaveChanges();
+
+                            postedFile.SaveAs(filePath);
+
+                            return RedirectToAction("Index");
+                        }
                     }
-                    else
-                    {
-                        var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
-                        postedFile.SaveAs(filePath);
-                    }
+
                 }
-                db.NE_Producto.Add(nE_Producto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+                ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Producto.ColorId);
+                ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Producto.MarcaId);
+
+
+
+
+                return View(nE_Producto);
             }
-
-            ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Producto.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Producto.MarcaId);
-
-           
-
-            
-            return View(nE_Producto);
+            catch (Exception ex){
+                return View(nE_Producto);
+            }
         }
 
         // GET: Producto/Edit/5
