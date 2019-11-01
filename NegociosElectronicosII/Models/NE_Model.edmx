@@ -220,6 +220,7 @@
             <PropertyRef Name="VehiculoId" />
           </Key>
           <Property Name="VehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreVehiculo" Type="varbinary" MaxLength="100" Nullable="false" />
           <Property Name="CategoriaId" Type="int" Nullable="false" />
           <Property Name="MarcaId" Type="int" Nullable="false" />
           <Property Name="Modelo" Type="int" Nullable="false" />
@@ -860,6 +861,7 @@
           <NavigationProperty Name="NE_Marca" Relationship="Self.FK_AutoMarcaId" FromRole="NE_Vehiculo" ToRole="NE_Marca" />
           <NavigationProperty Name="NE_Transmision" Relationship="Self.FK_TransmisionId" FromRole="NE_Vehiculo" ToRole="NE_Transmision" />
           <NavigationProperty Name="NE_VehiculoImagen" Relationship="Self.FK_NE_VehiculoImagen_NE_Vehiculo" FromRole="NE_Vehiculo" ToRole="NE_VehiculoImagen" />
+          <Property Name="NombreVehiculo" Type="Binary" Nullable="false" MaxLength="100" FixedLength="false" />
         </EntityType>
         <EntityType Name="NE_VehiculoImagen">
           <Key>
@@ -1485,6 +1487,7 @@
           <EntitySetMapping Name="NE_Vehiculo">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Vehiculo">
               <MappingFragment StoreEntitySet="NE_Vehiculo">
+                <ScalarProperty Name="NombreVehiculo" ColumnName="NombreVehiculo" />
                 <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
                 <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
                 <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />

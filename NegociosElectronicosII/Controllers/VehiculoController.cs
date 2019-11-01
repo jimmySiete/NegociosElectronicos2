@@ -51,7 +51,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
         {
             if (ModelState.IsValid)
             {
