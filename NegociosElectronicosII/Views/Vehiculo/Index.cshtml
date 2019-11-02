@@ -2,7 +2,9 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <h2>Index</h2>
 
@@ -44,44 +46,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecioVenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PrecioCompra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Activo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreVehiculo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NE_Categoria.Categoria)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NE_Color.Color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NE_Marca.Marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NE_Transmision.Transmision)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.VehiculoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.VehiculoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.VehiculoId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreVehiculo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NE_Categoria.Categoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NE_Color.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NE_Marca.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NE_Transmision.Transmision)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VehiculoId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.VehiculoId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VehiculoId })
+            </td>
+        </tr>
+    }
 
 </table>

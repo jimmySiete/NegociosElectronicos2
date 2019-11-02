@@ -31,7 +31,7 @@ namespace NegociosElectronicosII.Models
         public decimal PrecioCompra { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
-        public byte[] NombreVehiculo { get; set; }
+        public string NombreVehiculo { get; set; }
     
         public virtual NE_Categoria NE_Categoria { get; set; }
         public virtual NE_Color NE_Color { get; set; }
