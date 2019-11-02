@@ -39,9 +39,9 @@ namespace NegociosElectronicosII.Controllers
         // GET: Vehiculo/Create
         public ActionResult Create()
         {
-            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "CategoriaId");
+            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria");
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color");
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId");
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca");
             ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision");
             return View();
         }
@@ -51,7 +51,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
         {
             if (ModelState.IsValid)
             {
@@ -60,9 +60,9 @@ namespace NegociosElectronicosII.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "CategoriaId", nE_Vehiculo.CategoriaId);
+            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId", nE_Vehiculo.MarcaId);
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
             ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
             return View(nE_Vehiculo);
         }
@@ -79,9 +79,9 @@ namespace NegociosElectronicosII.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "CategoriaId", nE_Vehiculo.CategoriaId);
+            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId", nE_Vehiculo.MarcaId);
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
             ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
             return View(nE_Vehiculo);
         }
@@ -91,7 +91,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
         {
             if (ModelState.IsValid)
             {
@@ -99,9 +99,9 @@ namespace NegociosElectronicosII.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "CategoriaId", nE_Vehiculo.CategoriaId);
+            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
             ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "MarcaId", nE_Vehiculo.MarcaId);
+            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
             ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
             return View(nE_Vehiculo);
         }

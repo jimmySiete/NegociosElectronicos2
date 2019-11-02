@@ -11,10 +11,7 @@ namespace NegociosElectronicosII.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-
-
+    
     public partial class NE_Vehiculo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,17 +22,16 @@ namespace NegociosElectronicosII.Models
         }
     
         public int VehiculoId { get; set; }
-        
         public int CategoriaId { get; set; }
         public int MarcaId { get; set; }
         public int Modelo { get; set; }
         public int TransmisionId { get; set; }
         public int ColorId { get; set; }
-        
         public decimal PrecioVenta { get; set; }
         public decimal PrecioCompra { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
+        public byte[] NombreVehiculo { get; set; }
     
         public virtual NE_Categoria NE_Categoria { get; set; }
         public virtual NE_Color NE_Color { get; set; }

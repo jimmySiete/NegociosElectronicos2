@@ -204,18 +204,22 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
+    <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VehiculoController.cs" />
+    <Compile Include="Email\Mail.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalCode\Settings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ExtendModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -246,6 +250,9 @@
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_CuerpoChat.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_EmailTemplate.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_EncabezadoChat.cs">
@@ -279,6 +286,9 @@
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_ProductoImagen.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_RecoveryPassword.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_Rol.cs">
@@ -610,6 +620,12 @@
       <DependentUpon>NE_Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.bundle.js" />
+    <Content Include="Scripts\Chart.bundle.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\chartjs-plugin-datalabels.js" />
+    <Content Include="Scripts\chartjs-plugin-datalabels.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -662,21 +678,11 @@
     <Content Include="Views\Category\Details.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Producto\Create.cshtml" />
-    <Content Include="Views\Producto\Delete.cshtml" />
-    <Content Include="Views\Producto\Details.cshtml" />
-    <Content Include="Views\Producto\Edit.cshtml" />
-    <Content Include="Views\Producto\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_LandingLayout.cshtml" />
     <Content Include="Views\Landing\Index.cshtml" />
-    <Content Include="Views\Vehiculo\Create.cshtml" />
-    <Content Include="Views\Vehiculo\Delete.cshtml" />
-    <Content Include="Views\Vehiculo\Details.cshtml" />
-    <Content Include="Views\Vehiculo\Edit.cshtml" />
-    <Content Include="Views\Vehiculo\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
@@ -689,9 +695,25 @@
     <Content Include="Views\Registro\Edit.cshtml" />
     <Content Include="Views\Registro\Index.cshtml" />
     <Content Include="Views\Panel\Index.cshtml" />
+    <Content Include="Views\Producto\Create.cshtml" />
+    <Content Include="Views\Producto\Delete.cshtml" />
+    <Content Include="Views\Producto\Details.cshtml" />
+    <Content Include="Views\Producto\Edit.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Login\RecoveryPass.cshtml" />
+    <Content Include="Views\Login\Confirm.cshtml" />
+    <Content Include="Views\Estadistica\Index.cshtml" />
+    <Content Include="Views\Shared\_PrincipalLayout.cshtml" />
+    <Content Include="Views\Principal\Index.cshtml" />
+    <Content Include="Views\Vehiculo\Create.cshtml" />
+    <Content Include="Views\Vehiculo\Delete.cshtml" />
+    <Content Include="Views\Vehiculo\Details.cshtml" />
+    <Content Include="Views\Vehiculo\Edit.cshtml" />
+    <Content Include="Views\Vehiculo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagenes\Productos\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

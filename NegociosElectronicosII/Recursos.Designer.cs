@@ -124,6 +124,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nombre del Vehiculo.
+        /// </summary>
+        public static string NombreVehiculo {
+            get {
+                return ResourceManager.GetString("NombreVehiculo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Contrasena.
         /// </summary>
         public static string Password {
@@ -196,29 +205,11 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Rol.
-        /// </summary>
-        public static string RolId {
-            get {
-                return ResourceManager.GetString("RolId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Sexo.
-        /// </summary>
-        public static string SexoId {
-            get {
-                return ResourceManager.GetString("SexoId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Transmision.
         /// </summary>
-        public static string TransmId {
+        public static string TransmisionId {
             get {
-                return ResourceManager.GetString("TransmId", resourceCulture);
+                return ResourceManager.GetString("TransmisionId", resourceCulture);
             }
         }
     }

@@ -22,7 +22,7 @@ namespace NegociosElectronicosII.Models
         }
     
         public int MarcaId { get; set; }
-        public byte[] Marca { get; set; }
+        public string Marca { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NE_Vehiculo> NE_Vehiculo { get; set; }

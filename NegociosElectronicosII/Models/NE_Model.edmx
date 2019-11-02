@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_A453B0_fabiancastanonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="NE_Accion">
           <Key>
             <PropertyRef Name="AccionId" />
@@ -51,7 +51,7 @@
             <PropertyRef Name="CategoriaId" />
           </Key>
           <Property Name="CategoriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Categoria" Type="varbinary" MaxLength="20" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="NE_Color">
           <Key>
@@ -90,6 +90,15 @@
           <Property Name="Mensaje" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="EsCliente" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailTemplate" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="NE_EncabezadoChat">
           <Key>
             <PropertyRef Name="ChatId" />
@@ -124,7 +133,7 @@
             <PropertyRef Name="MarcaId" />
           </Key>
           <Property Name="MarcaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Marca" Type="varbinary" MaxLength="20" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="NE_Producto">
           <Key>
@@ -145,10 +154,20 @@
             <PropertyRef Name="ProductoImagenId" />
           </Key>
           <Property Name="ProductoImagenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ruta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ruta" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Extension" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_RecoveryPassword">
+          <Key>
+            <PropertyRef Name="RecoveryPasswordId" />
+          </Key>
+          <Property Name="RecoveryPasswordId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuarioId" Type="int" Nullable="false" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpiredDate" Type="datetime" Nullable="false" />
+          <Property Name="IsConfirmed" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="NE_Rol">
           <Key>
@@ -201,6 +220,7 @@
             <PropertyRef Name="VehiculoId" />
           </Key>
           <Property Name="VehiculoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreVehiculo" Type="varbinary" MaxLength="100" Nullable="false" />
           <Property Name="CategoriaId" Type="int" Nullable="false" />
           <Property Name="MarcaId" Type="int" Nullable="false" />
           <Property Name="Modelo" Type="int" Nullable="false" />
@@ -398,6 +418,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Recovery_User">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_RecoveryPassword" Type="Self.NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TransmisionId">
           <End Role="NE_Transmision" Type="Self.NE_Transmision" Multiplicity="1" />
           <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="*" />
@@ -480,12 +512,14 @@
           <EntitySet Name="NE_ComentarioProducto" EntityType="Self.NE_ComentarioProducto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_ComentarioVehiculo" EntityType="Self.NE_ComentarioVehiculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_CuerpoChat" EntityType="Self.NE_CuerpoChat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_EmailTemplate" EntityType="Self.NE_EmailTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_EncabezadoChat" EntityType="Self.NE_EncabezadoChat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Encuesta" EntityType="Self.NE_Encuesta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_FAQS" EntityType="Self.NE_FAQS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Marca" EntityType="Self.NE_Marca" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Producto" EntityType="Self.NE_Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_ProductoImagen" EntityType="Self.NE_ProductoImagen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_RecoveryPassword" EntityType="Self.NE_RecoveryPassword" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Rol" EntityType="Self.NE_Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Sexo" EntityType="Self.NE_Sexo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Template" EntityType="Self.NE_Template" Schema="dbo" store:Type="Tables" />
@@ -550,6 +584,10 @@
             <End Role="NE_Producto" EntitySet="NE_Producto" />
             <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Recovery_User" Association="Self.FK_Recovery_User">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
           <AssociationSet Name="FK_TransmisionId" Association="Self.FK_TransmisionId">
             <End Role="NE_Transmision" EntitySet="NE_Transmision" />
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
@@ -575,8 +613,7 @@
             <End Role="NE_ComentarioVehiculo" EntitySet="NE_ComentarioVehiculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_A453B0_fabiancastanonModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -630,7 +667,7 @@
             <PropertyRef Name="CategoriaId" />
           </Key>
           <Property Name="CategoriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Categoria" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
+          <Property Name="Categoria" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="Self.FK_AutoCategoriaId" FromRole="NE_Categoria" ToRole="NE_Vehiculo" />
         </EntityType>
         <EntityType Name="NE_Color">
@@ -713,7 +750,7 @@
             <PropertyRef Name="MarcaId" />
           </Key>
           <Property Name="MarcaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Marca" Type="Binary" MaxLength="20" FixedLength="false" Nullable="false" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="Self.FK_AutoMarcaId" FromRole="NE_Marca" ToRole="NE_Vehiculo" />
           <NavigationProperty Name="NE_Producto" Relationship="Self.FK_MarcaId" FromRole="NE_Marca" ToRole="NE_Producto" />
         </EntityType>
@@ -740,7 +777,7 @@
             <PropertyRef Name="ProductoImagenId" />
           </Key>
           <Property Name="ProductoImagenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ruta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ruta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Extension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductoId" Type="Int32" Nullable="false" />
@@ -802,6 +839,7 @@
           <NavigationProperty Name="NE_Rol" Relationship="Self.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
           <NavigationProperty Name="NE_Sexo" Relationship="Self.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
           <NavigationProperty Name="NE_Visita" Relationship="Self.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
+          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
         </EntityType>
         <EntityType Name="NE_Vehiculo">
           <Key>
@@ -823,6 +861,7 @@
           <NavigationProperty Name="NE_Marca" Relationship="Self.FK_AutoMarcaId" FromRole="NE_Vehiculo" ToRole="NE_Marca" />
           <NavigationProperty Name="NE_Transmision" Relationship="Self.FK_TransmisionId" FromRole="NE_Vehiculo" ToRole="NE_Transmision" />
           <NavigationProperty Name="NE_VehiculoImagen" Relationship="Self.FK_NE_VehiculoImagen_NE_Vehiculo" FromRole="NE_Vehiculo" ToRole="NE_VehiculoImagen" />
+          <Property Name="NombreVehiculo" Type="Binary" Nullable="false" MaxLength="100" FixedLength="false" />
         </EntityType>
         <EntityType Name="NE_VehiculoImagen">
           <Key>
@@ -1189,7 +1228,45 @@
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_VehiculoImagen" EntitySet="NE_VehiculoImagen" />
           </AssociationSet>
+          <EntitySet Name="NE_EmailTemplate" EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" />
+          <EntitySet Name="NE_RecoveryPassword" EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" />
+          <AssociationSet Name="FK_Recovery_User" Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="NE_EmailTemplate">
+          <Key>
+            <PropertyRef Name="EmailTemplateId" />
+          </Key>
+          <Property Name="EmailTemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailTemplate" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NE_RecoveryPassword">
+          <Key>
+            <PropertyRef Name="RecoveryPasswordId" />
+          </Key>
+          <Property Name="RecoveryPasswordId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiredDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsConfirmed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_RecoveryPassword" ToRole="NE_Usuario" />
+        </EntityType>
+        <Association Name="FK_Recovery_User">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Role="NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1410,6 +1487,7 @@
           <EntitySetMapping Name="NE_Vehiculo">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Vehiculo">
               <MappingFragment StoreEntitySet="NE_Vehiculo">
+                <ScalarProperty Name="NombreVehiculo" ColumnName="NombreVehiculo" />
                 <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
                 <ScalarProperty Name="CategoriaId" ColumnName="CategoriaId" />
                 <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
@@ -1441,6 +1519,27 @@
                 <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
                 <ScalarProperty Name="Origen" ColumnName="Origen" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_EmailTemplate">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_EmailTemplate">
+              <MappingFragment StoreEntitySet="NE_EmailTemplate">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailTemplate" ColumnName="EmailTemplate" />
+                <ScalarProperty Name="EmailTemplateId" ColumnName="EmailTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_RecoveryPassword">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword">
+              <MappingFragment StoreEntitySet="NE_RecoveryPassword">
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ExpiredDate" ColumnName="ExpiredDate" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="RecoveryPasswordId" ColumnName="RecoveryPasswordId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
