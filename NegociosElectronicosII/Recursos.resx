@@ -165,6 +165,9 @@
   <data name="Required" xml:space="preserve">
     <value>Este campo es requerido</value>
   </data>
+  <data name="RolId" xml:space="preserve">
+    <value>Rol</value>
+  </data>
   <data name="TransmisionId" xml:space="preserve">
     <value>Transmision</value>
   </data>

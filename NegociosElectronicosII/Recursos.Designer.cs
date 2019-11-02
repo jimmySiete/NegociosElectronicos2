@@ -205,6 +205,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Rol.
+        /// </summary>
+        public static string RolId {
+            get {
+                return ResourceManager.GetString("RolId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Transmision.
         /// </summary>
         public static string TransmisionId {
