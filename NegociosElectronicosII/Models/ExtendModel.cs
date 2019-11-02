@@ -24,7 +24,7 @@ namespace NegociosElectronicosII.Models
         [Display(Name = "MarcaId", ResourceType = (typeof(Recursos)))]
         public int MarcaId { get; set; }
         public int Modelo { get; set; }
-        [Display(Name = "TransmId", ResourceType = (typeof(Recursos)))]
+        [Display(Name = "TransmisionId", ResourceType = (typeof(Recursos)))]
         public int TransmisionId { get; set; }
         [Display(Name = "ColorId", ResourceType = (typeof(Recursos)))]
         public int ColorId { get; set; }

@@ -714,6 +714,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\Productos\" />
+    <Folder Include="Imagenes\Vehiculo\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
