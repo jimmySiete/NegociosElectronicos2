@@ -50,6 +50,35 @@ namespace NegociosElectronicosII.Controllers
         {
             if (ModelState.IsValid)
             {
+                HttpPostedFileBase postedFile = Request.Files[0];
+
+                //si hay contenido intentara guardar
+                if (postedFile != null && postedFile.ContentLength > 0)
+                {
+
+
+                    IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                    var extension = ext.ToLower();
+                    //valida si contiene el formato o extension
+                    if (!AllowedFileExtensions.Contains(extension))
+                    {
+
+                        var message = string.Format("Por favor ingrese una imagen de tipo .jpg,.gif,.png.");
+
+                     }
+                    //si no enviar mensaje de error y retornar a la vista
+                    else
+                    {
+
+
+                        //aqui se acomoda archivo para obtener el path donde se almacenara
+                        var filePath = Server.MapPath("~/Userimage/" + postedFile.FileName + extension);
+                        //aqui se guarda el archivo
+                        postedFile.SaveAs(filePath);
+
+                    }
+                }
                 db.NE_Carrusel.Add(nE_Carrusel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
