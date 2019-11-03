@@ -138,6 +138,9 @@
   <data name="NoCuenta" xml:space="preserve">
     <value>No tienes cuenta?</value>
   </data>
+  <data name="NombreVehiculo" xml:space="preserve">
+    <value>Nombre del Vehiculo</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Contrasena</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>Este campo es requerido</value>
+  </data>
+  <data name="RolId" xml:space="preserve">
+    <value>Rol</value>
   </data>
   <data name="TransmisionId" xml:space="preserve">
     <value>Transmision</value>

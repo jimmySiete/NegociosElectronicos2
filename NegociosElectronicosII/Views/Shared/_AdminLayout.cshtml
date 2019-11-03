@@ -37,8 +37,12 @@
     <!-- custom javascript -->
     @*<script src="js/script.js" type="text/javascript"></script>*@
     <script src="~/Content/ui-ecommerce/js/script.js"></script>
+    @Scripts.Render("~/bundles/ChartJS")
+
     <script type="text/javascript">
 /// some script
+
+        
 
 // copy text
 function copyToClipboard(element) {
@@ -248,9 +252,11 @@ $(document).ready(function() {
             <div class="aside-content collapse" id="navbar_aside">
                 <nav class="menu-wrap">
                     <ul class="menu-aside">
-                        <li> <a class="page-scroll nav-link" href="#start">Automoviles</a> </li>
-                        <li> <a class="page-scroll nav-link" href="#cards">Estadistica</a> </li>
-                        <li> <a class="page-scroll nav-link" href="#itemboxes">Otra Cosa</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Vehiculo")">Automoviles</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Producto")">Artículos</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Estadistica")">Estadistica</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Home")">Cerrar Sesion</a> </li>
+
                     </ul>
                 </nav>
                 <hr>
@@ -264,14 +270,17 @@ $(document).ready(function() {
             <div class="main-content">
                 <!-- ============ main content inner start ============ -->
 
-              
+                <section>
+                    @RenderBody()
+                </section>
 
-                <div class="jumbotron">
+
+                @*<div class="jumbotron">
                     <section>
                         @RenderBody()
                     </section>
 
-                </div>
+                </div>*@
                 <!-- ============ main content inner .end ============ -->
             </div> <!-- main content.// -->
             

@@ -51,20 +51,61 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.NE_Vehiculo.Add(nE_Vehiculo);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                string mensaje;
+                HttpPostedFileBase postedFile = Request.Files[0];
 
-            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
-            ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
-            ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
-            return View(nE_Vehiculo);
+                if (ModelState.IsValid)
+                {
+                    if (postedFile != null && postedFile.ContentLength > 0)
+                    {
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                        var extension = ext.ToLower();
+                        if (!AllowedFileExtensions.Contains(extension))
+                        {
+                            mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                        }
+                        else
+                        {
+                            db.NE_Vehiculo.Add(nE_Vehiculo);
+                            db.SaveChanges();
+
+                            var name = String.Format("Vehiculo_{0}", nE_Vehiculo.VehiculoId);
+                            //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
+                            var filePath = Server.MapPath("~/Imagenes/Vehiculo/" + name + extension);
+
+                            NE_VehiculoImagen imagen = new NE_VehiculoImagen()
+                            {
+                                Extension = extension,
+                                Nombre = name,
+                                VehiculoId = nE_Vehiculo.VehiculoId,
+                                Ruta = filePath,
+                            };
+                            db.NE_VehiculoImagen.Add(imagen);
+                            db.SaveChanges();
+
+                            postedFile.SaveAs(filePath);
+
+                            return RedirectToAction("Index");
+                        }
+                    }
+
+                }
+                ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
+                ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
+                ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
+                ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
+                return View(nE_Vehiculo);
+            }
+            catch (Exception ex)
+            {
+                return View(nE_Vehiculo);
+            }
+           
         }
 
         // GET: Vehiculo/Edit/5
@@ -91,19 +132,72 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(nE_Vehiculo).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string mensaje;
+                HttpPostedFileBase postedFile = Request.Files[0];
+
+
+                if (ModelState.IsValid)
+                {
+                    NE_Vehiculo nE_Vehic = new NE_Vehiculo();
+                    nE_Vehic = db.NE_Vehiculo.Where(x => x.VehiculoId == nE_Vehiculo.VehiculoId).First();
+                    nE_Vehic.NombreVehiculo = nE_Vehiculo.NombreVehiculo;
+                    nE_Vehic.Modelo = nE_Vehiculo.Modelo;
+                    nE_Vehic.TransmisionId = nE_Vehiculo.TransmisionId;
+                    nE_Vehic.Descripcion = nE_Vehiculo.Descripcion;
+                    nE_Vehic.MarcaId = nE_Vehiculo.MarcaId;
+                    nE_Vehic.ColorId = nE_Vehiculo.ColorId;
+                    nE_Vehic.CategoriaId = nE_Vehiculo.CategoriaId;
+                    nE_Vehic.PrecioVenta = nE_Vehiculo.PrecioVenta;
+                    nE_Vehic.PrecioCompra = nE_Vehiculo.PrecioCompra;
+                    nE_Vehic.Activo = nE_Vehiculo.Activo;
+                    db.SaveChanges();
+
+                    if (postedFile != null && postedFile.ContentLength > 0)
+                    {
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                        var extension = ext.ToLower();
+                        if (!AllowedFileExtensions.Contains(extension))
+                        {
+                            mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                        }
+                        else
+                        {
+
+
+                            NE_VehiculoImagen nE_VehiculoImagen = new NE_VehiculoImagen();
+                            nE_VehiculoImagen = db.NE_VehiculoImagen.Where(x => x.VehiculoId == nE_Vehiculo.VehiculoId).First();
+
+                            var name = String.Format("Vehiculo_{0}", nE_Vehiculo.VehiculoId);
+                            var filePath = Server.MapPath("~/Imagenes/Vehiculo/" + name + extension);
+
+                            nE_VehiculoImagen.VehiculoId = nE_Vehiculo.VehiculoId;
+                            nE_VehiculoImagen.Nombre = name;
+                            nE_VehiculoImagen.Ruta = filePath;
+                            nE_VehiculoImagen.Extension = ext;
+                            db.SaveChanges();
+                            postedFile.SaveAs(filePath);
+                            return RedirectToAction("Index");
+                        }
+                    }
+
+                }
+
+                ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
+                ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
+                ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
+                ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
+                return View(nE_Vehiculo);
             }
-            ViewBag.CategoriaId = new SelectList(db.NE_Categoria, "CategoriaId", "Categoria", nE_Vehiculo.CategoriaId);
-            ViewBag.ColorId = new SelectList(db.NE_Color, "ColorId", "Color", nE_Vehiculo.ColorId);
-            ViewBag.MarcaId = new SelectList(db.NE_Marca, "MarcaId", "Marca", nE_Vehiculo.MarcaId);
-            ViewBag.TransmisionId = new SelectList(db.NE_Transmision, "TransmisionId", "Transmision", nE_Vehiculo.TransmisionId);
-            return View(nE_Vehiculo);
+            catch (Exception ex)
+            {
+                return View(nE_Vehiculo);
+            }
+
         }
 
         // GET: Vehiculo/Delete/5
@@ -126,10 +220,15 @@ namespace NegociosElectronicosII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            NE_VehiculoImagen nE_VehiculoImagen = new NE_VehiculoImagen();
             NE_Vehiculo nE_Vehiculo = db.NE_Vehiculo.Find(id);
             db.NE_Vehiculo.Remove(nE_Vehiculo);
+            nE_VehiculoImagen = db.NE_VehiculoImagen.Where(x => x.VehiculoId == id).First();
+            db.NE_VehiculoImagen.Remove(nE_VehiculoImagen);
             db.SaveChanges();
+            System.IO.File.Delete(nE_VehiculoImagen.Ruta);
             return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

@@ -77,6 +77,8 @@ namespace NegociosElectronicosII.Controllers
             }
         }
 
+      
+
         public ActionResult RecoveryPass()
         {
             return View();
@@ -84,7 +86,7 @@ namespace NegociosElectronicosII.Controllers
 
 
         [HttpPost]
-        public JsonResult IsEmailValid(String userCode, String email)
+        public JsonResult IsEmailValid(String email)
         {
             try
             {
@@ -105,21 +107,21 @@ namespace NegociosElectronicosII.Controllers
 
                     //fill template
                     String template = db.NE_EmailTemplate.Where(x => x.Name == "RecoveryPass").First().EmailTemplate;
-                    //template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno, Settings.URL_TOConfirmEmail + recovery.RecoveryPassId.ToString(), "leo_aguila9876@hotmail.com");
+                    template = String.Format(template, user.Nombre + " " + user.ApellidoPaterno+" "+user.ApellidoMaterno,Settings.URL_TOConfirmEmail + recovery.RecoveryPasswordId.ToString(), "carsold22141024@gmail.com");
                     //create Instance
                    
-                    //Mail mail = new Mail()
-                    //{
-                    //    AccountServer = Settings.ACCOUNT_SERVER,
-                    //    Subject = "Titulo del email",
-                    //    From = Settings.FROM,
-                    //    Host = Settings.HOST_SERVER,
-                    //    PasswordServer = Settings.PASSWORD_SERVER,
-                    //    Body = template,
-                    //    To = new List<string>() { user.CorreoElectronico },
-                    //    Port = Settings.PORT_SERVER
-                    //};
-                    //mail.Send();
+                    Mail mail = new Mail()
+                    {
+                        AccountServer = Settings.ACCOUNT_SERVER,
+                        Subject = "Restablecimiento de la contraseña en CarSold",
+                        From = Settings.FROM,
+                        Host = Settings.HOST_SERVER,
+                        PasswordServer = Settings.PASSWORD_SERVER,
+                        Body = template,
+                        To = new List<string>() { user.CorreoElectronico },
+                        Port = Settings.PORT_SERVER
+                    };
+                    mail.Send();
 
                     return Json(new { Success = true, Message = "Confirme su correo electronico" }, JsonRequestBehavior.DenyGet);
                 }
@@ -132,6 +134,39 @@ namespace NegociosElectronicosII.Controllers
                 return Json(new { Success = false, Message = "Error de Mensaje" }, JsonRequestBehavior.DenyGet);
             }
         }
+
+        public ActionResult Confirm(Int32 ID)
+        {
+            NE_RecoveryPassword model = db.NE_RecoveryPassword.Find(ID);
+            ViewBag.IsConfirmValid = model.ExpiredDate > DateTime.Now;
+            ViewBag.IsConfirmed = model.IsConfirmed;
+
+            String Message = String.Empty;
+            ViewBag.ID = ID;
+            //TODO: redirect to change pass
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ChangePass(String newPass, Int32 ID)
+        {
+            try
+            {
+                NE_RecoveryPassword model = db.NE_RecoveryPassword.Find(ID);
+                NE_Usuario user = db.NE_Usuario.Where(x => x.UsuarioId == model.UsuarioId).First();
+                NE_Autenticacion auth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
+                model.IsConfirmed = true;
+                auth.Contrasena= Security.Security.Encrypt(newPass);
+                db.SaveChanges();
+
+                return Json(new { Success = true }, JsonRequestBehavior.DenyGet);
+            }
+            catch
+            {
+                return Json(new { Success = false }, JsonRequestBehavior.DenyGet);
+            }
+        }
+
     }
 
 }

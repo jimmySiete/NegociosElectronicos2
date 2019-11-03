@@ -26,6 +26,15 @@ namespace NegociosElectronicosII
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ChartJS").Include(
+                        "~/Scripts/Chart.bundle.js",
+                        "~/Scripts/Chart.bundle.min.js",
+                        "~/Scripts/Chart.js",
+                        "~/Scripts/Chart.min.js",
+                        "~/Scripts/chartjs-plugin-datalabels.js",
+                        "~/Scripts/chartjs-plugin-datalabels.min.js"
+                        ));
         }
     }
 }
