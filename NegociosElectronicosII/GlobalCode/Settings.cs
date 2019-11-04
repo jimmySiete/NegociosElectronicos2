@@ -37,13 +37,13 @@ namespace NegociosElectronicosII.GlobalCode
         {
             get
             {
-                if (HttpContext.Current.Session["MIA_Session"] == null)
+                if (HttpContext.Current.Session["USR_Session"] == null)
                     return null;
-                return (NE_Usuario)HttpContext.Current.Session["MIA_Session"];
+                return (NE_Usuario)HttpContext.Current.Session["USR_Session"];
             }
             set
             {
-                HttpContext.Current.Session["MIA_Session"] = value;
+                HttpContext.Current.Session["USR_Session"] = value;
             }
         }
 

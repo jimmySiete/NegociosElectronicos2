@@ -117,23 +117,50 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Articulos" xml:space="preserve">
+    <value>Artículos</value>
+  </data>
+  <data name="CambiarPass" xml:space="preserve">
+    <value>Cambiar Contraseña</value>
+  </data>
   <data name="CategoriaId" xml:space="preserve">
     <value>Categoria</value>
+  </data>
+  <data name="CerrarSes" xml:space="preserve">
+    <value>Cerrar Sesión</value>
   </data>
   <data name="ColorId" xml:space="preserve">
     <value>Color</value>
   </data>
+  <data name="ConfEmail" xml:space="preserve">
+    <value>Confirme su correo electronico</value>
+  </data>
+  <data name="CuentBloq" xml:space="preserve">
+    <value>Cuenta Bloqueada</value>
+  </data>
   <data name="Email" xml:space="preserve">
     <value>Correo electronico</value>
   </data>
+  <data name="ErrorEmail" xml:space="preserve">
+    <value>Este correo no esta registrado</value>
+  </data>
+  <data name="Estadist" xml:space="preserve">
+    <value>Estadísticas</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Olvidaste tu contrasena?</value>
+  </data>
+  <data name="IncorrectPass" xml:space="preserve">
+    <value>Contraseña Incorrecta</value>
   </data>
   <data name="InicioSesion" xml:space="preserve">
     <value>Iniciar Sesión</value>
   </data>
   <data name="MarcaId" xml:space="preserve">
     <value>Marca</value>
+  </data>
+  <data name="MessError" xml:space="preserve">
+    <value>Error de Mensaje</value>
   </data>
   <data name="NoCuenta" xml:space="preserve">
     <value>No tienes cuenta?</value>
@@ -160,15 +187,30 @@
     <value>Recuerdame</value>
   </data>
   <data name="Registrate" xml:space="preserve">
-    <value>Registrate</value>
+    <value>Registrarse</value>
+  </data>
+  <data name="Regresar" xml:space="preserve">
+    <value>Regresar</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>Este campo es requerido</value>
   </data>
+  <data name="RestablecerPass" xml:space="preserve">
+    <value>Restablecimiento de la contraseña </value>
+  </data>
   <data name="RolId" xml:space="preserve">
     <value>Rol</value>
   </data>
+  <data name="SexoId" xml:space="preserve">
+    <value>Sexo</value>
+  </data>
   <data name="TransmisionId" xml:space="preserve">
     <value>Transmision</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Vehiculos" xml:space="preserve">
+    <value>Vehículos</value>
   </data>
 </root>

@@ -61,23 +61,32 @@ namespace NegociosElectronicosII.Controllers
 
                     try
                     {
-                        db.NE_Usuario.Add(nE_Usuario);
-                        db.SaveChanges();
-                        userAuth = new NE_Autenticacion()
+                        if (!db.NE_Usuario.Any(x=>x.CorreoElectronico.ToUpper()==nE_Usuario.CorreoElectronico.ToUpper()))
                         {
-                            UsuarioId = nE_Usuario.UsuarioId,
-                            Intentos = 0,
-                            CuentaBloqueada = false,
-                            Contrasena =  Security.Security.Encrypt( nE_Usuario.password),
-                            UltimoInicioSesion = DateTime.Now,
-                        };
 
-                        db.NE_Autenticacion.Add(userAuth);
-                        db.SaveChanges();
-                        dbTran.Commit();
+                            db.NE_Usuario.Add(nE_Usuario);
+                            db.SaveChanges();
+                            userAuth = new NE_Autenticacion()
+                            {
+                                UsuarioId = nE_Usuario.UsuarioId,
+                                Intentos = 0,
+                                CuentaBloqueada = false,
+                                Contrasena = Security.Security.Encrypt(nE_Usuario.password),
+                                UltimoInicioSesion = DateTime.Now,
+                            };
 
-                        ViewBag.Message = "Cuenta creada";
-                        return RedirectToAction("Index", "Login");
+                            db.NE_Autenticacion.Add(userAuth);
+                            db.SaveChanges();
+                            dbTran.Commit();
+
+                            ViewBag.Message = "Cuenta creada";
+                            return RedirectToAction("Index", "Login"); 
+                        }
+                        else
+                        {
+                            ViewBag.Message = "Ya hay un correo registrado";
+                        }
+                            
                     }
                     catch (Exception e)
                     {

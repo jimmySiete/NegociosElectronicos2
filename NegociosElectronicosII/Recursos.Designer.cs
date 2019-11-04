@@ -61,11 +61,38 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Artículos.
+        /// </summary>
+        public static string Articulos {
+            get {
+                return ResourceManager.GetString("Articulos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cambiar Contraseña.
+        /// </summary>
+        public static string CambiarPass {
+            get {
+                return ResourceManager.GetString("CambiarPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Categoria.
         /// </summary>
         public static string CategoriaId {
             get {
                 return ResourceManager.GetString("CategoriaId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cerrar Sesión.
+        /// </summary>
+        public static string CerrarSes {
+            get {
+                return ResourceManager.GetString("CerrarSes", resourceCulture);
             }
         }
         
@@ -79,6 +106,24 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Confirme su correo electronico.
+        /// </summary>
+        public static string ConfEmail {
+            get {
+                return ResourceManager.GetString("ConfEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cuenta Bloqueada.
+        /// </summary>
+        public static string CuentBloq {
+            get {
+                return ResourceManager.GetString("CuentBloq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Correo electronico.
         /// </summary>
         public static string Email {
@@ -88,11 +133,38 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Este correo no esta registrado.
+        /// </summary>
+        public static string ErrorEmail {
+            get {
+                return ResourceManager.GetString("ErrorEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Estadísticas.
+        /// </summary>
+        public static string Estadist {
+            get {
+                return ResourceManager.GetString("Estadist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Olvidaste tu contrasena?.
         /// </summary>
         public static string ForgotPassword {
             get {
                 return ResourceManager.GetString("ForgotPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Contraseña Incorrecta.
+        /// </summary>
+        public static string IncorrectPass {
+            get {
+                return ResourceManager.GetString("IncorrectPass", resourceCulture);
             }
         }
         
@@ -111,6 +183,15 @@ namespace NegociosElectronicosII {
         public static string MarcaId {
             get {
                 return ResourceManager.GetString("MarcaId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error de Mensaje.
+        /// </summary>
+        public static string MessError {
+            get {
+                return ResourceManager.GetString("MessError", resourceCulture);
             }
         }
         
@@ -187,11 +268,20 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Registrate.
+        ///   Busca una cadena traducida similar a Registrarse.
         /// </summary>
         public static string Registrate {
             get {
                 return ResourceManager.GetString("Registrate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Regresar.
+        /// </summary>
+        public static string Regresar {
+            get {
+                return ResourceManager.GetString("Regresar", resourceCulture);
             }
         }
         
@@ -205,6 +295,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Restablecimiento de la contraseña .
+        /// </summary>
+        public static string RestablecerPass {
+            get {
+                return ResourceManager.GetString("RestablecerPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Rol.
         /// </summary>
         public static string RolId {
@@ -214,11 +313,38 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Sexo.
+        /// </summary>
+        public static string SexoId {
+            get {
+                return ResourceManager.GetString("SexoId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Transmision.
         /// </summary>
         public static string TransmisionId {
             get {
                 return ResourceManager.GetString("TransmisionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuarios.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Vehículos.
+        /// </summary>
+        public static string Vehiculos {
+            get {
+                return ResourceManager.GetString("Vehiculos", resourceCulture);
             }
         }
     }

@@ -39,12 +39,12 @@ namespace NegociosElectronicosII.Controllers
                     {
                         userAuth.CuentaBloqueada = true;
                         db.SaveChanges();
-                        ViewBag.Message = "Cuenta Bloqueada";
+                        ViewBag.Message = Recursos.CuentBloq;
                         return View(model);
 
                     }
                     db.SaveChanges();
-                    ViewBag.Message = "Contraseña Incorrecta";
+                    ViewBag.Message = Recursos.IncorrectPass;
                     return View(model);
                 }
                 else
@@ -52,7 +52,7 @@ namespace NegociosElectronicosII.Controllers
                     userAuth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
                     if (userAuth.CuentaBloqueada)
                     {
-                        ViewBag.Message = "Cuenta Bloqueada";
+                        ViewBag.Message = Recursos.CuentBloq;
                         return RedirectToAction("Index","Home");
                     }
                     else
@@ -61,9 +61,16 @@ namespace NegociosElectronicosII.Controllers
                         userAuth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
                         userAuth.Intentos = 0;
                         userAuth.UltimoInicioSesion = DateTime.Now;
+                        Settings.LoggedUser = user;
                         db.SaveChanges();
-                        ViewBag.Message = "Bienvenido";
-                        return RedirectToAction("Index", "Panel");
+                        ViewBag.Message = "Bienvenido"+Settings.LoggedUser.Nombre;
+
+                        if(user.RolId==4)
+                        return RedirectToAction("Index", "Principal");
+                        if(user.RolId==1)
+                            return RedirectToAction("Index", "Vehiculo");
+
+                        return RedirectToAction("Index", "Home");
                     }
 
 
@@ -72,7 +79,7 @@ namespace NegociosElectronicosII.Controllers
             }
             else
             {
-                ViewBag.Message = "Cuenta no encontrada";
+                ViewBag.Message = Recursos.ErrorEmail;
                 return View(model);
             }
         }
@@ -113,7 +120,7 @@ namespace NegociosElectronicosII.Controllers
                     Mail mail = new Mail()
                     {
                         AccountServer = Settings.ACCOUNT_SERVER,
-                        Subject = "Restablecimiento de la contraseña en CarSold",
+                        Subject = Recursos.RestablecerPass,
                         From = Settings.FROM,
                         Host = Settings.HOST_SERVER,
                         PasswordServer = Settings.PASSWORD_SERVER,
@@ -123,15 +130,15 @@ namespace NegociosElectronicosII.Controllers
                     };
                     mail.Send();
 
-                    return Json(new { Success = true, Message = "Confirme su correo electronico" }, JsonRequestBehavior.DenyGet);
+                    return Json(new { Success = true, Message = Recursos.ConfEmail }, JsonRequestBehavior.DenyGet);
                 }
                 else
-                    return Json(new { Success = false, Message = "Codigo Incorrecto" }, JsonRequestBehavior.DenyGet);
+                    return Json(new { Success = false, Message = Recursos.ErrorEmail }, JsonRequestBehavior.DenyGet);
 
             }
             catch (Exception ex)
             {
-                return Json(new { Success = false, Message = "Error de Mensaje" }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Message = Recursos.MessError }, JsonRequestBehavior.DenyGet);
             }
         }
 
@@ -165,6 +172,12 @@ namespace NegociosElectronicosII.Controllers
             {
                 return Json(new { Success = false }, JsonRequestBehavior.DenyGet);
             }
+        }
+
+        public ActionResult LogOut()
+        {
+            Settings.LoggedUser = null;
+            return RedirectToAction("Index", "Principal");
         }
 
     }
