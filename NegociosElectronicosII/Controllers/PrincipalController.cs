@@ -13,5 +13,10 @@ namespace NegociosElectronicosII.Controllers
         {
             return View();
         }
+
+        public PartialViewResult CarruselParcial()
+        {
+            return PartialView();
+        }
     }
 }
