@@ -2,14 +2,15 @@
 
 @{
     ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Edit</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Carrusell", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>NE_Carrusel</h4>
         <hr />
@@ -40,21 +41,21 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Ruta, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Ruta, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Ruta, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Extension, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Extension, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Extension, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.NombreArchivo, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -71,6 +72,16 @@
                     @Html.EditorFor(model => model.Activo)
                     @Html.ValidationMessageFor(model => model.Activo, "", new { @class = "text-danger" })
                 </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Cargar</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="btnimage"
+                       name="btnname">
+                <label class="custom-file-label" for="inputGroupFile01">Selecciona tu archivo</label>
             </div>
         </div>
 

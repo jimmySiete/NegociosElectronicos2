@@ -121,13 +121,57 @@ namespace NegociosElectronicosII.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CarruselId,Posicion,Texto,Descripcion,Ruta,Extension,NombreArchivo,Activo")] NE_Carrusel nE_Carrusel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(nE_Carrusel).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string mensaje;
+                HttpPostedFileBase postedFile = Request.Files[0];
+
+
+                if (ModelState.IsValid)
+                {
+                    
+
+                    if (postedFile != null && postedFile.ContentLength > 0)
+                    {
+                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                        var extension = ext.ToLower();
+                        if (!AllowedFileExtensions.Contains(extension))
+                        {
+                            mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                        }
+                        else
+                        {
+
+
+                            var name = String.Format("banner_{0}", nE_Carrusel.CarruselId);
+                            var filePath = Server.MapPath("~/Imagenes/Carrusel/" + name + extension);
+
+                            NE_Carrusel nE_Carru = new NE_Carrusel();
+                            nE_Carru = db.NE_Carrusel.Where(x => x.CarruselId == nE_Carrusel.CarruselId).First();
+                            nE_Carru.NombreArchivo = name;
+                            nE_Carru.Extension = ext;
+                            nE_Carru.Ruta = filePath;
+                            nE_Carru.Posicion = nE_Carrusel.Posicion;
+                            nE_Carru.Texto = nE_Carrusel.Texto;
+                            nE_Carru.Descripcion = nE_Carrusel.Descripcion;
+                            nE_Carru.Activo = nE_Carrusel.Activo;
+                            db.SaveChanges();
+
+                            postedFile.SaveAs(filePath);
+
+                            return RedirectToAction("Index");
+                        }
+                    }
+
+                }
+
+                return View(nE_Carrusel);
             }
-            return View(nE_Carrusel);
+            catch (Exception ex)
+            {
+                return View(nE_Carrusel);
+            }
         }
 
         // GET: Carrusell/Delete/5
@@ -152,6 +196,7 @@ namespace NegociosElectronicosII.Controllers
         {
             NE_Carrusel nE_Carrusel = db.NE_Carrusel.Find(id);
             db.NE_Carrusel.Remove(nE_Carrusel);
+            System.IO.File.Delete(nE_Carrusel.Ruta);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
