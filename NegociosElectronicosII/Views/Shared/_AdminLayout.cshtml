@@ -253,13 +253,13 @@ $(document).ready(function() {
                 <nav class="menu-wrap">
                     <ul class="menu-aside">
 
-
+                      
                         <div class="list-group">
                             <article class="list-group-item">
                                 <header class="filter-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" class="collapsed">
-                                        <i class="icon-action fa fa-chevron-down"></i>
-                                        <h6 class="title"> @NegociosElectronicosII.GlobalCode.Settings.LoggedUser.Nombre.ToUpper() </h6>
+                                        <i class="icon-action fa fa-chevron-down">  @NegociosElectronicosII.GlobalCode.Settings.LoggedUser.Nombre.ToUpper()</i>
+                                        <h6 class="title"> </h6>
                                     </a>
                                 </header>
                                 <div class="filter-content collapse" id="collapse1" style="">
@@ -269,20 +269,20 @@ $(document).ready(function() {
                                 </div> <!-- collapse -filter-content  .// -->
                             </article>
                         </div> <!-- list-group.// -->
-
                         @*<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-black" data-tab="AdminCatalogs" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @NegociosElectronicosII.GlobalCode.Settings.LoggedUser.Nombre.ToUpper()
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="@Url.Action("ChangePassword","Base")">@Recursos.CambiarPass</a>
-                                <a class="dropdown-item" href="@Url.Action("LogOut","Login")">@Recursos.CerrarSes</a>
-                            </div>
-                        </li>*@
+            <a class="nav-link dropdown-toggle text-black" data-tab="AdminCatalogs" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @NegociosElectronicosII.GlobalCode.Settings.LoggedUser.Nombre.ToUpper()
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="@Url.Action("ChangePassword","Base")">@Recursos.CambiarPass</a>
+                <a class="dropdown-item" href="@Url.Action("LogOut","Login")">@Recursos.CerrarSes</a>
+            </div>
+        </li>*@
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Vehiculo")">@Recursos.Vehiculos</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Producto")">@Recursos.Articulos</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Usuario")">@Recursos.User</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Estadistica")">@Recursos.Estadist</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Carrusell")">Carrusel</a> </li>
                         <li> <a class="page-scroll nav-link" id="finishSession">Cerrar Sesion</a> </li>
 
                     </ul>

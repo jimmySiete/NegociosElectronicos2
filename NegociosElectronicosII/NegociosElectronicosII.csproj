@@ -204,6 +204,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CarrusellController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
@@ -711,6 +712,11 @@
     <Content Include="Views\Vehiculo\Edit.cshtml" />
     <Content Include="Views\Vehiculo\Index.cshtml" />
     <Content Include="Views\Principal\CarruselParcial.cshtml" />
+    <Content Include="Views\Carrusell\Create.cshtml" />
+    <Content Include="Views\Carrusell\Delete.cshtml" />
+    <Content Include="Views\Carrusell\Details.cshtml" />
+    <Content Include="Views\Carrusell\Edit.cshtml" />
+    <Content Include="Views\Carrusell\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
