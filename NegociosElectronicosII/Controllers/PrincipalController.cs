@@ -20,5 +20,15 @@ namespace NegociosElectronicosII.Controllers
             List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x=>x.Posicion).ToList();
             return PartialView(ImagenesCarrusel);
         }
+        public PartialViewResult VehiculoParcial()
+        {
+            List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x => x.Posicion).ToList();
+            return PartialView(ImagenesCarrusel);
+        }
+        public PartialViewResult ArticuloParcial()
+        {
+            List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x => x.Posicion).ToList();
+            return PartialView(ImagenesCarrusel);
+        }
     }
 }
