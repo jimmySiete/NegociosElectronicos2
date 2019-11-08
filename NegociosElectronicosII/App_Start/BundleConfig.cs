@@ -35,6 +35,31 @@ namespace NegociosElectronicosII
                         "~/Scripts/chartjs-plugin-datalabels.js",
                         "~/Scripts/chartjs-plugin-datalabels.min.js"
                         ));
+            bundles.Add(new ScriptBundle("~/bundles/loginJS").Include(
+                       "~/Content/ContentLogin/Bootstrap/js/bootstrap.min.js",
+                       "~/Content/ContentLogin/Bootstrap/js/jquery.min.js"
+                       ));
+            bundles.Add(new StyleBundle("~/Content/loginCSS").Include(
+                      "~/Content/ContentLogin/Bootstrap/css/bootstrap.min.css",
+                      "~/Content/ContentLogin/Bootstrap/css/Fontawesome.css"
+                      ));
+
+            bundles.Add(new StyleBundle("~/Content/principalCSS").Include(
+                      "~/Content/ui-ecommerce/css/bootstrap.css",
+                      "~/Content/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css",
+                      "~/Content/ui-ecommerce/plugins/owlcarousel/assets/owl.carousel.min.css",
+                      "~/Content/ui-ecommerce/plugins/owlcarousel/assets/owl.theme.default.css",
+                      "~/Content/ui-ecommerce/css/ui.css",
+                      "~/Content/ui-ecommerce/css/responsive.css",
+                      "~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css"
+                      ));
+            bundles.Add(new ScriptBundle("~/bundles/principalJS").Include(
+                       "~/Content/ui-ecommerce/js/jquery-2.0.0.min.js",
+                       "~/Content/ui-ecommerce/js/bootstrap.bundle.min.js",
+                       "~/Content/ui-ecommerce/plugins/owlcarousel/owl.carousel.min.js",
+                       "~/Content/ui-ecommerce/js/script.js",
+                       "~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"
+                       ));
         }
     }
 }
