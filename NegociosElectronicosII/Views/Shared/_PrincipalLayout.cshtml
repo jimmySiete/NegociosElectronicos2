@@ -12,44 +12,41 @@
 
     <!-- jQuery -->
     @*<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>*@
-    @*<script src="~/Content/ui-ecommerce/js/jquery-2.0.0.min.js"></script>*@
+    <script src="~/Content/ui-ecommerce/js/jquery-2.0.0.min.js"></script>
 
     <!-- Bootstrap4 files-->
     @*<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />*@
-    @*<script src="~/Content/ui-ecommerce/js/bootstrap.bundle.min.js"></script>*@
-    @*<link href="~/Content/ui-ecommerce/css/bootstrap.css" rel="stylesheet" />*@
+    <script src="~/Content/ui-ecommerce/js/bootstrap.bundle.min.js"></script>
+    <link href="~/Content/ui-ecommerce/css/bootstrap.css" rel="stylesheet" />
 
     <!-- Font awesome 5 -->
     @*<link href="fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">*@
-    @*<link href="~/Content/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />*@
-
-    <!-- plugin: owl carousel  -->
-    @*<link href="plugins/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-        <link href="plugins/owlcarousel/assets/owl.theme.default.css" rel="stylesheet">
-        <script src="plugins/owlcarousel/owl.carousel.min.js"></script>*@
-    @*<link href="~/Content/ui-ecommerce/plugins/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />*@
-    @*<link href="~/Content/ui-ecommerce/plugins/owlcarousel/assets/owl.theme.default.css" rel="stylesheet" />*@
-    @*<script src="~/Content/ui-ecommerce/plugins/owlcarousel/owl.carousel.min.js"></script>*@
-
-    <!-- custom style -->
-    @*<link href="css/ui.css" rel="stylesheet" type="text/css" />
-        <link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />*@
-    @*<link href="~/Content/ui-ecommerce/css/ui.css" rel="stylesheet" />*@
-    @*<link href="~/Content/ui-ecommerce/css/responsive.css" rel="stylesheet" />*@
-
-    <!-- custom javascript -->
-    @*<script src="js/script.js" type="text/javascript"></script>*@
-    @*<script src="~/Content/ui-ecommerce/js/script.js"></script>*@
+    <link href="~/Content/ui-ecommerce/fonts/fontawesome/css/fontawesome-all.min.css" rel="stylesheet" />
 
     <!-- plugin: fancybox  -->
     @*<script src="plugins/fancybox/fancybox.min.js" type="text/javascript"></script>
         <link href="plugins/fancybox/fancybox.min.css" type="text/css" rel="stylesheet">*@
-    @*<link href="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css" rel="stylesheet" />*@
-    @*<script src="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"></script>*@
+    <link href="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css" rel="stylesheet" />
+    <script src="~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"></script>
 
-    @Styles.Render("~/Content/principalCSS");
-    @Scripts.Render("~/bundles/principalJS");
+    <!-- plugin: owl carousel  -->
+    @Styles.Render("~/Content/CarouselCSS")
+    @Scripts.Render("~/bundles/CarouselJS")
+
+    <!-- custom style -->
+    @*<link href="css/ui.css" rel="stylesheet" type="text/css" />
+        <link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />*@
+    <link href="~/Content/ui-ecommerce/css/ui.css" rel="stylesheet" />
+    <link href="~/Content/ui-ecommerce/css/responsive.css" rel="stylesheet" />
+
+    <!-- custom javascript -->
+    @Scripts.Render("~/bundles/CustomJs")
+    
+    
+
+    @*@Styles.Render("~/Content/principalCSS")
+    @Scripts.Render("~/bundles/principalJS")*@
     <script type="text/javascript">
         /// some script
 

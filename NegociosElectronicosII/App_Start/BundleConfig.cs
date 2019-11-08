@@ -53,6 +53,7 @@ namespace NegociosElectronicosII
                       "~/Content/ui-ecommerce/css/responsive.css",
                       "~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.css"
                       ));
+
             bundles.Add(new ScriptBundle("~/bundles/principalJS").Include(
                        "~/Content/ui-ecommerce/js/jquery-2.0.0.min.js",
                        "~/Content/ui-ecommerce/js/bootstrap.bundle.min.js",
@@ -60,6 +61,23 @@ namespace NegociosElectronicosII
                        "~/Content/ui-ecommerce/js/script.js",
                        "~/Content/ui-ecommerce/plugins/fancybox/fancybox.min.js"
                        ));
+
+            /*----------------------plugin: owl carousel -------------------- */
+
+            bundles.Add(new ScriptBundle("~/bundles/CarouselJS").Include(
+                       "~/Content/ui-ecommerce/plugins/owlcarousel/owl.carousel.min.js"
+                       ));
+
+            bundles.Add(new StyleBundle("~/Content/CarouselCSS").Include(
+                      "~/Content/ui-ecommerce/plugins/owlcarousel/assets/owl.carousel.min.css",
+                      "~/Content/ui-ecommerce/plugins/owlcarousel/assets/owl.theme.default.css"
+                      ));
+
+            /*----------------------custom javascript -------------------- */
+            bundles.Add(new ScriptBundle("~/bundles/CustomJs").Include(
+                       "~/Content/ui-ecommerce/js/script.js"
+                       ));
+
         }
     }
 }
