@@ -328,6 +328,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ContentLogin\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\ContentLogin\Bootstrap\css\Fontawesome.css" />
+    <Content Include="Content\ContentLogin\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\ContentLogin\Bootstrap\js\jquery.min.js" />
     <Content Include="Content\ui-ecommerce\css\bootstrap.css" />
     <Content Include="Content\ui-ecommerce\css\responsive.css" />
     <Content Include="Content\ui-ecommerce\css\ui.css" />
@@ -720,6 +724,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Principal\css\" />
+    <Folder Include="Content\Principal\js\" />
     <Folder Include="Imagenes\Productos\" />
     <Folder Include="Imagenes\Vehiculo\" />
     <Folder Include="Views\Base\" />
