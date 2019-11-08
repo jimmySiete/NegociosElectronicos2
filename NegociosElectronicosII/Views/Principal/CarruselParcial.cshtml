@@ -36,40 +36,21 @@
             <div class="col-md-6">
 
                 <!-- ================= main slide ================= -->
-
-                @*<div class="owl-init slider-main owl-carousel" data-items="1" data-dots="false" data-nav="true">
-                    <div class="item-slide">
-                        <img src="~/Content/ui-ecommerce/images/banners/slide1.jpg" />
-                    </div>
-                    <div class="item-slide rounded">
-                        <img src="~/Content/ui-ecommerce/images/banners/slide2.jpg" />
-                    </div>
-                    <div class="item-slide rounded">
-                        <img src="~/Content/ui-ecommerce/images/banners/slide3.jpg" />
-                    </div>
-                </div>*@
                 <div class="owl-init slider-main owl-carousel" data-items="1" data-nav="true" data-dots="false">
                     @*<div class="item-slide">
                             <img src="images/banners/slide1.jpg">
                         </div>
                         <div class="item-slide">
-                            <img src="images/banners/slide2.jpg">
+                            <img src="@Url.Content("~/Imagenes/Carrusel/"+item.NombreArchivo +item.Extension)">
                         </div>
                         <div class="item-slide">
                             <img src="images/banners/slide3.jpg">
                         </div>*@
 
+                    <div class="item-slide">
+                        <img src="@Url.Content("~/Imagenes/Carrusel/banner_0.png")">
+                    </div>
 
-                    @foreach (var item in Model)
-                    {
-                        <div class="item-slide">
-                            <img src="@(Url.Content("~/Imagenes/Carrusel/"+ item.NombreArchivo + item.Extension))">
-                        </div>
-                    }
-                    @*<div class="item-slide">
-        <img src="~/Content/ui-ecommerce/images/items/1.jpg" />
-    </div>
-                    *@
                 </div>
                 <!-- ============== main slidesow .end // ============= -->
 
