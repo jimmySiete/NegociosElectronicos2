@@ -235,7 +235,7 @@ namespace NegociosElectronicosII.Controllers
             db.NE_ProductoImagen.Remove(nE_ProdImagen);
             db.SaveChanges();
             
-            System.IO.File.Delete(nE_ProdImagen.Ruta);
+            //System.IO.File.Delete(nE_ProdImagen.Ruta);
             return RedirectToAction("Index");
         }
 

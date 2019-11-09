@@ -22,13 +22,13 @@ namespace NegociosElectronicosII.Controllers
         }
         public PartialViewResult VehiculoParcial()
         {
-            List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x => x.Posicion).ToList();
-            return PartialView(ImagenesCarrusel);
+            List<NE_VehiculoImagen> ImagenesVehiculo = db.NE_VehiculoImagen.ToList();
+            return PartialView(ImagenesVehiculo);
         }
         public PartialViewResult ArticuloParcial()
         {
-            List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x => x.Posicion).ToList();
-            return PartialView(ImagenesCarrusel);
+            List<NE_ProductoImagen> ImagenesArticulo = db.NE_ProductoImagen.ToList();
+            return PartialView(ImagenesArticulo);
         }
     }
 }
