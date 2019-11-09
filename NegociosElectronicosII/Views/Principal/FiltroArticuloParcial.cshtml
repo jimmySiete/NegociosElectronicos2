@@ -1,0 +1,43 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_ProductoImagen>
+<div class="col-md-3-24"> <strong>Filter by:</strong> </div> <!-- col.// -->
+<div class="col-md-21-24">
+    <ul class="list-inline">
+        <li class="list-inline-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">   Marca </a>
+            <div class="dropdown-menu p-3" style="max-width:400px;" >
+                @foreach (var item in Model)
+                {
+                    <label class="form-check">
+                        <a href="#">
+                            <input type="checkbox" class="form-check-input"> @item.NE_Producto.NE_Marca.Marca
+                        </a>
+                    </label>
+                }
+            </div> <!-- dropdown-menu.// -->
+        </li>
+        <li class="list-inline-item dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">  Color </a>
+            <div class="dropdown-menu p-3" style="max-width:400px;" ">
+            @foreach (var item in Model)
+            {
+                <label class="form-check">
+                    <a href="#">
+                        <input type="checkbox" class="form-check-input"> @item.NE_Producto.NE_Color.Color
+                    </a>
+                </label>
+            }
+
+            </div> <!-- dropdown-menu.// -->
+        </li>
+       
+        <li class="list-inline-item">
+            <div class="form-inline">
+                <label class="mr-2">Price</label>
+                <input class="form-control form-control-sm" placeholder="Min" type="number">
+                <span class="px-2"> - </span>
+                <input class="form-control form-control-sm" placeholder="Max" type="number">
+                <button type="submit" class="btn btn-sm ml-2">Ok</button>
+            </div>
+        </li>
+    </ul>
+</div> <!-- col.// -->

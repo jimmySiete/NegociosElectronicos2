@@ -723,6 +723,10 @@
     <Content Include="Views\Carrusell\Index.cshtml" />
     <Content Include="Views\Principal\VehiculoParcial.cshtml" />
     <Content Include="Views\Principal\ArticuloParcial.cshtml" />
+    <Content Include="Views\Principal\FiltroArticuloParcial.cshtml" />
+    <Content Include="Views\Principal\GridArticuloParcial.cshtml" />
+    <Content Include="Views\Principal\FiltroVehiculoParcial.cshtml" />
+    <Content Include="Views\Principal\GridVehiculoParcial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
