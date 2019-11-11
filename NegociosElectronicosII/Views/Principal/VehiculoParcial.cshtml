@@ -1,0 +1,27 @@
+﻿
+<header class="section-heading heading-line">
+    <h4 class="title-section bg text-uppercase">Recommended items</h4>
+</header>
+
+<div class="row" id="filtro">
+
+</div> <!-- row.// -->
+
+<div class="padding-y-sm">
+    <span>3897 results for "Item"</span>
+</div>
+
+<div class="row-sm" id="grid">
+  
+</div> <!-- row.// -->
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#filtro").load("@Url.Action("FiltroVehiculoParcial","Principal")");
+        $("#grid").load("@Url.Action("GridVehiculoParcial","Principal")");
+    });
+
+</script>
+

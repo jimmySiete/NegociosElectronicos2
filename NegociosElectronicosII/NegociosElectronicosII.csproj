@@ -722,6 +722,12 @@
     <Content Include="Views\Carrusell\Details.cshtml" />
     <Content Include="Views\Carrusell\Edit.cshtml" />
     <Content Include="Views\Carrusell\Index.cshtml" />
+    <Content Include="Views\Principal\VehiculoParcial.cshtml" />
+    <Content Include="Views\Principal\ArticuloParcial.cshtml" />
+    <Content Include="Views\Principal\FiltroArticuloParcial.cshtml" />
+    <Content Include="Views\Principal\GridArticuloParcial.cshtml" />
+    <Content Include="Views\Principal\FiltroVehiculoParcial.cshtml" />
+    <Content Include="Views\Principal\GridVehiculoParcial.cshtml" />
     <Content Include="Views\Principal\ListaDeDeseos.cshtml" />
     <Content Include="Views\Principal\CarritoDeCompras.cshtml" />
   </ItemGroup>
