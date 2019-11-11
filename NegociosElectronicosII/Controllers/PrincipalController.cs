@@ -20,5 +20,15 @@ namespace NegociosElectronicosII.Controllers
             List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x=>x.Posicion).ToList();
             return PartialView(ImagenesCarrusel);
         }
+
+        public ActionResult ListaDeDeseos() {
+
+            return View();
+        }
+
+        public ActionResult CarritoDeCompras() {
+
+            return View();
+        }
     }
 }

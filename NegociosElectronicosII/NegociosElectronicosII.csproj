@@ -447,6 +447,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\logoAuto.png" />
     <Content Include="Library\CastanionUtils.dll" />
     <Content Include="Models\NE_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -721,6 +722,8 @@
     <Content Include="Views\Carrusell\Details.cshtml" />
     <Content Include="Views\Carrusell\Edit.cshtml" />
     <Content Include="Views\Carrusell\Index.cshtml" />
+    <Content Include="Views\Principal\ListaDeDeseos.cshtml" />
+    <Content Include="Views\Principal\CarritoDeCompras.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
