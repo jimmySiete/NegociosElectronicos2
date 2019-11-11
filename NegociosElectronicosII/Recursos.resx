@@ -159,6 +159,9 @@
   <data name="MarcaId" xml:space="preserve">
     <value>Marca</value>
   </data>
+  <data name="MarcarComoOferta" xml:space="preserve">
+    <value>Marcar como oferta</value>
+  </data>
   <data name="MessError" xml:space="preserve">
     <value>Error de Mensaje</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="PrecioCompra" xml:space="preserve">
     <value>Precio de compra</value>
+  </data>
+  <data name="PrecioOFerta" xml:space="preserve">
+    <value>Precio oferta</value>
   </data>
   <data name="PrecioVenta" xml:space="preserve">
     <value>Precio de venta</value>

@@ -17,7 +17,38 @@ namespace NegociosElectronicosII.Controllers
 
         public PartialViewResult CarruselParcial()
         {
+            List<OfertaModel> ofertas = new List<OfertaModel>();
+            
+            //se obtienen las imagenes del carrusel
             List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x=>x.Posicion).ToList();
+
+            //si hay objetos con oferta, lo agregamos a la lista
+            if (db.NE_Producto.Any(x => x.MarcarComoOferta))
+                ofertas.AddRange(db.NE_Producto.Where(x => x.MarcarComoOferta).Select(x => new OfertaModel() {
+                    ImagenesProducto = x.NE_ProductoImagen != null ? x.NE_ProductoImagen.ToList() : new List<NE_ProductoImagen>(),
+                    ImagenesVehiculo= null,
+                    IsProduct= true,
+                    Text= x.Nombre
+                }));
+
+            //si hay autos con oferta, lo agregamos a la lista
+            if (db.NE_Vehiculo.Any(x => x.MarcarComoOferta))
+                ofertas.AddRange(db.NE_Vehiculo.Where(x => x.MarcarComoOferta).Select(x => new OfertaModel()
+                {
+                    ImagenesProducto = null,
+                    ImagenesVehiculo = x.NE_VehiculoImagen != null ? x.NE_VehiculoImagen.ToList() : new List<NE_VehiculoImagen>(),
+                    IsProduct = true,
+                    Text = x.NombreVehiculo + " " +  x.Descripcion 
+                }));
+
+            //ordenar aleatoriamente en el arreglo
+            ofertas = DesordenarLista(ofertas);
+
+            //obtener la listas de marcas disponibles
+            ViewBag.Marcas = db.NE_Marca.ToList();
+            //agregar ofertas a ViewBag
+            ViewBag.Ofertas = ofertas.Take(4).ToList();
+
             return PartialView(ImagenesCarrusel);
         }
         public PartialViewResult FiltroArticuloParcial()

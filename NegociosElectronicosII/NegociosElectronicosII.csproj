@@ -222,6 +222,33 @@
     </Compile>
     <Compile Include="GlobalCode\Settings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ENSES_Group.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_Guests.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_Hosting.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_HostingCoordinator.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_LocalDiocese.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_RelGuestsHosting.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_Rol.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_Settings.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENSES_User.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ExtendModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -314,6 +341,214 @@
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_Visita.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OfertaModel.cs" />
+    <Compile Include="Models\Q_AciertosJornadas.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_Config.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_Participante.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_Pronostico.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_Quiniela.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_RelQuinielaParticipante.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_Resultados.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Q_Total.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Client.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_FilesPaymentProfits.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_FilesSalesReport.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Group.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_HitchSalesReport.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Inventory.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_InventoryPaymentProfit.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Locality.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Municipality.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_OutputNotes.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_OutputNotesDetail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_PaymentProfitProduct.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_PaymentProfits.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_paymentsProfitsRows.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Product.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_ProductType.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Profile.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_RelProdWHControl.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_RelWHC_TransGuide.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Rel_PP_Sales.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Rel_SR_Sales.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Rel_WHC_OCN.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Route.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_RouteDetail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_SalesDetail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_SalesHeader.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_SalesPayment.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_SalesReport.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_SalesReportDetail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Settings.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_State.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_StatusCard.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_StatusDocumentId.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Suburb.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndOthersPayments.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndOthersProds.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndPayments.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndProducto.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndRelUsuariosTanda.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndRol.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndStatusTanda.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndStatusUsuarios.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndTanda.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TndUsuarios.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TransportGuide.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TransportGuideDetail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_TypeHSR.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_UnitMeasure.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_User.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_UserLog.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_Warehouse.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_WarehouseControl.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_WarehouseControlDetail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tb_ZipCode.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TE_Activity.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TE_Board.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TE_Body.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TE_Header.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TE_RelActivityBoard.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TE_Status.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -730,6 +965,7 @@
     <Content Include="Views\Principal\GridVehiculoParcial.cshtml" />
     <Content Include="Views\Principal\ListaDeDeseos.cshtml" />
     <Content Include="Views\Principal\CarritoDeCompras.cshtml" />
+    <Content Include="Views\Base\ComboDeCatergoriasParcial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -737,7 +973,6 @@
     <Folder Include="Content\Principal\js\" />
     <Folder Include="Imagenes\Productos\" />
     <Folder Include="Imagenes\Vehiculo\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -9,6 +9,7 @@ namespace NegociosElectronicosII.Models
     public class ExtendModel
     {
     }
+
     #region NE_Vehiculos
     [MetadataType(typeof(MetadataVehiculo))]
     public partial class NE_Vehiculo
@@ -34,9 +35,14 @@ namespace NegociosElectronicosII.Models
         public decimal PrecioCompra { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
+        [Display(Name = "PrecioOFerta", ResourceType = (typeof(Recursos)))]
+        public decimal PrecioOFerta { get; set; }
+        [Display(Name = "MarcarComoOferta", ResourceType = (typeof(Recursos)))]
+        public bool MarcarComoOferta { get; set; }
 
     }
     #endregion
+
     #region NE_Producto
     [MetadataType(typeof(MetadataProducto))]
     public partial class NE_Producto
@@ -58,8 +64,13 @@ namespace NegociosElectronicosII.Models
         [Display(Name = "PrecioCompra", ResourceType = (typeof(Recursos)))]
         public decimal PrecioCompra { get; set; }
         public bool Activo { get; set; }
+        [Display(Name = "PrecioOFerta", ResourceType = (typeof(Recursos)))]
+        public decimal PrecioOFerta { get; set; }
+        [Display(Name = "MarcarComoOferta", ResourceType = (typeof(Recursos)))]
+        public bool MarcarComoOferta { get; set; }
     }
     #endregion
+
     #region NE_Usuario
     [MetadataType(typeof(MetadataUsuario))]
     public partial class NE_Usuario
