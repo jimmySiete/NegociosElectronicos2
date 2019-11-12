@@ -52,7 +52,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductoId,Nombre,Descripcion,MarcaId,ColorId,Stock,PrecioVenta,PrecioCompra,Activo")] NE_Producto nE_Producto)
+        public ActionResult Create([Bind(Include = "ProductoId,Nombre,Descripcion,MarcaId,ColorId,Stock,PrecioVenta,PrecioCompra,Activo,MarcarComoOferta,PrecioOFerta")] NE_Producto nE_Producto)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductoId,Nombre,Descripcion,MarcaId,ColorId,Stock,PrecioVenta,PrecioCompra,Activo")] NE_Producto nE_Producto)
+        public ActionResult Edit([Bind(Include = "ProductoId,Nombre,Descripcion,MarcaId,ColorId,Stock,PrecioVenta,PrecioCompra,Activo,MarcarComoOferta,PrecioOFerta")] NE_Producto nE_Producto)
         {
             try
             {
@@ -153,6 +153,8 @@ namespace NegociosElectronicosII.Controllers
                     nE_Prod.PrecioVenta = nE_Producto.PrecioVenta;
                     nE_Prod.PrecioCompra = nE_Producto.PrecioCompra;
                     nE_Prod.Activo = nE_Producto.Activo;
+                    nE_Prod.MarcarComoOferta = nE_Producto.MarcarComoOferta;
+                    nE_Prod.PrecioOFerta = nE_Producto.PrecioOFerta;
                     db.SaveChanges();
 
                     if (postedFile != null && postedFile.ContentLength > 0)
