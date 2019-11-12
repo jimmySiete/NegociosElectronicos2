@@ -14,9 +14,11 @@
         fnPintarGridDeVehiculos(1);
     });
 
-    //public PartialViewResult GridVehiculoParcial(Int32 Pagina,String Marcas,String Color, String Categoria, String Transmision, Decimal PrecioInicial, Decimal PrecioFinal)
+    // Decimal PrecioInicial, Decimal PrecioFinal)
     function fnPintarGridDeVehiculos(Pagina) {
         var marcas_seleccionadas = [];
+        var colores_seleccionados = [];
+        var transamisiones_seleccionadas = [];
 
         $.each($('.marca_auto'), function (i, item) {
             if($(item).is(':checked'))
