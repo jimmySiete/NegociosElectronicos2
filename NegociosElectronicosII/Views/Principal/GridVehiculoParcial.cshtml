@@ -12,7 +12,17 @@
                 <br>
                 <span class="navbar-default">@item.NE_Vehiculo.NE_Marca.Marca</span>
                 <br>
-                <span class="price-wrap">@item.NE_Vehiculo.PrecioCompra</span>
+                @*<span class="price-wrap">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</span>*@
+                
+                @if (item.NE_Vehiculo.MarcarComoOferta)
+                {
+                    <span class="price-new">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioOFerta)</span>
+                        <del class="price-old">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</del>
+                }
+                else
+                {
+                    <span class="price-new">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</span>
+                }
                 @*<div class="price-wrap">
 
                     </div>*@ <!-- price-wrap.// -->
