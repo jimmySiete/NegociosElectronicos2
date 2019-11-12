@@ -165,6 +165,16 @@ namespace NegociosElectronicosII.Controllers
                             return RedirectToAction("Index");
                         }
                     }
+                    else
+                    {
+                        NE_Carrusel nE_Carru = new NE_Carrusel();
+                        nE_Carru.Posicion = nE_Carrusel.Posicion;
+                        nE_Carru.Texto = nE_Carrusel.Texto;
+                        nE_Carru.Descripcion = nE_Carrusel.Descripcion;
+                        nE_Carru.Activo = nE_Carrusel.Activo;
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
 
                 }
 

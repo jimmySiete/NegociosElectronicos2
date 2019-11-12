@@ -53,7 +53,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Create([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo,MarcarComoOferta,PrecioOFerta")] NE_Vehiculo nE_Vehiculo)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace NegociosElectronicosII.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo")] NE_Vehiculo nE_Vehiculo)
+        public ActionResult Edit([Bind(Include = "VehiculoId,CategoriaId,MarcaId,Modelo,TransmisionId,ColorId,PrecioVenta,PrecioCompra,Descripcion,Activo,NombreVehiculo,MarcarComoOferta,PrecioOFerta")] NE_Vehiculo nE_Vehiculo)
         {
             try
             {
@@ -156,6 +156,8 @@ namespace NegociosElectronicosII.Controllers
                     nE_Vehic.PrecioVenta = nE_Vehiculo.PrecioVenta;
                     nE_Vehic.PrecioCompra = nE_Vehiculo.PrecioCompra;
                     nE_Vehic.Activo = nE_Vehiculo.Activo;
+                    nE_Vehic.MarcarComoOferta = nE_Vehiculo.MarcarComoOferta;
+                    nE_Vehic.PrecioOFerta = nE_Vehiculo.PrecioOFerta;
                     db.SaveChanges();
 
                     if (postedFile != null && postedFile.ContentLength > 0)

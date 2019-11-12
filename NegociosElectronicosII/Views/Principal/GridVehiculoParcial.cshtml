@@ -13,11 +13,11 @@
                 <span class="navbar-default">@item.NE_Vehiculo.NE_Marca.Marca</span>
                 <br>
                 @*<span class="price-wrap">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</span>*@
-                
+
                 @if (item.NE_Vehiculo.MarcarComoOferta)
                 {
                     <span class="price-new">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioOFerta)</span>
-                        <del class="price-old">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</del>
+                    <del class="price-old">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</del>
                 }
                 else
                 {
@@ -25,9 +25,38 @@
                 }
                 @*<div class="price-wrap">
 
-                    </div>*@ <!-- price-wrap.// -->
+        </div>*@ <!-- price-wrap.// -->
+                        <div class="input-group w-100">
+                            <div class="input-group-append">
+                        <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId"  onclick="agregar(@item.VehiculoId,1)">
+                                    <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                                </button>
+                            </div>
+                        </div>
             </figcaption>
         </figure> <!-- card // -->
     </div> <!-- col // -->
 }
+
+<script type="text/javascript">
+
+    function agregar(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("AgregarCarro", "Carrito")',
+            data: { id: $(nuevo).val, constante: $(cons).val },
+            type: 'POST',
+             success: function (response) {
+                    alert(response.Message);
+                    if (response.Success)
+                        window.location.href = '@Url.Action("Index","Login")';
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+    
+
+ 
+</script>
 
