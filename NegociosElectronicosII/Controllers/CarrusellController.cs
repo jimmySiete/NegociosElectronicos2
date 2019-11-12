@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using NegociosElectronicosII.GlobalCode;
 using NegociosElectronicosII.Models;
 
 namespace NegociosElectronicosII.Controllers
 {
+    [NegociosII_Auth(Roles = "1")]
     public class CarrusellController : Controller
     {
         private DB_NE_Entitties db = new DB_NE_Entitties();

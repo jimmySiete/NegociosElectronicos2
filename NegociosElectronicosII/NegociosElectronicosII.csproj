@@ -220,6 +220,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalCode\NegociosII_Auth.cs" />
     <Compile Include="GlobalCode\Settings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ENSES_Group.cs">
@@ -971,6 +972,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Principal\css\" />
     <Folder Include="Content\Principal\js\" />
+    <Folder Include="GlobalCode\Constans\" />
     <Folder Include="Imagenes\Productos\" />
     <Folder Include="Imagenes\Vehiculo\" />
   </ItemGroup>
