@@ -53,6 +53,8 @@ namespace NegociosElectronicosII.Controllers
         }
         public PartialViewResult FiltroArticuloParcial()
         {
+            ViewBag.Marcas = db.NE_Marca.ToList();
+            ViewBag.Color = db.NE_Color.ToList();
             List<NE_ProductoImagen> ImagenesVehiculo = db.NE_ProductoImagen.ToList();
             return PartialView(ImagenesVehiculo);
         }
@@ -71,6 +73,10 @@ namespace NegociosElectronicosII.Controllers
         }
         public PartialViewResult FiltroVehiculoParcial()
         {
+            ViewBag.Marcas = db.NE_Marca.ToList();
+            ViewBag.Color = db.NE_Color.ToList();
+            ViewBag.Categoria = db.NE_Categoria.ToList();
+            ViewBag.Transmision= db.NE_Transmision.ToList();
             List<NE_VehiculoImagen> ImagenesVehiculo = db.NE_VehiculoImagen.ToList();
             return PartialView(ImagenesVehiculo);
         }

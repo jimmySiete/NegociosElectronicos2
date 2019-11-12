@@ -107,9 +107,9 @@ namespace NegociosElectronicosII.GlobalCode
             return String.Format("X_{0}", CoreCode);
         }
 
-        //public static Int32 GetPermission(String KEY)
+        //public static Int32 GetPermission(int KEY)
         //{
-        //    return db.Tb_Permission.Where(x => x.Description == KEY).First().ID_Permission;
+        //    return db.NE_Usuario.Where(x => x.RolId == KEY).First().ID_Permission;
         //}
     }
 }
