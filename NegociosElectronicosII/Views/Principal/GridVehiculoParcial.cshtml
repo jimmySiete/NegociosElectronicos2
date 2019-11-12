@@ -28,7 +28,7 @@
         </div>*@ <!-- price-wrap.// -->
                         <div class="input-group w-100">
                             <div class="input-group-append">
-                                <button class="btn btn-warning" type="submit" >
+                        <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId"  onclick="agregar(@item.VehiculoId,1)">
                                     <i class="fa fa-shopping-cart"></i> Agregar al Carrito
                                 </button>
                             </div>
@@ -37,4 +37,26 @@
         </figure> <!-- card // -->
     </div> <!-- col // -->
 }
+
+<script type="text/javascript">
+
+    function agregar(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("AgregarCarro", "Carrito")',
+            data: { id: $(nuevo).val, constante: $(cons).val },
+            type: 'POST',
+             success: function (response) {
+                    alert(response.Message);
+                    if (response.Success)
+                        window.location.href = '@Url.Action("Index","Login")';
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
+    }
+    
+
+ 
+</script>
 
