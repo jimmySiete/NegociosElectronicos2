@@ -22,8 +22,8 @@ namespace NegociosElectronicosII.Models
             this.NE_ComentarioProducto = new HashSet<NE_ComentarioProducto>();
             this.NE_ComentarioVehiculo = new HashSet<NE_ComentarioVehiculo>();
             this.NE_EncabezadoChat = new HashSet<NE_EncabezadoChat>();
-            this.NE_Visita = new HashSet<NE_Visita>();
             this.NE_RecoveryPassword = new HashSet<NE_RecoveryPassword>();
+            this.NE_Visita = new HashSet<NE_Visita>();
         }
     
         public int UsuarioId { get; set; }
@@ -48,11 +48,11 @@ namespace NegociosElectronicosII.Models
         public virtual ICollection<NE_ComentarioVehiculo> NE_ComentarioVehiculo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NE_EncabezadoChat> NE_EncabezadoChat { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NE_RecoveryPassword> NE_RecoveryPassword { get; set; }
         public virtual NE_Rol NE_Rol { get; set; }
         public virtual NE_Sexo NE_Sexo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NE_Visita> NE_Visita { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_RecoveryPassword> NE_RecoveryPassword { get; set; }
     }
 }

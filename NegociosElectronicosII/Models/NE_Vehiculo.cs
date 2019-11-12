@@ -22,6 +22,7 @@ namespace NegociosElectronicosII.Models
         }
     
         public int VehiculoId { get; set; }
+        public string NombreVehiculo { get; set; }
         public int CategoriaId { get; set; }
         public int MarcaId { get; set; }
         public int Modelo { get; set; }
@@ -31,7 +32,6 @@ namespace NegociosElectronicosII.Models
         public decimal PrecioCompra { get; set; }
         public string Descripcion { get; set; }
         public bool Activo { get; set; }
-        public string NombreVehiculo { get; set; }
         public decimal PrecioOFerta { get; set; }
         public bool MarcarComoOferta { get; set; }
     

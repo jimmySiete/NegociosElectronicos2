@@ -5,221 +5,52 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5f7c31fbca664b0a976e94ca73d3a02b" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Accion" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Bitacora" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrusel" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Categoria" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Color" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Width="1.5" PointX="8.25" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_CuerpoChat" Width="1.5" PointX="7.5" PointY="21.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Width="1.5" PointX="5.25" PointY="21.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Encuesta" Width="1.5" PointX="10.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_FAQS" Width="1.5" PointX="10.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Marca" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Producto" Width="1.5" PointX="6" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ProductoImagen" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Rol" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Sexo" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Template" Width="1.5" PointX="10.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" Width="1.5" PointX="5.25" PointY="24.25" IsExpanded="true" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AccionId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoColorId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ColorId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Producto_Comentario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Vehiculo_Comentario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Chat" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_MarcaId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Product_imagen" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" ManuallyRouted="false" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" Width="1.5" PointX="10.375" PointY="11.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Width="1.5" PointX="5.25" PointY="27.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Accion" Width="1.5" PointX="6" PointY="6.25" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Width="1.5" PointX="5.25" PointY="21.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Bitacora" Width="1.5" PointX="8.25" PointY="10.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrusel" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Categoria" Width="1.5" PointX="3.75" PointY="15.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Color" Width="1.5" PointX="3.75" PointY="2.125" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Width="1.5" PointX="8.25" PointY="6.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_CuerpoChat" Width="1.5" PointX="7.5" PointY="18.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Width="1.5" PointX="5.25" PointY="18.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Encuesta" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_FAQS" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Marca" Width="1.5" PointX="3.75" PointY="5.625" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Producto" Width="1.5" PointX="3" PointY="18.125" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ProductoImagen" Width="1.5" PointX="5.25" PointY="31" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Width="1.5" PointX="5.25" PointY="12.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Rol" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Sexo" Width="1.5" PointX="0.75" PointY="11.25" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Template" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" Width="1.5" PointX="3.75" PointY="28" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" Width="1.5" PointX="3" PointY="9.625" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" Width="1.5" PointX="8.25" PointY="2" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" Width="1.5" PointX="5.25" PointY="25" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AccionId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoColorId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ColorId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Producto_Comentario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Vehiculo_Comentario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Chat" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_MarcaId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Product_imagen" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_Group" Width="1.5" PointX="7.75" PointY="26.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_Guests" Width="1.5" PointX="10" PointY="31.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_Hosting" Width="1.5" PointX="10.75" PointY="14.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_HostingCoordinator" Width="1.5" PointX="10" PointY="25.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_LocalDiocese" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_RelGuestsHosting" Width="1.5" PointX="12.25" PointY="26" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_Rol" Width="1.5" PointX="13.75" PointY="1.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_Settings" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.ENSES_User" Width="1.5" PointX="16" PointY="1" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_AciertosJornadas" Width="1.5" PointX="25" PointY="3.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_Config" Width="1.5" PointX="12.75" PointY="15.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_Participante" Width="1.5" PointX="22.75" PointY="2.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_Pronostico" Width="1.5" PointX="25" PointY="15.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_Quiniela" Width="1.5" PointX="22.75" PointY="6.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_RelQuinielaParticipante" Width="1.5" PointX="25" PointY="6.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_Resultados" Width="1.5" PointX="27.25" PointY="15.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Q_Total" Width="1.5" PointX="25" PointY="9.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.sysdiagrams" Width="1.5" PointX="14.75" PointY="15.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Client" Width="1.5" PointX="21" PointY="21.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_FilesPaymentProfits" Width="1.5" PointX="22.5" PointY="54.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_FilesSalesReport" Width="1.5" PointX="17.25" PointY="76.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Group" Width="1.5" PointX="12.75" PointY="43.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_HitchSalesReport" Width="1.5" PointX="20.25" PointY="71.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Inventory" Width="1.5" PointX="18" PointY="38.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_InventoryPaymentProfit" Width="1.5" PointX="22.5" PointY="50.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Locality" Width="1.5" PointX="18.75" PointY="26.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Municipality" Width="1.5" PointX="18.75" PointY="20.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_OutputNotes" Width="1.5" PointX="15" PointY="41.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_OutputNotesDetail" Width="1.5" PointX="23.25" PointY="43.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_PaymentProfitProduct" Width="1.5" PointX="24.75" PointY="55.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_PaymentProfits" Width="1.5" PointX="20.25" PointY="48.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_paymentsProfitsRows" Width="1.5" PointX="22.5" PointY="61.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Product" Width="1.5" PointX="15" PointY="31.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_ProductType" Width="1.5" PointX="12.75" PointY="31.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Profile" Width="1.5" PointX="15.75" PointY="48.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Rel_PP_Sales" Width="1.5" PointX="25.5" PointY="45.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Rel_SR_Sales" Width="1.5" PointX="25.5" PointY="48.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Rel_WHC_OCN" Width="1.5" PointX="20.25" PointY="43.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_RelProdWHControl" Width="1.5" PointX="18" PointY="48.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_RelWHC_TransGuide" Width="1.5" PointX="20.25" PointY="36.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Route" Width="1.5" PointX="12.75" PointY="37.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_RouteDetail" Width="1.5" PointX="15" PointY="51.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_SalesDetail" Width="1.5" PointX="25.5" PointY="38.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_SalesHeader" Width="1.5" PointX="23.25" PointY="37.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_SalesPayment" Width="1.5" PointX="28.5" PointY="40.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_SalesReport" Width="1.5" PointX="15" PointY="69.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_SalesReportDetail" Width="1.5" PointX="17.25" PointY="70.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Settings" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_State" Width="1.5" PointX="16.5" PointY="26.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_StatusCard" Width="1.5" PointX="21" PointY="33.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_StatusDocumentId" Width="1.5" PointX="12.75" PointY="40.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Suburb" Width="1.5" PointX="18.75" PointY="23.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndOthersPayments" Width="1.5" PointX="18.25" PointY="14.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndOthersProds" Width="1.5" PointX="18.25" PointY="4.375" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndPayments" Width="1.5" PointX="20.5" PointY="7.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndProducto" Width="1.5" PointX="20.5" PointY="10.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndRelUsuariosTanda" Width="1.5" PointX="18.25" PointY="8.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndRol" Width="1.5" PointX="13.75" PointY="6.5" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndStatusTanda" Width="1.5" PointX="13.75" PointY="12.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndStatusUsuarios" Width="1.5" PointX="16" PointY="9.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndTanda" Width="1.5" PointX="16" PointY="12.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TndUsuarios" Width="1.5" PointX="16" PointY="6" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TransportGuide" Width="1.5" PointX="15" PointY="37.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TransportGuideDetail" Width="1.5" PointX="17.25" PointY="34.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_TypeHSR" Width="1.5" PointX="18" PointY="74" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_UnitMeasure" Width="1.5" PointX="12.75" PointY="33.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_User" Width="1.5" PointX="18" PointY="42" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_UserLog" Width="1.5" PointX="20.25" PointY="39.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_Warehouse" Width="1.5" PointX="0.75" PointY="16.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_WarehouseControl" Width="1.5" PointX="18" PointY="30.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_WarehouseControlDetail" Width="1.5" PointX="20.25" PointY="29.625" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.Tb_ZipCode" Width="1.5" PointX="16.5" PointY="23.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.TE_Activity" Width="1.5" PointX="23.75" PointY="23.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.TE_Board" Width="1.5" PointX="23.75" PointY="20.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.TE_Body" Width="1.5" PointX="28.25" PointY="23.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.TE_Header" Width="1.5" PointX="26" PointY="23.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.TE_RelActivityBoard" Width="1.5" PointX="26" PointY="19.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.TE_Status" Width="1.5" PointX="26" PointY="26.75" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ENSES_HostingCoordinator_ENSES_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ENSES_RelGuestsHosting_ENSES_Guests" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ENSES_RelGuestsHosting_ENSES_HostingCoordinator" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ENSES_User_ENSES_Rol" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_AciertosJornadas_Q_Participante" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_AciertosJornadas_Q_Quiniela" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_RelQuinielaParticipante_Q_Participante" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_Resultados_Q_Participante" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_Total_Q_Participante" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_Pronostico_Q_Quiniela" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_Resultados_Q_Pronostico" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_RelQuinielaParticipante_Q_Quiniela" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Q_Total_Q_Quiniela" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Client_Tb_Locality" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Client_Tb_Municipality" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Client_Tb_State" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Client_Tb_Suburb" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Client_Tb_ZipCode" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesHeader_Tb_Client" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesHeader_Tb_Client1" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_FilesPaymentProfits_Tb_PaymentProfits" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_FilesSalesReport_Tb_SalesReport" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Inventory_Tb_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_RelProdWHControl_Tb_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesReport_Tb_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TransportGuide_Tb_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_User_Tb_Group" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_HitchSalesReport_Tb_SalesReport" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_HitchSalesReport_Tb_TypeHSR" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Inventory_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_InventoryPaymentProfit_Tb_PaymentProfits" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_InventoryPaymentProfit_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Locality_Tb_State" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Municipality_Tb_State" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_StatusDocumentId" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_User" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_User1" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_User2" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_User3" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_User4" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotes_Tb_User5" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotesDetail_Tb_OutputNotes" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Rel_WHC_OCN_Tb_OutputNotes" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_OutputNotesDetail_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_PaymentProfitProduct_Tb_PaymentProfits" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_PaymentProfitProduct_Tb_paymentsProfitsRows" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_PaymentProfits_Tb_User" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_paymentsProfitsRows_Tb_PaymentProfits" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Rel_PP_Sales_Tb_PaymentProfits" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Product_Tb_ProductType" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Product_Tb_UnitMeasure" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_RelProdWHControl_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesDetail_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TransportGuideDetail_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_WarehouseControlDetail_Tb_Product" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_User_Tb_Profile" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Rel_PP_Sales_Tb_SalesHeader" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Rel_SR_Sales_Tb_SalesHeader" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Rel_WHC_OCN_Tb_WarehouseControl" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_RelProdWHControl_Tb_WarehouseControl" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_RelWHC_TransGuide_Tb_TransportGuide" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_RelWHC_TransGuide_Tb_WarehouseControl" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_RouteDetail_Tb_Route" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TransportGuide_Tb_Route" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesDetail_Tb_SalesHeader" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesHeader_Tb_StatusCard" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesHeader_Tb_User" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesPayment_Tb_SalesHeader" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesPayment_Tb_User" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesPayment_Tb_User1" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_SalesReportDetail_Tb_SalesReport" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_Suburb_Tb_ZipCode" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndOthersPayments_Tb_TndUsuarios" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndOthersProds_Tb_TndUsuarios" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndPayments_Tb_TndRelUsuariosTanda" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndProducto_Tb_TndRelUsuariosTanda" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndRelUsuariosTanda_Tb_TndStatusUsuarios" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndRelUsuariosTanda_Tb_TndTanda" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndRelUsuariosTanda_Tb_TndUsuarios" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndUsuarios_Tb_TndRol" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TndTanda_Tb_TndStatusTanda" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_TransportGuideDetail_Tb_TransportGuide" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_UserLog_Tb_User" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Tb_WarehouseControlDetail_Tb_WarehouseControl" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TE_Body_TE_Activity" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TE_RelActivityBoard_TE_Activity" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TE_Header_TE_Board" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TE_RelActivityBoard_TE_Board" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TE_Body_TE_Header" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TE_Body_TE_Status" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

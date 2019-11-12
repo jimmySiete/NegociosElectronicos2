@@ -34,12 +34,14 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_ComentarioProducto> NE_ComentarioProducto { get; set; }
         public virtual DbSet<NE_ComentarioVehiculo> NE_ComentarioVehiculo { get; set; }
         public virtual DbSet<NE_CuerpoChat> NE_CuerpoChat { get; set; }
+        public virtual DbSet<NE_EmailTemplate> NE_EmailTemplate { get; set; }
         public virtual DbSet<NE_EncabezadoChat> NE_EncabezadoChat { get; set; }
         public virtual DbSet<NE_Encuesta> NE_Encuesta { get; set; }
         public virtual DbSet<NE_FAQS> NE_FAQS { get; set; }
         public virtual DbSet<NE_Marca> NE_Marca { get; set; }
         public virtual DbSet<NE_Producto> NE_Producto { get; set; }
         public virtual DbSet<NE_ProductoImagen> NE_ProductoImagen { get; set; }
+        public virtual DbSet<NE_RecoveryPassword> NE_RecoveryPassword { get; set; }
         public virtual DbSet<NE_Rol> NE_Rol { get; set; }
         public virtual DbSet<NE_Sexo> NE_Sexo { get; set; }
         public virtual DbSet<NE_Template> NE_Template { get; set; }
@@ -48,85 +50,5 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_Vehiculo> NE_Vehiculo { get; set; }
         public virtual DbSet<NE_VehiculoImagen> NE_VehiculoImagen { get; set; }
         public virtual DbSet<NE_Visita> NE_Visita { get; set; }
-        public virtual DbSet<NE_EmailTemplate> NE_EmailTemplate { get; set; }
-        public virtual DbSet<NE_RecoveryPassword> NE_RecoveryPassword { get; set; }
-        public virtual DbSet<ENSES_Group> ENSES_Group { get; set; }
-        public virtual DbSet<ENSES_Guests> ENSES_Guests { get; set; }
-        public virtual DbSet<ENSES_Hosting> ENSES_Hosting { get; set; }
-        public virtual DbSet<ENSES_HostingCoordinator> ENSES_HostingCoordinator { get; set; }
-        public virtual DbSet<ENSES_LocalDiocese> ENSES_LocalDiocese { get; set; }
-        public virtual DbSet<ENSES_RelGuestsHosting> ENSES_RelGuestsHosting { get; set; }
-        public virtual DbSet<ENSES_Rol> ENSES_Rol { get; set; }
-        public virtual DbSet<ENSES_Settings> ENSES_Settings { get; set; }
-        public virtual DbSet<ENSES_User> ENSES_User { get; set; }
-        public virtual DbSet<Q_AciertosJornadas> Q_AciertosJornadas { get; set; }
-        public virtual DbSet<Q_Config> Q_Config { get; set; }
-        public virtual DbSet<Q_Participante> Q_Participante { get; set; }
-        public virtual DbSet<Q_Pronostico> Q_Pronostico { get; set; }
-        public virtual DbSet<Q_Quiniela> Q_Quiniela { get; set; }
-        public virtual DbSet<Q_RelQuinielaParticipante> Q_RelQuinielaParticipante { get; set; }
-        public virtual DbSet<Q_Resultados> Q_Resultados { get; set; }
-        public virtual DbSet<Q_Total> Q_Total { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Tb_Client> Tb_Client { get; set; }
-        public virtual DbSet<Tb_FilesPaymentProfits> Tb_FilesPaymentProfits { get; set; }
-        public virtual DbSet<Tb_FilesSalesReport> Tb_FilesSalesReport { get; set; }
-        public virtual DbSet<Tb_Group> Tb_Group { get; set; }
-        public virtual DbSet<Tb_HitchSalesReport> Tb_HitchSalesReport { get; set; }
-        public virtual DbSet<Tb_Inventory> Tb_Inventory { get; set; }
-        public virtual DbSet<Tb_InventoryPaymentProfit> Tb_InventoryPaymentProfit { get; set; }
-        public virtual DbSet<Tb_Locality> Tb_Locality { get; set; }
-        public virtual DbSet<Tb_Municipality> Tb_Municipality { get; set; }
-        public virtual DbSet<Tb_OutputNotes> Tb_OutputNotes { get; set; }
-        public virtual DbSet<Tb_OutputNotesDetail> Tb_OutputNotesDetail { get; set; }
-        public virtual DbSet<Tb_PaymentProfitProduct> Tb_PaymentProfitProduct { get; set; }
-        public virtual DbSet<Tb_PaymentProfits> Tb_PaymentProfits { get; set; }
-        public virtual DbSet<Tb_paymentsProfitsRows> Tb_paymentsProfitsRows { get; set; }
-        public virtual DbSet<Tb_Product> Tb_Product { get; set; }
-        public virtual DbSet<Tb_ProductType> Tb_ProductType { get; set; }
-        public virtual DbSet<Tb_Profile> Tb_Profile { get; set; }
-        public virtual DbSet<Tb_Rel_PP_Sales> Tb_Rel_PP_Sales { get; set; }
-        public virtual DbSet<Tb_Rel_SR_Sales> Tb_Rel_SR_Sales { get; set; }
-        public virtual DbSet<Tb_Rel_WHC_OCN> Tb_Rel_WHC_OCN { get; set; }
-        public virtual DbSet<Tb_RelProdWHControl> Tb_RelProdWHControl { get; set; }
-        public virtual DbSet<Tb_RelWHC_TransGuide> Tb_RelWHC_TransGuide { get; set; }
-        public virtual DbSet<Tb_Route> Tb_Route { get; set; }
-        public virtual DbSet<Tb_RouteDetail> Tb_RouteDetail { get; set; }
-        public virtual DbSet<Tb_SalesDetail> Tb_SalesDetail { get; set; }
-        public virtual DbSet<Tb_SalesHeader> Tb_SalesHeader { get; set; }
-        public virtual DbSet<Tb_SalesPayment> Tb_SalesPayment { get; set; }
-        public virtual DbSet<Tb_SalesReport> Tb_SalesReport { get; set; }
-        public virtual DbSet<Tb_SalesReportDetail> Tb_SalesReportDetail { get; set; }
-        public virtual DbSet<Tb_Settings> Tb_Settings { get; set; }
-        public virtual DbSet<Tb_State> Tb_State { get; set; }
-        public virtual DbSet<Tb_StatusCard> Tb_StatusCard { get; set; }
-        public virtual DbSet<Tb_StatusDocumentId> Tb_StatusDocumentId { get; set; }
-        public virtual DbSet<Tb_Suburb> Tb_Suburb { get; set; }
-        public virtual DbSet<Tb_TndOthersPayments> Tb_TndOthersPayments { get; set; }
-        public virtual DbSet<Tb_TndOthersProds> Tb_TndOthersProds { get; set; }
-        public virtual DbSet<Tb_TndPayments> Tb_TndPayments { get; set; }
-        public virtual DbSet<Tb_TndProducto> Tb_TndProducto { get; set; }
-        public virtual DbSet<Tb_TndRelUsuariosTanda> Tb_TndRelUsuariosTanda { get; set; }
-        public virtual DbSet<Tb_TndRol> Tb_TndRol { get; set; }
-        public virtual DbSet<Tb_TndStatusTanda> Tb_TndStatusTanda { get; set; }
-        public virtual DbSet<Tb_TndStatusUsuarios> Tb_TndStatusUsuarios { get; set; }
-        public virtual DbSet<Tb_TndTanda> Tb_TndTanda { get; set; }
-        public virtual DbSet<Tb_TndUsuarios> Tb_TndUsuarios { get; set; }
-        public virtual DbSet<Tb_TransportGuide> Tb_TransportGuide { get; set; }
-        public virtual DbSet<Tb_TransportGuideDetail> Tb_TransportGuideDetail { get; set; }
-        public virtual DbSet<Tb_TypeHSR> Tb_TypeHSR { get; set; }
-        public virtual DbSet<Tb_UnitMeasure> Tb_UnitMeasure { get; set; }
-        public virtual DbSet<Tb_User> Tb_User { get; set; }
-        public virtual DbSet<Tb_UserLog> Tb_UserLog { get; set; }
-        public virtual DbSet<Tb_Warehouse> Tb_Warehouse { get; set; }
-        public virtual DbSet<Tb_WarehouseControl> Tb_WarehouseControl { get; set; }
-        public virtual DbSet<Tb_WarehouseControlDetail> Tb_WarehouseControlDetail { get; set; }
-        public virtual DbSet<Tb_ZipCode> Tb_ZipCode { get; set; }
-        public virtual DbSet<TE_Activity> TE_Activity { get; set; }
-        public virtual DbSet<TE_Board> TE_Board { get; set; }
-        public virtual DbSet<TE_Body> TE_Body { get; set; }
-        public virtual DbSet<TE_Header> TE_Header { get; set; }
-        public virtual DbSet<TE_RelActivityBoard> TE_RelActivityBoard { get; set; }
-        public virtual DbSet<TE_Status> TE_Status { get; set; }
     }
 }

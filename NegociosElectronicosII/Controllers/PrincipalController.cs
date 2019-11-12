@@ -25,24 +25,37 @@ namespace NegociosElectronicosII.Controllers
                 //si hay objetos con oferta, lo agregamos a la lista
                 if (db.NE_Producto.Any(x => x.MarcarComoOferta))
                 {
-                    ofertas.AddRange(db.NE_Producto.Where(x => x.MarcarComoOferta).Select(x => new OfertaModel()
+                    List<OfertaModel> ofertaProducto = db.NE_Producto.Where(x => x.MarcarComoOferta).Select(x => new OfertaModel()
                     {
-                        ImagenesProducto = x.NE_ProductoImagen,
-                        ImagenesVehiculo = null,
                         IsProduct = true,
-                        Text = x.Nombre
-                    }));
+                        Text = x.Nombre,
+                        ID= x.ProductoId
+                    }).ToList();
+
+                    foreach (var item in ofertaProducto) 
+                        if (db.NE_ProductoImagen.Any(x => x.ProductoId == item.ID))
+                            item.ImagenesProducto.AddRange(db.NE_ProductoImagen.Where(x => x.ProductoId == item.ID));
+                    
+                    ofertas.AddRange(ofertaProducto);
                 }
 
                 //si hay autos con oferta, lo agregamos a la lista
                 if (db.NE_Vehiculo.Any(x => x.MarcarComoOferta))
-                    ofertas.AddRange(db.NE_Vehiculo.Where(x => x.MarcarComoOferta).Select(x => new OfertaModel()
+                {
+                    List<OfertaModel> ofertaVehiculo = db.NE_Vehiculo.Where(x => x.MarcarComoOferta).Select(x => new OfertaModel()
                     {
-                        ImagenesProducto = null,
-                        ImagenesVehiculo = x.NE_VehiculoImagen != null ? x.NE_VehiculoImagen.ToList() : new List<NE_VehiculoImagen>(),
                         IsProduct = true,
-                        Text = x.NombreVehiculo + " " + x.Descripcion
-                    }));
+                        Text = x.NombreVehiculo + " " + x.Descripcion,
+                        ID= x.VehiculoId
+                    }).ToList();
+
+                    foreach (var item in ofertaVehiculo)
+                        if (db.NE_VehiculoImagen.Any(x => x.VehiculoId == item.ID))
+                            item.ImagenesVehiculo.AddRange(db.NE_VehiculoImagen.Where(x => x.VehiculoId == item.ID));
+
+                    ofertas.AddRange(ofertaVehiculo);
+                }
+
 
                 //ordenar aleatoriamente en el arreglo
                 ofertas = DesordenarLista(ofertas);
