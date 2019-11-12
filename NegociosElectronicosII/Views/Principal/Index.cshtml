@@ -16,7 +16,7 @@
 
 <!-- ========================= SECTION ITEMS ========================= -->
 <section class="section-request bg padding-y-sm">
-    <div class="container" id="GridVehiculo">
+    <div class="container" id="_GridVehiculo">
         Cargando...
     </div>
 </section>
@@ -26,7 +26,7 @@
 
 <!-- ========================= SECTION ITEMS ========================= -->
 <section class="section-request bg padding-y-sm">
-    <div class="container" id="GridProducto">
+    <div class="container" id="_GridProducto">
         Cargando...
     </div>
 </section>
@@ -60,8 +60,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#ejemplo").load("@Url.Action("CarruselParcial","Principal")");
-        $("#GridVehiculo").load("@Url.Action("VehiculoParcial","Principal")");
-        $("#GridProducto").load("@Url.Action("ArticuloParcial","Principal")");
+        $("#_GridVehiculo").load("@Url.Action("VehiculoParcial","Principal")");
+        $("#_GridProducto").load("@Url.Action("ArticuloParcial","Principal")");
     });
   
         

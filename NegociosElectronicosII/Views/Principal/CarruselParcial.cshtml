@@ -50,11 +50,11 @@
                             <figure class="itemside has-bg border-bottom" style="height: 20%;">
                                 @if (item.IsProduct && item.ImagenesProducto.Any())
                                 {
-                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Producto/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Productos/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
                                 }
                                 else if (!item.IsProduct && item.ImagenesVehiculo.Any())
                                 {
-                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculo/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculos/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
                                 }
                                 <figcaption class="p-2">
                                     <h6 class="title">@item.Text</h6>

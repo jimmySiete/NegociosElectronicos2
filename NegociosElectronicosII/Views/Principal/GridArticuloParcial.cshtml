@@ -8,10 +8,17 @@
                 <img src="@Url.Content("~/Imagenes/Productos/" + item.Nombre + item.Extension)">
             </div>
             <figcaption class="info-wrap">
-                <a href="#" class="title">Good item name</a>
+                <a href="#" class="title">@item.NE_Producto.Nombre (@item.NE_Producto.Descripcion)</a>
                 <div class="price-wrap">
-                    <span class="price-new">$1280</span>
-                    <del class="price-old">$1980</del>
+                    @if (item.NE_Producto.MarcarComoOferta)
+                    {
+                        <span class="price-new">@String.Format("{0:C2}", item.NE_Producto.PrecioOFerta)</span>
+                        <del class="price-old">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</del>
+                    }
+                    else
+                    {
+                        <span class="price-new">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
+                    }
                 </div> <!-- price-wrap.// -->
             </figcaption>
         </figure> <!-- card // -->

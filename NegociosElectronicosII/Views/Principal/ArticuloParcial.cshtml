@@ -1,9 +1,9 @@
 ﻿
 <header class="section-heading heading-line">
-    <h4 class="title-section bg text-uppercase">Recommended items</h4>
+    <h4 class="title-section bg text-uppercase">Articulos</h4>
 </header>
 
-<div class="row" id="filtro">
+<div class="row" id="filtroArticulo">
 
 </div> <!-- row.// -->
 
@@ -11,7 +11,7 @@
     <span>3897 results for "Item"</span>
 </div>
 
-<div class="row-sm" id="grid">
+<div class="row-sm" id="gridArticulo">
 
 </div> <!-- row.// -->
 <div class="row">
@@ -31,8 +31,8 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $("#filtro").load("@Url.Action("FiltroArticuloParcial","Principal")");
-        $("#grid").load("@Url.Action("GridArticuloParcial","Principal")");
+        $("#filtroArticulo").load("@Url.Action("FiltroArticuloParcial","Principal")");
+        $("#gridArticulo").load("@Url.Action("GridArticuloParcial","Principal")");
     });
 
 </script>
