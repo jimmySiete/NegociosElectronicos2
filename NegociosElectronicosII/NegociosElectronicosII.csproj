@@ -452,6 +452,7 @@
     <Content Include="Content\ui-ecommerce\starter-page-listing.html" />
     <Content Include="Content\ui-ecommerce\starter-page-order.html" />
     <Content Include="favicon.ico" />
+    <Content Include="Imagenes\Cargador\loader4.gif" />
     <Content Include="Imagenes\fondo.JPG" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Configuration;
 using NegociosElectronicosII.Models;
 
-namespace NegociosElectronicosII.GlobalCode
+namespace NegociosElectronicosII
 {
     public class Settings
     {
@@ -111,5 +111,7 @@ namespace NegociosElectronicosII.GlobalCode
         //{
         //    return db.NE_Usuario.Where(x => x.RolId == KEY).First().ID_Permission;
         //}
+
+        public static Int32 NUMERO_DE_ITEMS_POR_PAGINA = 8;
     }
 }

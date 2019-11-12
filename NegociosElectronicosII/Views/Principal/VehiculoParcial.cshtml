@@ -3,39 +3,37 @@
     <h4 class="title-section bg text-uppercase">Vehiculos</h4>
 </header>
 
-<div class="row" id="filtroVehiculo">
-
-</div> <!-- row.// -->
-
-<div class="padding-y-sm">
-    <span>3897 results for "Item"</span>
-</div>
-
-<div class="row-sm" id="gridVehiculo">
-  
-</div> <!-- row.// -->
-<div class="row">
-    <div class="col-md-12 text-center">
-
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
-    </div>
-
-</div>
+<div class="row" id="filtroVehiculo"></div> 
+<div id="gridVehiculo"></div>
 
 
 <script type="text/javascript">
     $(document).ready(function () {
         $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")");
-        $("#gridVehiculo").load("@Url.Action("GridVehiculoParcial","Principal")");
+
+        fnPintarGridDeVehiculos(1);
     });
+
+    //public PartialViewResult GridVehiculoParcial(Int32 Pagina,String Marcas,String Color, String Categoria, String Transmision, Decimal PrecioInicial, Decimal PrecioFinal)
+    function fnPintarGridDeVehiculos(Pagina) {
+        var marcas_seleccionadas = [];
+
+        $.each($('.marca_auto'), function (i, item) {
+            if($(item).is(':checked'))
+                marcas_seleccionadas.push($(item).val());
+        });
+        
+        var datos= {
+            Pagina: Pagina,
+            Marcas: marcas_seleccionadas.length>0? marcas_seleccionadas.join(','):null
+        };
+        $("#gridVehiculo").empty();
+        $("#gridVehiculo").html('<img src="@(Url.Content("~/Imagenes/Cargador/loader4.gif"))"/>');
+        
+        $("#gridVehiculo").load("@Url.Action("GridVehiculoParcial","Principal")",datos,function(){
+            
+        });
+    }
 
 </script>
 
