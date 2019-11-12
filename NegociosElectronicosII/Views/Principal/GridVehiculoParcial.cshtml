@@ -1,0 +1,23 @@
+﻿@model IEnumerable<NegociosElectronicosII.Models.NE_VehiculoImagen>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-3 col-sm-6">
+        <figure class="card card-product">
+            <div class="img-wrap">
+                <img src="@Url.Content("~/Imagenes/Vehiculo/" + item.Nombre + item.Extension)">
+            </div>
+            <figcaption class="info-wrap">
+                <a href="#" class="title">@item.NE_Vehiculo.NombreVehiculo</a>
+                <br>
+                <span class="navbar-default">@item.NE_Vehiculo.NE_Marca.Marca</span>
+                <br>
+                <span class="price-wrap">@item.NE_Vehiculo.PrecioCompra</span>
+                @*<div class="price-wrap">
+
+                    </div>*@ <!-- price-wrap.// -->
+            </figcaption>
+        </figure> <!-- card // -->
+    </div> <!-- col // -->
+}
+

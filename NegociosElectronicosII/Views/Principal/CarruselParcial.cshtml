@@ -10,46 +10,25 @@
     <div class="card-body">
         <div class="row row-sm">
             <aside class="col-md-3">
-                <h5 class="text-uppercase">My Markets</h5>
+                <h5 class="text-uppercase">Marcas</h5>
                 <ul class="menu-category">
-                    <li> <a href="#">Food &amp Beverage </a></li>
-                    <li> <a href="#">Home Equipments </a></li>
-                    <li> <a href="#">Machinery Items </a></li>
-                    <li> <a href="#">Toys & Hobbies  </a></li>
-                    <li> <a href="#">Consumer Electronics  </a></li>
-                    <li> <a href="#">Beauty & Personal Care  </a></li>
-                    <li class="has-submenu">
-                        <a href="#">More category  <i class="icon-arrow-right pull-right"></i></a>
-                        <ul class="submenu">
-                            <li> <a href="#">Food &amp Beverage </a></li>
-                            <li> <a href="#">Home Equipments </a></li>
-                            <li> <a href="#">Machinery Items </a></li>
-                            <li> <a href="#">Toys & Hobbies  </a></li>
-                            <li> <a href="#">Consumer Electronics  </a></li>
-                            <li> <a href="#">Home & Garden  </a></li>
-                            <li> <a href="#">Beauty & Personal Care  </a></li>
-                        </ul>
-                    </li>
+                    @foreach (var item in (List<NegociosElectronicosII.Models.NE_Marca>)ViewBag.Marcas)
+                    {
+                        <li> <a href="#">@item.Marca </a></li>
+                    }
                 </ul>
-
             </aside> <!-- col.// -->
             <div class="col-md-6">
 
                 <!-- ================= main slide ================= -->
                 <div class="owl-init slider-main owl-carousel" data-items="1" data-nav="true" data-dots="false">
-                    @*<div class="item-slide">
-                            <img src="images/banners/slide1.jpg">
-                        </div>
-                        <div class="item-slide">
-                            <img src="@Url.Content("~/Imagenes/Carrusel/"+item.NombreArchivo +item.Extension)">
-                        </div>
-                        <div class="item-slide">
-                            <img src="images/banners/slide3.jpg">
-                        </div>*@
-
+                    
+                    @foreach (var item in Model)
+                    {
                     <div class="item-slide">
-                        <img src="@Url.Content("~/Imagenes/Carrusel/banner_0.png")">
+                        <img src="@Url.Content("~/Imagenes/Carrusel/" + item.NombreArchivo + item.Extension)">
                     </div>
+                    }
 
                 </div>
                 <!-- ============== main slidesow .end // ============= -->
@@ -57,9 +36,56 @@
             </div> <!-- col.// -->
             <aside class="col-md-3">
 
-                <h6 class="title-bg bg-secondary"> Qualified Suppliers</h6>
+                <h6 class="title-bg bg-secondary"> Ofertas</h6>
                 <div style="height:280px;">
-                    <figure class="itemside has-bg border-bottom" style="height: 33%;">
+
+                    @if (((List<NegociosElectronicosII.Models.OfertaModel>)ViewBag.Ofertas).Any())
+                    {
+
+
+                        foreach (var item in (List<NegociosElectronicosII.Models.OfertaModel>)ViewBag.Ofertas)
+                        {
+                            if (item.GetPositionRandom > 5)
+                            {
+                            <figure class="itemside has-bg border-bottom" style="height: 20%;">
+                                @if (item.IsProduct && item.ImagenesProducto.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Producto/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                }
+                                else if (!item.IsProduct && item.ImagenesVehiculo.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculo/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                }
+                                <figcaption class="p-2">
+                                    <h6 class="title">@item.Text</h6>
+                                    <a href="#">Ver Compra</a>
+                                </figcaption>
+                            </figure>
+                            }
+                            else
+                            {
+                            <figure class="itemside has-bg border-bottom" style="height: 20%;">
+                                @if (item.IsProduct && item.ImagenesProducto.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Producto/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" height="80" />
+                                }
+                                else if (!item.IsProduct && item.ImagenesVehiculo.Any())
+                                {
+                                    <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculo/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" height="80" />
+                                }
+                                <figcaption class="p-2">
+                                    <h6 class="title">@item.Text</h6>
+                                    <a href="#">Ver Compra</a>
+                                </figcaption>
+                            </figure>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <h6>Sin ofertas <br />Por el momento</h6>
+                    }
+                    @*<figure class="itemside has-bg border-bottom" style="height: 33%;">
                         <img class="img-bg" src="~/Content/ui-ecommerce/images/items/item-sm.png" />
                         <figcaption class="p-2">
                             <h6 class="title">One request, many offers </h6>
@@ -80,7 +106,7 @@
                             <h6 class="title">One request, many offers </h6>
                             <a href="#">Good link</a>
                         </figcaption>
-                    </figure>
+                    </figure>*@
                 </div>
 
             </aside>
