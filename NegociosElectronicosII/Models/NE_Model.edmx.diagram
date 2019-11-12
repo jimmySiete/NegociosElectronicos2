@@ -51,15 +51,15 @@
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrito" Width="1.5" PointX="11.25" PointY="10.25" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Width="1.5" PointX="8.25" PointY="14.25" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrito" Width="1.5" PointX="8.25" PointY="14.25" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Width="1.5" PointX="11.25" PointY="10.25" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

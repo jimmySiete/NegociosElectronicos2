@@ -40,8 +40,8 @@
           <Property Name="CarritoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RecordDate" Type="datetime" Nullable="false" />
           <Property Name="UsuarioId" Type="int" Nullable="false" />
-          <Property Name="ProductoId" Type="int" Nullable="false" />
-          <Property Name="VehiculoId" Type="int" Nullable="false" />
+          <Property Name="ProductoId" Type="int" />
+          <Property Name="VehiculoId" Type="int" />
         </EntityType>
         <EntityType Name="NE_Carrusel">
           <Key>
@@ -145,8 +145,8 @@
           <Property Name="ListadeDeseosId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RecordDate" Type="datetime" Nullable="false" />
           <Property Name="UsuarioId" Type="int" Nullable="false" />
-          <Property Name="ProductoId" Type="int" Nullable="false" />
-          <Property Name="VehiculoId" Type="int" Nullable="false" />
+          <Property Name="ProductoId" Type="int" />
+          <Property Name="VehiculoId" Type="int" />
         </EntityType>
         <EntityType Name="NE_Marca">
           <Key>
@@ -275,7 +275,7 @@
           <Property Name="UsuarioId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="CarritoProductoId_ProductoId">
-          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="1" />
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
           <End Role="NE_Carrito" Type="Self.NE_Carrito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Producto">
@@ -299,7 +299,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="CarritoVehiculoId_VehiculoId">
-          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="1" />
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
           <End Role="NE_Carrito" Type="Self.NE_Carrito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Vehiculo">
@@ -311,7 +311,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DeseosProductoId_ProductoId">
-          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="1" />
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
           <End Role="NE_ListaDeDeseos" Type="Self.NE_ListaDeDeseos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Producto">
@@ -335,7 +335,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DeseosVehiculoId_VehiculoId">
-          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="1" />
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
           <End Role="NE_ListaDeDeseos" Type="Self.NE_ListaDeDeseos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Vehiculo">
@@ -875,7 +875,7 @@
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="NE_Accion">
           <Key>
             <PropertyRef Name="AccionId" />
@@ -1432,8 +1432,8 @@
           <Property Name="CarritoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="ProductoId" Type="Int32" Nullable="false" />
-          <Property Name="VehiculoId" Type="Int32" Nullable="false" />
+          <Property Name="ProductoId" Type="Int32" />
+          <Property Name="VehiculoId" Type="Int32" />
           <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId" FromRole="NE_Carrito" ToRole="NE_Producto" />
           <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Carrito" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId" FromRole="NE_Carrito" ToRole="NE_Vehiculo" />
@@ -1445,14 +1445,14 @@
           <Property Name="ListadeDeseosId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
-          <Property Name="ProductoId" Type="Int32" Nullable="false" />
-          <Property Name="VehiculoId" Type="Int32" Nullable="false" />
+          <Property Name="ProductoId" Type="Int32" />
+          <Property Name="VehiculoId" Type="Int32" />
           <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" FromRole="NE_ListaDeDeseos" ToRole="NE_Producto" />
           <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_ListaDeDeseos" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" FromRole="NE_ListaDeDeseos" ToRole="NE_Vehiculo" />
         </EntityType>
         <Association Name="CarritoProductoId_ProductoId">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Producto">
@@ -1476,7 +1476,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="CarritoVehiculoId_VehiculoId">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Vehiculo">
@@ -1488,7 +1488,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DeseosProductoId_ProductoId">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Producto">
@@ -1512,7 +1512,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DeseosVehiculoId_VehiculoId">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NE_Vehiculo">
