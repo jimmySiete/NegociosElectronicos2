@@ -43,7 +43,7 @@
     function agregar(nuevo, cons) {
         $.ajax({
             url: '@Url.Action("AgregarCarro", "Carrito")',
-            data: { id: $(nuevo).val, constante: $(cons).val },
+            data: { id: nuevo, constante: cons },
             type: 'POST',
              success: function (response) {
                     alert(response.Message);
