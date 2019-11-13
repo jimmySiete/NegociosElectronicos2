@@ -741,6 +741,7 @@
     <Content Include="Views\Principal\ListaDeDeseos.cshtml" />
     <Content Include="Views\Principal\CarritoDeCompras.cshtml" />
     <Content Include="Views\Base\ComboDeCatergoriasParcial.cshtml" />
+    <Content Include="Views\Carrito\CarritoDesplegable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -749,7 +750,6 @@
     <Folder Include="GlobalCode\Constans\" />
     <Folder Include="Imagenes\Productos\" />
     <Folder Include="Imagenes\Vehiculo\" />
-    <Folder Include="Views\Carrito\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

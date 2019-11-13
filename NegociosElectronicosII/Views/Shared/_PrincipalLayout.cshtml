@@ -159,15 +159,8 @@
                                     </div> <!--  dropdown-menu .// -->
                                 </div>  <!-- widget-header .// -->
                             </div> <!-- col.// -->
-                            <div class="col-auto">
-                                <a href="@(Url.Action("CarritoDeCompras","Principal"))" class="widget-header">
-                                    <div class="icontext">
-                                        <div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i></div>
-                                        <div class="text-wrap text-dark">
-                                            Carrito de <br> Compras
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="col-auto" id="CarritoParcial">
+                              
                             </div> <!-- col.// -->
                             <div class="col-auto">
                                 <a href="#" class="widget-header">
@@ -262,7 +255,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#CategoriasParcial").load("@Url.Action("ComboDeCatergoriasParcial", "Base")");
+           
+            RefrescarCarrito();
         });
+
+        function RefrescarCarrito() {
+             $("#CarritoParcial").empty();
+             $("#CarritoParcial").load("@Url.Action("CarritoDesplegable", "Carrito")");
+        }
     </script>
 
     <!-- ========================= Script principal END // ========================= -->
