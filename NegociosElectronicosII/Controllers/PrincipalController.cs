@@ -150,9 +150,9 @@ namespace NegociosElectronicosII.Controllers
                     && Ids_Categorias.Contains(x.NE_Vehiculo.CategoriaId)
                     && Ids_Transmision.Contains(x.NE_Vehiculo.TransmisionId)
                     && (
-                            (x.NE_Vehiculo.MarcarComoOferta? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioInicial<= 0? Min : PrecioInicial)
+                            (x.NE_Vehiculo.MarcarComoOferta? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioInicial< 0? Min : PrecioInicial)
                             &&
-                            (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioFinal <= 0 ? Min : PrecioFinal)
+                            (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
                         )
                 )
                 .ToList();
