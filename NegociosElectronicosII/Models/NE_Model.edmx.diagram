@@ -59,6 +59,14 @@
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_TipoPago" Width="1.5" PointX="6.75" PointY="34.875" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Venta" Width="1.5" PointX="9" PointY="34.375" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_VentaDetalle" Width="1.5" PointX="11.25" PointY="14.25" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.VentaProductoId_ProductoId" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_TipoPago" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.VentaVehiculo_IdVehiculo" />
+        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DetalleVentaId_VentaId" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,18 +12,18 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_Transmision
+    public partial class NE_TipoPago
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NE_Transmision()
+        public NE_TipoPago()
         {
-            this.NE_Vehiculo = new HashSet<NE_Vehiculo>();
+            this.NE_Venta = new HashSet<NE_Venta>();
         }
     
-        public int TransmisionId { get; set; }
-        public string Transmision { get; set; }
+        public int TipoPagoId { get; set; }
+        public string TipoPago { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_Vehiculo> NE_Vehiculo { get; set; }
+        public virtual ICollection<NE_Venta> NE_Venta { get; set; }
     }
 }

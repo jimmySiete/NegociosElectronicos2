@@ -191,20 +191,78 @@ namespace NegociosElectronicosII.Controllers
             return PartialView(ImagenesVehiculo);
         }
 
-        public PartialViewResult GridArticuloParcial()
+        public PartialViewResult GridArticuloParcial(Int32 Pagina, String Marcas, String Color, Decimal PrecioInicial, Decimal PrecioFinal)
         {
-            List<NE_ProductoImagen> ImagenesVehiculo = db.NE_ProductoImagen.ToList();
-            return PartialView(ImagenesVehiculo);
+            //Se crean listas vacias en donde vaciaremos los strings de la vista
+            List<Int32> Ids_Marcas = new List<int>();
+            List<Int32> Ids_Color = new List<int>();
+
+            //obtener precio inicial y precio final max y min
+            Decimal Max = db.NE_Producto.Max(x => x.MarcarComoOferta ? x.PrecioOFerta : x.PrecioVenta);
+            Decimal Min = db.NE_Producto.Min(x => x.MarcarComoOferta ? x.PrecioOFerta : x.PrecioVenta);
+
+            //si la variable marcas viene como null o vacio entonces toma el arreglo del catalogo
+            if (!String.IsNullOrEmpty(Marcas))
+                Ids_Marcas = Marcas.Split(',').ToList().Select(Int32.Parse).ToList();
+            else
+                Ids_Marcas = db.NE_Marca.Select(x => x.MarcaId).ToList();
+
+            //si la variable color viene como null o vacio entonces toma el arreglo del catalogo
+            if (!String.IsNullOrEmpty(Color))
+                Ids_Color = Color.Split(',').ToList().Select(Int32.Parse).ToList();
+            else
+                Ids_Color = db.NE_Color.Select(x => x.ColorId).ToList();
+
+            //obtenemos el filtro de los Articuloss seleccionados y lo convertimos a lista
+            List<NE_ProductoImagen> ImagenesArticulo = db.NE_ProductoImagen
+                .Where(x =>
+                    Ids_Marcas.Contains(x.NE_Producto.MarcaId)
+                    && Ids_Color.Contains(x.NE_Producto.ColorId)
+                    && (
+                            (x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta : x.NE_Producto.PrecioVenta) > (PrecioInicial < 0 ? Min : PrecioInicial)
+                            &&
+                            (x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta : x.NE_Producto.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
+                        )
+                )
+                .ToList();
+
+            //Se obtiene el total de los vehiculos
+            Int32 TotalDeArticulos = ImagenesArticulo.Count();
+            //Se obtiene el total de paginas a pintar
+            Int32 NumeroDePaginas = (ImagenesArticulo.Count() / Settings.NUMERO_DE_ITEMS_POR_PAGINA) + 1;
+            //Se obtiene el registro del primer salto de pagina
+            Int32 skip = ((Pagina - 1) * Settings.NUMERO_DE_ITEMS_POR_PAGINA);
+
+            //Se filtra por el paginado de la pagina
+            ImagenesArticulo= ImagenesArticulo.Skip(skip).Take(Settings.NUMERO_DE_ITEMS_POR_PAGINA).ToList();
+
+            //Se pintan en los Viebags los montos, para usarlos en la vista
+            ViewBag.TotalDeArticulos = TotalDeArticulos;
+            ViewBag.NumeroDePaginas = NumeroDePaginas;
+            ViewBag.PaginaActual = Pagina;
+            return PartialView(ImagenesArticulo);
+            //List<NE_ProductoImagen> ImagenesVehiculo = db.NE_ProductoImagen.ToList();
+            //return PartialView(ImagenesVehiculo);
         }
 
         public ActionResult ListaDeDeseos() {
-
-            return View();
+            if (Settings.LoggedUser != null)
+            {
+                List<NE_ListaDeDeseos> deseado = db.NE_ListaDeDeseos.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).ToList();
+                return View(deseado);
+            }
+            else
+                return View();
         }
 
         public ActionResult CarritoDeCompras() {
-
-            return View();
+            if (Settings.LoggedUser != null)
+            {
+                List<NE_Carrito> carro = db.NE_Carrito.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).ToList();
+                return View(carro);
+            }
+            else
+                return View();
         }
     }
 }

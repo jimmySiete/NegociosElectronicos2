@@ -7,23 +7,24 @@ using NegociosElectronicosII.Models;
 
 namespace NegociosElectronicosII.Controllers
 {
-    public class CarritoController : BaseController 
+    public class ListaDeseosController : BaseController
     {
-        // GET: Carrito
+        // GET: ListaDeseos
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpPost]
-        public JsonResult AgregarCarro(int id, int constante)
+        public JsonResult AgregarDeseo(int id, int constante)
         {
-            
+
             if (Settings.LoggedUser == null)
                 return Json(new { Success = false, Message = "Necesitas iniciar sesion" }, JsonRequestBehavior.DenyGet);
-            NE_Carrito nE_Carrito;
+            NE_ListaDeDeseos nE_ListaDeseos;
             if (constante == 1)
             {
-                 nE_Carrito = new NE_Carrito()
+                nE_ListaDeseos = new NE_ListaDeDeseos()
                 {
                     RecordDate = DateTime.Now,
                     UsuarioId = Settings.LoggedUser.UsuarioId,
@@ -34,7 +35,7 @@ namespace NegociosElectronicosII.Controllers
             }
             else
             {
-                 nE_Carrito = new NE_Carrito()
+                nE_ListaDeseos = new NE_ListaDeDeseos()
                 {
                     RecordDate = DateTime.Now,
                     UsuarioId = Settings.LoggedUser.UsuarioId,
@@ -43,46 +44,40 @@ namespace NegociosElectronicosII.Controllers
 
                 };
             }
-            db.NE_Carrito.Add(nE_Carrito);
+            db.NE_ListaDeDeseos.Add(nE_ListaDeseos);
             db.SaveChanges();
-            return Json(new { Success = true, Message = "Añadido al Carrito" }, JsonRequestBehavior.DenyGet);
+            return Json(new { Success = true, Message = "Se añadio a la lista de deseos" }, JsonRequestBehavior.DenyGet);
         }
-
-        public PartialViewResult CarritoDesplegable()
+        public PartialViewResult ListaDesplegable()
         {
             if (Settings.LoggedUser != null)
             {
-                int numero = db.NE_Carrito.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).Count();
-                ViewBag.TotalCarro = numero;
+                int numero = db.NE_ListaDeDeseos.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).Count();
+                ViewBag.TotalDeseos = numero;
                 return PartialView();
             }
             else
                 return PartialView();
         }
-
         [HttpPost]
-        public JsonResult EliminarCarro(int id, int constante)
+        public JsonResult EliminarDeseado(int id, int constante)
         {
 
             if (Settings.LoggedUser == null)
                 return Json(new { Success = false, Message = "Necesitas iniciar sesion" }, JsonRequestBehavior.DenyGet);
-            NE_Carrito nE_Carrito= new NE_Carrito();
+            NE_ListaDeDeseos nE_ListaDeseos = new NE_ListaDeDeseos();
             if (constante == 1)
             {
-                nE_Carrito = db.NE_Carrito.Where(x=>x.VehiculoId==id).First();
+                nE_ListaDeseos = db.NE_ListaDeDeseos.Where(x => x.VehiculoId == id).First();
 
             }
             else
             {
-                nE_Carrito = db.NE_Carrito.Where(x => x.ProductoId == id).First();
+                nE_ListaDeseos = db.NE_ListaDeDeseos.Where(x => x.ProductoId == id).First();
             }
-            db.NE_Carrito.Remove(nE_Carrito);
+            db.NE_ListaDeDeseos.Remove(nE_ListaDeseos);
             db.SaveChanges();
-            return Json(new { Success = true, Message = "Se elimino el producto" }, JsonRequestBehavior.DenyGet);
+            return Json(new { Success = true, Message = "Se elimino el producto de Deseados" }, JsonRequestBehavior.DenyGet);
         }
-
-
-
-
     }
 }
