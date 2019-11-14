@@ -209,6 +209,7 @@
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
+    <Compile Include="Controllers\ListaDeseosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
@@ -309,6 +310,9 @@
     <Compile Include="Models\NE_Template.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NE_TipoPago.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NE_Transmision.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
@@ -319,6 +323,12 @@
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_VehiculoImagen.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_Venta.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_VentaDetalle.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_Visita.cs">
@@ -742,6 +752,7 @@
     <Content Include="Views\Principal\CarritoDeCompras.cshtml" />
     <Content Include="Views\Base\ComboDeCatergoriasParcial.cshtml" />
     <Content Include="Views\Carrito\CarritoDesplegable.cshtml" />
+    <Content Include="Views\ListaDeseos\ListaDesplegable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

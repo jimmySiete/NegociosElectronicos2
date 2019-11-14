@@ -33,13 +33,22 @@
                     @*<div class="price-wrap">
 
                         </div>*@ <!-- price-wrap.// -->
-                    <div class="input-group w-100">
-                        <div class="input-group-append">
-                            <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1)">
-                                <i class="fa fa-shopping-cart"></i> Agregar al Carrito
-                            </button>
-                        </div>
+                <div class="input-group w-100">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1)">
+                            <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                        </button>
                     </div>
+                    <div class="text-right">
+                        <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
+                            <i class="fa fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+
+
                 </figcaption>
             </figure> <!-- card // -->
         </div> <!-- col // -->
@@ -78,9 +87,8 @@
             data: { id: nuevo, constante: cons },
             type: 'POST',
              success: function (response) {
-                    alert(response.Message);
-                    if (response.Success)
-                        window.location.href = '@Url.Action("Index","Login")';
+                 alert(response.Message);
+                 RefrescarCarrito();
                 },
                 error: function () {
                     alert('Error');
@@ -90,6 +98,20 @@
 
     function CambiarDePagina(Pagina) {
         fnPintarGridDeVehiculos(Pagina);
+    }
+     function agregarDeseo(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("AgregarDeseo", "ListaDeseos")',
+            data: { id: nuevo, constante: cons },
+            type: 'POST',
+            success: function (response) {
+                    RefrescarDeseos();
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
     }
      
 </script>

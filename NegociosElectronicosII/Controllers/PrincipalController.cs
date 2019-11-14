@@ -246,13 +246,23 @@ namespace NegociosElectronicosII.Controllers
         }
 
         public ActionResult ListaDeDeseos() {
-
-            return View();
+            if (Settings.LoggedUser != null)
+            {
+                List<NE_ListaDeDeseos> deseado = db.NE_ListaDeDeseos.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).ToList();
+                return View(deseado);
+            }
+            else
+                return View();
         }
 
         public ActionResult CarritoDeCompras() {
-
-            return View();
+            if (Settings.LoggedUser != null)
+            {
+                List<NE_Carrito> carro = db.NE_Carrito.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).ToList();
+                return View(carro);
+            }
+            else
+                return View();
         }
     }
 }

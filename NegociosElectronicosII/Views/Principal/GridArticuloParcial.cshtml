@@ -26,13 +26,19 @@
                         {
                             <span class="price-new">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
                         }
-                        <div class="input-group w-100">
-                            <div class="input-group-append">
-                                <button class="btn btn-warning" type="submit" id="btn_@item.ProductoId" value="@item.ProductoId" onclick="agregar(@item.ProductoId,2)">
-                                    <i class="fa fa-shopping-cart"></i> Agregar al Carrito
-                                </button>
-                            </div>
+                    <div class="input-group w-100">
+                        <div class="input-group-append">
+                            <button class="btn btn-warning" type="submit" id="btn_@item.ProductoId" value="@item.ProductoId" onclick="agregar(@item.ProductoId,2)">
+                                <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                            </button>
                         </div>
+                        <div class="input-group-append">
+                            <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                        
                     </figcaption>
                 </figure> <!-- card // -->
             </div> <!-- col // -->
@@ -88,6 +94,21 @@
 
     function CambiarDePaginaArticulo(Pagina) {
         fnPintarGridDeArticulos(Pagina);
+    }
+
+     function agregarDeseo(nuevo, cons) {
+        $.ajax({
+            url: '@Url.Action("AgregarDeseo", "ListaDeseos")',
+            data: { id: nuevo, constante: cons },
+            type: 'POST',
+            success: function (response) {
+                    RefrescarDeseos();
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+        });
     }
 
 </script>
