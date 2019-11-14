@@ -9,7 +9,7 @@
                 {
                     <label class="form-check">
                         <a href="#">
-                            <input type="checkbox" class="form-check-input marca_auto" value="@item.MarcaId">@item.Marca
+                            <input type="checkbox" class="form-check-input marca_auto" value="@item.MarcaId" @(ViewBag.ID_Marca != null && ViewBag.ID_Marca == item.MarcaId? "checked": String.Empty)>@item.Marca
                         </a>
                     </label>
                 }
@@ -23,7 +23,7 @@
                 {
                     <label class="form-check">
                         <a href="#">
-                            <input type="checkbox" class="form-check-input categoria_auto" value="@item.CategoriaId">@item.Categoria
+                            <input type="checkbox" class="form-check-input categoria_auto" value="@item.CategoriaId" @(ViewBag.ID_Categoria != null && ViewBag.ID_Categoria== item.CategoriaId? "checked": String.Empty)>@item.Categoria
                         </a>
                     </label>
                 }

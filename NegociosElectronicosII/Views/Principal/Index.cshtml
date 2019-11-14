@@ -59,11 +59,25 @@
 <!-- ========================= SECTION SUBSCRIBE END.//========================= -->
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#CategoriasParcial").html('Cargando...');
+        $("#CategoriasParcial").load("@Url.Action("ComboDeCatergoriasParcial", "Base")");
         $("#ejemplo").load("@Url.Action("CarruselParcial","Principal")");
         $("#_GridVehiculo").load("@Url.Action("VehiculoParcial","Principal")");
         $("#_GridProducto").load("@Url.Action("ArticuloParcial","Principal")");
     });
-  
-        
+
+    function fnChangeCategoryMain(CategoryId)
+    {
+        $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Categoria: CategoryId }, function () {
+            fnPintarGridDeVehiculos(1);
+        });
+    }
+
+    function fnChangeCategoryMain(MarcaId)
+    {
+        $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Marca: MarcaId }, function () {
+            fnPintarGridDeVehiculos(1);
+        });
+    }
 
 </script>

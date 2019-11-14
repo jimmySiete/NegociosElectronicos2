@@ -95,12 +95,15 @@ namespace NegociosElectronicosII.Controllers
         /// Vista del fiiltro del vehiculo
         /// </summary>
         /// <returns></returns>
-        public PartialViewResult FiltroVehiculoParcial()
+        public PartialViewResult FiltroVehiculoParcial(Int32? ID_Categoria, Int32? ID_Marca)
         {
             ViewBag.Marcas = db.NE_Marca.ToList();
             ViewBag.Color = db.NE_Color.ToList();
             ViewBag.Categoria = db.NE_Categoria.ToList();
             ViewBag.Transmision = db.NE_Transmision.ToList();
+            ViewBag.ID_Categoria = ID_Categoria;
+            ViewBag.ID_Marca = ID_Marca;
+
             List<NE_VehiculoImagen> ImagenesVehiculo = db.NE_VehiculoImagen.ToList();
             return PartialView(ImagenesVehiculo);
         }

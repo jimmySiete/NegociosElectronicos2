@@ -73,31 +73,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarTop">
                     <ul class="navbar-nav mr-auto">
-                        @*<li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Sourcing </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Top  Suppliers</a></li>
-                                <li><a class="dropdown-item" href="#">Suppliers by Regions </a></li>
-                                <li><a class="dropdown-item" href="#">Online Retailer  </a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Services </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Trade Assurance </a></li>
-                                <li><a class="dropdown-item" href="#">Arabic</a></li>
-                                <li><a class="dropdown-item" href="#">Logistics Service </a></li>
-                                <li><a class="dropdown-item" href="#">Membership Services</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">   Community </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Help Center</a></li>
-                                <li><a class="dropdown-item" href="#">Submit a Dispute </a></li>
-                                <li><a class="dropdown-item" href="#">For Suppliers </a></li>
-                            </ul>
-                        </li>*@
                     </ul>
                     <ul class="navbar-nav">
                         @if (Settings.LoggedUser != null)
@@ -120,7 +95,6 @@
             <div class="container">
                 <div class="row-sm align-items-center">
                     <div class="col-lg-4-24 col-sm-3" id="CategoriasParcial">
-                        Cargando...
                     </div>
                     <div class="col-lg-11-24 col-sm-8">
                         <form action="#" class="py-1">
@@ -246,7 +220,6 @@
     <!-- ========================= Script principal // ========================= -->
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#CategoriasParcial").load("@Url.Action("ComboDeCatergoriasParcial", "Base")");
             RefrescarDeseos();
             RefrescarCarrito();
              
