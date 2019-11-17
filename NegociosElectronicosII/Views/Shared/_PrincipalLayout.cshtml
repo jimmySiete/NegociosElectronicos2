@@ -96,23 +96,8 @@
                 <div class="row-sm align-items-center">
                     <div class="col-lg-4-24 col-sm-3" id="CategoriasParcial">
                     </div>
-                    <div class="col-lg-11-24 col-sm-8">
-                        <form action="#" class="py-1">
-                            <div class="input-group w-100">
-                                <select class="custom-select" name="category_name">
-                                    <option value="">All type</option>
-                                    <option value="">Special</option>
-                                    <option value="">Only best</option>
-                                    <option value="">Latest</option>
-                                </select>
-                                <input type="text" class="form-control" style="width:50%;" placeholder="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-warning" type="submit">
-                                        <i class="fa fa-search"></i> Search
-                                    </button>
-                                </div>
-                            </div>
-                        </form> <!-- search-wrap .end// -->
+                    <div class="col-lg-11-24 col-sm-8" id="ContenedorBusqueda">
+
                     </div> <!-- col.// -->
                     <div class="col-lg-9-24 col-sm-12">
                         <div class="widgets-wrap float-right row no-gutters py-1">
@@ -128,8 +113,15 @@
                                     </a>
                                     <div class="dropdown-menu">
                                         <hr class="dropdown-divider">
-                                        <a class="dropdown-item" href="@Url.Action("Index","Login")">@Recursos.InicioSesion</a>
-                                        <a class="dropdown-item" href="@Url.Action("Create","Registro")">@Recursos.Registrate</a>
+                                        @if (Settings.LoggedUser != null)
+                                        {
+                                            <a class="dropdown-item" href="@Url.Action("LogOut", "Login")">Cerrar sesion</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="dropdown-item" href="@Url.Action("Index", "Login")">@Recursos.InicioSesion</a>
+                                            <a class="dropdown-item" href="@Url.Action("Create", "Registro")">@Recursos.Registrate</a>
+                                        }
                                     </div> <!--  dropdown-menu .// -->
                                 </div>  <!-- widget-header .// -->
                             </div> <!-- col.// -->

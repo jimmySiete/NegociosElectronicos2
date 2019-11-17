@@ -5,7 +5,18 @@
     Layout = "~/Views/Shared/_PrincipalLayout.cshtml";
 }
 
-
+<style>
+    .img-custom {
+        border:none !important;
+    }
+    .img-custom :hover {
+        border:solid 2px black !important;
+    }
+    .img-custom-selected {
+        border:solid 2px blue !important;
+    }
+     
+</style>
 
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content bg padding-y border-top">
@@ -29,7 +40,7 @@
                             {
                                 foreach (var item in Model)
                                 {
-                                    <tr>
+                                    <tr class="elementoCarrito">
                                         <td>
                                             <figure class="media">
                                                 @if (item.ProductoId == null)
@@ -76,11 +87,25 @@
                                             </figure>
                                         </td>
                                         <td>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
+                                            <select class="form-control NumeroDeProductos" onchange="functionRecalcularCarrito()">
+                                                @if (item.VehiculoId == null)
+                                                {
+                                                    if (item.NE_Producto.Stock > 0)
+                                                    {
+                                                        for (int i = 0; i < item.NE_Producto.Stock; i++)
+                                                        {
+                                                        <option>@(i + 1)</option>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <option>0</option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option>1</option>
+                                                }
                                             </select>
                                         </td>
                                         <td>
@@ -110,23 +135,28 @@
                                                 }
                                             }
                                     </td>
-                                        <td class="text-right">
-                                            @if (item.ProductoId == null)
-                                            {
-                                                <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
-                                                    <i class="fa fa-heart"></i>
-                                                </button>
-                                                <button class="btn btn-outline-danger" type="submit" id="delete_@item.VehiculoId" onclick="eliminarCarrito(@item.VehiculoId,1)"> × Remove</button>
-                                            }
-                                            else
-                                            {
-                                                <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
-                                                    <i class="fa fa-heart"></i>
-                                                </button>
-                                                <button class="btn btn-outline-danger" type="submit" id="delete_@item.ProductoId" onclick="eliminarCarrito(@item.ProductoId,2)"> × Remove</button>
-                                            }
-                                        </td>
-                                    </tr>
+                                    <td class="text-right">
+                                        @if (item.ProductoId == null)
+                                        {
+                                            <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger" type="submit" id="delete_@item.VehiculoId" onclick="eliminarCarrito(@item.VehiculoId,1)"> × Remove</button>
+                                        }
+                                        else
+                                        {
+                                            <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                            <button class="btn btn-outline-danger" type="submit" id="delete_@item.ProductoId" onclick="eliminarCarrito(@item.ProductoId,2)"> × Remove</button>
+                                        }
+                                    </td>
+                                    <td style="display:none">
+                                        <input type="hidden" class="esOferta" value="@(item.ProductoId==null?(item.NE_Vehiculo.MarcarComoOferta?"si":"no" ): (item.NE_Producto.MarcarComoOferta?"si":"no"))" />
+                                        <input type="hidden" class="precioOferta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioOFerta: item.NE_Producto.PrecioOFerta)" />
+                                        <input type="hidden" class="precioVenta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioVenta: item.NE_Producto.PrecioVenta)" />
+                                    </td>
+                                </tr>
                                 }
                             }
                             else
@@ -139,33 +169,38 @@
            
             </main> <!-- col.// -->
             <aside class="col-sm-3">
-                <p class="alert alert-success">Add USD 5.00 of eligible items to your order to qualify for FREE Shipping. </p>
+                <p class="alert alert-success"> TOTAL A PAGAR</p>
                 <dl class="dlist-align">
-                    <dt>Total price: </dt>
-                    <dd class="text-right">USD 568</dd>
+                    <dt>Precio total: </dt>
+                    <dd class="text-right" id="TotalSinDescuentos">MXN @String.Format("{0:C2}", ViewBag.TotalSinDescuentos)</dd>
                 </dl>
                 <dl class="dlist-align">
-                    <dt>Discount:</dt>
-                    <dd class="text-right">USD 658</dd>
+                    <dt>Descuento:</dt>
+                    <dd class="text-right" id="Descuento">MXN @String.Format("{0:C2}", ViewBag.Descuento)</dd>
                 </dl>
                 <dl class="dlist-align h4">
                     <dt>Total:</dt>
-                    <dd class="text-right"><strong>USD 1,650</strong></dd>
+                    <dd class="text-right" id="TotalConDescuentos"><strong>MXN @String.Format("{0:C2}", ViewBag.TotalConDescuentos)</strong></dd>
                 </dl>
                 <hr>
+                <h6>Presione la imagen para seleccionar el metodo de pago</h6>
                 <figure class="itemside mb-3">
-                    <aside class="aside"><img src="images/icons/pay-visa.png"></aside>
                     <div class="text-wrap small text-muted">
-                        Pay 84.78 AED ( Save 14.97 AED )
-                        By using ADCB Cards
+                        Paypal
                     </div>
+                    <br /><br />
+                    <aside class="aside">
+                        <img class="img-custom" src="~/Imagenes/paypal.png" width="100" />
+                    </aside>
                 </figure>
                 <figure class="itemside mb-3">
-                    <aside class="aside"> <img src="images/icons/pay-mastercard.png"> </aside>
                     <div class="text-wrap small text-muted">
-                        Pay by MasterCard and Save 40%. <br>
-                        Lorem ipsum dolor
+                        Tarjeta Credito/Debito
                     </div>
+                    <br /><br />
+                    <aside class="aside"> 
+                        <img class="img-custom" src="~/Imagenes/tarjetaDeCredito.png" width="100" />
+                    </aside>
                 </figure>
 
             </aside> <!-- col.// -->
@@ -208,4 +243,36 @@
         });
     }
 
+    function functionRecalcularCarrito()
+    {
+        debugger;
+        var TotalSinDescuentos = 0.0;
+        var TotalConDescuentos = 0.0;
+        var Descuento = 0.0;
+
+        $.each($('.elementoCarrito'), function (i, item) {
+            var esOferta = $(item).find('.esOferta').val() == "si" ? true : false;
+            var precioVenta = Number($(item).find('.precioVenta').val());
+            var precioOferta = Number($(item).find('.precioOferta').val())
+            var numeroProductos = Number($(item).find('.NumeroDeProductos').val())
+
+            if (esOferta) {
+                TotalConDescuentos = TotalConDescuentos + (precioOferta* numeroProductos);
+            }
+            else {
+                TotalConDescuentos = TotalConDescuentos + (precioVenta* numeroProductos);
+            }
+
+            TotalSinDescuentos = TotalSinDescuentos + (precioVenta* numeroProductos);
+        });
+        Descuento = TotalSinDescuentos - TotalConDescuentos;
+
+        $('#TotalSinDescuentos').html('MXN $' + numeroConComas(TotalSinDescuentos.toFixed(2)).toString());
+        $('#Descuento').html('MXN $' + numeroConComas(Descuento.toFixed(2).toString()));
+        $('#TotalConDescuentos').html('<strong>' + 'MXN $' + numeroConComas(TotalConDescuentos.toFixed(2)).toString() + '</strong>');
+    }
+
+    function numeroConComas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 </script>

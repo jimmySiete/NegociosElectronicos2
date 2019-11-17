@@ -27,7 +27,10 @@
         fnPintarGridDeArticulos(1);
     });
 
-    function fnPintarGridDeArticulos(Pagina) {
+    function fnPintarGridDeArticulos(Pagina, busqueda) {
+        if (busqueda == null || busqueda == undefined)
+            busqueda = "";
+
         var marcas_seleccionadas = [];
         var colores_seleccionados = [];
 
@@ -46,7 +49,8 @@
             Marcas: marcas_seleccionadas.length > 0 ? marcas_seleccionadas.join(',') : null,
             Color: colores_seleccionados.length > 0 ? colores_seleccionados.join(',') : null,
             PrecioFinal: $('#max_art').val() == "" || $('#max_art').val() == null || $('#max_art').val() == undefined ? -1 : Number($('#max_art').val()),
-            PrecioInicial: $('#min_art').val() == "" || $('#min_art').val() == null || $('#min_art').val() == undefined ? -1 : Number($('#min_art').val())
+            PrecioInicial: $('#min_art').val() == "" || $('#min_art').val() == null || $('#min_art').val() == undefined ? -1 : Number($('#min_art').val()),
+            Busqueda: busqueda
         };
         $("#gridArticulo").empty();
         $("#gridArticulo").html('<img src="@(Url.Content("~/Imagenes/Cargador/loader4.gif"))"/>');

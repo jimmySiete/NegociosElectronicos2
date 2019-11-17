@@ -61,6 +61,8 @@
     $(document).ready(function () {
         $("#CategoriasParcial").html('Cargando...');
         $("#CategoriasParcial").load("@Url.Action("ComboDeCatergoriasParcial", "Base")");
+        $("#ContenedorBusqueda").load("@Url.Action("BusquedaParcial", "Base")");
+        
         $("#ejemplo").load("@Url.Action("CarruselParcial","Principal")");
         $("#_GridVehiculo").load("@Url.Action("VehiculoParcial","Principal")");
         $("#_GridProducto").load("@Url.Action("ArticuloParcial","Principal")");
@@ -73,11 +75,20 @@
         });
     }
 
-    function fnChangeCategoryMain(MarcaId)
+    function fnChangeMarksMain(MarcaId)
     {
         $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Marca: MarcaId }, function () {
             fnPintarGridDeVehiculos(1);
         });
     }
+
+    function fnBusqueda()
+    {
+        var busqueda = $('#txtSearch').val();
+        fnPintarGridDeVehiculos(1, busqueda);
+        fnPintarGridDeArticulos(1, busqueda);
+    }
+
+    //public fn
 
 </script>

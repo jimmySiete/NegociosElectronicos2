@@ -16,6 +16,10 @@ namespace NegociosElectronicosII.Controllers
             return PartialView(db.NE_Categoria.ToList());
         }
 
+        public PartialViewResult BusquedaParcial() {
+            return PartialView();
+        }
+
         public List<T> DesordenarLista<T>(List<T> input)
         {
             List<T> arr = input;

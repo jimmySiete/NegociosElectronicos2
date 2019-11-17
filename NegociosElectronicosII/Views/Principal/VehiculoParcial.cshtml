@@ -15,7 +15,11 @@
     });
 
     // Decimal PrecioInicial, Decimal PrecioFinal)
-    function fnPintarGridDeVehiculos(Pagina) {
+    function fnPintarGridDeVehiculos(Pagina, busqueda) {
+
+        if (busqueda == null || busqueda == undefined)
+            busqueda = "";
+
         var marcas_seleccionadas = [];
         var categorias_seleccionados = [];
         var colores_seleccionados = [];
@@ -48,7 +52,8 @@
             Categoria: categorias_seleccionados.length > 0 ? categorias_seleccionados.join(',') : null,
             Transmision: transamisiones_seleccionadas.length > 0 ? transamisiones_seleccionadas.join(',') : null,
             PrecioFinal: $('#max_auto').val() == "" || $('#max_auto').val() == null || $('#max_auto').val() == undefined ? -1 : Number($('#max_auto').val()),
-            PrecioInicial: $('#min_auto').val() == "" || $('#min_auto').val() == null || $('#min_auto').val() == undefined ? -1 : Number($('#min_auto').val())
+            PrecioInicial: $('#min_auto').val() == "" || $('#min_auto').val() == null || $('#min_auto').val() == undefined ? -1 : Number($('#min_auto').val()),
+            Busqueda: busqueda
         };
         $("#gridVehiculo").empty();
         $("#gridVehiculo").html('<img src="@(Url.Content("~/Imagenes/Cargador/loader4.gif"))"/>');

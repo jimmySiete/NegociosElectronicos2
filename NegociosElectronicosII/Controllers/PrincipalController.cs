@@ -108,8 +108,10 @@ namespace NegociosElectronicosII.Controllers
             return PartialView(ImagenesVehiculo);
         }
 
-        public PartialViewResult GridVehiculoParcial(Int32 Pagina,String Marcas,String Color, String Categoria, String Transmision, Decimal PrecioInicial, Decimal PrecioFinal)
+        public PartialViewResult GridVehiculoParcial(Int32 Pagina,String Marcas,String Color, String Categoria, String Transmision, Decimal PrecioInicial, Decimal PrecioFinal, String Busqueda=null)
         {
+            List<NE_VehiculoImagen> ImagenesVehiculo = new List<NE_VehiculoImagen>();
+
             //Se crean listas vacias en donde vaciaremos los strings de la vista
             List<Int32> Ids_Marcas = new List<int>();
             List<Int32> Ids_Color = new List<int>();
@@ -146,19 +148,30 @@ namespace NegociosElectronicosII.Controllers
 
 
             //obtenemos el filtro de los vehiculos seleccionados y lo convertimos a lista
-            List<NE_VehiculoImagen> ImagenesVehiculo = db.NE_VehiculoImagen
-                .Where(x=>  
-                    Ids_Marcas.Contains(x.NE_Vehiculo.MarcaId) 
-                    && Ids_Color.Contains(x.NE_Vehiculo.ColorId)
-                    && Ids_Categorias.Contains(x.NE_Vehiculo.CategoriaId)
-                    && Ids_Transmision.Contains(x.NE_Vehiculo.TransmisionId)
-                    && (
-                            (x.NE_Vehiculo.MarcarComoOferta? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioInicial< 0? Min : PrecioInicial)
-                            &&
-                            (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
-                        )
-                )
-                .ToList();
+            if (String.IsNullOrEmpty(Busqueda))
+                ImagenesVehiculo = db.NE_VehiculoImagen
+                    .Where(x =>
+                        Ids_Marcas.Contains(x.NE_Vehiculo.MarcaId)
+                        && Ids_Color.Contains(x.NE_Vehiculo.ColorId)
+                        && Ids_Categorias.Contains(x.NE_Vehiculo.CategoriaId)
+                        && Ids_Transmision.Contains(x.NE_Vehiculo.TransmisionId)
+                        && (
+                                (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioInicial < 0 ? Min : PrecioInicial)
+                                &&
+                                (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
+                            )
+                    )
+                    .ToList();
+            else
+                ImagenesVehiculo = db.NE_VehiculoImagen.Where(x =>
+                    x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
+                    x.NE_Vehiculo.NE_Color.Color.Contains(Busqueda) ||
+                    x.NE_Vehiculo.Descripcion.Contains(Busqueda) ||
+                    x.NE_Vehiculo.NE_Marca.Marca.Contains(Busqueda) ||
+                    x.NE_Vehiculo.Modelo.ToString().Contains(Busqueda) ||
+                    x.NE_Vehiculo.NE_Transmision.Transmision.ToString().Contains(Busqueda) ||
+                   (x.NE_Vehiculo.MarcarComoOferta?x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda) 
+                ).ToList();
 
             //Se obtiene el total de los vehiculos
             Int32 TotalDeVehiculos = ImagenesVehiculo.Count();
@@ -177,14 +190,14 @@ namespace NegociosElectronicosII.Controllers
             return PartialView(ImagenesVehiculo);
         }
 
-
         #endregion
+
+        #region Articulos
 
         public PartialViewResult ArticuloParcial()
         {
             return PartialView();
         }
-        
 
         public PartialViewResult FiltroArticuloParcial()
         {
@@ -194,8 +207,10 @@ namespace NegociosElectronicosII.Controllers
             return PartialView(ImagenesVehiculo);
         }
 
-        public PartialViewResult GridArticuloParcial(Int32 Pagina, String Marcas, String Color, Decimal PrecioInicial, Decimal PrecioFinal)
+        public PartialViewResult GridArticuloParcial(Int32 Pagina, String Marcas, String Color, Decimal PrecioInicial, Decimal PrecioFinal, String Busqueda = null)
         {
+            List<NE_ProductoImagen> ImagenesArticulo = new List<NE_ProductoImagen>();
+
             //Se crean listas vacias en donde vaciaremos los strings de la vista
             List<Int32> Ids_Marcas = new List<int>();
             List<Int32> Ids_Color = new List<int>();
@@ -217,7 +232,7 @@ namespace NegociosElectronicosII.Controllers
                 Ids_Color = db.NE_Color.Select(x => x.ColorId).ToList();
 
             //obtenemos el filtro de los Articuloss seleccionados y lo convertimos a lista
-            List<NE_ProductoImagen> ImagenesArticulo = db.NE_ProductoImagen
+            ImagenesArticulo = db.NE_ProductoImagen
                 .Where(x =>
                     Ids_Marcas.Contains(x.NE_Producto.MarcaId)
                     && Ids_Color.Contains(x.NE_Producto.ColorId)
@@ -228,6 +243,13 @@ namespace NegociosElectronicosII.Controllers
                         )
                 )
                 .ToList();
+
+            ImagenesArticulo = db.NE_ProductoImagen.Where(x =>
+                    x.NE_Producto.NE_Color.Color.Contains(Busqueda) ||
+                    x.NE_Producto.Descripcion.Contains(Busqueda) ||
+                    x.NE_Producto.NE_Marca.Marca.Contains(Busqueda) ||
+                   (x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta.ToString() : x.NE_Producto.PrecioVenta.ToString()).Contains(Busqueda)
+                ).ToList();
 
             //Se obtiene el total de los vehiculos
             Int32 TotalDeArticulos = ImagenesArticulo.Count();
@@ -259,13 +281,28 @@ namespace NegociosElectronicosII.Controllers
         }
 
         public ActionResult CarritoDeCompras() {
+            List<NE_Carrito> carro = new List<NE_Carrito>();
+            Decimal TotalSinDescuentosCarro = 0, TotalConDescuentosCarro = 0, DiferenciaCarro = 0, TotalCarro = 0,
+                TotalSinDescuentosArticulos = 0, TotalConDescuentosArticulos = 0, DiferenciaArticulos = 0, TotalArticulos = 0;
+
             if (Settings.LoggedUser != null)
             {
-                List<NE_Carrito> carro = db.NE_Carrito.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).ToList();
-                return View(carro);
+                carro = db.NE_Carrito.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).ToList();
+                TotalSinDescuentosArticulos = carro.Where(x => x.ProductoId != null).Sum(x => x.NE_Producto.PrecioVenta);
+                TotalSinDescuentosCarro = carro.Where(x => x.VehiculoId != null).Sum(x => x.NE_Vehiculo.PrecioVenta);
+                TotalConDescuentosArticulos = carro.Where(x => x.ProductoId != null).Sum(x => x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta : x.NE_Producto.PrecioVenta);
+                TotalConDescuentosCarro = carro.Where(x => x.VehiculoId != null).Sum(x => x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta);
+
             }
-            else
-                return View();
+
+            ViewBag.TotalSinDescuentos = TotalSinDescuentosArticulos + TotalSinDescuentosCarro;
+            ViewBag.TotalConDescuentos = TotalConDescuentosArticulos + TotalConDescuentosCarro;
+            ViewBag.Descuento = ViewBag.TotalSinDescuentos - ViewBag.TotalConDescuentos;
+            
+
+            return View(carro);
         }
+
+        #endregion
     }
 }
