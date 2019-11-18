@@ -37,18 +37,26 @@
 <section class="section-subscribe bg-secondary padding-y-lg">
     <div class="container">
 
-        <p class="pb-2 text-center white">Entregamos las ultimas tendencias de productos y noticias a tu inbox</p>
+        <p class="pb-2 text-center white">Si tienes alguna duda, sugerencia y/o comentario, escribenos aqui.</p>
 
         <div class="row justify-content-md-center">
             <div class="col-lg-4 col-sm-6">
-                <form class="row-sm form-noborder">
-                    <div class="col-8">
-                        <input class="form-control" placeholder="Tu correo" type="email">
+                <div class="row-sm form-noborder">
+                    <div class="col-12">
+                        <input class="form-control" id="email" placeholder="Coloca aqui tu correo, para poder contactarte" type="email" value="@(Settings.LoggedUser == null ? String.Empty : Settings.LoggedUser.CorreoElectronico)" >
+                        <br />
                     </div> <!-- col.// -->
-                    <div class="col-4">
-                        <textarea id="correousuario" class="form-control"></textarea></br><button type="button" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i>Subscribete  </button>
+                    <div class="col-12">
+                        <textarea id="comentario" class="form-control" placeholder="Escribe aqui"></textarea>
+                    <br />
                     </div> <!-- col.// -->
-                </form>
+                    <div class="col-12 text-center">
+                        <button type="button" id="btnEnviarEmail" class="btn btn-block btn-warning"> 
+                            <i class="fa fa-envelope"></i>
+                                Enviar
+                        </button>
+                    </div>
+                </div>
                 <small class="form-text text-white-50">Nunca compartiremos tu correo con terceras partes. </small>
             </div> <!-- col-md-6.// -->
         </div>
@@ -66,6 +74,35 @@
         $("#ejemplo").load("@Url.Action("CarruselParcial","Principal")");
         $("#_GridVehiculo").load("@Url.Action("VehiculoParcial","Principal")");
         $("#_GridProducto").load("@Url.Action("ArticuloParcial","Principal")");
+
+        $('#btnEnviarEmail').click(function () {
+            debugger;
+            var email = $('#email').val();
+            var comentario = $('#comentario').val();
+
+            if (email == null || email == undefined || email == "")
+            {
+                alert('Complete el campo email');
+                return;
+            }
+
+            if (comentario == null || comentario == undefined || comentario == "") {
+                alert('Complete el campo comentario');
+                return;
+            }
+
+            $.ajax({
+                url: '@Url.Action("EnviarComentarios", "Principal")',
+                data: { email: email, comentario: comentario },
+                type: 'POST',
+                success: function (response) {
+                    alert(response.Message);
+                },
+                error: function () {
+                    alert('Error');
+                }
+            });
+        });
     });
 
     function fnChangeCategoryMain(CategoryId)

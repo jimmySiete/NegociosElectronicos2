@@ -154,19 +154,21 @@
                     <aside class="col-sm-3 col-md-3 white">
                         <h5 class="title">Atencion al cliente</h5>
                         <ul class="list-unstyled">
-                            <li> <a href="#">Preguntas frecuentes (FAQS)</a></li>
-                            <li> <a href="#">Chat</a></li>
-                            <li> <a href="#">Enviar un email al equipo</a></li>
+                            <li> <a href="@Url.Action("Index","PreguntasFrecuentes")">Preguntas frecuentes (FAQS)</a></li>
+                            <li> <a href="@Url.Action("Index","Chat")">Chat</a></li>
                         </ul>
                     </aside>
                     <aside class="col-sm-3  col-md-3 white">
                         <h5 class="title">Mi cuenta</h5>
                         <ul class="list-unstyled">
-                            <li> <a href="#"> Iniciar sesion</a></li>
-                            <li> <a href="#"> Registrate </a></li>
-                            <li> <a href="#"> Configuracion de mi cuenta </a></li>
-                            <li> <a href="#"> Carrito de compras </a></li>
-                            <li> <a href="#"> Lista de deseos </a></li>
+                            <li> <a href="@Url.Action("Index","Login")"> Iniciar sesion</a></li>
+                            <li> <a href="@Url.Action("Create","Login")"> Registrate </a></li>
+                            @if (Settings.LoggedUser != null)
+                            {
+                            <li> <a href="@Url.Action("MiCuenta", "Login")"> Configuracion de mi cuenta </a></li>
+                            <li> <a href="@Url.Action("CarritoDeCompras","Carrito")"> Carrito de compras </a></li>
+                            <li> <a href="@Url.Action("ListaDesplegable","ListaDeDeseos")"> Lista de deseos </a></li>
+                            }
                         </ul>
                     </aside>
                     <aside class="col-sm-3  col-md-3 white">

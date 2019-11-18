@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NegociosElectronicosII.Models;
+using CastanionUtils.Email;
 
 namespace NegociosElectronicosII.Controllers
 {
@@ -78,6 +79,34 @@ namespace NegociosElectronicosII.Controllers
             {
                 return PartialView(ImagenesCarrusel);
             }
+        }
+
+        [HttpPost]
+        public JsonResult EnviarComentarios(string email, string comentario) {
+            String Message = String.Empty;
+            //fill template
+            String template = db.NE_EmailTemplate.Where(x => x.Name == "Comments").First().EmailTemplate;
+
+            foreach (var item in db.NE_Usuario.Where(x => x.RolId == 1))
+            {
+                template = String.Format(template, item.Nombre + " " + item.ApellidoPaterno ,email,comentario , "carsold22141024@gmail.com");
+                //create Instance
+                Mail mail = new Mail()
+                {
+                    AccountServer = Settings.ACCOUNT_SERVER,
+                    Subject = "Nuevo comentario",
+                    From = Settings.FROM,
+                    Host = Settings.HOST_SERVER,
+                    PasswordServer = Settings.PASSWORD_SERVER,
+                    Body = template,
+                    To = new List<string>() { item.CorreoElectronico },
+                    Port = Settings.PORT_SERVER
+                };
+                mail.Send();
+            }
+
+            Message = "Gracias por enviar tu comentario, para nuestro equipo es importante tu opinion. Por lo cual atenderemos tu solicitud, y garantizamos que recibiras una respuesta dentro de las proximas 24 horas.";
+            return Json(new { Message= Message },JsonRequestBehavior.DenyGet);
         }
 
         #region Vehiculos
