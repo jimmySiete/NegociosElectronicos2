@@ -52,38 +52,38 @@
                                                     <div class="img-wrap"><img src="@Url.Content("~/Imagenes/Productos/" +@item.NE_Producto.NE_ProductoImagen.First().Nombre+@item.NE_Producto.NE_ProductoImagen.First().Extension)" class="img-thumbnail img-sm"></div>
                                                 }
 
-                                            <figcaption class="media-body">
-                                                @if (item.ProductoId == null)
-                                                {
-                                                    <h6 class="title text-truncate">@item.NE_Vehiculo.NombreVehiculo </h6>
-                                                    <dl class="dlist-inline small">
-                                                        <dt>Marca: </dt>
-                                                        <dd>@item.NE_Vehiculo.NE_Marca.Marca</dd>
-                                                        <dt>Color: </dt>
-                                                        <dd>@item.NE_Vehiculo.NE_Color.Color</dd>
-                                                    </dl>
-                                                    <dl class="dlist-inline small">
-                                                        <dt>Categoria: </dt>
-                                                        <dd>@item.NE_Vehiculo.NE_Categoria.Categoria</dd>
-                                                        <dt>Transmisión: </dt>
-                                                        <dd>@item.NE_Vehiculo.NE_Transmision.Transmision</dd>
-                                                    </dl>
+                                                <figcaption class="media-body">
+                                                    @if (item.ProductoId == null)
+                                                    {
+                                                        <h6 class="title text-truncate">@item.NE_Vehiculo.NombreVehiculo </h6>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Marca: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Marca.Marca</dd>
+                                                            <dt>Color: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Color.Color</dd>
+                                                        </dl>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Categoria: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Categoria.Categoria</dd>
+                                                            <dt>Transmisión: </dt>
+                                                            <dd>@item.NE_Vehiculo.NE_Transmision.Transmision</dd>
+                                                        </dl>
 
-                                                }
-                                                else
-                                                {
-                                                    <h6 class="title text-truncate">@item.NE_Producto.Nombre </h6>
-                                                    <dl class="dlist-inline small">
-                                                        <dt>Marca: </dt>
-                                                        <dd>@item.NE_Producto.NE_Marca.Marca</dd>
-                                                    </dl>
-                                                    <dl class="dlist-inline small">
-                                                        <dt>Color: </dt>
-                                                        <dd>@item.NE_Producto.NE_Color.Color</dd>
-                                                    </dl>
-                                                }
+                                                    }
+                                                    else
+                                                    {
+                                                        <h6 class="title text-truncate">@item.NE_Producto.Nombre </h6>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Marca: </dt>
+                                                            <dd>@item.NE_Producto.NE_Marca.Marca</dd>
+                                                        </dl>
+                                                        <dl class="dlist-inline small">
+                                                            <dt>Color: </dt>
+                                                            <dd>@item.NE_Producto.NE_Color.Color</dd>
+                                                        </dl>
+                                                    }
 
-                                            </figcaption>
+                                                </figcaption>
                                             </figure>
                                         </td>
                                         <td>
@@ -94,7 +94,7 @@
                                                     {
                                                         for (int i = 0; i < item.NE_Producto.Stock; i++)
                                                         {
-                                                        <option>@(i + 1)</option>
+                                                            <option>@(i + 1)</option>
                                                         }
                                                     }
                                                     else
@@ -129,44 +129,47 @@
                                                     <del class="price-old">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</del>
                                                 }
                                                 else
-                                                {   
-                                                     <span class="price">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
-                                                   
+                                                {
+                                                    <span class="price">@String.Format("{0:C2}", item.NE_Producto.PrecioVenta)</span>
+
                                                 }
                                             }
-                                    </td>
-                                    <td class="text-right">
-                                        @if (item.ProductoId == null)
-                                        {
-                                            <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button class="btn btn-outline-danger" type="submit" id="delete_@item.VehiculoId" onclick="eliminarCarrito(@item.VehiculoId,1)"> × Remove</button>
-                                        }
-                                        else
-                                        {
-                                            <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
-                                                <i class="fa fa-heart"></i>
-                                            </button>
-                                            <button class="btn btn-outline-danger" type="submit" id="delete_@item.ProductoId" onclick="eliminarCarrito(@item.ProductoId,2)"> × Remove</button>
-                                        }
-                                    </td>
-                                    <td style="display:none">
-                                        <input type="hidden" class="esOferta" value="@(item.ProductoId==null?(item.NE_Vehiculo.MarcarComoOferta?"si":"no" ): (item.NE_Producto.MarcarComoOferta?"si":"no"))" />
-                                        <input type="hidden" class="precioOferta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioOFerta: item.NE_Producto.PrecioOFerta)" />
-                                        <input type="hidden" class="precioVenta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioVenta: item.NE_Producto.PrecioVenta)" />
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td class="text-right">
+                                            @if (item.ProductoId == null)
+                                            {
+                                                <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger" type="submit" id="delete_@item.VehiculoId" onclick="eliminarCarrito(@item.VehiculoId,1)"> × Remove</button>
+                                            }
+                                            else
+                                            {
+                                                <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                    <i class="fa fa-heart"></i>
+                                                </button>
+                                                <button class="btn btn-outline-danger" type="submit" id="delete_@item.ProductoId" onclick="eliminarCarrito(@item.ProductoId,2)"> × Remove</button>
+                                            }
+                                        </td>
+                                        <td style="display:none">
+                                            <input type="hidden" class="esOferta" value="@(item.ProductoId==null?(item.NE_Vehiculo.MarcarComoOferta?"si":"no" ): (item.NE_Producto.MarcarComoOferta?"si":"no"))" />
+                                            <input type="hidden" class="precioOferta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioOFerta: item.NE_Producto.PrecioOFerta)" />
+                                            <input type="hidden" class="precioVenta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioVenta: item.NE_Producto.PrecioVenta)" />
+                                            <input type="hidden" class="productoid" value="@(item.ProductoId)" />
+                                            <input type="hidden" class="vehiculoid" value="@(item.VehiculoId)" />
+                                        </td>
+                                    </tr>
                                 }
                             }
                             else
                             {
-                                 <h3>No hay datos en el carrito</h3> 
+                                <h3>No hay datos en el carrito</h3>
+
                             }
                         </tbody>
                     </table>
                 </div> <!-- card.// -->
-           
+
             </main> <!-- col.// -->
             <aside class="col-sm-3">
                 <p class="alert alert-success"> TOTAL A PAGAR</p>
@@ -198,18 +201,29 @@
                         Tarjeta Credito/Debito
                     </div>
                     <br /><br />
-                    <aside class="aside"> 
-                        <img class="img-custom" src="~/Imagenes/tarjetaDeCredito.png" width="100" />
+                    <aside class="aside">
+                        <img class="img-custom" src="~/Imagenes/tarjetaDeCredito.png" width="100"  onclick="cargando()"/>
                     </aside>
                 </figure>
-
             </aside> <!-- col.// -->
         </div>
 
     </div> <!-- container .//  -->
+
+    <div id="cargamodal" onchange="mandardatos()">
+
+    </div>
+    
+
+
 </section>
 <!-- ========================= SECTION CONTENT END// ========================= -->
 <script type="text/javascript">
+  
+    function cargando() {
+        $("#cargamodal").load("@Url.Action("FormasPago","Pagos")");
+    }
+
 
     function agregarDeseo(nuevo, cons) {
         $.ajax({
@@ -270,6 +284,22 @@
         $('#TotalSinDescuentos').html('MXN $' + numeroConComas(TotalSinDescuentos.toFixed(2)).toString());
         $('#Descuento').html('MXN $' + numeroConComas(Descuento.toFixed(2).toString()));
         $('#TotalConDescuentos').html('<strong>' + 'MXN $' + numeroConComas(TotalConDescuentos.toFixed(2)).toString() + '</strong>');
+    }
+
+
+    function mandardatos() {
+        var array = [];
+        var objeto = {};
+        $.each($('.elementoCarrito'), function (i, item) {
+
+            var total = $(item).find("#TotalConDescuentos").val();
+            var cantidad = $(item).find('.NumeroDeProductos').val();
+            var prodid = $(item).find('productoid').val();
+            var vehid = $(item).find('vehiculoid').val();
+            objeto = { "total": total, "cantidad": cantidad, "productoid": prodid, "vehiculoid": vehid };
+            array.push(objeto);
+            debugger;
+    });
     }
 
     function numeroConComas(x) {
