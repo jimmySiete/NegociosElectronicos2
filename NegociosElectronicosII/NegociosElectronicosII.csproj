@@ -216,6 +216,7 @@
     <Compile Include="Controllers\ListaDeseosController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PagosController.cs" />
     <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
@@ -760,6 +761,7 @@
     <Content Include="Views\Carrito\CarritoDesplegable.cshtml" />
     <Content Include="Views\ListaDeseos\ListaDesplegable.cshtml" />
     <Content Include="Views\Base\BusquedaParcial.cshtml" />
+    <Content Include="Views\Pagos\FormasPago.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
