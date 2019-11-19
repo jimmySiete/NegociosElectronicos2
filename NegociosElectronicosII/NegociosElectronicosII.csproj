@@ -772,6 +772,7 @@
     <Content Include="Views\Estadistica\GananciaAnualParcial.cshtml" />
     <Content Include="Views\Estadistica\GananciaAnualDetalleParcial.cshtml" />
     <Content Include="Views\DetallesProducto\Detalles.cshtml" />
+    <Content Include="Views\Estadistica\VehiculosVendidosPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

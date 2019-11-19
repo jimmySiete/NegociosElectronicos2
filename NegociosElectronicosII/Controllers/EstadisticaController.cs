@@ -87,5 +87,19 @@ namespace NegociosElectronicosII.Controllers
         }
 
         #endregion
+
+        #region Cantidad de vehiculos vendidos
+
+        public PartialViewResult VehiculosVendidosPartial() {
+            List<SelectListItem> Anios = new List<SelectListItem>();
+            return PartialView();
+        }
+
+        public PartialViewResult VehiculosVendidosDetalleParcial(Int32 Mes, Int32 Anio) {
+
+            return PartialView();
+        }
+        #endregion
+
     }
 }
