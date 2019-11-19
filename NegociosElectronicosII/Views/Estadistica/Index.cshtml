@@ -9,37 +9,13 @@
 <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-xl-3 col-md-6 mb-4" id="GananciasMensuales">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div>
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-success shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-xl-3 col-md-6 mb-4" id="GananciasAnuales">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div>
 
     <!-- Earnings (Monthly) Card Example -->
@@ -92,7 +68,7 @@
             <figure class="itemside">
                 <div class="aside align-self-center">
                     <span class="icon-wrap icon-md round bg-warning">
-                        <i class="fa fa-lightbulb white"></i>
+                        <i class="fa fa-user white"></i>
                     </span>
                 </div>
                 <figcaption class="text-wrap">
@@ -408,6 +384,13 @@
 
 
 <script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#GananciasMensuales').load('@Url.Action("GananciaMensualParcial", "Estadistica")');
+        $('#GananciasAnuales').load('@Url.Action("GananciaAnualParcial", "Estadistica")');
+        
+    });
+
     var speedCanvas = document.getElementById("speedChart");
 
     Chart.defaults.global.defaultFontFamily = "Lato";

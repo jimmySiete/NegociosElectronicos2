@@ -113,5 +113,9 @@ namespace NegociosElectronicosII
         //}
 
         public static Int32 NUMERO_DE_ITEMS_POR_PAGINA = 8;
+        public static Dictionary<int,String> MESES = new Dictionary<int,string>{
+            { 1,"Enero" },{ 2,"Febrero" },{ 3,"Marzo" },{ 4,"Abril" },{ 5,"Mayo" },{ 6,"Junio" }
+            ,{ 7,"Julio" },{ 8,"Agosto" },{ 9,"Septiembre" },{ 10,"Octubre" },{ 11,"Noviembre" },{ 12,"Diciembre" }
+        };
     }
 }
