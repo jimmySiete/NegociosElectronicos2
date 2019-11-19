@@ -155,8 +155,8 @@
                                             <input type="hidden" class="esOferta" value="@(item.ProductoId==null?(item.NE_Vehiculo.MarcarComoOferta?"si":"no" ): (item.NE_Producto.MarcarComoOferta?"si":"no"))" />
                                             <input type="hidden" class="precioOferta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioOFerta: item.NE_Producto.PrecioOFerta)" />
                                             <input type="hidden" class="precioVenta" value="@(item.ProductoId==null?item.NE_Vehiculo.PrecioVenta: item.NE_Producto.PrecioVenta)" />
-                                            <input type="hidden" class="productoid" value="@(item.ProductoId)" />
-                                            <input type="hidden" class="vehiculoid" value="@(item.VehiculoId)" />
+                                            <input type="hidden" class="productoid" value="@(item.ProductoId!=0? item.ProductoId:null)" />
+                                            <input type="hidden" class="vehiculoid" value="@(item.VehiculoId!=0?item.VehiculoId:null)" />
                                         </td>
                                     </tr>
                                 }

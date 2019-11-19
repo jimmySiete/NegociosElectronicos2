@@ -5,6 +5,7 @@
     <div class="row-sm">
         @foreach (var item in Model)
         {
+            if (item.NE_Producto.Activo) {
             <div class="col-md-3 col-sm-6">
                 <figure class="card card-product">
                     <div class="img-wrap">
@@ -42,6 +43,7 @@
                     </figcaption>
                 </figure> <!-- card // -->
             </div> <!-- col // -->
+            }
         }
     </div>
     <div class="row">

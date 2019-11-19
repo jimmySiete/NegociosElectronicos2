@@ -7,6 +7,8 @@
 <div class="row-sm">
     @foreach (var item in Model)
     {
+        if (item.NE_Vehiculo.Activo)
+        {
         <div class="col-md-3 col-sm-6">
             <figure class="card card-product">
                 <div class="img-wrap">
@@ -22,7 +24,7 @@
                     @*<span class="price-wrap">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</span>*@
 
                     @if (item.NE_Vehiculo.MarcarComoOferta)
-                {
+                    {
                         <span class="price-new">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioOFerta)</span>
                         <del class="price-old">@String.Format("{0:C2}", item.NE_Vehiculo.PrecioVenta)</del>
                     }
@@ -52,6 +54,7 @@
                 </figcaption>
             </figure> <!-- card // -->
         </div> <!-- col // -->
+        }
     }
 </div> 
 <div class="row">

@@ -20,10 +20,13 @@ namespace NegociosElectronicosII.Controllers
             
             if (Settings.LoggedUser == null)
                 return Json(new { Success = false, Message = "Necesitas iniciar sesion" }, JsonRequestBehavior.DenyGet);
+            
             NE_Carrito nE_Carrito;
             if (constante == 1)
             {
-                 nE_Carrito = new NE_Carrito()
+                if(db.NE_Carrito.Any(x=>x.VehiculoId==id))
+                    return Json(new { Success = false, Message = "Este articulo ya esta en el carrito" }, JsonRequestBehavior.DenyGet);
+                nE_Carrito = new NE_Carrito()
                 {
                     RecordDate = DateTime.Now,
                     UsuarioId = Settings.LoggedUser.UsuarioId,
@@ -34,7 +37,9 @@ namespace NegociosElectronicosII.Controllers
             }
             else
             {
-                 nE_Carrito = new NE_Carrito()
+                if (db.NE_Carrito.Any(x => x.ProductoId == id))
+                    return Json(new { Success = false, Message = "Este articulo ya esta en el carrito" }, JsonRequestBehavior.DenyGet);
+                nE_Carrito = new NE_Carrito()
                 {
                     RecordDate = DateTime.Now,
                     UsuarioId = Settings.LoggedUser.UsuarioId,
