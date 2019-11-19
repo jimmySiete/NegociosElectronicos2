@@ -30,18 +30,15 @@
         Cargar_GananciaAnualDetalleParcial(@DateTime.Now.Year);
 
         $('#MesGananciaAnual').change(function () {
-            debugger;
             Cargar_GananciaAnualDetalleParcial($(this).val());
         });
     });
 
     function Cargar_GananciaAnualDetalleParcial(Anio)
     {
-        debugger;
         $('#MesGananciaAnualDetalle').empty();
         $('#MesGananciaAnualDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
         $('#MesGananciaAnualDetalle').load('@Url.Action("GananciaAnualDetalleParcial", "Estadistica")', { Anio: Anio }, function () {
-            debugger;
         });
     }
 </script>

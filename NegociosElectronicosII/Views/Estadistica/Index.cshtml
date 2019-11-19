@@ -19,7 +19,8 @@
     </div>
 
     <!-- Earnings (Monthly) Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-3 col-md-6 mb-4" id="VehiculosVendidos">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
         <div class="card border-left-info shadow h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -388,7 +389,7 @@
     $(document).ready(function () {
         $('#GananciasMensuales').load('@Url.Action("GananciaMensualParcial", "Estadistica")');
         $('#GananciasAnuales').load('@Url.Action("GananciaAnualParcial", "Estadistica")');
-        
+        $('#VehiculosVendidos').load('@Url.Action("GananciaAnualParcial", "Estadistica")');
     });
 
     var speedCanvas = document.getElementById("speedChart");
