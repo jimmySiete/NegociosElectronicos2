@@ -210,6 +210,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CarrusellController.cs" />
+    <Compile Include="Controllers\DetalleProductoController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="GlobalCode\NegociosII_Auth.cs" />
     <Compile Include="GlobalCode\Settings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DetalleModel.cs" />
     <Compile Include="Models\ExtendModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -763,6 +765,7 @@
     <Content Include="Views\ListaDeseos\ListaDesplegable.cshtml" />
     <Content Include="Views\Base\BusquedaParcial.cshtml" />
     <Content Include="Views\Pagos\FormasPago.cshtml" />
+    <Content Include="Views\DetalleProducto\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,8 +7,6 @@
 <div class="row-sm">
     @foreach (var item in Model)
     {
-        if (item.NE_Vehiculo.Activo)
-        {
         <div class="col-md-3 col-sm-6">
             <figure class="card card-product">
                 <div class="img-wrap">
@@ -35,28 +33,30 @@
                     @*<div class="price-wrap">
 
                         </div>*@ <!-- price-wrap.// -->
-                <div class="input-group w-100">
+                    <div class="input-group w-100">
+                        <div class="input-group-append">
+                            <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1)">
+                                <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                            </button>
+                        </div>
+                        <div class="text-right">
+                            <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <br />
                     <div class="input-group-append">
-                        <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1)">
-                            <i class="fa fa-shopping-cart"></i> Agregar al Carrito
+                        <button type="button" class="btn btn-primary" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="detallesproductos(@item.VehiculoId,1)">
+                            <i class="fa fa-eye"></i> Ver mas detalles
                         </button>
                     </div>
-                    <div class="text-right">
-                        <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.VehiculoId" onclick="agregarDeseo(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
-                            <i class="fa fa-heart"></i>
-                        </button>
-                    </div>
-                </div>
-
-
-
 
                 </figcaption>
             </figure> <!-- card // -->
         </div> <!-- col // -->
-        }
     }
-</div> 
+</div>
 <div class="row">
     <div class="col-md-12 text-center">
 
@@ -70,7 +70,7 @@
                     }
                     for (int i = 0; i < ViewBag.NumeroDePaginas; i++)
                     {
-                        <li class="page-item"><a class="page-link" href="#_GridVehiculo" onclick="CambiarDePagina(@(i+1))">@(i+1)</a></li>
+                        <li class="page-item"><a class="page-link" href="#_GridVehiculo" onclick="CambiarDePagina(@(i+1))">@(i + 1)</a></li>
                     }
                     if (ViewBag.PaginaActual != ViewBag.NumeroDePaginas)
                     {
@@ -82,6 +82,10 @@
     </div>
 
 </div>
+
+
+
+
 <script type="text/javascript">
 
     function agregar(nuevo, cons) {
@@ -116,6 +120,6 @@
                 }
         });
     }
-     
+
 </script>
 

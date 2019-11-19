@@ -64,6 +64,9 @@
 
     </div> <!-- container // -->
 </section>
+<div id="modalproductos">
+
+</div>
 <!-- ========================= SECTION SUBSCRIBE END.//========================= -->
 <script type="text/javascript">
     $(document).ready(function () {
@@ -123,6 +126,23 @@
         var busqueda = $('#txtSearch').val();
         fnPintarGridDeVehiculos(1, busqueda);
         fnPintarGridDeArticulos(1, busqueda);
+    }
+
+    function detallesproductos(id,tipo) {
+        $("#modalproductos").load("@Url.Action("Detalles","DetalleProducto")");
+
+        $.ajax({
+            url: '@Url.Action("Detalles", "DetalleProducto")',
+
+            data: { tipoprod: tipo, idprod: id },
+            type: 'POST',
+            success: function (response) {
+                alert(response.Message);
+            },
+            error: function () {
+                alert('Error');
+            }
+        });
     }
 
     //public fn
