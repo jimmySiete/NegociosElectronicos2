@@ -24,7 +24,7 @@ namespace NegociosElectronicosII.Controllers
             NE_Carrito nE_Carrito;
             if (constante == 1)
             {
-                if(db.NE_Carrito.Any(x=>x.VehiculoId==id))
+                if(db.NE_Carrito.Any(x=>x.VehiculoId==id && x.UsuarioId==Settings.LoggedUser.UsuarioId))
                     return Json(new { Success = false, Message = "Este articulo ya esta en el carrito" }, JsonRequestBehavior.DenyGet);
                 nE_Carrito = new NE_Carrito()
                 {
@@ -37,7 +37,7 @@ namespace NegociosElectronicosII.Controllers
             }
             else
             {
-                if (db.NE_Carrito.Any(x => x.ProductoId == id))
+                if (db.NE_Carrito.Any(x => x.ProductoId == id && x.UsuarioId==Settings.LoggedUser.UsuarioId))
                     return Json(new { Success = false, Message = "Este articulo ya esta en el carrito" }, JsonRequestBehavior.DenyGet);
                 nE_Carrito = new NE_Carrito()
                 {

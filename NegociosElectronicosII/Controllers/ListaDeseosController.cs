@@ -24,6 +24,9 @@ namespace NegociosElectronicosII.Controllers
             NE_ListaDeDeseos nE_ListaDeseos;
             if (constante == 1)
             {
+                if (db.NE_ListaDeDeseos.Any(x => x.VehiculoId == id && x.UsuarioId == Settings.LoggedUser.UsuarioId))
+                    return Json(new { Success = false, Message = "Este articulo ya esta en la lista de deseos" }, JsonRequestBehavior.DenyGet);
+
                 nE_ListaDeseos = new NE_ListaDeDeseos()
                 {
                     RecordDate = DateTime.Now,
@@ -35,6 +38,9 @@ namespace NegociosElectronicosII.Controllers
             }
             else
             {
+                if (db.NE_ListaDeDeseos.Any(x => x.ProductoId == id && x.UsuarioId == Settings.LoggedUser.UsuarioId))
+                    return Json(new { Success = false, Message = "Este articulo ya esta en la Lista de deseos" }, JsonRequestBehavior.DenyGet);
+
                 nE_ListaDeseos = new NE_ListaDeDeseos()
                 {
                     RecordDate = DateTime.Now,

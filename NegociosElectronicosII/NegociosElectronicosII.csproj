@@ -211,6 +211,7 @@
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CarrusellController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\DetallesProductoController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="GlobalCode\NegociosII_Auth.cs" />
     <Compile Include="GlobalCode\Settings.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DetallesModal.cs" />
     <Compile Include="Models\ExtendModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
@@ -769,6 +771,7 @@
     <Content Include="Views\Estadistica\GananciaMensualDetalleParcial.cshtml" />
     <Content Include="Views\Estadistica\GananciaAnualParcial.cshtml" />
     <Content Include="Views\Estadistica\GananciaAnualDetalleParcial.cshtml" />
+    <Content Include="Views\DetallesProducto\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -129,19 +129,8 @@
     }
 
     function detallesproductos(id,tipo) {
-        $("#modalproductos").load("@Url.Action("Detalles","DetalleProducto")");
+        $("#modalproductos").load("@Url.Action("Detalles","DetallesProducto")", { idprod: id, tipoprod: tipo }, function () {
 
-        $.ajax({
-            url: '@Url.Action("Detalles", "DetalleProducto")',
-
-            data: { tipoprod: tipo, idprod: id },
-            type: 'POST',
-            success: function (response) {
-                alert(response.Message);
-            },
-            error: function () {
-                alert('Error');
-            }
         });
     }
 
