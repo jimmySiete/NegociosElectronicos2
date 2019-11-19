@@ -105,22 +105,40 @@
     $(document).ready(function () {
         $("#exampleModal").modal("show");
     });
-    function agregarventa(pago) {
-        var array = [];
-        var objeto = {};
+    function agregarventa(tipo) {
+          var TotalConDescuentos = 0.0;
+            var array = [];
+            var objeto = {};
         $.each($('.elementoCarrito'), function (i, item) {
+            var precio = 0.0;
+            var esOferta = $(item).find('.esOferta').val() == "si" ? true : false;
+            var precioVenta = Number($(item).find('.precioVenta').val());
+            var precioOferta = Number($(item).find('.precioOferta').val())
+            var numeroProductos = Number($(item).find('.NumeroDeProductos').val())
+            var proid = Number($(item).find('.productoid').val())
+            var vehid = Number($(item).find('.vehiculoid').val())
+            if (esOferta) {
+                TotalConDescuentos = TotalConDescuentos + (precioOferta* numeroProductos);
+            }
+            else {
+                TotalConDescuentos = TotalConDescuentos + (precioVenta* numeroProductos);
+            }
+            esOferta ? precio = precioOferta : precio = precioVenta;
+            proid == 0 ? proid = null : proid = proid;
+            vehid == 0 ? vehid = null : vehid = vehid;
+           
 
-            var total = $(item).find("#TotalConDescuentos").val();
-            var cantidad = $(item).find('.NumeroDeProductos').val();
-            var prodid = $(item).find('productoid').val();
-            var vehid = $(item).find('vehiculoid').val();
-            objeto = { "total": total, "cantidad": cantidad, "productoid": prodid, "vehiculoid": vehid };
-            array.push(objeto);
+            objeto = { "total": precio, "cantidad": numeroProductos, "productoid": proid, "vehiculoid": vehid };
+
+            
+             array.push(objeto);
+
         });
-
+        debugger;
         $.ajax({
             url: '@Url.Action("AgregarVenta", "Pagos")',
-            data: { tipopago: tipo, precio: $("#TotalConDescuentos").val() },
+
+            data: { tipopago: tipo, precio: TotalConDescuentos, valores: JSON.stringify(array) },
             type: 'POST',
             success: function (response) {
                 alert(response.Message);
