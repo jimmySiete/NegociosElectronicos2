@@ -210,6 +210,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CarrusellController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
@@ -762,6 +763,11 @@
     <Content Include="Views\ListaDeseos\ListaDesplegable.cshtml" />
     <Content Include="Views\Base\BusquedaParcial.cshtml" />
     <Content Include="Views\Pagos\FormasPago.cshtml" />
+    <Content Include="Views\Chat\Cliente.cshtml" />
+    <Content Include="Views\Estadistica\GananciaMensualParcial.cshtml" />
+    <Content Include="Views\Estadistica\GananciaMensualDetalleParcial.cshtml" />
+    <Content Include="Views\Estadistica\GananciaAnualParcial.cshtml" />
+    <Content Include="Views\Estadistica\GananciaAnualDetalleParcial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

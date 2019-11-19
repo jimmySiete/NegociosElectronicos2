@@ -117,7 +117,7 @@
           <Property Name="Alias" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="UsuarioId" Type="int" Nullable="false" />
           <Property Name="FechaDeInicio" Type="datetime" Nullable="false" />
-          <Property Name="FechaDeCierre" Type="datetime" Nullable="false" />
+          <Property Name="FechaDeCierre" Type="datetime" />
         </EntityType>
         <EntityType Name="NE_Encuesta">
           <Key>
@@ -1124,7 +1124,7 @@
           <Property Name="Alias" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
           <Property Name="FechaDeInicio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaDeCierre" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaDeCierre" Type="DateTime" Precision="3" />
           <NavigationProperty Name="NE_CuerpoChat" Relationship="DB_A453B0_fabiancastanonModel.FK_Chat" FromRole="NE_EncabezadoChat" ToRole="NE_CuerpoChat" />
           <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario" FromRole="NE_EncabezadoChat" ToRole="NE_Usuario" />
         </EntityType>
