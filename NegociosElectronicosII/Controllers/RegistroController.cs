@@ -79,6 +79,14 @@ namespace NegociosElectronicosII.Controllers
                             db.SaveChanges();
                             dbTran.Commit();
 
+                            NE_Bitacora bitacora = new NE_Bitacora() {
+                                AccionId= ACCION.NUEVO_REGISTRO,
+                                Descripcion= "Se ha creado al usuario: " + nE_Usuario.CorreoElectronico,
+                                FechaDeRegistro= DateTime.Now,
+                                UsuarioId= nE_Usuario.UsuarioId,
+                            };
+                            db.NE_Bitacora.Add(bitacora);
+                            db.SaveChanges();
                             ViewBag.Message = "Cuenta creada";
                             return RedirectToAction("Index", "Login"); 
                         }

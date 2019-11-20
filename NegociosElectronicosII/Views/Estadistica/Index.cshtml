@@ -21,85 +21,21 @@
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4" id="VehiculosVendidos">
         <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
-        <div class="card border-left-info shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                            </div>
-                            <div class="col">
-                                <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Pending Requests Card Example -->
-    <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-warning shadow h-100 py-2">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="col-xl-3 col-md-6 mb-4" id="ArticulosVendidos">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div>
+
 </div>
 <br />
 <div class="row">
-    <div class="col-md-3">
-        <article class="box">
-            <figure class="itemside">
-                <div class="aside align-self-center">
-                    <span class="icon-wrap icon-md round bg-warning">
-                        <i class="fa fa-user white"></i>
-                    </span>
-                </div>
-                <figcaption class="text-wrap">
-                    <h5 class="title">Sync across all devices</h5>
-                    <p class="text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labor
-                    </p>
-                </figcaption>
-            </figure> <!-- iconbox // -->
-        </article> <!-- panel-lg.// -->
+
+    <div class="col-md-6" id="UsuariosFiltrosPrincipal">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div><!-- col // -->
-    <div class="col-md-3">
-        <article class="box">
-            <figure class="itemside">
-                <div class="aside align-self-center">
-                    <span class="icon-wrap icon-md round bg-danger">
-                        <i class="fa fa-lock white"></i>
-                    </span>
-                </div>
-                <figcaption class="text-wrap">
-                    <h5 class="title">Secured protocol</h5>
-                    <p class="text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt dolor laburab
-                    </p>
-                </figcaption>
-            </figure> <!-- iconbox // -->
-        </article> <!-- panel-lg.// -->
-    </div><!-- col // -->
+
     <div class="col-md-3">
         <article class="box">
             <figure class="itemside">
@@ -389,7 +325,10 @@
     $(document).ready(function () {
         $('#GananciasMensuales').load('@Url.Action("GananciaMensualParcial", "Estadistica")');
         $('#GananciasAnuales').load('@Url.Action("GananciaAnualParcial", "Estadistica")');
-        $('#VehiculosVendidos').load('@Url.Action("GananciaAnualParcial", "Estadistica")');
+        $('#VehiculosVendidos').load('@Url.Action("VehiculosVendidosPartial", "Estadistica")');
+        $('#ArticulosVendidos').load('@Url.Action("ArticulosVendidosPartial", "Estadistica")');
+        $('#UsuariosFiltrosPrincipal').load('@Url.Action("FiltrosUsuariosParcial", "Estadistica")');
+
     });
 
     var speedCanvas = document.getElementById("speedChart");

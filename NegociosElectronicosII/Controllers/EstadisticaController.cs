@@ -92,14 +92,111 @@ namespace NegociosElectronicosII.Controllers
 
         public PartialViewResult VehiculosVendidosPartial() {
             List<SelectListItem> Anios = new List<SelectListItem>();
+            List<SelectListItem> Meses = new List<SelectListItem>();
+            List<Int32> _Anios = new List<int>();
+
+            _Anios = db.NE_Venta.Select(x => x.Fecha.Year).Distinct().ToList();
+            if (!_Anios.Contains(DateTime.Now.Year))
+                _Anios.Add(DateTime.Now.Year);
+
+            Anios = _Anios.Select(x => new SelectListItem() { Text=x.ToString(), Value=x.ToString() }).ToList();
+
+            foreach (var item in Settings.MESES)
+                Meses.Add(new SelectListItem() {
+                    Text = item.Value,
+                    Value = item.Key.ToString(),
+                    Selected = item.Key == DateTime.Now.Month
+                });
+
+            ViewBag.Anios = Anios;
+            ViewBag.Meses = Meses;
+
             return PartialView();
         }
 
         public PartialViewResult VehiculosVendidosDetalleParcial(Int32 Mes, Int32 Anio) {
 
+            //ViewBag.NumeroDeAutos= db.NE_Venta.Where(x => x.Fecha.Month == Mes && x.Fecha.Year == Anio).Count();
+            ViewBag.NumeroDeAutos= db.NE_VentaDetalle.Any(x=>x.VehiculoId!=null && x.NE_Venta.Fecha.Month == Mes && x.NE_Venta.Fecha.Year == Anio)?
+                db.NE_VentaDetalle.Where(x => x.VehiculoId != null && x.NE_Venta.Fecha.Month == Mes && x.NE_Venta.Fecha.Year == Anio).Sum(x => x.Cantidad) : 0;
+            return PartialView();
+        }
+
+        #endregion
+
+        #region Cantidad de articulos vendidos
+
+        public PartialViewResult ArticulosVendidosPartial() {
+            List<SelectListItem> Anios = new List<SelectListItem>();
+            List<SelectListItem> Meses = new List<SelectListItem>();
+            List<Int32> _Anios = new List<int>();
+
+            _Anios = db.NE_Venta.Select(x => x.Fecha.Year).Distinct().ToList();
+            if (!_Anios.Contains(DateTime.Now.Year))
+                _Anios.Add(DateTime.Now.Year);
+
+            Anios = _Anios.Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
+
+            foreach (var item in Settings.MESES)
+                Meses.Add(new SelectListItem()
+                {
+                    Text = item.Value,
+                    Value = item.Key.ToString(),
+                    Selected = item.Key == DateTime.Now.Month
+                });
+
+            ViewBag.Anios = Anios;
+            ViewBag.Meses = Meses;
+
+            return PartialView();
+        }
+
+        public PartialViewResult ArticulosVendidosDetalleParcial(Int32 Mes, Int32 Anio)
+        {
+            //ViewBag.NumeroDeArticulos = db.NE_Venta.Where(x => x.Fecha.Month == Mes && x.Fecha.Year == Anio).Count();
+            ViewBag.NumeroDeArticulos = db.NE_VentaDetalle.Any(x => x.ProductoId != null && x.NE_Venta.Fecha.Month == Mes && x.NE_Venta.Fecha.Year == Anio)?
+                db.NE_VentaDetalle.Where(x => x.ProductoId != null && x.NE_Venta.Fecha.Month == Mes && x.NE_Venta.Fecha.Year == Anio).Sum(x=>x.Cantidad) : 0;
+            return PartialView();
+        }
+
+
+        #endregion
+
+        #region Usuarios
+
+        public PartialViewResult FiltrosUsuariosParcial() {
+            List<SelectListItem> Anios = new List<SelectListItem>();
+            List<SelectListItem> Meses = new List<SelectListItem>();
+            List<Int32> _Anios = new List<int>();
+
+            _Anios = db.NE_Venta.Select(x => x.Fecha.Year).Distinct().ToList();
+            if (!_Anios.Contains(DateTime.Now.Year))
+                _Anios.Add(DateTime.Now.Year);
+
+            Anios = _Anios.Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
+
+            foreach (var item in Settings.MESES)
+                Meses.Add(new SelectListItem()
+                {
+                    Text = item.Value,
+                    Value = item.Key.ToString(),
+                    Selected = item.Key == DateTime.Now.Month
+                });
+
+            ViewBag.Anios = Anios;
+            ViewBag.Meses = Meses;
+
+            return PartialView();
+        }
+
+        public PartialViewResult FiltrosUsuariosDetalleParcial(Int32 Mes, Int32 Anio) {
+
+            ViewBag.NumerosDeUsuariosLogueados= db.NE_Bitacora.Where(x => x.FechaDeRegistro.Month == Mes && x.FechaDeRegistro.Year == Anio && x.AccionId == ACCION.INICIO_DE_SESION).Count();
+            ViewBag.NumerosDeUsuariosRegistrados = db.NE_Bitacora.Where(x => x.FechaDeRegistro.Month == Mes && x.FechaDeRegistro.Year == Anio && x.AccionId == ACCION.NUEVO_REGISTRO).Count();
+            ViewBag.NumeroDeUsuariosQueHicieronCompras = db.NE_Bitacora.Where(x => x.FechaDeRegistro.Month == Mes && x.FechaDeRegistro.Year == Anio && x.AccionId == ACCION.COMPRA).Count();
+
             return PartialView();
         }
         #endregion
-
     }
 }

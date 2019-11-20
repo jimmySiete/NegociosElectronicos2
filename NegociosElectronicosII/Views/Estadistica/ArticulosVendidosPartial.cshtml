@@ -8,11 +8,11 @@
     <div class="card-header">
         <div class="row">
             <div class="col-md-12 text-center">
-                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Vehiculos vendidos</div>
+                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Articulos vendidos</div>
             </div>
             <div class="col-md-12">
                 <label>Mes</label>
-                <select class="form-control" id="MesesVehiculosVendidos">
+                <select class="form-control" id="MesesArticulosVendidos">
                     @foreach (var item in meses)
                     {
                         <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-12">
                 <label>Anios</label>
-                <select class="form-control" id="AniosVehiculosVendidos">
+                <select class="form-control" id="AniosArticulosVendidos">
                     @foreach (var item in anios)
                     {
                         <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
@@ -30,29 +30,30 @@
             </div>
         </div>
     </div>
-    <div class="card-body" id="VehiculosVendidosDetalle">
+    <div class="card-body" id="ArticulosVendidosDetalle">
         <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div>
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
 
-        Cargar_VehiculosVendidosDetalleParcial(@DateTime.Now.Month, @DateTime.Now.Year);
+        Cargar_ArticulosVendidosDetalleParcial(@DateTime.Now.Month, @DateTime.Now.Year);
 
-        $('#MesesVehiculosVendidos').change(function () {
-            Cargar_VehiculosVendidosDetalleParcial(Number($('#MesesVehiculosVendidos').val()),Number($('#AniosVehiculosVendidos').val()));
+        $('#MesesArticulosVendidos').change(function () {
+            Cargar_ArticulosVendidosDetalleParcial(Number($('#MesesArticulosVendidos').val()),Number($('#AniosArticulosVendidos').val()));
         });
 
-        $('#AniosVehiculosVendidos').change(function () {
-            Cargar_VehiculosVendidosDetalleParcial(Number($('#MesesVehiculosVendidos').val()),Number($('#AniosVehiculosVendidos').val()));
+        $('#AniosArticulosVendidos').change(function () {
+            Cargar_ArticulosVendidosDetalleParcial(Number($('#MesesArticulosVendidos').val()),Number($('#AniosArticulosVendidos').val()));
         });
     });
 
-    function Cargar_VehiculosVendidosDetalleParcial(Mes, Anio)
+    function Cargar_ArticulosVendidosDetalleParcial(Mes, Anio)
     {
-        $('#VehiculosVendidosDetalle').empty();
-        $('#VehiculosVendidosDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
-        $('#VehiculosVendidosDetalle').load('@Url.Action("VehiculosVendidosDetalleParcial", "Estadistica")', { Mes: Mes, Anio: Anio }, function () {
+        $('#ArticulosVendidosDetalle').empty();
+        $('#ArticulosVendidosDetalle').html('<img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />');
+        $('#ArticulosVendidosDetalle').load('@Url.Action("ArticulosVendidosDetalleParcial", "Estadistica")', { Mes: Mes, Anio: Anio }, function () {
         });
     }
 </script>
+

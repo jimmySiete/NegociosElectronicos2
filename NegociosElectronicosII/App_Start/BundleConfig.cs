@@ -78,6 +78,17 @@ namespace NegociosElectronicosII
                        "~/Content/ui-ecommerce/js/script.js"
                        ));
 
+            #region datatables
+
+            bundles.Add(new StyleBundle("~/Content/DataTablesCss").Include(
+                     "~/Content/datatables/css/jquery.dataTables.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                      "~/Content/datatables/js/jquery.dataTables.js",
+                      "~/Content/datatables/js/jquery.dataTables.min.js"
+                      ));
+
+            #endregion
         }
     }
 }

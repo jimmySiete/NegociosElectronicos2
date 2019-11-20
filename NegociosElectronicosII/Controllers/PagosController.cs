@@ -91,8 +91,17 @@ namespace NegociosElectronicosII.Controllers
                         db.SaveChanges();
                     }
 
+                    NE_Bitacora bitacora = new NE_Bitacora()
+                    {
+                        AccionId = ACCION.COMPRA,
+                        Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " ha realizado una nueva compra.",
+                        FechaDeRegistro = DateTime.Now,
+                        UsuarioId = Settings.LoggedUser.UsuarioId,
+                    };
+                    db.NE_Bitacora.Add(bitacora);
+                    db.SaveChanges();
 
-                   
+
                     dbTran.Commit();
                     return Json(new { Success = true, Message = valores }, JsonRequestBehavior.DenyGet);
                 }

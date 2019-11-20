@@ -65,8 +65,18 @@ namespace NegociosElectronicosII.Controllers
                         db.SaveChanges();
                         ViewBag.Message = "Bienvenido"+Settings.LoggedUser.Nombre;
 
-                        if(user.RolId==4)
-                        return RedirectToAction("Index", "Principal");
+                        NE_Bitacora bitacora = new NE_Bitacora()
+                        {
+                            AccionId = ACCION.INICIO_DE_SESION,
+                            Descripcion = "el usuario : " + user.CorreoElectronico + " ha iniciado sesion",
+                            FechaDeRegistro = DateTime.Now,
+                            UsuarioId = user.UsuarioId,
+                        };
+                        db.NE_Bitacora.Add(bitacora);
+                        db.SaveChanges();
+
+                        if (user.RolId==4)
+                            return RedirectToAction("Index", "Principal");
                         if(user.RolId==1)
                             return RedirectToAction("Index", "Vehiculo");
 
@@ -84,13 +94,10 @@ namespace NegociosElectronicosII.Controllers
             }
         }
 
-      
-
         public ActionResult RecoveryPass()
         {
             return View();
         }
-
 
         [HttpPost]
         public JsonResult IsEmailValid(String email)

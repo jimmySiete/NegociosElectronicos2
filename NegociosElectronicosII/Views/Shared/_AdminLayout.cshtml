@@ -6,8 +6,8 @@
     <meta http-equiv="cache-control" content="max-age=604800" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
-    <title>UI KIT - Bootstrap ecommerce product views html templates</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <title>Vocho.Net</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/Imagenes/favicon.ico">
     <!-- jQuery -->
     @*<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>*@
     <script src="~/Content/ui-ecommerce/js/jquery-2.0.0.min.js"></script>
@@ -38,6 +38,9 @@
     @*<script src="js/script.js" type="text/javascript"></script>*@
     <script src="~/Content/ui-ecommerce/js/script.js"></script>
     @Scripts.Render("~/bundles/ChartJS")
+    
+    @Styles.Render("~/Content/DataTablesCss")
+    @Scripts.Render("~/bundles/datatables")
 
     <script type="text/javascript">
 /// some script
@@ -93,6 +96,35 @@ $(document).ready(function() {
         offset: 80
     });
 
+	$('.dt').DataTable({
+	    "paging": true,
+	    "pageLength": 5,
+	    //aaSorting: [],
+	    "order": [[1, "asc"]],
+	    "language": {
+	        "emptyTable": "No hay algun registro",
+	        "info": "Mostrando de _START_ a _END_ de _TOTAL_ registros",
+	        "infoEmpty": "Mostrando 0 registros",
+	        "infoFiltered": "(De un total de _MAX_ registros)",
+	        "infoPostFix": "",
+	        "thousands": ",",
+	        "lengthMenu": "Mostrar _MENU_ registros",
+	        "loadingRecords": "Cargando...",
+	        "processing": "Procesando...",
+	        "search": "Buscar: ",
+	        "zeroRecords": "No se encontro ningun registro",
+	        "paginate": {
+	            "first": "Primera",
+	            "last": "Ultima",
+	            "next": "Siguiente",
+	            "previous": "Anterior"
+	        },
+	        "aria": {
+	            "sortAscending": ":Ordenar la columna de forma ascendente",
+	            "sortDescending": ":Ordenar la columna de forma descendente"
+	        }
+	    }
+	});
 
 });
 // jquery end
@@ -246,7 +278,7 @@ $(document).ready(function() {
                 <a class="float-right d-md-none btn" type="button" data-toggle="collapse" data-target="#navbar_aside">
                     <i class="fa fa-bars white fa-lg"></i> &nbsp  Elements
                 </a>
-                <h6 class="title">Bootstrap-Ecommerce <br> <small>Documentation</small></h6>
+                <h6 class="title">@Settings.LoggedUser.Nombre @Settings.LoggedUser.ApellidoPaterno <br> <small>Vocho.net</small></h6>
 
             </header>
             <div class="aside-content collapse" id="navbar_aside">
@@ -258,7 +290,7 @@ $(document).ready(function() {
                             <article class="list-group-item">
                                 <header class="filter-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" class="collapsed">
-                                        @Settings.LoggedUser.Nombre.ToUpper()
+                                        Mi Cuenta
                                         <i class="icon-action fa fa-chevron-down">  </i>
                                         <h6 class="title"> </h6>
                                     </a>
@@ -270,22 +302,12 @@ $(document).ready(function() {
                                 </div> <!-- collapse -filter-content  .// -->
                             </article>
                         </div> <!-- list-group.// -->
-                        @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-black" data-tab="AdminCatalogs" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @NegociosElectronicosII.GlobalCode.Settings.LoggedUser.Nombre.ToUpper()
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="@Url.Action("ChangePassword","Base")">@Recursos.CambiarPass</a>
-                <a class="dropdown-item" href="@Url.Action("LogOut","Login")">@Recursos.CerrarSes</a>
-            </div>
-        </li>*@
+                        
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Vehiculo")">@Recursos.Vehiculos</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Producto")">@Recursos.Articulos</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Usuario")">@Recursos.User</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Estadistica")">@Recursos.Estadist</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Carrusell")">Carrusel</a> </li>
-                        <li> <a class="page-scroll nav-link" id="finishSession">Cerrar Sesion</a> </li>
-
                     </ul>
                 </nav>
                 <hr>

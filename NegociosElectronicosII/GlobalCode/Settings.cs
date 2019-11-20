@@ -118,4 +118,10 @@ namespace NegociosElectronicosII
             ,{ 7,"Julio" },{ 8,"Agosto" },{ 9,"Septiembre" },{ 10,"Octubre" },{ 11,"Noviembre" },{ 12,"Diciembre" }
         };
     }
+
+    public class ACCION {
+        public static int NUEVO_REGISTRO = 1;
+        public static int INICIO_DE_SESION = 2;
+        public static int COMPRA = 3;
+    }
 }

@@ -5,85 +5,88 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Articulos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioVenta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioCompra)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Activo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NE_Color.Color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NE_Marca.Marca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MarcarComoOferta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioOFerta)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Descripcion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Stock)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PrecioVenta)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PrecioCompra)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Activo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NE_Color.Color)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NE_Marca.Marca)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.MarcarComoOferta)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PrecioOFerta)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ProductoId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ProductoId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ProductoId })
-    </td>
-</tr>
-    }
-
+<table class="table dt">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Color.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NE_Marca.Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarcarComoOferta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioOFerta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Activo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NE_Color.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NE_Marca.Marca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MarcarComoOferta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioOFerta)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductoId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductoId })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
