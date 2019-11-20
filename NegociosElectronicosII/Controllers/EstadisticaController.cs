@@ -197,6 +197,22 @@ namespace NegociosElectronicosII.Controllers
 
             return PartialView();
         }
+
         #endregion
+
+        #region Usuarios con mas ventas
+
+        public PartialViewResult UsuariosConMasVentas() {
+
+            List<Models.UsuarioReporteModel> model= db.NE_Venta.GroupBy(x => new { x.NE_Usuario.Nombre, x.NE_Usuario.ApellidoPaterno})
+                .Select(x=>new Models.UsuarioReporteModel() {
+                    Total= 0,
+                    Usuario= x.Key.Nombre + " " + x.Key.ApellidoPaterno
+                }).ToList().OrderByDescending(x=>x.Total).Take(5).ToList();
+            return PartialView(model);
+        }
+
+        #endregion
+
     }
 }

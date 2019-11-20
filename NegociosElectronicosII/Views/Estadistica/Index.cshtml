@@ -36,42 +36,11 @@
         <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div><!-- col // -->
 
-    <div class="col-md-3">
-        <article class="box">
-            <figure class="itemside">
-                <div class="aside align-self-center">
-                    <span class="icon-wrap icon-md round bg-danger">
-                        <i class="fa fa-lock white"></i>
-                    </span>
-                </div>
-                <figcaption class="text-wrap">
-                    <h5 class="title">Secured protocol</h5>
-                    <p class="text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt dolor laburab
-                    </p>
-                </figcaption>
-            </figure> <!-- iconbox // -->
-        </article> <!-- panel-lg.// -->
+    <div class="col-md-6" id="UsuariosConMasVentasDiv">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div><!-- col // -->
-    <div class="col-md-3">
-        <article class="box">
-            <figure class="itemside">
-                <div class="aside align-self-center">
-                    <span class="icon-wrap icon-md round bg-danger">
-                        <i class="fa fa-lock white"></i>
-                    </span>
-                </div>
-                <figcaption class="text-wrap">
-                    <h5 class="title">Secured protocol</h5>
-                    <p class="text-muted">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt dolor laburab
-                    </p>
-                </figcaption>
-            </figure> <!-- iconbox // -->
-        </article> <!-- panel-lg.// -->
-    </div><!-- col // -->
+
+   
 </div> <!-- row.// -->
 <br />
 <div class="row">
@@ -328,7 +297,8 @@
         $('#VehiculosVendidos').load('@Url.Action("VehiculosVendidosPartial", "Estadistica")');
         $('#ArticulosVendidos').load('@Url.Action("ArticulosVendidosPartial", "Estadistica")');
         $('#UsuariosFiltrosPrincipal').load('@Url.Action("FiltrosUsuariosParcial", "Estadistica")');
-
+        $('#UsuariosConMasVentasDiv').load('@Url.Action("UsuariosConMasVentas", "Estadistica")');
+        
     });
 
     var speedCanvas = document.getElementById("speedChart");

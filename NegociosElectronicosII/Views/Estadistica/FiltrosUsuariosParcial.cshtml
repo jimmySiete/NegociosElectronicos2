@@ -12,7 +12,32 @@
                 <i class="fa fa-user white"></i>
             </span>
         </div>
-        <figcaption class="text-wrap" id="UsuariosParcialDetalle">
+        <figcaption class="text-wrap">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Info de los usuarios</div>
+                </div>
+                <div class="col-md-12">
+                    <label>Mes</label>
+                    <select class="form-control" id="MesesUsuarios">
+                        @foreach (var item in meses)
+                        {
+                            <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label>Anios</label>
+                    <select class="form-control" id="AniosUsuarios">
+                        @foreach (var item in anios)
+                        {
+                            <option value="@item.Value" @(item.Selected ? "selected" : String.Empty)>@item.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div id="UsuariosParcialDetalle"></div>
         </figcaption>
     </figure> <!-- iconbox // -->
 </article> <!-- panel-lg.// -->
