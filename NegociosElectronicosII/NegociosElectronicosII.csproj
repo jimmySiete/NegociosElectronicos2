@@ -821,6 +821,7 @@
     <Content Include="Views\Estadistica\ArticulosVendidosDetalleParcial.cshtml" />
     <Content Include="Views\Estadistica\FiltrosUsuariosParcial.cshtml" />
     <Content Include="Views\Estadistica\FiltrosUsuariosDetalleParcial.cshtml" />
+    <Content Include="Views\Vehiculo\ImagenCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
