@@ -244,27 +244,32 @@ namespace NegociosElectronicosII.Controllers
             base.Dispose(disposing);
         }
 
-        // GET: Carrusell/Create
-        public ActionResult ImagenCreate()
+        public ActionResult ImagenCreate(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NE_Vehiculo nE_Vehiculo = db.NE_Vehiculo.Find(id);
+            if (nE_Vehiculo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(nE_Vehiculo);
         }
 
-        // POST: Carrusell/Create
+        // POST: Vehiculo/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ImagenCreate([Bind(Include = "CarruselId,Posicion,Texto,Descripcion,Ruta,Extension,NombreArchivo,Activo")] NE_Carrusel nE_Carrusel)
+        public ActionResult ImagenCreate(int id)
         {
-
             try
             {
                 string mensaje;
                 HttpPostedFileBase postedFile = Request.Files[0];
 
-                if (ModelState.IsValid)
-                {
                     if (postedFile != null && postedFile.ContentLength > 0)
                     {
                         IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
@@ -276,37 +281,36 @@ namespace NegociosElectronicosII.Controllers
                         }
                         else
                         {
-                            var name = String.Format("banner_{0}", nE_Carrusel.CarruselId);
-                            var filePath = Server.MapPath("~/Imagenes/Carrusel/" + name + extension);
+                                var name = String.Format("Vehiculo_{0}", id);
+                                //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
+                                var filePath = Server.MapPath("~/Imagenes/Vehiculo/" + name + extension);
 
-                            NE_Carrusel imagen = new NE_Carrusel()
-                            {
-                                NombreArchivo = name,
-                                Extension = ext,
-                                Ruta = filePath,
-                                Posicion = nE_Carrusel.Posicion,
-                                Texto = nE_Carrusel.Texto,
-                                Descripcion = nE_Carrusel.Descripcion,
-                                Activo = nE_Carrusel.Activo,
-                            };
-                            db.NE_Carrusel.Add(imagen);
-                            db.SaveChanges();
+                                NE_VehiculoImagen imagen = new NE_VehiculoImagen()
+                                {
+                                    Extension = extension,
+                                    Nombre = name,
+                                    VehiculoId = id,
+                                    Ruta = filePath,
+                                };
+                                db.NE_VehiculoImagen.Add(imagen);
+                                db.SaveChanges();
 
-                            postedFile.SaveAs(filePath);
+                                postedFile.SaveAs(filePath);
 
-                            return RedirectToAction("Index");
+                                return RedirectToAction("Index");
                         }
                     }
 
-                }
-                return View(nE_Carrusel);
+                return View();
             }
             catch (Exception ex)
             {
-                return View(nE_Carrusel);
+                return View();
             }
 
         }
+
+
 
 
     }
