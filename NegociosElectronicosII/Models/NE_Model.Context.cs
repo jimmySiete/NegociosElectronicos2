@@ -55,5 +55,6 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_TipoPago> NE_TipoPago { get; set; }
         public virtual DbSet<NE_Venta> NE_Venta { get; set; }
         public virtual DbSet<NE_VentaDetalle> NE_VentaDetalle { get; set; }
+        public virtual DbSet<NE_ArticuloVehiculoVisto> NE_ArticuloVehiculoVisto { get; set; }
     }
 }

@@ -27,6 +27,7 @@ namespace NegociosElectronicosII.Models
             this.NE_Carrito = new HashSet<NE_Carrito>();
             this.NE_ListaDeDeseos = new HashSet<NE_ListaDeDeseos>();
             this.NE_Venta = new HashSet<NE_Venta>();
+            this.NE_ArticuloVehiculoVisto = new HashSet<NE_ArticuloVehiculoVisto>();
         }
     
         public int UsuarioId { get; set; }
@@ -40,6 +41,7 @@ namespace NegociosElectronicosII.Models
         public string CorreoElectronico { get; set; }
         public bool Activo { get; set; }
         public int RolId { get; set; }
+        public Nullable<System.DateTime> FechaDeRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NE_Autenticacion> NE_Autenticacion { get; set; }
@@ -63,5 +65,7 @@ namespace NegociosElectronicosII.Models
         public virtual ICollection<NE_ListaDeDeseos> NE_ListaDeDeseos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NE_Venta> NE_Venta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NE_ArticuloVehiculoVisto> NE_ArticuloVehiculoVisto { get; set; }
     }
 }

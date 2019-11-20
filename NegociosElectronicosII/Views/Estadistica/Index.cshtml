@@ -44,35 +44,12 @@
 </div> <!-- row.// -->
 <br />
 <div class="row">
-    <div class="col-md-7">
-
-        <div class="card">
-            <header class="card-header">
-                <h4 class="card-title mt-2">Aqui va el titulo</h4>
-            </header>
-            <article class="card-body">
-                <canvas id="speedChart"></canvas>
-            </article> <!-- card-body end .// -->
-            <div class="border-top card-body text-center">
-                
-            </div>
-        </div> <!-- card.// -->
-
+    <div class="col-md-7" id="VentasAnuales">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div>
-    <div class="col-md-5">
 
-        <div class="card">
-            <header class="card-header">
-                <h4 class="card-title mt-2">Aqui va el titulo</h4>
-            </header>
-            <article class="card-body">
-                <canvas id="oilChart"></canvas>
-            </article> <!-- card-body end .// -->
-            <div class="border-top card-body text-center">
-
-            </div>
-        </div> <!-- card.// -->
-
+    <div class="col-md-5" id="LoMasVendido">
+        <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
     </div>
 </div>
 <br />
@@ -298,85 +275,9 @@
         $('#ArticulosVendidos').load('@Url.Action("ArticulosVendidosPartial", "Estadistica")');
         $('#UsuariosFiltrosPrincipal').load('@Url.Action("FiltrosUsuariosParcial", "Estadistica")');
         $('#UsuariosConMasVentasDiv').load('@Url.Action("UsuariosConMasVentas", "Estadistica")');
-        
+        $('#VentasAnuales').load('@Url.Action("MostrarVentasAnuales", "Estadistica")');
+        $('#LoMasVendido').load('@Url.Action("MostrarProductosMasVendidosAnuales", "Estadistica")');
     });
 
-    var speedCanvas = document.getElementById("speedChart");
-
-    Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
-
-    var speedData = {
-        labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
-        datasets: [{
-            label: "Car Speed (mph)",
-            data: [0, 59, 75, 20, 20, 55, 40],
-            lineTension: 0,
-            fill: false,
-            borderColor: 'orange',
-            backgroundColor: 'transparent',
-            borderDash: [5, 5],
-            pointBorderColor: 'orange',
-            pointBackgroundColor: 'rgba(255,150,0,0.5)',
-            pointRadius: 5,
-            pointHoverRadius: 10,
-            pointHitRadius: 30,
-            pointBorderWidth: 2,
-            pointStyle: 'rectRounded'
-        }]
-    };
-
-    var chartOptions = {
-        legend: {
-            display: true,
-            position: 'top',
-            labels: {
-                boxWidth: 80,
-                fontColor: 'black'
-            }
-        }
-    };
-
-    var lineChart = new Chart(speedCanvas, {
-        type: 'line',
-        data: speedData,
-        options: chartOptions
-    });
-
-
-
-
-    ///
-
-    var oilCanvas = document.getElementById("oilChart");
-
-    Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
-
-    var oilData = {
-        labels: [
-            "Saudi Arabia",
-            "Russia",
-            "Iraq",
-            "United Arab Emirates",
-            "Canada"
-        ],
-        datasets: [
-            {
-                data: [133.3, 86.2, 52.2, 51.2, 50.2],
-                backgroundColor: [
-                    "#FF6384",
-                    "#63FF84",
-                    "#84FF63",
-                    "#8463FF",
-                    "#6384FF"
-                ]
-            }]
-    };
-
-    var pieChart = new Chart(oilCanvas, {
-        type: 'pie',
-        data: oilData
-    });
 
 </script>
