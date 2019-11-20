@@ -294,7 +294,10 @@ namespace NegociosElectronicosII.Controllers
                                 };
                                 db.NE_VehiculoImagen.Add(imagen);
                                 db.SaveChanges();
-
+                                
+                                imagen.Nombre= name = String.Format("Vehiculo_{0}", imagen.VehiculoId);
+                        db.SaveChanges();
+                                
                                 postedFile.SaveAs(filePath);
 
                                 return RedirectToAction("Index");
