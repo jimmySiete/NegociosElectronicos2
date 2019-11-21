@@ -232,7 +232,7 @@
         function RegistrarEnBitacora(texto, acciondId) {
             function agregar(nuevo, cons) {
                 $.ajax({
-                    url: '@Url.Action("AgregarCarro", "Carrito")',
+                    url: '@Url.Action("RegistroBitacora", "Base")',
                     data: { texto: texto, AccionId: acciondId },
                     type: 'POST',
                     success: function (response) {

@@ -39,6 +39,10 @@ namespace NegociosElectronicosII.Controllers
                     db.SaveChanges();
                 }
             }
+            else
+            {
+                detalles.producto = db.NE_Producto.Where(x => x.ProductoId == idprod).First();
+
                 if (Settings.LoggedUser != null)
                 {
                     NE_ArticuloVehiculoVisto vehiculoVisto = new NE_ArticuloVehiculoVisto()
@@ -52,10 +56,7 @@ namespace NegociosElectronicosII.Controllers
                     db.SaveChanges();
                 }
             }
-            else
-            {
-                detalles.producto = db.NE_Producto.Where(x => x.ProductoId == idprod).First();
-             
+            
             return PartialView(detalles);
 
 
