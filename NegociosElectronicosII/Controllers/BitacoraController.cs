@@ -12,107 +12,116 @@ using NegociosElectronicosII.GlobalCode;
 namespace NegociosElectronicosII.Controllers
 {
     [NegociosII_Auth(Roles = "1")]
-    public class FAQSController : Controller
+    public class BitacoraController : Controller
     {
         private DB_NE_Entitties db = new DB_NE_Entitties();
 
-        // GET: FAQS
+        // GET: Bitacora
         public ActionResult Index()
         {
-            return View(db.NE_FAQS.ToList());
+            var nE_Bitacora = db.NE_Bitacora.Include(n => n.NE_Accion).Include(n => n.NE_Usuario);
+            return View(nE_Bitacora.ToList());
         }
 
-        // GET: FAQS/Details/5
+        // GET: Bitacora/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NE_FAQS nE_FAQS = db.NE_FAQS.Find(id);
-            if (nE_FAQS == null)
+            NE_Bitacora nE_Bitacora = db.NE_Bitacora.Find(id);
+            if (nE_Bitacora == null)
             {
                 return HttpNotFound();
             }
-            return View(nE_FAQS);
+            return View(nE_Bitacora);
         }
 
-        // GET: FAQS/Create
+        // GET: Bitacora/Create
         public ActionResult Create()
         {
+            ViewBag.AccionId = new SelectList(db.NE_Accion, "AccionId", "Accion");
+            ViewBag.UsuarioId = new SelectList(db.NE_Usuario, "UsuarioId", "Nombre");
             return View();
         }
 
-        // POST: FAQS/Create
+        // POST: Bitacora/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FAQId,Pregunta,Respuesta,Orden,Activo")] NE_FAQS nE_FAQS)
+        public ActionResult Create([Bind(Include = "BitacoraId,AccionId,Descripcion,FechaDeRegistro,UsuarioId")] NE_Bitacora nE_Bitacora)
         {
             if (ModelState.IsValid)
             {
-                db.NE_FAQS.Add(nE_FAQS);
+                db.NE_Bitacora.Add(nE_Bitacora);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(nE_FAQS);
+            ViewBag.AccionId = new SelectList(db.NE_Accion, "AccionId", "Accion", nE_Bitacora.AccionId);
+            ViewBag.UsuarioId = new SelectList(db.NE_Usuario, "UsuarioId", "Nombre", nE_Bitacora.UsuarioId);
+            return View(nE_Bitacora);
         }
 
-        // GET: FAQS/Edit/5
+        // GET: Bitacora/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NE_FAQS nE_FAQS = db.NE_FAQS.Find(id);
-            if (nE_FAQS == null)
+            NE_Bitacora nE_Bitacora = db.NE_Bitacora.Find(id);
+            if (nE_Bitacora == null)
             {
                 return HttpNotFound();
             }
-            return View(nE_FAQS);
+            ViewBag.AccionId = new SelectList(db.NE_Accion, "AccionId", "Accion", nE_Bitacora.AccionId);
+            ViewBag.UsuarioId = new SelectList(db.NE_Usuario, "UsuarioId", "Nombre", nE_Bitacora.UsuarioId);
+            return View(nE_Bitacora);
         }
 
-        // POST: FAQS/Edit/5
+        // POST: Bitacora/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FAQId,Pregunta,Respuesta,Orden,Activo")] NE_FAQS nE_FAQS)
+        public ActionResult Edit([Bind(Include = "BitacoraId,AccionId,Descripcion,FechaDeRegistro,UsuarioId")] NE_Bitacora nE_Bitacora)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nE_FAQS).State = EntityState.Modified;
+                db.Entry(nE_Bitacora).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(nE_FAQS);
+            ViewBag.AccionId = new SelectList(db.NE_Accion, "AccionId", "Accion", nE_Bitacora.AccionId);
+            ViewBag.UsuarioId = new SelectList(db.NE_Usuario, "UsuarioId", "Nombre", nE_Bitacora.UsuarioId);
+            return View(nE_Bitacora);
         }
 
-        // GET: FAQS/Delete/5
+        // GET: Bitacora/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NE_FAQS nE_FAQS = db.NE_FAQS.Find(id);
-            if (nE_FAQS == null)
+            NE_Bitacora nE_Bitacora = db.NE_Bitacora.Find(id);
+            if (nE_Bitacora == null)
             {
                 return HttpNotFound();
             }
-            return View(nE_FAQS);
+            return View(nE_Bitacora);
         }
 
-        // POST: FAQS/Delete/5
+        // POST: Bitacora/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NE_FAQS nE_FAQS = db.NE_FAQS.Find(id);
-            db.NE_FAQS.Remove(nE_FAQS);
+            NE_Bitacora nE_Bitacora = db.NE_Bitacora.Find(id);
+            db.NE_Bitacora.Remove(nE_Bitacora);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

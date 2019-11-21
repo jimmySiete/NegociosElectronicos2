@@ -24,6 +24,21 @@ namespace NegociosElectronicosII.Controllers
             if (tipoprod == 1)
             {
                 detalles.vehiculo = db.NE_Vehiculo.Where(x => x.VehiculoId == idprod).First();
+
+                if (Settings.LoggedUser != null)
+                {
+                    NE_Vehiculo nE_Vehiculo = db.NE_Vehiculo.Where(x => x.VehiculoId == idprod).First();
+                    NE_Bitacora bitacora = new NE_Bitacora()
+                    {
+                        AccionId = ACCION.DETALLES_PRODUCTO,
+                        Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " vio más Detalles de '" + nE_Vehiculo.NE_Marca.Marca + " " + nE_Vehiculo.NombreVehiculo + " " + nE_Vehiculo.Modelo + "'",
+                        FechaDeRegistro = DateTime.Now,
+                        UsuarioId = Settings.LoggedUser.UsuarioId,
+                    };
+                    db.NE_Bitacora.Add(bitacora);
+                    db.SaveChanges();
+                }
+            }
                 if (Settings.LoggedUser != null)
                 {
                     NE_ArticuloVehiculoVisto vehiculoVisto = new NE_ArticuloVehiculoVisto()
@@ -40,19 +55,6 @@ namespace NegociosElectronicosII.Controllers
             else
             {
                 detalles.producto = db.NE_Producto.Where(x => x.ProductoId == idprod).First();
-                if (Settings.LoggedUser != null)
-                {
-                    NE_ArticuloVehiculoVisto productoVisto = new NE_ArticuloVehiculoVisto()
-                    {
-                        ID_Producto = idprod,
-                        ID_Usuario = Settings.LoggedUser.UsuarioId,
-                        ID_Vehiculo = null,
-                        RecordDate = DateTime.Now
-                    };
-                    db.NE_ArticuloVehiculoVisto.Add(productoVisto);
-                    db.SaveChanges();
-                }
-            }
              
             return PartialView(detalles);
 
