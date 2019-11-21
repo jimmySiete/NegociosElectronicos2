@@ -34,6 +34,16 @@ namespace NegociosElectronicosII.Controllers
                     VehiculoId = id,
 
                 };
+                NE_Vehiculo nE_Vehiculo = db.NE_Vehiculo.Where(x => x.VehiculoId == id).First();
+                NE_Bitacora bitacora = new NE_Bitacora()
+                {
+                    AccionId = ACCION.AGREGAR_CARRO,
+                    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Agrego al carrito '" + nE_Vehiculo.NE_Marca.Marca + " " + nE_Vehiculo.NombreVehiculo + " " + nE_Vehiculo.Modelo + "'",
+                    FechaDeRegistro = DateTime.Now,
+                    UsuarioId = Settings.LoggedUser.UsuarioId,
+                };
+                db.NE_Bitacora.Add(bitacora);
+                db.SaveChanges();
             }
             else
             {
@@ -47,6 +57,16 @@ namespace NegociosElectronicosII.Controllers
                     VehiculoId = null,
 
                 };
+                NE_Producto nE_Producto = db.NE_Producto.Where(x => x.ProductoId == id).First();
+                NE_Bitacora bitacora = new NE_Bitacora()
+                {
+                    AccionId = ACCION.AGREGAR_CARRO,
+                    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Agrego al carrito '" + nE_Producto.Nombre + " de "+nE_Producto.NE_Marca.Marca+" '",
+                    FechaDeRegistro = DateTime.Now,
+                    UsuarioId = Settings.LoggedUser.UsuarioId,
+                };
+                db.NE_Bitacora.Add(bitacora);
+                db.SaveChanges();
             }
             db.NE_Carrito.Add(nE_Carrito);
             db.SaveChanges();
@@ -75,11 +95,29 @@ namespace NegociosElectronicosII.Controllers
             if (constante == 1)
             {
                 nE_Carrito = db.NE_Carrito.Where(x=>x.VehiculoId==id).First();
+                NE_Vehiculo nE_Vehiculo = db.NE_Vehiculo.Where(x => x.VehiculoId == id).First();
+                NE_Bitacora bitacora = new NE_Bitacora()
+                {
+                    AccionId = ACCION.ELIMINAR_CARRO,
+                    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Elimino del carrito '" + nE_Vehiculo.NE_Marca.Marca + " " + nE_Vehiculo.NombreVehiculo + " " + nE_Vehiculo.Modelo + "'",
+                    FechaDeRegistro = DateTime.Now,
+                    UsuarioId = Settings.LoggedUser.UsuarioId,
+                };
+                db.NE_Bitacora.Add(bitacora);
 
             }
             else
             {
                 nE_Carrito = db.NE_Carrito.Where(x => x.ProductoId == id).First();
+                NE_Producto nE_Producto = db.NE_Producto.Where(x => x.ProductoId == id).First();
+                NE_Bitacora bitacora = new NE_Bitacora()
+                {
+                    AccionId = ACCION.ELIMINAR_CARRO,
+                    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Elimino del Carrito '" + nE_Producto.Nombre + " de " + nE_Producto.NE_Marca.Marca + " '",
+                    FechaDeRegistro = DateTime.Now,
+                    UsuarioId = Settings.LoggedUser.UsuarioId,
+                };
+                db.NE_Bitacora.Add(bitacora);
             }
             db.NE_Carrito.Remove(nE_Carrito);
             db.SaveChanges();

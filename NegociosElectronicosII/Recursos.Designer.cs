@@ -70,6 +70,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Bitácora.
+        /// </summary>
+        public static string Bitac {
+            get {
+                return ResourceManager.GetString("Bitac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a @Bocho.net 2019 Todos los derechos reservados .
         /// </summary>
         public static string Bocho {
@@ -214,6 +223,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Fecha de Expiración.
+        /// </summary>
+        public static string Expiration {
+            get {
+                return ResourceManager.GetString("Expiration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a FAQS.
         /// </summary>
         public static string Faqs {
@@ -268,6 +286,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Inicie sesión en mi Paypal.
+        /// </summary>
+        public static string LoginPaypal {
+            get {
+                return ResourceManager.GetString("LoginPaypal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Marca.
         /// </summary>
         public static string MarcaId {
@@ -295,6 +322,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nombre del Titular.
+        /// </summary>
+        public static string NameTitu {
+            get {
+                return ResourceManager.GetString("NameTitu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a No tienes cuenta?.
         /// </summary>
         public static string NoCuenta {
@@ -313,11 +349,47 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Número de Tarjeta.
+        /// </summary>
+        public static string NumTar {
+            get {
+                return ResourceManager.GetString("NumTar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Contrasena.
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Pagar.
+        /// </summary>
+        public static string Pay {
+            get {
+                return ResourceManager.GetString("Pay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Paypal.
+        /// </summary>
+        public static string Paypal {
+            get {
+                return ResourceManager.GetString("Paypal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Paypal es la forma más fácil de pagar en línea.
+        /// </summary>
+        public static string PaypalEasy {
+            get {
+                return ResourceManager.GetString("PaypalEasy", resourceCulture);
             }
         }
         
@@ -381,6 +453,15 @@ namespace NegociosElectronicosII {
         public static string RecordarPass {
             get {
                 return ResourceManager.GetString("RecordarPass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Registro de Actividad.
+        /// </summary>
+        public static string RegisActivity {
+            get {
+                return ResourceManager.GetString("RegisActivity", resourceCulture);
             }
         }
         
@@ -471,6 +552,24 @@ namespace NegociosElectronicosII {
         public static string SexoId {
             get {
                 return ResourceManager.GetString("SexoId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tarjeta de Credito/Debito.
+        /// </summary>
+        public static string Tarjeta {
+            get {
+                return ResourceManager.GetString("Tarjeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Transferencia Bancaria.
+        /// </summary>
+        public static string TransBanca {
+            get {
+                return ResourceManager.GetString("TransBanca", resourceCulture);
             }
         }
         

@@ -123,5 +123,12 @@ namespace NegociosElectronicosII
         public static int NUEVO_REGISTRO = 1;
         public static int INICIO_DE_SESION = 2;
         public static int COMPRA = 3;
+        public static int AGREGAR_CARRO = 4;
+        public static int ELIMINAR_CARRO = 5;
+        public static int AGREGAR_LISTA_DESEOS = 8;
+        public static int ELIMINAR_LISTA_DESEOS = 9;
+        public static int BUSQUEDA = 10;
+        public static int DETALLES_PRODUCTO = 11;
+
     }
 }

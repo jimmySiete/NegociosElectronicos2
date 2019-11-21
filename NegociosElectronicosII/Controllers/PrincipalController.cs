@@ -192,6 +192,7 @@ namespace NegociosElectronicosII.Controllers
                     )
                     .ToList();
             else
+            {
                 ImagenesVehiculo = db.NE_VehiculoImagen.Where(x =>
                     x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
                     x.NE_Vehiculo.NE_Color.Color.Contains(Busqueda) ||
@@ -199,8 +200,18 @@ namespace NegociosElectronicosII.Controllers
                     x.NE_Vehiculo.NE_Marca.Marca.Contains(Busqueda) ||
                     x.NE_Vehiculo.Modelo.ToString().Contains(Busqueda) ||
                     x.NE_Vehiculo.NE_Transmision.Transmision.ToString().Contains(Busqueda) ||
-                   (x.NE_Vehiculo.MarcarComoOferta?x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda) 
+                   (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda)
                 ).ToList();
+                NE_Bitacora bitacora = new NE_Bitacora()
+                {
+                    AccionId = ACCION.BUSQUEDA,
+                    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Busco en la página '" +Busqueda + "'",
+                    FechaDeRegistro = DateTime.Now,
+                    UsuarioId = Settings.LoggedUser.UsuarioId,
+                };
+                db.NE_Bitacora.Add(bitacora);
+                db.SaveChanges();
+            }
 
             //Se obtiene el total de los vehiculos
             Int32 TotalDeVehiculos = ImagenesVehiculo.Count();
@@ -231,7 +242,7 @@ namespace NegociosElectronicosII.Controllers
         public PartialViewResult FiltroArticuloParcial()
         {
             ViewBag.Marcas = db.NE_Marca.ToList();
-            ViewBag.Color = db.NE_Color.ToList();
+            ViewBag.Color = db.NE_Color.ToList();; 
             List<NE_ProductoImagen> ImagenesVehiculo = db.NE_ProductoImagen.ToList();
             return PartialView(ImagenesVehiculo);
         }

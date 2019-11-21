@@ -22,9 +22,40 @@ namespace NegociosElectronicosII.Controllers
             DetallesModal detalles = new DetallesModal();
             detalles.tipo = tipoprod;
             if (tipoprod == 1)
+            {
                 detalles.vehiculo = db.NE_Vehiculo.Where(x => x.VehiculoId == idprod).First();
+
+                if (Settings.LoggedUser != null)
+                {
+                    NE_Vehiculo nE_Vehiculo = db.NE_Vehiculo.Where(x => x.VehiculoId == idprod).First();
+                    NE_Bitacora bitacora = new NE_Bitacora()
+                    {
+                        AccionId = ACCION.DETALLES_PRODUCTO,
+                        Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " vio más Detalles de '" + nE_Vehiculo.NE_Marca.Marca + " " + nE_Vehiculo.NombreVehiculo + " " + nE_Vehiculo.Modelo + "'",
+                        FechaDeRegistro = DateTime.Now,
+                        UsuarioId = Settings.LoggedUser.UsuarioId,
+                    };
+                    db.NE_Bitacora.Add(bitacora);
+                    db.SaveChanges();
+                }
+            }
             else
+            {
                 detalles.producto = db.NE_Producto.Where(x => x.ProductoId == idprod).First();
+                if (Settings.LoggedUser != null)
+                {
+                    NE_Producto nE_Producto = db.NE_Producto.Where(x => x.ProductoId == idprod).First();
+                    NE_Bitacora bitacora = new NE_Bitacora()
+                    {
+                        AccionId = ACCION.DETALLES_PRODUCTO,
+                        Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " vio más Detalles de '" + nE_Producto.Nombre + " de " + nE_Producto.NE_Marca.Marca + " '",
+                        FechaDeRegistro = DateTime.Now,
+                        UsuarioId = Settings.LoggedUser.UsuarioId,
+                    };
+                    db.NE_Bitacora.Add(bitacora);
+                    db.SaveChanges();
+                }
+            }
              
             return PartialView(detalles);
 
