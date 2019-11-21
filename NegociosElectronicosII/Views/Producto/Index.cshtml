@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Articulos</h2>
+<h2>@Recursos.Articulos</h2>
 
 <p>
-    @Html.ActionLink("Crear", "Create")
+    @Html.ActionLink(Recursos.Registraar, "Create")
 </p>
 
 <table class="table dt">
@@ -82,9 +82,9 @@
                     @Html.DisplayFor(modelItem => item.PrecioOFerta)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductoId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProductoId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductoId })
+                    @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.ProductoId }) |
+                    @Html.ActionLink(Recursos.Details, "Details", new { id = item.ProductoId }) |
+                    @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.ProductoId })
                 </td>
             </tr>
         }

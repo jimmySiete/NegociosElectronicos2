@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Recursos.Details</h2>
 
 <div>
-    <h4>NE_Producto</h4>
+    <h4>@Recursos.Articulos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -92,6 +92,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink(Recursos.Edit, "Edit", new { id = Model.ProductoId }) |
+    @Html.ActionLink(Recursos.RegreList, "Index")
 </p>

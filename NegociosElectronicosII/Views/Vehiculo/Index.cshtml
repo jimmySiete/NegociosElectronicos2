@@ -6,10 +6,10 @@
 }
 
 
-<h2>Vehiculos</h2>
+<h2>@Recursos.Vehiculos</h2>
 
 <p>
-    @Html.ActionLink("Crear", "Create")
+    @Html.ActionLink(Recursos.Create, "Create")
 </p>
 <table class="table dt">
     <thead>
@@ -94,10 +94,10 @@
                     @Html.DisplayFor(modelItem => item.PrecioOFerta)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.VehiculoId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.VehiculoId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.VehiculoId })|
-                    @Html.ActionLink("ImagenCreate", "ImagenCreate", new { id = item.VehiculoId })
+                    @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.VehiculoId }) |
+                    @Html.ActionLink(Recursos.Details, "Details", new { id = item.VehiculoId }) |
+                    @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.VehiculoId })|
+                    @Html.ActionLink(Recursos.Imagen, "ImagenCreate", new { id = item.VehiculoId })
                 </td>
             </tr>
         }

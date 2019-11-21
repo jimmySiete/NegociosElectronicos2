@@ -213,6 +213,7 @@
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\DetallesProductoController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
+    <Compile Include="Controllers\FAQSController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LandingController.cs" />
     <Compile Include="Controllers\ListaDeseosController.cs" />
@@ -824,6 +825,12 @@
     <Content Include="Views\Estadistica\FiltrosUsuariosDetalleParcial.cshtml" />
     <Content Include="Views\Vehiculo\ImagenCreate.cshtml" />
     <Content Include="Views\Estadistica\UsuariosConMasVentas.cshtml" />
+    <Content Include="Views\FAQS\Create.cshtml" />
+    <Content Include="Views\FAQS\Delete.cshtml" />
+    <Content Include="Views\FAQS\Details.cshtml" />
+    <Content Include="Views\FAQS\Edit.cshtml" />
+    <Content Include="Views\FAQS\Index.cshtml" />
+    <Content Include="Views\Principal\FaqsPrincipal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

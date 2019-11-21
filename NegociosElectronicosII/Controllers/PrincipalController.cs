@@ -332,6 +332,11 @@ namespace NegociosElectronicosII.Controllers
             return View(carro);
         }
 
+        public ActionResult FaqsPrincipal()
+        {
+            return View(db.NE_FAQS.ToList());
+        }
+
         #endregion
     }
 }

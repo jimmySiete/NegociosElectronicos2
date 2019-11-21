@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Imagenes Vehiculo</h2>
+<h2>@Recursos.ImageCar</h2>
 
 @using (Html.BeginForm("ImagenCreate", "Vehiculo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -29,7 +29,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="@Recursos.Registraar" class="btn btn-default" />
             </div>
         </div>
     </div>

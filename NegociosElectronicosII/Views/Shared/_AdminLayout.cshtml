@@ -276,7 +276,7 @@ $(document).ready(function() {
         <aside class="aside-wrap col-md-3 col-lg-2">
             <header class="aside-header">
                 <a class="float-right d-md-none btn" type="button" data-toggle="collapse" data-target="#navbar_aside">
-                    <i class="fa fa-bars white fa-lg"></i> &nbsp  Elements
+                    <i class="fa fa-bars white fa-lg"></i> &nbsp  @Recursos.CategoriaId
                 </a>
                 <h6 class="title">@Settings.LoggedUser.Nombre @Settings.LoggedUser.ApellidoPaterno <br> <small>Vocho.net</small></h6>
 
@@ -285,7 +285,7 @@ $(document).ready(function() {
                 <nav class="menu-wrap">
                     <ul class="menu-aside">
 
-                      
+
                         <div class="list-group">
                             <article class="list-group-item">
                                 <header class="filter-header">
@@ -302,12 +302,13 @@ $(document).ready(function() {
                                 </div> <!-- collapse -filter-content  .// -->
                             </article>
                         </div> <!-- list-group.// -->
-                        
+
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Vehiculo")">@Recursos.Vehiculos</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Producto")">@Recursos.Articulos</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Usuario")">@Recursos.User</a> </li>
                         <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Estadistica")">@Recursos.Estadist</a> </li>
-                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Carrusell")">Carrusel</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","Carrusell")">@Recursos.Carruse</a> </li>
+                        <li> <a class="page-scroll nav-link" href="@Url.Action("Index","FAQS")">FAQS</a> </li>
                     </ul>
                 </nav>
                 <hr>
@@ -337,8 +338,7 @@ $(document).ready(function() {
             
             <!-- ========================= SECTION FOOTER ========================= -->
             <footer class="doc-section-footer text-center p-3 bg-secondary " id="page_footer">
-                Copyright &copy 2018 <br>
-                <a href="http://bootstrap-ecommerce.com">Bootstrap-ecommerce UI kit</a>
+                <p style="color:white">@Recursos.Bocho</p>  <br>
             </footer>
             <!-- ========================= SECTION FOOTER END // ========================= -->
         </main> <!-- main-wrap .// -->

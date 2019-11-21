@@ -120,8 +120,14 @@
   <data name="Articulos" xml:space="preserve">
     <value>Artículos</value>
   </data>
+  <data name="Bocho" xml:space="preserve">
+    <value>@Bocho.net 2019 Todos los derechos reservados </value>
+  </data>
   <data name="CambiarPass" xml:space="preserve">
     <value>Cambiar Contraseña</value>
+  </data>
+  <data name="Carruse" xml:space="preserve">
+    <value>Carrusell</value>
   </data>
   <data name="CategoriaId" xml:space="preserve">
     <value>Categoria</value>
@@ -135,8 +141,23 @@
   <data name="ConfEmail" xml:space="preserve">
     <value>Confirme su correo electronico</value>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>Crear</value>
+  </data>
   <data name="CuentBloq" xml:space="preserve">
     <value>Cuenta Bloqueada</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="Deletethis" xml:space="preserve">
+    <value>¿Estás seguro de eliminar este registro?</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Editar</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Correo electronico</value>
@@ -147,8 +168,17 @@
   <data name="Estadist" xml:space="preserve">
     <value>Estadísticas</value>
   </data>
+  <data name="Faqs" xml:space="preserve">
+    <value>FAQS</value>
+  </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Olvidaste tu contrasena?</value>
+  </data>
+  <data name="ImageCar" xml:space="preserve">
+    <value>Imágenes Vehículo</value>
+  </data>
+  <data name="Imagen" xml:space="preserve">
+    <value>Imágenes</value>
   </data>
   <data name="IncorrectPass" xml:space="preserve">
     <value>Contraseña Incorrecta</value>
@@ -189,11 +219,23 @@
   <data name="PrecioVenta" xml:space="preserve">
     <value>Precio de venta</value>
   </data>
+  <data name="PreguntFrec" xml:space="preserve">
+    <value>Preguntas Frecuentes</value>
+  </data>
   <data name="RecordarPass" xml:space="preserve">
     <value>Recuerdame</value>
   </data>
+  <data name="Register" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Registraar" xml:space="preserve">
+    <value>Registrar</value>
+  </data>
   <data name="Registrate" xml:space="preserve">
     <value>Registrarse</value>
+  </data>
+  <data name="RegreList" xml:space="preserve">
+    <value>Regresar a la lista</value>
   </data>
   <data name="Regresar" xml:space="preserve">
     <value>Regresar</value>
@@ -206,6 +248,9 @@
   </data>
   <data name="RolId" xml:space="preserve">
     <value>Rol</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Guardar</value>
   </data>
   <data name="SexoId" xml:space="preserve">
     <value>Sexo</value>
