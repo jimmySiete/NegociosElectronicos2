@@ -228,6 +228,22 @@
              $("#ListaDeseosParcial").empty();
              $("#ListaDeseosParcial").load("@Url.Action("ListaDesplegable", "ListaDeseos")");
         }
+
+        function RegistrarEnBitacora(texto, acciondId) {
+            function agregar(nuevo, cons) {
+                $.ajax({
+                    url: '@Url.Action("AgregarCarro", "Carrito")',
+                    data: { texto: texto, AccionId: acciondId },
+                    type: 'POST',
+                    success: function (response) {
+                        debugger;
+                    },
+                    error: function () {
+                        alert('Error');
+                    }
+                });
+            }
+        }
         
     </script>
 

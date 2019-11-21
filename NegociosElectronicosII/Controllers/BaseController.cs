@@ -35,5 +35,27 @@ namespace NegociosElectronicosII.Controllers
 
             return arrDes;
         }
+
+        [HttpPost]
+        public JsonResult RegistroBitacora(String texto, Int32 AccionId)
+        {
+            if (Settings.LoggedUser != null)
+            {
+                NE_Bitacora bitacora = new NE_Bitacora()
+                {
+                    AccionId = AccionId,
+                    Descripcion = texto,
+                    FechaDeRegistro = DateTime.Now,
+                    UsuarioId = Settings.LoggedUser.UsuarioId,
+                };
+
+                db.NE_Bitacora.Add(bitacora);
+                db.SaveChanges();
+            }
+            else
+                return Json(new { Message="" }, JsonRequestBehavior.DenyGet);
+
+            return Json(new { },JsonRequestBehavior.DenyGet);
+        }
     }
 }
