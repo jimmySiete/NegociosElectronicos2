@@ -235,10 +235,14 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DetallesModal.cs" />
     <Compile Include="Models\ExtendModel.cs" />
+    <Compile Include="Models\GraficaAnualModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\NE_Accion.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NE_ArticuloVehiculoVisto.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_Autenticacion.cs">
@@ -825,6 +829,10 @@
     <Content Include="Views\Estadistica\FiltrosUsuariosDetalleParcial.cshtml" />
     <Content Include="Views\Vehiculo\ImagenCreate.cshtml" />
     <Content Include="Views\Estadistica\UsuariosConMasVentas.cshtml" />
+    <Content Include="Views\Estadistica\MostrarVentasAnuales.cshtml" />
+    <Content Include="Views\Estadistica\MostrarVentasAnualesDetalle.cshtml" />
+    <Content Include="Views\Estadistica\MostrarProductosMasVendidosAnuales.cshtml" />
+    <Content Include="Views\Estadistica\MostrarProductosMasVendidosDetalle.cshtml" />
     <Content Include="Views\FAQS\Create.cshtml" />
     <Content Include="Views\FAQS\Delete.cshtml" />
     <Content Include="Views\FAQS\Details.cshtml" />

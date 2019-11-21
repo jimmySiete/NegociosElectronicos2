@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using NegociosElectronicosII.GlobalCode;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 
 namespace NegociosElectronicosII.Controllers
 {
@@ -51,7 +52,7 @@ namespace NegociosElectronicosII.Controllers
 
         #endregion
 
-        #region Ganancias mensuales
+        #region Ganancias anuales
 
         public PartialViewResult GananciaAnualParcial()
         {
@@ -203,12 +204,149 @@ namespace NegociosElectronicosII.Controllers
         #region Usuarios con mas ventas
 
         public PartialViewResult UsuariosConMasVentas() {
+            Decimal total = 0.0m;
+            List<Models.UsuarioReporteModel> model = new List<Models.UsuarioReporteModel>();
 
-            List<Models.UsuarioReporteModel> model= db.NE_Venta.GroupBy(x => new { x.NE_Usuario.Nombre, x.NE_Usuario.ApellidoPaterno})
-                .Select(x=>new Models.UsuarioReporteModel() {
-                    Total= 0,
-                    Usuario= x.Key.Nombre + " " + x.Key.ApellidoPaterno
-                }).ToList().OrderByDescending(x=>x.Total).Take(5).ToList();
+            foreach (var item in db.NE_Usuario.Where(x => x.RolId == 4))
+            {
+                total = db.NE_Venta.Any(x => x.UsuarioId == item.UsuarioId) ? db.NE_Venta.Where(x => x.UsuarioId == item.UsuarioId).Sum(x => x.TotalVenta) : 0;
+                model.Add(new Models.UsuarioReporteModel() {
+                    Total= total,
+                    Usuario= item.Nombre + " " + item.ApellidoPaterno
+                });
+            }
+
+            model = model.OrderByDescending(x => x.Total).Take(5).ToList();
+
+            return PartialView(model);
+        }
+
+        #endregion
+
+        #region Ventas anuales
+
+        public PartialViewResult MostrarVentasAnuales() {
+            List<Int32> Anios = new List<int>();
+            List<SelectListItem> fechas = new List<SelectListItem>();
+
+            //Obtener la lista de los anios con ventas
+            Anios = db.NE_Venta.Select(x => x.Fecha.Year).Distinct().ToList();
+            if (!Anios.Contains(DateTime.Now.Year))
+                Anios.Add(DateTime.Now.Year);
+
+            //recorrer por anios
+            foreach (var item in Anios)
+            {
+                fechas.Add(new SelectListItem()
+                {
+                    Text = item.ToString(),
+                    Value = item.ToString()
+                });
+            }
+
+            ViewBag.Fechas = fechas;
+
+            return PartialView();
+        }
+
+        public PartialViewResult MostrarVentasAnualesDetalle(Int32 Anio)
+        {
+            Int32 NumeroArticulos = 0, NumeroVehiculos = 0; 
+            Models.GraficaAnualModel model= new Models.GraficaAnualModel();
+
+            foreach (var item in Settings.MESES)
+            {
+                model.Meses.Add(item.Value);
+                NumeroArticulos = db.NE_VentaDetalle.Any(x => x.NE_Venta.Fecha.Year == Anio && x.NE_Venta.Fecha.Month == item.Key && x.ProductoId != null) ?
+                    db.NE_VentaDetalle.Where(x => x.NE_Venta.Fecha.Year == Anio && x.NE_Venta.Fecha.Month == item.Key && x.ProductoId != null).Select(x => x.Cantidad).Sum():0;
+                model.Articulos.Add(NumeroArticulos);
+
+                NumeroVehiculos = db.NE_VentaDetalle.Any(x => x.NE_Venta.Fecha.Year == Anio && x.NE_Venta.Fecha.Month == item.Key && x.VehiculoId != null) ?
+                    db.NE_VentaDetalle.Where(x => x.NE_Venta.Fecha.Year == Anio && x.NE_Venta.Fecha.Month == item.Key && x.VehiculoId != null).Select(x => x.Cantidad).Sum() : 0;
+                model.Vehiculos.Add(NumeroVehiculos);
+            }
+
+            model.VehiculosJson= JsonConvert.SerializeObject(model.Vehiculos);
+            model.ArticulosJson=JsonConvert.SerializeObject(model.Articulos);
+            model.MesesJson=JsonConvert.SerializeObject(model.Meses);
+
+            return PartialView(model);
+        }
+
+        #endregion
+
+        #region Productos mas vendidos
+
+        public PartialViewResult MostrarProductosMasVendidosAnuales()
+        {
+            List<Int32> Anios = new List<int>();
+            List<SelectListItem> fechas = new List<SelectListItem>();
+
+            //Obtener la lista de los anios con ventas
+            Anios = db.NE_Venta.Select(x => x.Fecha.Year).Distinct().ToList();
+            if (!Anios.Contains(DateTime.Now.Year))
+                Anios.Add(DateTime.Now.Year);
+
+            //recorrer por anios
+            foreach (var item in Anios)
+            {
+                fechas.Add(new SelectListItem()
+                {
+                    Text = item.ToString(),
+                    Value = item.ToString()
+                });
+            }
+
+            ViewBag.Fechas = fechas;
+
+            return PartialView();
+        }
+
+        public PartialViewResult MostrarProductosMasVendidosDetalle(Int32 Anio)
+        {
+            Models.LoMasVendidoModel model = new Models.LoMasVendidoModel();
+            Int32 Cantidad = 0;
+
+            foreach (var item in db.NE_Producto)
+            {
+                if (db.NE_VentaDetalle.Any(x => x.ProductoId == item.ProductoId && x.NE_Venta.Fecha.Year == Anio))
+                {
+                    Cantidad = db.NE_VentaDetalle.Where(x => x.ProductoId == item.ProductoId && x.NE_Venta.Fecha.Year == Anio).Sum(x=>x.Cantidad);
+                    model.ListModel.Add(new Models.VentasGraficoModel() {
+                        Cantidad= Cantidad,
+                        Objeto= item.Nombre 
+                    });
+                }
+            }
+
+            foreach (var item in db.NE_Vehiculo)
+            {
+                if (db.NE_VentaDetalle.Any(x => x.VehiculoId == item.VehiculoId && x.NE_Venta.Fecha.Year == Anio))
+                {
+                    Cantidad = db.NE_VentaDetalle.Where(x => x.VehiculoId == item.VehiculoId && x.NE_Venta.Fecha.Year == Anio).Sum(x => x.Cantidad);
+                    model.ListModel.Add(new Models.VentasGraficoModel()
+                    {
+                        Cantidad = Cantidad,
+                        Objeto = item.NombreVehiculo
+                    });
+                }
+            }
+
+            model.ListModel = model.ListModel.OrderByDescending(x => x.Cantidad).Take(5).ToList();
+
+
+            foreach (var item in model.ListModel)
+            {
+                model.Cantidad.Add(item.Cantidad);
+                model.ArticuloVehiculo.Add(item.Objeto);
+                var random = new Random();
+                model.Colores.Add(String.Format("#{0:X6}", random.Next(0x1000000)));
+            }
+
+            model.CantidadJson = JsonConvert.SerializeObject(model.Cantidad);
+            model.ArticuloVehiculoJson = JsonConvert.SerializeObject(model.ArticuloVehiculo);
+            model.ColoresJson= JsonConvert.SerializeObject(model.Colores);
+
             return PartialView(model);
         }
 

@@ -270,39 +270,39 @@ namespace NegociosElectronicosII.Controllers
                 string mensaje;
                 HttpPostedFileBase postedFile = Request.Files[0];
 
-                    if (postedFile != null && postedFile.ContentLength > 0)
+                if (postedFile != null && postedFile.ContentLength > 0)
+                {
+                    IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                    var extension = ext.ToLower();
+                    if (!AllowedFileExtensions.Contains(extension))
                     {
-                        IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
-                        var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
-                        var extension = ext.ToLower();
-                        if (!AllowedFileExtensions.Contains(extension))
-                        {
-                            mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
-                        }
-                        else
-                        {
-                                var name = String.Format("Vehiculo_{0}", id);
-                                //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
-                                var filePath = Server.MapPath("~/Imagenes/Vehiculo/" + name + extension);
+                        mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                    }
+                    else
+                    {
+                        var name = String.Format("Vehiculo_{0}", id);
+                        //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
+                        var filePath = Server.MapPath("~/Imagenes/Vehiculo/" + name + extension);
 
-                                NE_VehiculoImagen imagen = new NE_VehiculoImagen()
-                                {
-                                    Extension = extension,
-                                    Nombre = name,
-                                    VehiculoId = id,
-                                    Ruta = filePath,
-                                };
-                                db.NE_VehiculoImagen.Add(imagen);
-                                db.SaveChanges();
-                                
-                                imagen.Nombre= name = String.Format("Vehiculo_{0}", imagen.VehiculoId);
+                        NE_VehiculoImagen imagen = new NE_VehiculoImagen()
+                        {
+                            Extension = extension,
+                            Nombre = name,
+                            VehiculoId = id,
+                            Ruta = filePath,
+                        };
+                        db.NE_VehiculoImagen.Add(imagen);
                         db.SaveChanges();
                                 
-                                postedFile.SaveAs(filePath);
+                        imagen.Nombre= name = String.Format("Vehiculo_{0}", imagen.VehiculoId);
+                        db.SaveChanges();
+                                
+                        postedFile.SaveAs(filePath);
 
-                                return RedirectToAction("Index");
-                        }
+                        return RedirectToAction("Index");
                     }
+                }
 
                 return View();
             }

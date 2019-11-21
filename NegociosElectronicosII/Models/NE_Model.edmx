@@ -12,6 +12,16 @@
           <Property Name="AccionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Accion" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="NE_ArticuloVehiculoVisto">
+          <Key>
+            <PropertyRef Name="ID_ArticuloVehiculoVisto" />
+          </Key>
+          <Property Name="ID_ArticuloVehiculoVisto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Producto" Type="int" />
+          <Property Name="ID_Vehiculo" Type="int" />
+          <Property Name="RecordDate" Type="datetime" Nullable="false" />
+          <Property Name="ID_Usuario" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="NE_Autenticacion">
           <Key>
             <PropertyRef Name="AutenticacionId" />
@@ -471,6 +481,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Producto">
+          <End Role="NE_Producto" Type="Self.NE_Producto" Multiplicity="0..1" />
+          <End Role="NE_ArticuloVehiculoVisto" Type="Self.NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+          <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
+          <End Role="NE_ArticuloVehiculoVisto" Type="Self.NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+          <End Role="NE_Vehiculo" Type="Self.NE_Vehiculo" Multiplicity="0..1" />
+          <End Role="NE_ArticuloVehiculoVisto" Type="Self.NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_NE_Bitacora_Usuario">
           <End Role="NE_Usuario" Type="Self.NE_Usuario" Multiplicity="1" />
           <End Role="NE_Bitacora" Type="Self.NE_Bitacora" Multiplicity="*" />
@@ -689,6 +735,7 @@
         </Association>
         <EntityContainer Name="DB_A453B0_fabiancastanonModelStoreContainer">
           <EntitySet Name="NE_Accion" EntityType="Self.NE_Accion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NE_ArticuloVehiculoVisto" EntityType="Self.NE_ArticuloVehiculoVisto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Autenticacion" EntityType="Self.NE_Autenticacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Bitacora" EntityType="Self.NE_Bitacora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NE_Carrito" EntityType="Self.NE_Carrito" Schema="dbo" store:Type="Tables" />
@@ -773,6 +820,18 @@
           <AssociationSet Name="FK_MarcaId" Association="Self.FK_MarcaId">
             <End Role="NE_Marca" EntitySet="NE_Marca" />
             <End Role="NE_Producto" EntitySet="NE_Producto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Producto" Association="Self.FK_NE_ArticuloVehiculoVisto_NE_Producto">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario" Association="Self.FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" Association="Self.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
           </AssociationSet>
           <AssociationSet Name="FK_NE_Bitacora_Usuario" Association="Self.FK_NE_Bitacora_Usuario">
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
@@ -1010,6 +1069,19 @@
             <End Role="NE_Venta" EntitySet="NE_Venta" />
             <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
           </AssociationSet>
+          <EntitySet Name="NE_ArticuloVehiculoVisto" EntityType="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" />
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Producto" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto">
+            <End Role="NE_Producto" EntitySet="NE_Producto" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="NE_Accion">
           <Key>
@@ -1179,6 +1251,7 @@
           <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId" FromRole="NE_Producto" ToRole="NE_Carrito" />
           <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" FromRole="NE_Producto" ToRole="NE_ListaDeDeseos" />
           <NavigationProperty Name="NE_VentaDetalle" Relationship="DB_A453B0_fabiancastanonModel.VentaProductoId_ProductoId" FromRole="NE_Producto" ToRole="NE_VentaDetalle" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto" FromRole="NE_Producto" ToRole="NE_ArticuloVehiculoVisto" />
         </EntityType>
         <EntityType Name="NE_ProductoImagen">
           <Key>
@@ -1263,6 +1336,8 @@
           <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_Usuario" ToRole="NE_ListaDeDeseos" />
           <NavigationProperty Name="NE_Venta" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Venta" />
           <Property Name="FechaDeRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_ArticuloVehiculoVisto" />
+          <Property Name="FechaDeRegistro" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="NE_Vehiculo">
           <Key>
@@ -1290,6 +1365,7 @@
           <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId" FromRole="NE_Vehiculo" ToRole="NE_Carrito" />
           <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" FromRole="NE_Vehiculo" ToRole="NE_ListaDeDeseos" />
           <NavigationProperty Name="NE_VentaDetalle" Relationship="DB_A453B0_fabiancastanonModel.VentaVehiculo_IdVehiculo" FromRole="NE_Vehiculo" ToRole="NE_VentaDetalle" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" FromRole="NE_Vehiculo" ToRole="NE_ArticuloVehiculoVisto" />
         </EntityType>
         <EntityType Name="NE_VehiculoImagen">
           <Key>
@@ -1757,6 +1833,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NE_ArticuloVehiculoVisto">
+          <Key>
+            <PropertyRef Name="ID_ArticuloVehiculoVisto" />
+          </Key>
+          <Property Name="ID_ArticuloVehiculoVisto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Producto" Type="Int32" />
+          <Property Name="ID_Vehiculo" Type="Int32" />
+          <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Producto" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Usuario" />
+          <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Vehiculo" />
+        </EntityType>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Producto">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Producto">
+              <PropertyRef Name="ProductoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2088,6 +2213,17 @@
                 <ScalarProperty Name="VehiculoId" ColumnName="VehiculoId" />
                 <ScalarProperty Name="VentaId" ColumnName="VentaId" />
                 <ScalarProperty Name="VentaDetalleId" ColumnName="VentaDetalleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_ArticuloVehiculoVisto">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto">
+              <MappingFragment StoreEntitySet="NE_ArticuloVehiculoVisto">
+                <ScalarProperty Name="ID_Usuario" ColumnName="ID_Usuario" />
+                <ScalarProperty Name="RecordDate" ColumnName="RecordDate" />
+                <ScalarProperty Name="ID_Vehiculo" ColumnName="ID_Vehiculo" />
+                <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
+                <ScalarProperty Name="ID_ArticuloVehiculoVisto" ColumnName="ID_ArticuloVehiculoVisto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
