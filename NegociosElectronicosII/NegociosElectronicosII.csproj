@@ -841,6 +841,7 @@
     <Content Include="Views\Principal\FaqsPrincipal.cshtml" />
     <Content Include="Views\Estadistica\LosMasBuscados.cshtml" />
     <Content Include="Views\Estadistica\LosMasBuscadosDetalle.cshtml" />
+    <Content Include="Views\Estadistica\ClientesParcial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

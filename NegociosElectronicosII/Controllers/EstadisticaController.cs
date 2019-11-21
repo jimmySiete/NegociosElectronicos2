@@ -442,8 +442,19 @@ namespace NegociosElectronicosII.Controllers
 
         public PartialViewResult ClientesParcial() {
 
+            List<Models.NE_Usuario> clientes = db.NE_Usuario.Where(x => x.RolId == 4).ToList();
+        
+            foreach(var item in clientes)
+            {
+                item.NumeroDeIngresosAlPortal = db.NE_Bitacora.Where(x => x.AccionId == ACCION.NUEVO_REGISTRO && x.UsuarioId== item.UsuarioId).Count();
+                item.NumeroDeComprasRealizadas=  db.NE_Bitacora.Where(x => x.AccionId == ACCION.COMPRA && x.UsuarioId == item.UsuarioId).Count();
+                item.TotalDeCompras = db.NE_Venta.Any(x => x.UsuarioId == item.UsuarioId) ? db.NE_Venta.Where(x => x.UsuarioId == item.UsuarioId).Sum(x=>x.TotalVenta) :0;
+                item.NumeroDeArticulosEnElCarro = db.NE_Carrito.Where(x => x.UsuarioId == item.UsuarioId).Count();
+                item.NumeroDeArticulosEnListaDeDeseos= db.NE_ListaDeDeseos.Where(x => x.UsuarioId == item.UsuarioId).Count();
+                item.UltimoInicioDeSesion = db.NE_Autenticacion.Any(x => x.UsuarioId == item.UsuarioId) ? db.NE_Autenticacion.Where(x => x.UsuarioId == item.UsuarioId).First().UltimoInicioSesion :default(DateTime) ;
+            }
 
-            return PartialView();
+            return PartialView(clientes);
         }
 
 

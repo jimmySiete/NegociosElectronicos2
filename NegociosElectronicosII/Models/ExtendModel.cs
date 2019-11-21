@@ -82,6 +82,7 @@ namespace NegociosElectronicosII.Models
         public Decimal TotalDeCompras { get; set; }
         public Int32 NumeroDeArticulosEnElCarro { get; set; }
         public Int32 NumeroDeArticulosEnListaDeDeseos { get; set; }
+        public DateTime UltimoInicioDeSesion { get; set; }
     }
 
     public class MetadataUsuario
