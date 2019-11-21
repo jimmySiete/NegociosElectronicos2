@@ -932,20 +932,11 @@
           <EntitySet Name="NE_Sexo" EntityType="DB_A453B0_fabiancastanonModel.NE_Sexo" />
           <EntitySet Name="NE_Template" EntityType="DB_A453B0_fabiancastanonModel.NE_Template" />
           <EntitySet Name="NE_Transmision" EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" />
-          <EntitySet Name="NE_Usuario" EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" />
           <EntitySet Name="NE_Vehiculo" EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" />
           <EntitySet Name="NE_VehiculoImagen" EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" />
           <EntitySet Name="NE_Visita" EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" />
           <AssociationSet Name="FK_AccionId" Association="DB_A453B0_fabiancastanonModel.FK_AccionId">
             <End Role="NE_Accion" EntitySet="NE_Accion" />
-            <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsuariosId_Autenticacion" Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_Autenticacion" EntitySet="NE_Autenticacion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NE_Bitacora_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
           </AssociationSet>
           <AssociationSet Name="FK_AutoCategoriaId" Association="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId">
@@ -964,14 +955,6 @@
             <End Role="NE_Producto" EntitySet="NE_Producto" />
             <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
           </AssociationSet>
-          <AssociationSet Name="FK_Usuario_Comentario" Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NE_ComentarioVehiculo_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_ComentarioVehiculo" EntitySet="NE_ComentarioVehiculo" />
-          </AssociationSet>
           <AssociationSet Name="FK_Vehiculo_Comentario" Association="DB_A453B0_fabiancastanonModel.FK_Vehiculo_Comentario">
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_ComentarioVehiculo" EntitySet="NE_ComentarioVehiculo" />
@@ -979,10 +962,6 @@
           <AssociationSet Name="FK_Chat" Association="DB_A453B0_fabiancastanonModel.FK_Chat">
             <End Role="NE_EncabezadoChat" EntitySet="NE_EncabezadoChat" />
             <End Role="NE_CuerpoChat" EntitySet="NE_CuerpoChat" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_Usuario">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_EncabezadoChat" EntitySet="NE_EncabezadoChat" />
           </AssociationSet>
           <AssociationSet Name="FK_AutoMarcaId" Association="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId">
             <End Role="NE_Marca" EntitySet="NE_Marca" />
@@ -996,25 +975,9 @@
             <End Role="NE_Producto" EntitySet="NE_Producto" />
             <End Role="NE_ProductoImagen" EntitySet="NE_ProductoImagen" />
           </AssociationSet>
-          <AssociationSet Name="FK_Recovery_User" Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NE_RolId" Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId">
-            <End Role="NE_Rol" EntitySet="NE_Rol" />
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NE_Sexo_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario">
-            <End Role="NE_Sexo" EntitySet="NE_Sexo" />
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-          </AssociationSet>
           <AssociationSet Name="FK_TransmisionId" Association="DB_A453B0_fabiancastanonModel.FK_TransmisionId">
             <End Role="NE_Transmision" EntitySet="NE_Transmision" />
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UsuarioVisita" Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_Visita" EntitySet="NE_Visita" />
           </AssociationSet>
           <AssociationSet Name="FK_NE_VehiculoImagen_NE_Vehiculo" Association="DB_A453B0_fabiancastanonModel.FK_NE_VehiculoImagen_NE_Vehiculo">
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
@@ -1026,20 +989,12 @@
             <End Role="NE_Producto" EntitySet="NE_Producto" />
             <End Role="NE_Carrito" EntitySet="NE_Carrito" />
           </AssociationSet>
-          <AssociationSet Name="CarritoUserId_UserID" Association="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
-          </AssociationSet>
           <AssociationSet Name="CarritoVehiculoId_VehiculoId" Association="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId">
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_Carrito" EntitySet="NE_Carrito" />
           </AssociationSet>
           <AssociationSet Name="DeseosProductoId_ProductoId" Association="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId">
             <End Role="NE_Producto" EntitySet="NE_Producto" />
-            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
-          </AssociationSet>
-          <AssociationSet Name="DeseosUsuarioId_UsuarioId" Association="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
           </AssociationSet>
           <AssociationSet Name="DeseosVehiculoId_VehiculoId" Association="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId">
@@ -1057,10 +1012,6 @@
             <End Role="NE_TipoPago" EntitySet="NE_TipoPago" />
             <End Role="NE_Venta" EntitySet="NE_Venta" />
           </AssociationSet>
-          <AssociationSet Name="FK_NE_Venta_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario">
-            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
-            <End Role="NE_Venta" EntitySet="NE_Venta" />
-          </AssociationSet>
           <AssociationSet Name="VentaVehiculo_IdVehiculo" Association="DB_A453B0_fabiancastanonModel.VentaVehiculo_IdVehiculo">
             <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
             <End Role="NE_VentaDetalle" EntitySet="NE_VentaDetalle" />
@@ -1074,13 +1025,62 @@
             <End Role="NE_Producto" EntitySet="NE_Producto" />
             <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
           </AssociationSet>
+          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
+            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          </AssociationSet>
+          <EntitySet Name="NE_Usuario" EntityType="DB_A453B0_fabiancastanonModel.NE_Usuario" />
           <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario">
             <End Role="NE_Usuario" EntitySet="NE_Usuario" />
             <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
           </AssociationSet>
-          <AssociationSet Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" Association="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
-            <End Role="NE_Vehiculo" EntitySet="NE_Vehiculo" />
-            <End Role="NE_ArticuloVehiculoVisto" EntitySet="NE_ArticuloVehiculoVisto" />
+          <AssociationSet Name="FK_UsuariosId_Autenticacion" Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Autenticacion" EntitySet="NE_Autenticacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Bitacora_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Bitacora" EntitySet="NE_Bitacora" />
+          </AssociationSet>
+          <AssociationSet Name="CarritoUserId_UserID" Association="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Carrito" EntitySet="NE_Carrito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Comentario" Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ComentarioProducto" EntitySet="NE_ComentarioProducto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_ComentarioVehiculo_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ComentarioVehiculo" EntitySet="NE_ComentarioVehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_EncabezadoChat" EntitySet="NE_EncabezadoChat" />
+          </AssociationSet>
+          <AssociationSet Name="DeseosUsuarioId_UsuarioId" Association="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_ListaDeDeseos" EntitySet="NE_ListaDeDeseos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recovery_User" Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_RecoveryPassword" EntitySet="NE_RecoveryPassword" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_RolId" Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId">
+            <End Role="NE_Rol" EntitySet="NE_Rol" />
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Sexo_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario">
+            <End Role="NE_Sexo" EntitySet="NE_Sexo" />
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NE_Venta_NE_Usuario" Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Venta" EntitySet="NE_Venta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioVisita" Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita">
+            <End Role="NE_Usuario" EntitySet="NE_Usuario" />
+            <End Role="NE_Visita" EntitySet="NE_Visita" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="NE_Accion">
@@ -1166,8 +1166,8 @@
           <Property Name="Comentario" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="UsuarioId" Type="Int32" Nullable="false" />
           <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" FromRole="NE_ComentarioVehiculo" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_Vehiculo_Comentario" FromRole="NE_ComentarioVehiculo" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" FromRole="NE_ComentarioVehiculo" ToRole="NE_Usuario" />
         </EntityType>
         <EntityType Name="NE_CuerpoChat">
           <Key>
@@ -1308,37 +1308,6 @@
           <Property Name="Transmision" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_TransmisionId" FromRole="NE_Transmision" ToRole="NE_Vehiculo" />
         </EntityType>
-        <EntityType Name="NE_Usuario">
-          <Key>
-            <PropertyRef Name="UsuarioId" />
-          </Key>
-          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="ApellidoPaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ApellidoMaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="SexoId" Type="Int32" Nullable="false" />
-          <Property Name="Edad" Type="Int32" Nullable="false" />
-          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Activo" Type="Boolean" Nullable="false" />
-          <Property Name="RolId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="NE_Autenticacion" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" FromRole="NE_Usuario" ToRole="NE_Autenticacion" />
-          <NavigationProperty Name="NE_Bitacora" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" FromRole="NE_Usuario" ToRole="NE_Bitacora" />
-          <NavigationProperty Name="NE_ComentarioProducto" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario" FromRole="NE_Usuario" ToRole="NE_ComentarioProducto" />
-          <NavigationProperty Name="NE_ComentarioVehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" FromRole="NE_Usuario" ToRole="NE_ComentarioVehiculo" />
-          <NavigationProperty Name="NE_EncabezadoChat" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario" FromRole="NE_Usuario" ToRole="NE_EncabezadoChat" />
-          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
-          <NavigationProperty Name="NE_Rol" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
-          <NavigationProperty Name="NE_Sexo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
-          <NavigationProperty Name="NE_Visita" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
-          <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Usuario" ToRole="NE_Carrito" />
-          <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_Usuario" ToRole="NE_ListaDeDeseos" />
-          <NavigationProperty Name="NE_Venta" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Venta" />
-          <Property Name="FechaDeRegistro" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_ArticuloVehiculoVisto" />
-          <Property Name="FechaDeRegistro" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="NE_Vehiculo">
           <Key>
             <PropertyRef Name="VehiculoId" />
@@ -1400,30 +1369,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_UsuariosId_Autenticacion">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Role="NE_Autenticacion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_Autenticacion">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NE_Bitacora_Usuario">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Bitacora" Role="NE_Bitacora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_Bitacora">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_AutoCategoriaId">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Categoria" Role="NE_Categoria" Multiplicity="1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="*" />
@@ -1472,30 +1417,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Usuario_Comentario">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Role="NE_ComentarioProducto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_ComentarioProducto">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NE_ComentarioVehiculo_Usuario">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Role="NE_ComentarioVehiculo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_ComentarioVehiculo">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Vehiculo_Comentario">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Role="NE_ComentarioVehiculo" Multiplicity="*" />
@@ -1517,18 +1438,6 @@
             </Principal>
             <Dependent Role="NE_CuerpoChat">
               <PropertyRef Name="ChatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Usuario">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Role="NE_EncabezadoChat" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_EncabezadoChat">
-              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1568,42 +1477,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Recovery_User">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Role="NE_RecoveryPassword" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_RecoveryPassword">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NE_RolId">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Rol" Role="NE_Rol" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Rol">
-              <PropertyRef Name="RolId" />
-            </Principal>
-            <Dependent Role="NE_Usuario">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_NE_Sexo_NE_Usuario">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Sexo" Role="NE_Sexo" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Sexo">
-              <PropertyRef Name="SexoId" />
-            </Principal>
-            <Dependent Role="NE_Usuario">
-              <PropertyRef Name="SexoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TransmisionId">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Transmision" Role="NE_Transmision" Multiplicity="1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="*" />
@@ -1613,18 +1486,6 @@
             </Principal>
             <Dependent Role="NE_Vehiculo">
               <PropertyRef Name="TransmisionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UsuarioVisita">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Visita" Role="NE_Visita" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_Visita">
-              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1650,8 +1511,8 @@
           <Property Name="ProductoId" Type="Int32" />
           <Property Name="VehiculoId" Type="Int32" />
           <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.CarritoProductoId_ProductoId" FromRole="NE_Carrito" ToRole="NE_Producto" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Carrito" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.CarritoVehiculoId_VehiculoId" FromRole="NE_Carrito" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Carrito" ToRole="NE_Usuario" />
         </EntityType>
         <EntityType Name="NE_ListaDeDeseos">
           <Key>
@@ -1663,8 +1524,8 @@
           <Property Name="ProductoId" Type="Int32" />
           <Property Name="VehiculoId" Type="Int32" />
           <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.DeseosProductoId_ProductoId" FromRole="NE_ListaDeDeseos" ToRole="NE_Producto" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_ListaDeDeseos" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.DeseosVehiculoId_VehiculoId" FromRole="NE_ListaDeDeseos" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_ListaDeDeseos" ToRole="NE_Usuario" />
         </EntityType>
         <Association Name="CarritoProductoId_ProductoId">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
@@ -1675,18 +1536,6 @@
             </Principal>
             <Dependent Role="NE_Carrito">
               <PropertyRef Name="ProductoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CarritoUserId_UserID">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_Carrito">
-              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1711,18 +1560,6 @@
             </Principal>
             <Dependent Role="NE_ListaDeDeseos">
               <PropertyRef Name="ProductoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DeseosUsuarioId_UsuarioId">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_ListaDeDeseos">
-              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1756,8 +1593,8 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TotalVenta" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="NE_TipoPago" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_TipoPago" FromRole="NE_Venta" ToRole="NE_TipoPago" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Venta" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_VentaDetalle" Relationship="DB_A453B0_fabiancastanonModel.DetalleVentaId_VentaId" FromRole="NE_Venta" ToRole="NE_VentaDetalle" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Venta" ToRole="NE_Usuario" />
         </EntityType>
         <EntityType Name="NE_VentaDetalle">
           <Key>
@@ -1797,18 +1634,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NE_Venta_NE_Usuario">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Venta" Role="NE_Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NE_Usuario">
-              <PropertyRef Name="UsuarioId" />
-            </Principal>
-            <Dependent Role="NE_Venta">
-              <PropertyRef Name="UsuarioId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="VentaVehiculo_IdVehiculo">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_VentaDetalle" Role="NE_VentaDetalle" Multiplicity="*" />
@@ -1843,8 +1668,8 @@
           <Property Name="RecordDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ID_Usuario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NE_Producto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Producto" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Producto" />
-          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Usuario" />
           <NavigationProperty Name="NE_Vehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Vehiculo" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Vehiculo" />
+          <NavigationProperty Name="NE_Usuario" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_ArticuloVehiculoVisto" ToRole="NE_Usuario" />
         </EntityType>
         <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Producto">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Producto" Role="NE_Producto" Multiplicity="0..1" />
@@ -1858,6 +1683,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Vehiculo">
+              <PropertyRef Name="VehiculoId" />
+            </Principal>
+            <Dependent Role="NE_ArticuloVehiculoVisto">
+              <PropertyRef Name="ID_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NE_Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoPaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SexoId" Type="Int32" Nullable="false" />
+          <Property Name="Edad" Type="Int32" Nullable="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="FechaDeRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NE_ArticuloVehiculoVisto" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ArticuloVehiculoVisto_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_ArticuloVehiculoVisto" />
+          <NavigationProperty Name="NE_Autenticacion" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" FromRole="NE_Usuario" ToRole="NE_Autenticacion" />
+          <NavigationProperty Name="NE_Bitacora" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" FromRole="NE_Usuario" ToRole="NE_Bitacora" />
+          <NavigationProperty Name="NE_Carrito" Relationship="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" FromRole="NE_Usuario" ToRole="NE_Carrito" />
+          <NavigationProperty Name="NE_ComentarioProducto" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario" FromRole="NE_Usuario" ToRole="NE_ComentarioProducto" />
+          <NavigationProperty Name="NE_ComentarioVehiculo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" FromRole="NE_Usuario" ToRole="NE_ComentarioVehiculo" />
+          <NavigationProperty Name="NE_EncabezadoChat" Relationship="DB_A453B0_fabiancastanonModel.FK_Usuario" FromRole="NE_Usuario" ToRole="NE_EncabezadoChat" />
+          <NavigationProperty Name="NE_ListaDeDeseos" Relationship="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" FromRole="NE_Usuario" ToRole="NE_ListaDeDeseos" />
+          <NavigationProperty Name="NE_RecoveryPassword" Relationship="DB_A453B0_fabiancastanonModel.FK_Recovery_User" FromRole="NE_Usuario" ToRole="NE_RecoveryPassword" />
+          <NavigationProperty Name="NE_Rol" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_RolId" FromRole="NE_Usuario" ToRole="NE_Rol" />
+          <NavigationProperty Name="NE_Sexo" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Sexo" />
+          <NavigationProperty Name="NE_Venta" Relationship="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" FromRole="NE_Usuario" ToRole="NE_Venta" />
+          <NavigationProperty Name="NE_Visita" Relationship="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" FromRole="NE_Usuario" ToRole="NE_Visita" />
+        </EntityType>
         <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Usuario">
           <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
           <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
@@ -1870,15 +1737,147 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NE_ArticuloVehiculoVisto_NE_Vehiculo">
-          <End Type="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Role="NE_Vehiculo" Multiplicity="0..1" />
-          <End Type="DB_A453B0_fabiancastanonModel.NE_ArticuloVehiculoVisto" Role="NE_ArticuloVehiculoVisto" Multiplicity="*" />
+        <Association Name="FK_UsuariosId_Autenticacion">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Autenticacion" Role="NE_Autenticacion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NE_Vehiculo">
-              <PropertyRef Name="VehiculoId" />
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
             </Principal>
-            <Dependent Role="NE_ArticuloVehiculoVisto">
-              <PropertyRef Name="ID_Vehiculo" />
+            <Dependent Role="NE_Autenticacion">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Bitacora_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Bitacora" Role="NE_Bitacora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Bitacora">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CarritoUserId_UserID">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Carrito" Role="NE_Carrito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Carrito">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Comentario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Role="NE_ComentarioProducto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ComentarioProducto">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_ComentarioVehiculo_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Role="NE_ComentarioVehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ComentarioVehiculo">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Role="NE_EncabezadoChat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_EncabezadoChat">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeseosUsuarioId_UsuarioId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_ListaDeDeseos" Role="NE_ListaDeDeseos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_ListaDeDeseos">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recovery_User">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_RecoveryPassword" Role="NE_RecoveryPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_RecoveryPassword">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_RolId">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Rol" Role="NE_Rol" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="NE_Usuario">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Sexo_NE_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Sexo" Role="NE_Sexo" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Sexo">
+              <PropertyRef Name="SexoId" />
+            </Principal>
+            <Dependent Role="NE_Usuario">
+              <PropertyRef Name="SexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NE_Venta_NE_Usuario">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Venta" Role="NE_Venta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Venta">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioVisita">
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Usuario" Role="NE_Usuario" Multiplicity="1" />
+          <End Type="DB_A453B0_fabiancastanonModel.NE_Visita" Role="NE_Visita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NE_Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="NE_Visita">
+              <PropertyRef Name="UsuarioId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2105,24 +2104,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NE_Usuario">
-            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Usuario">
-              <MappingFragment StoreEntitySet="NE_Usuario">
-                <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-                <ScalarProperty Name="Activo" ColumnName="Activo" />
-                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Edad" ColumnName="Edad" />
-                <ScalarProperty Name="SexoId" ColumnName="SexoId" />
-                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
-                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="NE_Vehiculo">
             <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Vehiculo">
               <MappingFragment StoreEntitySet="NE_Vehiculo">
@@ -2224,6 +2205,24 @@
                 <ScalarProperty Name="ID_Vehiculo" ColumnName="ID_Vehiculo" />
                 <ScalarProperty Name="ID_Producto" ColumnName="ID_Producto" />
                 <ScalarProperty Name="ID_ArticuloVehiculoVisto" ColumnName="ID_ArticuloVehiculoVisto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NE_Usuario">
+            <EntityTypeMapping TypeName="DB_A453B0_fabiancastanonModel.NE_Usuario">
+              <MappingFragment StoreEntitySet="NE_Usuario">
+                <ScalarProperty Name="FechaDeRegistro" ColumnName="FechaDeRegistro" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

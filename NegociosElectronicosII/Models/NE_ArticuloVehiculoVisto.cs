@@ -21,7 +21,7 @@ namespace NegociosElectronicosII.Models
         public int ID_Usuario { get; set; }
     
         public virtual NE_Producto NE_Producto { get; set; }
-        public virtual NE_Usuario NE_Usuario { get; set; }
         public virtual NE_Vehiculo NE_Vehiculo { get; set; }
+        public virtual NE_Usuario NE_Usuario { get; set; }
     }
 }
