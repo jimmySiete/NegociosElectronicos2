@@ -107,9 +107,10 @@
         });
     });
 
-    function fnChangeCategoryMain(CategoryId)
+    function fnChangeCategoryMain(CategoryId,Categoria)
     {
         $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Categoria: CategoryId }, function () {
+            RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la categoria' + Categoria);
             fnPintarGridDeVehiculos(1);
         });
     }

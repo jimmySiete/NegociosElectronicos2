@@ -5,7 +5,7 @@
     <div class="dropdown-menu">
         @foreach (var item in Model)
         {
-            <a class="dropdown-item category-main" href="#" onclick="fnChangeCategoryMain(@item.CategoriaId)"> @item.Categoria</a>
+            <a class="dropdown-item category-main" href="#" onclick="fnChangeCategoryMain(@item.CategoriaId, '@item.Categoria')"> @item.Categoria</a>
         }
     </div>
 </div>
