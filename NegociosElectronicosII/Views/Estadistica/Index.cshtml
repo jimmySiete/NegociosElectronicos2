@@ -56,39 +56,8 @@
 <div class="row">
     <div class="col-md-6">
 
-        <div class="card">
-            <div class="card-header">
-                Otro grafico
-            </div>
-            <div class="card-body">
-                <label>A</label>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>A</label>
-                <div class="progress">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>A</label>
-                <div class="progress">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>A</label>
-                <div class="progress">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>A</label>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <label>A</label>
-                <div class="progress">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                </div>
-            </div>
-            @*<div class="card-footer">
-                This is footer
-            </div>*@
+        <div class="card" id="LosMasBuscados">
+            <img src="@Url.Content("~/Imagenes/Cargador/loader4.gif")" />
         </div>
 
         <br />
@@ -148,123 +117,19 @@
     <div class="col-md-6">
 
         <div class="card">
-            <img class="card-img-top" src="images/posts/1.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            <div class="card-header">
+                Acerca de los clientes
+            </div>
+            @*<img class="card-img-top" src="images/posts/1.jpg" alt="Card image cap">*@
+            <div class="card-body" id="ClientesParcial">
             </div>
         </div>  <!-- card.// -->
 
         <br />
 
-        <div class="card">
-            <article class="card-group-item">
-                <header class="card-header"><h6 class="title">Similar category </h6></header>
-                <div class="filter-content">
-                    <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item">Cras justo odio <span class="float-right badge badge-secondary round">142</span> </a>
-                        <a href="#" class="list-group-item">Dapibus ac facilisis  <span class="float-right badge badge-secondary round">3</span>  </a>
-                        <a href="#" class="list-group-item">Morbi leo risus <span class="float-right badge badge-secondary round">32</span>  </a>
-                        <a href="#" class="list-group-item">Another item <span class="float-right badge badge-secondary round">12</span>  </a>
-                    </div>  <!-- list-group .// -->
-                </div>
-            </article> <!-- card-group-item.// -->
-            <article class="card-group-item">
-                <header class="card-header"><h6 class="title">Color check</h6></header>
-                <div class="filter-content">
-                    <div class="card-body">
-                        <label class="btn btn-danger">
-                            <input class="" type="checkbox" name="myradio" value="">
-                            <span class="form-check-label">Red</span>
-                        </label>
-                        <label class="btn btn-success">
-                            <input class="" type="checkbox" name="myradio" value="">
-                            <span class="form-check-label">Green</span>
-                        </label>
-                        <label class="btn btn-primary">
-                            <input class="" type="checkbox" name="myradio" value="">
-                            <span class="form-check-label">Blue</span>
-                        </label>
-                    </div> <!-- card-body.// -->
-                </div>
-            </article> <!-- card-group-item.// -->
-        </div> <!-- card.// -->
-
-
     </div>
 </div>
 <br /><br />
-<div class="row">
-    <h3>Titulo</h3>
-    <div class="col-md-12">
-        <div class="card">
-            <article class="itemlist">
-                <div class="row row-sm">
-                    <aside class="col-sm-3">
-                        <div class="img-wrap"><img src="images/items/1.jpg" class="img-md"></div>
-                    </aside> <!-- col.// -->
-                    <div class="col-sm-6">
-                        <div class="text-wrap">
-                            <h4 class="title"> Ut wisi enim ad minim veniam  </h4>
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam </p>
-                            <p class="rating-wrap my-0 text-muted">
-                                <span class="label-rating">132 reviews</span>
-                                <span class="label-rating">154 orders </span>
-                            </p> <!-- rating-wrap.// -->
-                        </div> <!-- text-wrap.// -->
-                    </div> <!-- col.// -->
-                    <aside class="col-sm-3">
-                        <div class="border-left pl-3">
-                            <div class="price-wrap">
-                                <span class="h3 price"> $56 </span><del class="price-old"> $98</del>
-                            </div> <!-- info-price-detail // -->
-                            <p class="text-success">Free shipping</p>
-                            <p>
-                                <a href="#" class="btn btn-warning"> Buy now </a>
-                                <a href="#" class="btn btn-light"> Details  </a>
-                            </p>
-                        </div> <!-- action-wrap.// -->
-                    </aside> <!-- col.// -->
-                </div> <!-- row.// -->
-            </article> <!-- itemlist.// -->
-
-            <article class="itemlist">
-                <div class="row row-sm">
-                    <aside class="col-sm-3">
-                        <div class="img-wrap"><img src="images/items/2.jpg" class="img-md"></div>
-                    </aside> <!-- col.// -->
-                    <div class="col-sm-6">
-                        <div class="text-wrap">
-                            <h4 class="title"> Here goes heading of product  </h4>
-                            <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim veniam </p>
-                            <p class="rating-wrap my-0 text-muted">
-                                <span class="label-rating">132 reviews</span>
-                                <span class="label-rating">154 orders </span>
-                            </p> <!-- rating-wrap.// -->
-                        </div> <!-- text-wrap.// -->
-                    </div> <!-- col.// -->
-                    <aside class="col-sm-3">
-                        <div class="border-left pl-3">
-                            <div class="price-wrap">
-                                <span class="h3 price"> $56 </span> <del class="price-old"> $98</del>
-                            </div> <!-- info-price-detail // -->
-                            <p class="text-success">Free shipping</p>
-                            <p>
-                                <a href="#" class="btn btn-warning"> Buy now </a>
-                                <a href="#" class="btn btn-light"> Details  </a>
-                            </p>
-                        </div> <!-- action-wrap.// -->
-                    </aside> <!-- col.// -->
-                </div> <!-- row.// -->
-            </article> <!-- itemlist.// -->
-        </div> <!-- card.// -->
-
-    </div>
-</div>
-
-
-
 
 <script type="text/javascript">
 
@@ -277,6 +142,8 @@
         $('#UsuariosConMasVentasDiv').load('@Url.Action("UsuariosConMasVentas", "Estadistica")');
         $('#VentasAnuales').load('@Url.Action("MostrarVentasAnuales", "Estadistica")');
         $('#LoMasVendido').load('@Url.Action("MostrarProductosMasVendidosAnuales", "Estadistica")');
+        $('#LosMasBuscados').load('@Url.Action("LosMasBuscados", "Estadistica")');
+        $('#ClientesParcial').load('@Url.Action("ClientesParcial", "Estadistica")');
     });
 
 

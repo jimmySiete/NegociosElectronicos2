@@ -334,13 +334,27 @@ namespace NegociosElectronicosII.Controllers
 
             model.ListModel = model.ListModel.OrderByDescending(x => x.Cantidad).Take(5).ToList();
 
-
+            Int32 i = 0;
             foreach (var item in model.ListModel)
             {
                 model.Cantidad.Add(item.Cantidad);
                 model.ArticuloVehiculo.Add(item.Objeto);
                 var random = new Random();
-                model.Colores.Add(String.Format("#{0:X6}", random.Next(0x1000000)));
+                if(i==0)
+                    model.Colores.Add("#6807f9");
+                if (i == 1)
+                    model.Colores.Add("#9852f9");
+                if (i == 2)
+                    model.Colores.Add("#c299fc");
+                if (i == 3)
+                    model.Colores.Add("#ffd739");
+                if (i == 4)
+                    model.Colores.Add("#293462");
+                if (i == 5)
+                    model.Colores.Add("#00818a");
+
+
+                i++;
             }
 
             model.CantidadJson = JsonConvert.SerializeObject(model.Cantidad);
@@ -352,5 +366,87 @@ namespace NegociosElectronicosII.Controllers
 
         #endregion
 
+        #region Los mas buscados
+
+        public PartialViewResult LosMasBuscados()
+        {
+            List<SelectListItem> Anios = new List<SelectListItem>();
+            List<SelectListItem> Meses = new List<SelectListItem>();
+            List<Int32> _Anios = new List<int>();
+
+            _Anios = db.NE_Venta.Select(x => x.Fecha.Year).Distinct().ToList();
+            if (!_Anios.Contains(DateTime.Now.Year))
+                _Anios.Add(DateTime.Now.Year);
+
+            Anios = _Anios.Select(x => new SelectListItem() { Text = x.ToString(), Value = x.ToString() }).ToList();
+
+            foreach (var item in Settings.MESES)
+                Meses.Add(new SelectListItem()
+                {
+                    Text = item.Value,
+                    Value = item.Key.ToString(),
+                    Selected = item.Key == DateTime.Now.Month
+                });
+
+            ViewBag.Anios = Anios;
+            ViewBag.Meses = Meses;
+
+            return PartialView();
+        }
+
+        public PartialViewResult LosMasBuscadosDetalle(int Mes, int Anio) {
+            List<Models.VentasGraficoModel> listModel = new List<Models.VentasGraficoModel>();
+            Int32 contador = 0;
+
+            foreach (var item in db.NE_Producto)
+            {
+                contador = db.NE_ArticuloVehiculoVisto.Any(x => x.ID_Producto == item.ProductoId && x.RecordDate.Year==Anio && x.RecordDate.Month== Mes) ?
+                    db.NE_ArticuloVehiculoVisto.Where(x => x.ID_Producto == item.ProductoId && x.RecordDate.Year == Anio && x.RecordDate.Month == Mes).Count() : 0;
+                if (contador > 0)
+                {
+                    listModel.Add(new Models.VentasGraficoModel() {
+                        Cantidad= contador,
+                        Objeto= item.Nombre,
+                    });
+                }
+            }
+
+            foreach (var item in db.NE_Vehiculo)
+            {
+                contador = db.NE_ArticuloVehiculoVisto.Any(x => x.ID_Vehiculo == item.VehiculoId && x.RecordDate.Year == Anio && x.RecordDate.Month == Mes) ?
+                    db.NE_ArticuloVehiculoVisto.Where(x => x.ID_Vehiculo == item.VehiculoId && x.RecordDate.Year == Anio && x.RecordDate.Month == Mes).Count() : 0;
+                if (contador > 0)
+                {
+                    listModel.Add(new Models.VentasGraficoModel()
+                    {
+                        Cantidad = contador,
+                        Objeto = item.NombreVehiculo,
+                    });
+                }
+            }
+
+            listModel = listModel.OrderByDescending(x => x.Cantidad).Take(6).ToList();
+            contador = listModel.Sum(x => x.Cantidad);
+
+            foreach (var item in listModel)
+                item.Porcentaje = (item.Cantidad * 100) / contador;
+
+            listModel = DesordenarLista(listModel);
+
+            return PartialView(listModel);
+        }
+
+        #endregion
+
+        #region Clientes Parcial
+
+        public PartialViewResult ClientesParcial() {
+
+
+            return PartialView();
+        }
+
+
+        #endregion
     }
 }

@@ -76,7 +76,14 @@ namespace NegociosElectronicosII.Models
     public partial class NE_Usuario
     {
         public string password { get; set; }
+
+        public Int32 NumeroDeIngresosAlPortal { get; set; }
+        public Int32 NumeroDeComprasRealizadas { get; set; }
+        public Decimal TotalDeCompras { get; set; }
+        public Int32 NumeroDeArticulosEnElCarro { get; set; }
+        public Int32 NumeroDeArticulosEnListaDeDeseos { get; set; }
     }
+
     public class MetadataUsuario
     {
         [Key]

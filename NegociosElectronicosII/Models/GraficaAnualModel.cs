@@ -47,5 +47,6 @@ namespace NegociosElectronicosII.Models
     {
         public string Objeto { get; set; }
         public Int32 Cantidad { get; set; }
+        public decimal Porcentaje { get; set; }
     }
 }
