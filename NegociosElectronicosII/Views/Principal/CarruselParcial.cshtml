@@ -14,7 +14,7 @@
                 <ul class="menu-category">
                     @foreach (var item in (List<NegociosElectronicosII.Models.NE_Marca>)ViewBag.Marcas)
                     {
-                        <li> <a href="#filtroVehiculo" onclick="fnChangeMarksMain(@item.MarcaId)">@item.Marca </a></li>
+                        <li> <a href="#filtroVehiculo" onclick="fnChangeMarksMain(@item.MarcaId,'@item.Marca')">@item.Marca </a></li>
                     }
                 </ul>
             </aside> <!-- col.// -->

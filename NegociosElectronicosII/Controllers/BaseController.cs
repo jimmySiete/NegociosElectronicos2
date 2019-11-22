@@ -39,6 +39,7 @@ namespace NegociosElectronicosII.Controllers
         [HttpPost]
         public JsonResult RegistroBitacora(String texto, Int32 AccionId)
         {
+            
             if (Settings.LoggedUser != null)
             {
                 NE_Bitacora bitacora = new NE_Bitacora()

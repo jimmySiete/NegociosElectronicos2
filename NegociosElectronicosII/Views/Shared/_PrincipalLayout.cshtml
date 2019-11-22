@@ -230,7 +230,7 @@
         }
 
         function RegistrarEnBitacora(texto, acciondId) {
-            function agregar(nuevo, cons) {
+            debugger;
                 $.ajax({
                     url: '@Url.Action("RegistroBitacora", "Base")',
                     data: { texto: texto, AccionId: acciondId },
@@ -242,7 +242,6 @@
                         alert('Error');
                     }
                 });
-            }
         }
         
     </script>

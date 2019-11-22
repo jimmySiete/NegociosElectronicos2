@@ -111,15 +111,19 @@
     {
         $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Categoria: CategoryId }, function () {
             @if (Settings.LoggedUser != null) { 
-                @:RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la categoria' + Categoria);
+                @:RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la categoria ' + Categoria,12);
             }
             fnPintarGridDeVehiculos(1);
         });
     }
 
-    function fnChangeMarksMain(MarcaId)
+    function fnChangeMarksMain(MarcaId,Marca)
     {
+        debugger;
         $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Marca: MarcaId }, function () {
+             @if (Settings.LoggedUser != null) { 
+                @:RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la marca ' + Marca,13);
+            }
             fnPintarGridDeVehiculos(1);
         });
     }

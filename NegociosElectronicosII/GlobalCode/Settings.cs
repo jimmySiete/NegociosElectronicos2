@@ -129,6 +129,7 @@ namespace NegociosElectronicosII
         public static int ELIMINAR_LISTA_DESEOS = 9;
         public static int BUSQUEDA = 10;
         public static int DETALLES_PRODUCTO = 11;
-
+        public static int FILTRADO_CATEGORIA = 12;
+        public static int FILTRADO_MARCA = 13;
     }
 }
