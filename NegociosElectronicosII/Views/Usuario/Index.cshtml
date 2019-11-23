@@ -92,3 +92,11 @@
         }
     </tbody>
 </table>
+
+<script type="text/javascript">
+
+    @if(!String.IsNullOrEmpty(ViewBag.Message))
+    {
+        @:alert('@ViewBag.Message');
+    }
+</script>
