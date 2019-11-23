@@ -89,6 +89,13 @@ namespace NegociosElectronicosII
                       ));
 
             #endregion
+
+            #region blockui
+
+            bundles.Add(new ScriptBundle("~/bundles/Block").Include(
+                     "~/Scripts/jquery.blockUI.js"));
+
+            #endregion
         }
     }
 }

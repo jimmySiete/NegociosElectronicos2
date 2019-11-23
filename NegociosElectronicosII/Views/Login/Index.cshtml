@@ -61,7 +61,7 @@
                 @Html.ValidationMessageFor(x => x.Password)
             </div>
             <div class="form-group">
-                <input type="submit" value="Iniciar sesion" class="btn float-right login_btn"> &nbsp;
+                <input type="button" id="btnLogin" value="Iniciar sesion" class="btn float-right login_btn"> &nbsp;
                 <a href="@(Url.Action("LoginConGoogle","Login"))"  class="btn btn-danger float-right" style="font-size:small">
                 <i class="fa fa-google"></i>
                  Loguearme <br /> con Google</a>
@@ -90,4 +90,9 @@
     {
         @:alert('@ViewBag.Message');
     }
+
+    $('#btnLogin').click(function () {
+        fnLoader();
+        $('form').submit();
+    });
 </script>
