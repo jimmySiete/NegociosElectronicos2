@@ -211,6 +211,7 @@
     <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CarrusellController.cs" />
+    <Compile Include="Controllers\ChangePassController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\DetallesProductoController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
@@ -849,6 +850,7 @@
     <Content Include="Views\Estadistica\LosMasBuscados.cshtml" />
     <Content Include="Views\Estadistica\LosMasBuscadosDetalle.cshtml" />
     <Content Include="Views\Estadistica\ClientesParcial.cshtml" />
+    <Content Include="Views\ChangePass\Passwoord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
