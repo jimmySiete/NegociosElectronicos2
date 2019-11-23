@@ -41,11 +41,12 @@
     
     @Styles.Render("~/Content/DataTablesCss")
     @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/Block")
 
     <script type="text/javascript">
 /// some script
 
-        
+
 
 // copy text
 function copyToClipboard(element) {
@@ -54,8 +55,29 @@ function copyToClipboard(element) {
         }
 
 function llamadomodal() {
-        $("#cambiarpass").load('@Url.Action("Passwoord","ChangePass")');
-    }
+    fnLoader();
+    $("#cambiarpass").load('@Url.Action("Passwoord","ChangePass")', {}, function () {
+        $.unblockUI();
+    });
+}
+
+        function fnLoader() {
+            $.blockUI({
+                message: '<h1><img src="' + '@Url.Content("~/Imagenes/Cargador/loader4.gif")' + '" /></h1>',
+                baseZ: 2147483647,
+                css: {
+                    padding: 0,
+                    margin: 0,
+                    top: ($(window).height() - 400) / 2 + 'px',
+                    left: ($(window).width() - 400) / 2 + 'px',
+                    textAlign: 'center',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    cursor: 'wait'
+                },
+            });
+
+        }
 
 
 // jquery ready start
