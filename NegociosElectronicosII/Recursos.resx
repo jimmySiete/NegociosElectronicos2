@@ -187,7 +187,7 @@
     <value>Imágenes</value>
   </data>
   <data name="IncorrectPass" xml:space="preserve">
-    <value>Contraseña Incorrecta</value>
+    <value>Passwoord Incorrecto</value>
   </data>
   <data name="InicioSesion" xml:space="preserve">
     <value>Iniciar Sesión</value>
