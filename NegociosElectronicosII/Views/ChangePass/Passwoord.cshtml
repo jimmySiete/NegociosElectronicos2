@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Contrasena</label>
-                    <input type="password" class="form-control" id="Pass" />
+                    <input type="password" class="form-control" id="newPass" />
                 </div>
                 <div class="form-group">
                     <label>Confirmar contrasena</label>
@@ -46,6 +46,46 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#passdetalle").modal("show");
+
+        $('#btnCambiar').click(function () {
+
+    if ($('#newPass').val() == "" || $('#newPass').val() == undefined || $('#newPass').val() == null) {
+                alert('Agregue la nueva contrasena.');
+                return false;
+            }
+
+            if ($('#ConfirmPass').val() == "" || $('#ConfirmPass').val() == undefined || $('#ConfirmPass').val() == null) {
+                alert('Confirme el password.');
+                return false;
+            }
+
+            if ($('#newPass').val() != $('#ConfirmPass').val())
+            {
+                alert('Las contrasenas no coinciden');
+                return false;
+            }
+
+            //fnLoader();
+
+            $.ajax({
+                url: '@Url.Action("ChangePas", "ChangePass")',
+                data: { newPass: $('#newPass').val() },
+                type: 'POST',
+                success: function (response) {
+                    
+                    if (response.Success){
+                        alert('Su contrasena fue modificada correctamente');
+                        window.location.href = '@Url.Action("Index","Vehiculo")';
+                    }
+                    else
+                        alert('Ha ocurrido un error');
+                },
+                error: function () {
+                    alert('Ha ocurrido un error');
+                }
+            });
+        });
     });
+
 
 </script>
