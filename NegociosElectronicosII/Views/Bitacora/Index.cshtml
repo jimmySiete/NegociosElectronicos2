@@ -22,7 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.NE_Usuario.Nombre)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -41,13 +40,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NE_Usuario.Nombre)
             </td>
-            <td>
-                @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.BitacoraId }) |
-                @Html.ActionLink(Recursos.Details, "Details", new { id = item.BitacoraId }) |
-                @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.BitacoraId })|
-                @Html.ActionLink(Recursos.Imagen, "ImagenCreate", new { id = item.BitacoraId })
-            </td>
-
+            
         </tr>
         }
     </tbody>

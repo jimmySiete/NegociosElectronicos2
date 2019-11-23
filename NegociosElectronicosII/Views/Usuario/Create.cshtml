@@ -118,3 +118,11 @@
     @Html.ActionLink(Recursos.RegreList, "Index")
 </div>
 
+<script type="text/javascript">
+
+    @if(!String.IsNullOrEmpty(ViewBag.Message))
+    {
+        @:alert('@ViewBag.Message');
+    }
+</script>
+
