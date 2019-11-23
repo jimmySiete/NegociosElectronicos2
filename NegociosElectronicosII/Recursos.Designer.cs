@@ -286,6 +286,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Seleccione un email valido.
+        /// </summary>
+        public static string InvalidEmailAddress {
+            get {
+                return ResourceManager.GetString("InvalidEmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Inicie sesión en mi Paypal.
         /// </summary>
         public static string LoginPaypal {
@@ -309,6 +318,15 @@ namespace NegociosElectronicosII {
         public static string MarcarComoOferta {
             get {
                 return ResourceManager.GetString("MarcarComoOferta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a La longitud del campo {0} no es válida.
+        /// </summary>
+        public static string MaxLenght {
+            get {
+                return ResourceManager.GetString("MaxLenght", resourceCulture);
             }
         }
         
@@ -448,6 +466,15 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a El campo {0} no se encuentra en un rango valido.
+        /// </summary>
+        public static string Range {
+            get {
+                return ResourceManager.GetString("Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Recuerdame.
         /// </summary>
         public static string RecordarPass {
@@ -511,7 +538,7 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Este campo es requerido.
+        ///   Busca una cadena traducida similar a El campo {0} es requerido.
         /// </summary>
         public static string Required {
             get {
