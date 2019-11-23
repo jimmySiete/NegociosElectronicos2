@@ -19,6 +19,7 @@ namespace NegociosElectronicosII.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
+            ViewBag.Message = String.Empty;
             var nE_Usuario = db.NE_Usuario.Include(n => n.NE_Rol).Include(n => n.NE_Sexo);
             return View(nE_Usuario.ToList());
         }
@@ -83,7 +84,7 @@ namespace NegociosElectronicosII.Controllers
                             dbTran.Commit();
 
                             ViewBag.Message = "Cuenta creada";
-                            return RedirectToAction("Index", "Login");
+                            return RedirectToAction("Index", "Usuario");
                         }
                         else
                         {
@@ -94,7 +95,7 @@ namespace NegociosElectronicosII.Controllers
                     catch (Exception e)
                     {
                         ViewBag.Message = "La cuenta no se pudo crear";
-                        return RedirectToAction("Create", "Registro");
+                        return RedirectToAction("Create", "Usuario");
                     }
 
 
@@ -122,6 +123,8 @@ namespace NegociosElectronicosII.Controllers
             }
             ViewBag.RolId = new SelectList(db.NE_Rol, "RolId", "Rol", nE_Usuario.RolId);
             ViewBag.SexoId = new SelectList(db.NE_Sexo, "SexoId", "Sexo", nE_Usuario.SexoId);
+            NE_Autenticacion nE_auth = db.NE_Autenticacion.Where(x => x.UsuarioId == id).First();
+            ViewBag.pass = nE_auth.Contrasena;
             return View(nE_Usuario);
         }
 
@@ -161,15 +164,15 @@ namespace NegociosElectronicosII.Controllers
                             db.SaveChanges();
                             dbTran.Commit();
 
-                            ViewBag.Message = "Cuenta creada";
-                            return RedirectToAction("Index", "Login");
+                            ViewBag.Message = "Cuenta editada Correctamente";
+                            return RedirectToAction("Index", "Usuario");
 
                       
                     }
                     catch (Exception e)
                     {
                         ViewBag.Message = "La cuenta no se pudo crear";
-                        return RedirectToAction("Create", "Registro");
+                        return RedirectToAction("Create", "Usuario");
                     }
 
 
@@ -177,16 +180,6 @@ namespace NegociosElectronicosII.Controllers
 
             }
 
-            ViewBag.RolId = new SelectList(db.NE_Rol, "RolId", "Rol", nE_Usuario.RolId);
-            ViewBag.SexoId = new SelectList(db.NE_Sexo, "SexoId", "Sexo", nE_Usuario.SexoId);
-            return View(nE_Usuario);
-
-            if (ModelState.IsValid)
-            {
-                db.Entry(nE_Usuario).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             ViewBag.RolId = new SelectList(db.NE_Rol, "RolId", "Rol", nE_Usuario.RolId);
             ViewBag.SexoId = new SelectList(db.NE_Sexo, "SexoId", "Sexo", nE_Usuario.SexoId);
             return View(nE_Usuario);

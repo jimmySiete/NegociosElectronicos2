@@ -11,7 +11,6 @@ using NegociosElectronicosII.GlobalCode;
 
 namespace NegociosElectronicosII.Controllers
 {
-    [NegociosII_Auth(Roles = "1")]
     public class FAQSController : Controller
     {
         private DB_NE_Entitties db = new DB_NE_Entitties();

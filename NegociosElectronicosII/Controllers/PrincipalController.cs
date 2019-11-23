@@ -180,7 +180,8 @@ namespace NegociosElectronicosII.Controllers
             if (String.IsNullOrEmpty(Busqueda))
                 ImagenesVehiculo = db.NE_VehiculoImagen
                     .Where(x =>
-                        Ids_Marcas.Contains(x.NE_Vehiculo.MarcaId)
+                        x.NE_Vehiculo.Activo
+                        && Ids_Marcas.Contains(x.NE_Vehiculo.MarcaId)
                         && Ids_Color.Contains(x.NE_Vehiculo.ColorId)
                         && Ids_Categorias.Contains(x.NE_Vehiculo.CategoriaId)
                         && Ids_Transmision.Contains(x.NE_Vehiculo.TransmisionId)
@@ -194,13 +195,14 @@ namespace NegociosElectronicosII.Controllers
             else
             {
                 ImagenesVehiculo = db.NE_VehiculoImagen.Where(x =>
-                    x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
+                    (x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
                     x.NE_Vehiculo.NE_Color.Color.Contains(Busqueda) ||
                     x.NE_Vehiculo.Descripcion.Contains(Busqueda) ||
                     x.NE_Vehiculo.NE_Marca.Marca.Contains(Busqueda) ||
                     x.NE_Vehiculo.Modelo.ToString().Contains(Busqueda) ||
                     x.NE_Vehiculo.NE_Transmision.Transmision.ToString().Contains(Busqueda) ||
-                   (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda)
+                   (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda))
+                   && x.NE_Vehiculo.Activo
                 ).ToList();
                 NE_Bitacora bitacora = new NE_Bitacora()
                 {
@@ -272,9 +274,11 @@ namespace NegociosElectronicosII.Controllers
                 Ids_Color = db.NE_Color.Select(x => x.ColorId).ToList();
 
             //obtenemos el filtro de los Articuloss seleccionados y lo convertimos a lista
-            ImagenesArticulo = db.NE_ProductoImagen
+            if (String.IsNullOrEmpty(Busqueda))
+                ImagenesArticulo = db.NE_ProductoImagen
                 .Where(x =>
-                    Ids_Marcas.Contains(x.NE_Producto.MarcaId)
+                    x.NE_Producto.Activo
+                    && Ids_Marcas.Contains(x.NE_Producto.MarcaId)
                     && Ids_Color.Contains(x.NE_Producto.ColorId)
                     && (
                             (x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta : x.NE_Producto.PrecioVenta) > (PrecioInicial < 0 ? Min : PrecioInicial)
@@ -283,12 +287,14 @@ namespace NegociosElectronicosII.Controllers
                         )
                 )
                 .ToList();
-
-            ImagenesArticulo = db.NE_ProductoImagen.Where(x =>
-                    x.NE_Producto.NE_Color.Color.Contains(Busqueda) ||
+            else
+                ImagenesArticulo = db.NE_ProductoImagen.Where(x =>
+                    (x.NE_Producto.NE_Color.Color.Contains(Busqueda) ||
                     x.NE_Producto.Descripcion.Contains(Busqueda) ||
                     x.NE_Producto.NE_Marca.Marca.Contains(Busqueda) ||
                    (x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta.ToString() : x.NE_Producto.PrecioVenta.ToString()).Contains(Busqueda)
+                   )
+                   && x.NE_Producto.Activo
                 ).ToList();
 
             //Se obtiene el total de los vehiculos

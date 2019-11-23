@@ -187,10 +187,13 @@
     <value>Imágenes</value>
   </data>
   <data name="IncorrectPass" xml:space="preserve">
-    <value>Contraseña Incorrecta</value>
+    <value>Passwoord Incorrecto</value>
   </data>
   <data name="InicioSesion" xml:space="preserve">
     <value>Iniciar Sesión</value>
+  </data>
+  <data name="InvalidEmailAddress" xml:space="preserve">
+    <value>Seleccione un email valido</value>
   </data>
   <data name="LoginPaypal" xml:space="preserve">
     <value>Inicie sesión en mi Paypal</value>
@@ -200,6 +203,9 @@
   </data>
   <data name="MarcarComoOferta" xml:space="preserve">
     <value>Marcar como oferta</value>
+  </data>
+  <data name="MaxLenght" xml:space="preserve">
+    <value>La longitud del campo {0} no es válida</value>
   </data>
   <data name="MessError" xml:space="preserve">
     <value>Error de Mensaje</value>
@@ -246,6 +252,9 @@
   <data name="PreguntFrec" xml:space="preserve">
     <value>Preguntas Frecuentes</value>
   </data>
+  <data name="Range" xml:space="preserve">
+    <value>El campo {0} no se encuentra en un rango valido</value>
+  </data>
   <data name="RecordarPass" xml:space="preserve">
     <value>Recuerdame</value>
   </data>
@@ -268,7 +277,7 @@
     <value>Regresar</value>
   </data>
   <data name="Required" xml:space="preserve">
-    <value>Este campo es requerido</value>
+    <value>El campo {0} es requerido</value>
   </data>
   <data name="RestablecerPass" xml:space="preserve">
     <value>Restablecimiento de la contraseña </value>

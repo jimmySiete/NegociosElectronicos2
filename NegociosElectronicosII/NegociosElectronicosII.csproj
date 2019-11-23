@@ -211,6 +211,7 @@
     <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CarrusellController.cs" />
+    <Compile Include="Controllers\ChangePassController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\DetallesProductoController.cs" />
     <Compile Include="Controllers\EstadisticaController.cs" />
@@ -716,6 +717,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -848,6 +850,7 @@
     <Content Include="Views\Estadistica\LosMasBuscados.cshtml" />
     <Content Include="Views\Estadistica\LosMasBuscadosDetalle.cshtml" />
     <Content Include="Views\Estadistica\ClientesParcial.cshtml" />
+    <Content Include="Views\ChangePass\Passwoord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

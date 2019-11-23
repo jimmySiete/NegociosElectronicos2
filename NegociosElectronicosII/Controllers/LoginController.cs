@@ -187,6 +187,22 @@ namespace NegociosElectronicosII.Controllers
             return RedirectToAction("Index", "Principal");
         }
 
+
+        public ActionResult LoginConGoogle() {
+            //your client id  
+            string clientid = "61788243292-fo8st62hkof639inq7gcs1rsjofrg2jq.apps.googleusercontent.com";
+            //your client secret  
+            string clientsecret = "bYVnZkif0jkmpKkFWTeqaKac";
+            //your redirection url  
+            string redirection_url = Request.Url.AbsoluteUri.Replace("LoginConGoogle", "PuntoFinalGoogle");
+            string url = "https://accounts.google.com/o/oauth2/v2/auth?scope=profile&include_granted_scopes=true&redirect_uri=" + redirection_url + "&response_type=code&client_id=" + clientid + "";
+            return Redirect(url);
+        }
+
+        public ActionResult PuntoFinalGoogle() {
+
+            return View();
+        }
     }
 
 }

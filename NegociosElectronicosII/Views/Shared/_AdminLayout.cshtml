@@ -41,17 +41,43 @@
     
     @Styles.Render("~/Content/DataTablesCss")
     @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/Block")
 
     <script type="text/javascript">
 /// some script
 
-        
+
 
 // copy text
 function copyToClipboard(element) {
 	$("#temp_text").val($(element).text()).select();
 	document.execCommand("copy");
+        }
+
+function llamadomodal() {
+    fnLoader();
+    $("#cambiarpass").load('@Url.Action("Passwoord","ChangePass")', {}, function () {
+        $.unblockUI();
+    });
 }
+
+        function fnLoader() {
+            $.blockUI({
+                message: '<h1><img src="' + '@Url.Content("~/Imagenes/Cargador/loader4.gif")' + '" /></h1>',
+                baseZ: 2147483647,
+                css: {
+                    padding: 0,
+                    margin: 0,
+                    top: ($(window).height() - 400) / 2 + 'px',
+                    left: ($(window).width() - 400) / 2 + 'px',
+                    textAlign: 'center',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    cursor: 'wait'
+                },
+            });
+
+        }
 
 
 // jquery ready start
@@ -296,10 +322,10 @@ $(document).ready(function() {
                                     </a>
                                 </header>
                                 <div class="filter-content collapse" id="collapse1" style="">
-                                    <a class="dropdown-item" href="@Url.Action("ChangePassword","Base")">@Recursos.CambiarPass</a>
+                                    <button class="dropdown-item" onclick="llamadomodal()">@Recursos.CambiarPass</button>
                                     <a class="dropdown-item" href="@Url.Action("LogOut","Login")">@Recursos.CerrarSes</a>
-
                                 </div> <!-- collapse -filter-content  .// -->
+                                <!-- Button trigger modal -->
                             </article>
                         </div> <!-- list-group.// -->
 
@@ -366,28 +392,9 @@ $(document).ready(function() {
         </div>
     </div> <!-- modal.// -->
     <!-- Modal -->
-    <div class="modal fade" tabindex="-1" id="hireme" role="dialog">
-        <div class="modal-dialog modal-md" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Do you need help for...</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        &times
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <ul class="list-bullet">
-                        <li>Converting Sketch or PSD file into HTML5 CSS3.</li>
-                        <li>UI design of website or app</li>
-                        <li>Want to customize this UI KIT for your project</li>
-                    </ul>
-                    <p>
-                        Portfolio: <a href="http://behance.com/vosidiy" target="_blank">Behance.com/vosidiy</a> <br>
-                        Email me: <b>vosidiy@gmail.com</b>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div> <!-- modal.// -->
+    <div id="cambiarpass">
+
+    </div> 
 </body>
 </html>
+
