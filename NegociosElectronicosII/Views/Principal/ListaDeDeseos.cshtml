@@ -76,10 +76,24 @@
                                         </td>
                                         <td>
                                             <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
+                                                @if (item.VehiculoId == null)
+                                                {
+                                                    if (item.NE_Producto.Stock > 0)
+                                                    {
+                                                        for (int i = 0; i < item.NE_Producto.Stock; i++)
+                                                        {
+                                                            <option>@(i + 1)</option>
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        <option>0</option>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <option>1</option>
+                                                }
                                             </select>
                                         </td>
                                         <td>
@@ -112,14 +126,14 @@
                                         <td class="text-right">
                                             @if (item.ProductoId == null)
                                             {
-                                                <button data-original-title="Agregar al Carrito" type="submit" id="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                <button data-original-title="Agregar al Carrito" type="submit" id="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1,2)" class="btn btn-outline-success" data-toggle="tooltip">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                                 <button class="btn btn-outline-danger" type="submit" id="delete_@item.VehiculoId" onclick="eliminarDeseado(@item.VehiculoId,1)"> × Remove</button>
                                             }
                                             else
                                             {
-                                                <button data-original-title="Agregar al Carrito" type="submit" id="@item.ProductoId" onclick="agregar(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                                <button data-original-title="Agregar al Carrito" type="submit" id="@item.ProductoId" onclick="agregar(@item.ProductoId,2,2)" class="btn btn-outline-success" data-toggle="tooltip">
                                                     <i class="fa fa-shopping-cart"></i>
                                                 </button>
                                                 <button class="btn btn-outline-danger" type="submit" id="delete_@item.ProductoId" onclick="eliminarDeseado(@item.ProductoId,2)"> × Remove</button>
@@ -146,14 +160,15 @@
 <!-- ========================= SECTION CONTENT END// ========================= -->
 <script type="text/javascript">
 
-     function agregar(nuevo, cons) {
+     function agregar(nuevo, cons, lug) {
         $.ajax({
             url: '@Url.Action("AgregarCarro", "Carrito")',
-            data: { id: nuevo, constante: cons },
+            data: { id: nuevo, constante: cons, lugar:lug },
             type: 'POST',
-             success: function (response) {
+            success: function (response) {
+                 window.location.href = '@Url.Action("ListaDeDeseos","Principal")';
                  alert(response.Message);
-                 RefrescarCarrito();
+                 RefrescarDeseos();
                 },
                 error: function () {
                     alert('Error');

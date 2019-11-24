@@ -88,7 +88,7 @@ namespace NegociosElectronicosII.Controllers
                             NE_Carrusel updateModel = db.NE_Carrusel.Find(imagen.CarruselId);
                             updateModel.NombreArchivo= String.Format("banner_{0}", imagen.CarruselId);
                             db.SaveChanges();
-
+                            filePath = Server.MapPath("~/Imagenes/Carrusel/" + updateModel.NombreArchivo+updateModel.Extension);
                             postedFile.SaveAs(filePath);
 
                             return RedirectToAction("Index");

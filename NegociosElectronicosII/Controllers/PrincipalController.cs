@@ -81,6 +81,12 @@ namespace NegociosElectronicosII.Controllers
             }
         }
 
+        public PartialViewResult ListamasBuscados()
+        {
+            ViewBag.Marcas = db.NE_Marca.ToList();
+            return PartialView();
+        }
+
         [HttpPost]
         public JsonResult EnviarComentarios(string email, string comentario) {
             String Message = String.Empty;
