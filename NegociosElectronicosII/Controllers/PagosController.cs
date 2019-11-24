@@ -26,8 +26,9 @@ namespace NegociosElectronicosII.Controllers
         [HttpPost]
         public JsonResult AgregarVenta(int tipopago, int precio, string valores)
         {
+            Int32 TipoDeMensage = 2;
             if (Settings.LoggedUser == null)
-                return Json(new { Success = false, Message = "Primero de tiene que iniciar sesion" }, JsonRequestBehavior.DenyGet);
+                return Json(new { Success = false, Message = "Primero de tiene que iniciar sesion" , TipoDeMensage = TipoDeMensage }, JsonRequestBehavior.DenyGet);
 
             using (DbContextTransaction dbTran = db.Database.BeginTransaction())
             {
@@ -103,11 +104,11 @@ namespace NegociosElectronicosII.Controllers
 
 
                     dbTran.Commit();
-                    return Json(new { Success = true, Message = valores }, JsonRequestBehavior.DenyGet);
+                    return Json(new { Success = true, Message = valores, TipoDeMensage=1 }, JsonRequestBehavior.DenyGet);
                 }
                 catch (Exception e)
                 {
-                    return Json(new { Success = false, Message = "Primero de tiene que iniciar sesion" }, JsonRequestBehavior.DenyGet);
+                    return Json(new { Success = false, Message = "Primero de tiene que iniciar sesion", TipoDeMensage= TipoDeMensage }, JsonRequestBehavior.DenyGet);
                 }
 
 

@@ -17,7 +17,6 @@ namespace NegociosElectronicosII.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NE_Producto()
         {
-            this.NE_ComentarioProducto = new HashSet<NE_ComentarioProducto>();
             this.NE_ProductoImagen = new HashSet<NE_ProductoImagen>();
             this.NE_Carrito = new HashSet<NE_Carrito>();
             this.NE_ListaDeDeseos = new HashSet<NE_ListaDeDeseos>();
@@ -38,8 +37,6 @@ namespace NegociosElectronicosII.Models
         public bool MarcarComoOferta { get; set; }
     
         public virtual NE_Color NE_Color { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NE_ComentarioProducto> NE_ComentarioProducto { get; set; }
         public virtual NE_Marca NE_Marca { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NE_ProductoImagen> NE_ProductoImagen { get; set; }

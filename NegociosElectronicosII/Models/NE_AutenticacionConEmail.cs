@@ -12,13 +12,13 @@ namespace NegociosElectronicosII.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class NE_Visita
+    public partial class NE_AutenticacionConEmail
     {
-        public int VisitaId { get; set; }
-        public System.DateTime FechaDeRegistro { get; set; }
-        public string Origen { get; set; }
-        public int UsuarioId { get; set; }
-    
-        public virtual NE_Usuario NE_Usuario { get; set; }
+        public int ID_AutenticacionConEmail { get; set; }
+        public string Email { get; set; }
+        public System.DateTime FechaDeSolicitud { get; set; }
+        public System.DateTime FechaDeVencimiento { get; set; }
+        public string CodigoDeVerificacion { get; set; }
+        public bool CodigoConfirmado { get; set; }
     }
 }

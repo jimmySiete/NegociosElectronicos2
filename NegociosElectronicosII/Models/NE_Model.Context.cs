@@ -31,11 +31,7 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_Carrusel> NE_Carrusel { get; set; }
         public virtual DbSet<NE_Categoria> NE_Categoria { get; set; }
         public virtual DbSet<NE_Color> NE_Color { get; set; }
-        public virtual DbSet<NE_ComentarioProducto> NE_ComentarioProducto { get; set; }
-        public virtual DbSet<NE_ComentarioVehiculo> NE_ComentarioVehiculo { get; set; }
-        public virtual DbSet<NE_CuerpoChat> NE_CuerpoChat { get; set; }
         public virtual DbSet<NE_EmailTemplate> NE_EmailTemplate { get; set; }
-        public virtual DbSet<NE_EncabezadoChat> NE_EncabezadoChat { get; set; }
         public virtual DbSet<NE_Encuesta> NE_Encuesta { get; set; }
         public virtual DbSet<NE_FAQS> NE_FAQS { get; set; }
         public virtual DbSet<NE_Marca> NE_Marca { get; set; }
@@ -48,7 +44,6 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_Transmision> NE_Transmision { get; set; }
         public virtual DbSet<NE_Vehiculo> NE_Vehiculo { get; set; }
         public virtual DbSet<NE_VehiculoImagen> NE_VehiculoImagen { get; set; }
-        public virtual DbSet<NE_Visita> NE_Visita { get; set; }
         public virtual DbSet<NE_Carrito> NE_Carrito { get; set; }
         public virtual DbSet<NE_ListaDeDeseos> NE_ListaDeDeseos { get; set; }
         public virtual DbSet<NE_TipoPago> NE_TipoPago { get; set; }
@@ -56,5 +51,6 @@ namespace NegociosElectronicosII.Models
         public virtual DbSet<NE_VentaDetalle> NE_VentaDetalle { get; set; }
         public virtual DbSet<NE_ArticuloVehiculoVisto> NE_ArticuloVehiculoVisto { get; set; }
         public virtual DbSet<NE_Usuario> NE_Usuario { get; set; }
+        public virtual DbSet<NE_AutenticacionConEmail> NE_AutenticacionConEmail { get; set; }
     }
 }
