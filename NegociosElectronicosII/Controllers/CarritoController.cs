@@ -15,9 +15,8 @@ namespace NegociosElectronicosII.Controllers
             return View();
         }
         [HttpPost]
-        public JsonResult AgregarCarro(int id, int constante)
+        public JsonResult AgregarCarro(int id, int constante, int lugar)
         {
-            
             if (Settings.LoggedUser == null)
                 return Json(new { Success = false, Message = "Necesitas iniciar sesion" }, JsonRequestBehavior.DenyGet);
             
@@ -44,6 +43,11 @@ namespace NegociosElectronicosII.Controllers
                 };
                 db.NE_Bitacora.Add(bitacora);
                 db.SaveChanges();
+                if (lugar == 2)
+                {
+                    NE_ListaDeDeseos nE_Lista = db.NE_ListaDeDeseos.Where(x => x.VehiculoId == id).First();
+                    db.NE_ListaDeDeseos.Remove(nE_Lista);
+                }
             }
             else
             {
@@ -67,6 +71,11 @@ namespace NegociosElectronicosII.Controllers
                 };
                 db.NE_Bitacora.Add(bitacora);
                 db.SaveChanges();
+                if (lugar == 2)
+                {
+                    NE_ListaDeDeseos nE_Lista = db.NE_ListaDeDeseos.Where(x => x.ProductoId == id).First();
+                    db.NE_ListaDeDeseos.Remove(nE_Lista);
+                }
             }
             db.NE_Carrito.Add(nE_Carrito);
             db.SaveChanges();

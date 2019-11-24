@@ -268,7 +268,7 @@ namespace NegociosElectronicosII {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Contraseña Incorrecta.
+        ///   Busca una cadena traducida similar a Passwoord Incorrecto.
         /// </summary>
         public static string IncorrectPass {
             get {

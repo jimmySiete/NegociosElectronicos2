@@ -71,10 +71,12 @@
     </div>
     <div class="card-footer">
         <div class="d-flex justify-content-center links">
-            @Recursos.NoCuenta<p>@Html.ActionLink(Recursos.Registrate, "Create", "Registro")
+            @Recursos.NoCuenta<p id="registro">@Html.ActionLink(Recursos.Registrate, "Create", "Registro")
         </div>
         <div class="d-flex justify-content-center">
-            <p>@Html.ActionLink(Recursos.ForgotPassword, "RecoveryPass", "Login")</p> <br />
+            <p id="forgotpass">@Html.ActionLink(Recursos.ForgotPassword, "RecoveryPass", "Login")</p>
+
+            <br />
             <a  href="">Iniciar sesion <br />con un codigo</a>
         </div>
     </div>
@@ -95,4 +97,14 @@
         fnLoader();
         $('form').submit();
     });
+
+    $('#registro').click(function () {
+        fnLoader();
+        $('form').submit();
+    });
+    $('#forgotpass').click(function () {
+        fnLoader();
+        $('form').submit();
+    });
+
 </script>

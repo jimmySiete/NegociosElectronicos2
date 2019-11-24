@@ -35,7 +35,7 @@
                         </div>*@ <!-- price-wrap.// -->
                     <div class="input-group w-100">
                         <div class="input-group-append">
-                            <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1)">
+                            <button class="btn btn-warning" type="submit" id="btn_@item.VehiculoId" value="@item.VehiculoId" onclick="agregar(@item.VehiculoId,1,1)">
                                 <i class="fa fa-shopping-cart"></i> Agregar al Carrito
                             </button>
                         </div>
@@ -88,10 +88,10 @@
 
 <script type="text/javascript">
 
-    function agregar(nuevo, cons) {
+    function agregar(nuevo, cons,lug) {
         $.ajax({
             url: '@Url.Action("AgregarCarro", "Carrito")',
-            data: { id: nuevo, constante: cons },
+            data: { id: nuevo, constante: cons, lugar:lug },
             type: 'POST',
              success: function (response) {
                  alert(response.Message);

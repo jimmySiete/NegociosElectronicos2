@@ -26,7 +26,7 @@
                     @foreach (var item in Model)
                     {
                     <div class="item-slide">
-                        <img src="@Url.Content("~/Imagenes/Carrusel/" + item.NombreArchivo + item.Extension)">
+                        <img style="height:50%" src="@Url.Content("~/Imagenes/Carrusel/" + item.NombreArchivo + item.Extension)">
                     </div>
                     }
 
@@ -49,17 +49,22 @@
                             {
                             <figure class="itemside has-bg border-bottom" style="height: 20%;">
                                 @if (item.IsProduct && item.ImagenesProducto.Any())
-                                {
+                                { 
                                     <img class="img-bg" src="@(Url.Content("~/Imagenes/Productos/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,2)">Ver detalles</button>
+                                    </figcaption>
                                 }
                                 else if (!item.IsProduct && item.ImagenesVehiculo.Any())
                                 {
                                     <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculos/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,1)">Ver detalles</button>
+                                    </figcaption>
                                 }
-                                <figcaption class="p-2">
-                                    <h6 class="title">@item.Text</h6>
-                                    <a href="#">Ver Compra</a>
-                                </figcaption>
+                                
                             </figure>
                             }
                             else
@@ -68,15 +73,20 @@
                                 @if (item.IsProduct && item.ImagenesProducto.Any())
                                 {
                                     <img class="img-bg" src="@(Url.Content("~/Imagenes/Producto/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" height="80" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,1)">Ver detalles</button>
+                                    </figcaption>
                                 }
                                 else if (!item.IsProduct && item.ImagenesVehiculo.Any())
                                 {
                                     <img class="img-bg" src="@(Url.Content("~/Imagenes/Vehiculo/") + item.ImagenesProducto.First().Nombre + item.ImagenesProducto.First().Extension )" height="80" />
+                                    <figcaption class="p-2">
+                                        <h6 class="title">@item.Text</h6>
+                                        <button class="btn btn-primary" onclick="detallesproductos(@item.ID,1)">Ver detalles</button>
+                                    </figcaption>
                                 }
-                                <figcaption class="p-2">
-                                    <h6 class="title">@item.Text</h6>
-                                    <a href="#">Ver Compra</a>
-                                </figcaption>
+                                
                             </figure>
                             }
                         }

@@ -158,10 +158,12 @@ namespace NegociosElectronicosII.Controllers
                             user.Activo = nE_Usuario.Activo;
                             user.RolId = nE_Usuario.RolId;
                             db.SaveChanges();
-
-                            userAuth = db.NE_Autenticacion.Where(x => x.UsuarioId == nE_Usuario.UsuarioId).First();
-                            userAuth.Contrasena = Security.Security.Encrypt(nE_Usuario.password);
-                            db.SaveChanges();
+                            if (nE_Usuario.password != null)
+                            {
+                                userAuth = db.NE_Autenticacion.Where(x => x.UsuarioId == nE_Usuario.UsuarioId).First();
+                                userAuth.Contrasena = Security.Security.Encrypt(nE_Usuario.password);
+                                db.SaveChanges();
+                            }
                             dbTran.Commit();
 
                             ViewBag.Message = "Cuenta editada Correctamente";

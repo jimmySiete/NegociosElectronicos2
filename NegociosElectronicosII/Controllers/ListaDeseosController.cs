@@ -121,5 +121,8 @@ namespace NegociosElectronicosII.Controllers
             db.SaveChanges();
             return Json(new { Success = true, Message = "Se elimino el producto de Deseados" }, JsonRequestBehavior.DenyGet);
         }
+
+
+
     }
 }

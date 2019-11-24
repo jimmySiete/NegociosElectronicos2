@@ -86,10 +86,10 @@
 
 <script type="text/javascript">
 
-    function agregar(nuevo, cons) {
+    function agregar(nuevo, cons,lug) {
         $.ajax({
             url: '@Url.Action("AgregarCarro", "Carrito")',
-            data: { id: nuevo, constante: cons },
+            data: { id: nuevo, constante: cons, lugar:lug },
             type: 'POST',
              success: function (response) {
                  alert(response.Message);
