@@ -64,7 +64,6 @@
         });
 
         $('#btnConfirmar').click(function () {
-            debugger;
             $.ajax({
                 url: '@Url.Action("ConfirmarCodigoLogin", "Login")',
                 data: { email: $('#Email').val(), codigo: $('#txtCodigo').val() },
@@ -100,7 +99,6 @@
             data: { email: $('#Email').val() },
             type: 'POST',
             success: function (response) {
-                debugger;
                 if (response.TipoMensaje == 1) {
                     $('.correoElectronico').hide();
                     $('.Solicitado').show();

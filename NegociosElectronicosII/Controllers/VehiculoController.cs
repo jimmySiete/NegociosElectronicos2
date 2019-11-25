@@ -317,7 +317,6 @@ namespace NegociosElectronicosII.Controllers
             return View(db.NE_VehiculoImagen.Where(x => x.VehiculoId == id).ToList());
         }
 
-        [HttpPost]
         public ActionResult DeleteImagesPost(Int32 id)
         {
             NE_VehiculoImagen prodImagen = db.NE_VehiculoImagen.Find(id);
