@@ -203,6 +203,7 @@ namespace NegociosElectronicosII.Controllers
                 {
                     ImagenesVehiculo = db.NE_VehiculoImagen.Where(x =>
                         (x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
+                        x.NE_Vehiculo.NombreVehiculo.Contains(Busqueda)||
                         x.NE_Vehiculo.NE_Color.Color.Contains(Busqueda) ||
                         x.NE_Vehiculo.Descripcion.Contains(Busqueda) ||
                         x.NE_Vehiculo.NE_Marca.Marca.Contains(Busqueda) ||
@@ -301,6 +302,7 @@ namespace NegociosElectronicosII.Controllers
             else
                 ImagenesArticulo = db.NE_ProductoImagen.Where(x =>
                     (x.NE_Producto.NE_Color.Color.Contains(Busqueda) ||
+                    x.NE_Producto.Nombre.Contains(Busqueda)||
                     x.NE_Producto.Descripcion.Contains(Busqueda) ||
                     x.NE_Producto.NE_Marca.Marca.Contains(Busqueda) ||
                    (x.NE_Producto.MarcarComoOferta ? x.NE_Producto.PrecioOFerta.ToString() : x.NE_Producto.PrecioVenta.ToString()).Contains(Busqueda)
