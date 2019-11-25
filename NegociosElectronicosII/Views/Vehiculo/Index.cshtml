@@ -97,7 +97,8 @@
                     @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.VehiculoId }) |
                     @Html.ActionLink(Recursos.Details, "Details", new { id = item.VehiculoId }) |
                     @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.VehiculoId })|
-                    @Html.ActionLink(Recursos.Imagen, "ImagenCreate", new { id = item.VehiculoId })
+                    @Html.ActionLink(Recursos.Imagen, "ImagenCreate", new { id = item.VehiculoId })|
+                    @Html.ActionLink("Eliminar imagenes", "DeleteImages", new { id = item.VehiculoId })
                 </td>
             </tr>
         }

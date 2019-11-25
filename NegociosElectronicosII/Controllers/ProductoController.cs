@@ -243,6 +243,91 @@ namespace NegociosElectronicosII.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ImagenCreate(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NE_Producto nE_Producto = db.NE_Producto.Find(id);
+            if (nE_Producto == null)
+            {
+                return HttpNotFound();
+            }
+            return View(nE_Producto);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ImagenCreate(int id)
+        {
+            try
+            {
+                string mensaje;
+                HttpPostedFileBase postedFile = Request.Files[0];
+
+                if (postedFile != null && postedFile.ContentLength > 0)
+                {
+                    IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
+                    var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
+                    var extension = ext.ToLower();
+                    if (!AllowedFileExtensions.Contains(extension))
+                    {
+                        mensaje = "Porfavor actualiza la imagen a estension de tipo .jpg,.gif,.png.";
+                    }
+                    else
+                    {
+                        var name = String.Format("Vehiculo_{0:ddMMyyyyHHmmss}", DateTime.Now);
+                        //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
+                        var filePath = Server.MapPath("~/Imagenes/Productos/" + name + extension);
+
+                        NE_ProductoImagen imagen = new NE_ProductoImagen()
+                        {
+                            Extension = extension,
+                            Nombre = name,
+                            ProductoId = id,
+                            Ruta = filePath,
+                        };
+                        db.NE_ProductoImagen.Add(imagen);
+                        db.SaveChanges();
+
+
+                        postedFile.SaveAs(filePath);
+
+                        return RedirectToAction("Index");
+                    }
+                }
+
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+
+        }
+
+        public ActionResult DeleteImages(Int32 id) {
+
+            return View(db.NE_ProductoImagen.Where(x=>x.ProductoId==id).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult DeleteImagesPost(Int32 id)
+        {
+            NE_ProductoImagen prodImagen = db.NE_ProductoImagen.Find(id);
+            Int32 ID_Base = prodImagen.ProductoId;
+
+            if (System.IO.File.Exists(Server.MapPath("~/Imagenes/Producto/" + prodImagen.Nombre + prodImagen.Extension))) 
+                System.IO.File.Delete(Server.MapPath("~/Imagenes/Producto/" + prodImagen.Nombre + prodImagen.Extension));
+
+
+            db.NE_ProductoImagen.Remove(prodImagen);
+            db.SaveChanges();
+
+            return RedirectToAction("DeleteImages", new { id = ID_Base });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

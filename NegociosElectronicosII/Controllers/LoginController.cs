@@ -82,10 +82,7 @@ namespace NegociosElectronicosII.Controllers
 
                         return RedirectToAction("Index", "Home");
                     }
-
-
                 }
-
             }
             else
             {
@@ -187,7 +184,6 @@ namespace NegociosElectronicosII.Controllers
             return RedirectToAction("Index", "Principal");
         }
 
-
         public ActionResult LoginConGoogle() {
             //your client id  
             string clientid = "61788243292-fo8st62hkof639inq7gcs1rsjofrg2jq.apps.googleusercontent.com";
@@ -203,6 +199,107 @@ namespace NegociosElectronicosII.Controllers
 
             return View();
         }
+
+        public ActionResult LoginWithCode() {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult SolicitarCodigo(String email) {
+
+            if (db.NE_Usuario.Any(x => x.CorreoElectronico.ToUpper() == email.ToUpper()))
+            {
+                NE_Usuario usuario= db.NE_Usuario.Where(x => x.CorreoElectronico.ToUpper() == email.ToUpper()).First();
+                Random aleatorio = new Random();
+                Int32 Code= aleatorio.Next(100000,999999);
+                DateTime ahora = DateTime.Now;
+
+                NE_AutenticacionConEmail autenticacion = new NE_AutenticacionConEmail()
+                {
+                    CodigoConfirmado = false,
+                    CodigoDeVerificacion = Code.ToString(),
+                    Email = email,
+                    FechaDeSolicitud = ahora,
+                    FechaDeVencimiento = ahora.AddMinutes(5)
+                };
+                db.NE_AutenticacionConEmail.Add(autenticacion);
+                db.SaveChanges();
+
+                //fill template
+                String template = db.NE_EmailTemplate.Where(x => x.Name == "Auth").First().EmailTemplate;
+                template = String.Format(template, usuario.CorreoElectronico, Code.ToString() , "carsold22141024@gmail.com");
+                
+                //create Instance
+                Mail mail = new Mail()
+                {
+                    AccountServer = Settings.ACCOUNT_SERVER,
+                    Subject = "Codigo de recuperacion",
+                    From = Settings.FROM,
+                    Host = Settings.HOST_SERVER,
+                    PasswordServer = Settings.PASSWORD_SERVER,
+                    Body = template,
+                    To = new List<string>() { email},
+                    Port = Settings.PORT_SERVER
+                };
+                mail.Send();
+
+                return Json(new { Mensaje = "Se ha enviado un codigo a tu correo, en caso de no ser asi, da clic en reenviar codigo.", TipoMensaje = 1 }, JsonRequestBehavior.DenyGet);
+            }
+            else
+            {
+                return Json(new { Mensaje= "No existe un usuario con esa cuenta, verifique el email", TipoMensaje=2 }, JsonRequestBehavior.DenyGet);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult ConfirmarCodigoLogin(String email,String codigo) {
+
+            NE_Autenticacion userAuth = new NE_Autenticacion();
+            NE_Usuario user = new NE_Usuario();
+            string pass;
+            String Message = String.Empty;
+
+            if (db.NE_Usuario.Any(x => x.CorreoElectronico == email && x.Activo))
+            {
+                user = db.NE_Usuario.Where(x => x.CorreoElectronico == email).First();
+                if (db.NE_AutenticacionConEmail.Any(x=>!x.CodigoConfirmado && x.Email.ToUpper()== email.ToUpper()))
+                {
+                    NE_AutenticacionConEmail model = db.NE_AutenticacionConEmail.Where(x => !x.CodigoConfirmado && x.Email.ToUpper() == email.ToUpper()).OrderByDescending(x=>x.FechaDeSolicitud).First();
+                    if (DateTime.Now > model.FechaDeVencimiento)
+                        return Json(new { TipoMensaje=2, Mensaje= "El codigo caduco , por favor de clic en reenviar para recibir otro.", UrlAredireccionar="" }, JsonRequestBehavior.DenyGet);
+
+                    if (model.CodigoDeVerificacion != codigo)
+                        return Json(new { TipoMensaje = 2, Mensaje = "El cofigo seleccionado no es valido", UrlAredireccionar = "" }, JsonRequestBehavior.DenyGet);
+
+                    userAuth = db.NE_Autenticacion.Where(x => x.UsuarioId == user.UsuarioId).First();
+                    userAuth.Intentos = 0;
+                    userAuth.UltimoInicioSesion = DateTime.Now;
+                    Settings.LoggedUser = user;
+                    db.SaveChanges();
+
+                    model.CodigoConfirmado = true;
+                    db.SaveChanges();
+
+                    NE_Bitacora bitacora = new NE_Bitacora()
+                    {
+                        AccionId = ACCION.INICIO_DE_SESION,
+                        Descripcion = "el usuario : " + user.CorreoElectronico + " ha iniciado sesion",
+                        FechaDeRegistro = DateTime.Now,
+                        UsuarioId = user.UsuarioId,
+                    };
+                    db.NE_Bitacora.Add(bitacora);
+                    db.SaveChanges();
+
+                    String url = user.RolId == 4 ? Url.Action("Index", "Principal") : Url.Action("Index", "Vehiculo");
+                    return Json(new { TipoMensaje = 1, Mensaje = String.Empty, UrlAredireccionar = url }, JsonRequestBehavior.DenyGet);
+                }
+                else
+                    return Json(new { TipoMensaje = 2, Mensaje = "El codigo seleccionado no es correcto", UrlAredireccionar = "" }, JsonRequestBehavior.DenyGet);
+            }
+            else
+                return Json(new { TipoMensaje = 2, Mensaje = "La cuenta seleccionada no esta activa", UrlAredireccionar = "" }, JsonRequestBehavior.DenyGet);
+        }
+
     }
 
 }

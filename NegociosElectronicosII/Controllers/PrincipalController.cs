@@ -146,95 +146,100 @@ namespace NegociosElectronicosII.Controllers
         public PartialViewResult GridVehiculoParcial(Int32 Pagina,String Marcas,String Color, String Categoria, String Transmision, Decimal PrecioInicial, Decimal PrecioFinal, String Busqueda=null)
         {
             List<NE_VehiculoImagen> ImagenesVehiculo = new List<NE_VehiculoImagen>();
-
-            //Se crean listas vacias en donde vaciaremos los strings de la vista
-            List<Int32> Ids_Marcas = new List<int>();
-            List<Int32> Ids_Color = new List<int>();
-            List<Int32> Ids_Categorias = new List<int>();
-            List<Int32> Ids_Transmision = new List<int>();
-
-            //obtener precio inicial y precio final max y min
-            Decimal Max = db.NE_Vehiculo.Max(x => x.MarcarComoOferta? x.PrecioOFerta: x.PrecioVenta);
-            Decimal Min = db.NE_Vehiculo.Min(x => x.MarcarComoOferta ? x.PrecioOFerta : x.PrecioVenta);
-
-            //si la variable marcas viene como null o vacio entonces toma el arreglo del catalogo
-            if (!String.IsNullOrEmpty(Marcas))
-                Ids_Marcas = Marcas.Split(',').ToList().Select(Int32.Parse).ToList();
-            else
-                Ids_Marcas = db.NE_Marca.Select(x => x.MarcaId).ToList();
-
-            //si la variable color viene como null o vacio entonces toma el arreglo del catalogo
-            if (!String.IsNullOrEmpty(Color))
-                Ids_Color = Color.Split(',').ToList().Select(Int32.Parse).ToList();
-            else
-                Ids_Color = db.NE_Color.Select(x => x.ColorId).ToList();
-
-            //si la variable categorias viene como null o vacio entonces toma el arreglo del catalogo
-            if (!String.IsNullOrEmpty(Categoria))
-                Ids_Categorias = Categoria.Split(',').ToList().Select(Int32.Parse).ToList();
-            else
-                Ids_Categorias = db.NE_Categoria.Select(x => x.CategoriaId).ToList();
-
-            //si la variable categorias viene como null o vacio entonces toma el arreglo del catalogo
-            if (!String.IsNullOrEmpty(Transmision))
-                Ids_Transmision = Transmision.Split(',').ToList().Select(Int32.Parse).ToList();
-            else
-                Ids_Transmision = db.NE_Transmision.Select(x => x.TransmisionId).ToList();
-
-
-            //obtenemos el filtro de los vehiculos seleccionados y lo convertimos a lista
-            if (String.IsNullOrEmpty(Busqueda))
-                ImagenesVehiculo = db.NE_VehiculoImagen
-                    .Where(x =>
-                        x.NE_Vehiculo.Activo
-                        && Ids_Marcas.Contains(x.NE_Vehiculo.MarcaId)
-                        && Ids_Color.Contains(x.NE_Vehiculo.ColorId)
-                        && Ids_Categorias.Contains(x.NE_Vehiculo.CategoriaId)
-                        && Ids_Transmision.Contains(x.NE_Vehiculo.TransmisionId)
-                        && (
-                                (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioInicial < 0 ? Min : PrecioInicial)
-                                &&
-                                (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
-                            )
-                    )
-                    .ToList();
-            else
+            try
             {
-                ImagenesVehiculo = db.NE_VehiculoImagen.Where(x =>
-                    (x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
-                    x.NE_Vehiculo.NE_Color.Color.Contains(Busqueda) ||
-                    x.NE_Vehiculo.Descripcion.Contains(Busqueda) ||
-                    x.NE_Vehiculo.NE_Marca.Marca.Contains(Busqueda) ||
-                    x.NE_Vehiculo.Modelo.ToString().Contains(Busqueda) ||
-                    x.NE_Vehiculo.NE_Transmision.Transmision.ToString().Contains(Busqueda) ||
-                   (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda))
-                   && x.NE_Vehiculo.Activo
-                ).ToList();
-                NE_Bitacora bitacora = new NE_Bitacora()
+                //Se crean listas vacias en donde vaciaremos los strings de la vista
+                List<Int32> Ids_Marcas = new List<int>();
+                List<Int32> Ids_Color = new List<int>();
+                List<Int32> Ids_Categorias = new List<int>();
+                List<Int32> Ids_Transmision = new List<int>();
+
+                //obtener precio inicial y precio final max y min
+                Decimal Max = db.NE_Vehiculo.Max(x => x.MarcarComoOferta ? x.PrecioOFerta : x.PrecioVenta);
+                Decimal Min = db.NE_Vehiculo.Min(x => x.MarcarComoOferta ? x.PrecioOFerta : x.PrecioVenta);
+
+                //si la variable marcas viene como null o vacio entonces toma el arreglo del catalogo
+                if (!String.IsNullOrEmpty(Marcas))
+                    Ids_Marcas = Marcas.Split(',').ToList().Select(Int32.Parse).ToList();
+                else
+                    Ids_Marcas = db.NE_Marca.Select(x => x.MarcaId).ToList();
+
+                //si la variable color viene como null o vacio entonces toma el arreglo del catalogo
+                if (!String.IsNullOrEmpty(Color))
+                    Ids_Color = Color.Split(',').ToList().Select(Int32.Parse).ToList();
+                else
+                    Ids_Color = db.NE_Color.Select(x => x.ColorId).ToList();
+
+                //si la variable categorias viene como null o vacio entonces toma el arreglo del catalogo
+                if (!String.IsNullOrEmpty(Categoria))
+                    Ids_Categorias = Categoria.Split(',').ToList().Select(Int32.Parse).ToList();
+                else
+                    Ids_Categorias = db.NE_Categoria.Select(x => x.CategoriaId).ToList();
+
+                //si la variable categorias viene como null o vacio entonces toma el arreglo del catalogo
+                if (!String.IsNullOrEmpty(Transmision))
+                    Ids_Transmision = Transmision.Split(',').ToList().Select(Int32.Parse).ToList();
+                else
+                    Ids_Transmision = db.NE_Transmision.Select(x => x.TransmisionId).ToList();
+
+
+                //obtenemos el filtro de los vehiculos seleccionados y lo convertimos a lista
+                if (String.IsNullOrEmpty(Busqueda))
+                    ImagenesVehiculo = db.NE_VehiculoImagen
+                        .Where(x =>
+                            x.NE_Vehiculo.Activo
+                            && Ids_Marcas.Contains(x.NE_Vehiculo.MarcaId)
+                            && Ids_Color.Contains(x.NE_Vehiculo.ColorId)
+                            && Ids_Categorias.Contains(x.NE_Vehiculo.CategoriaId)
+                            && Ids_Transmision.Contains(x.NE_Vehiculo.TransmisionId)
+                            && (
+                                    (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) > (PrecioInicial < 0 ? Min : PrecioInicial)
+                                    &&
+                                    (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
+                                )
+                        )
+                        .ToList();
+                else
                 {
-                    AccionId = ACCION.BUSQUEDA,
-                    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Busco en la página '" +Busqueda + "'",
-                    FechaDeRegistro = DateTime.Now,
-                    UsuarioId = Settings.LoggedUser.UsuarioId,
-                };
-                db.NE_Bitacora.Add(bitacora);
-                db.SaveChanges();
+                    ImagenesVehiculo = db.NE_VehiculoImagen.Where(x =>
+                        (x.NE_Vehiculo.NE_Categoria.Categoria.Contains(Busqueda) ||
+                        x.NE_Vehiculo.NE_Color.Color.Contains(Busqueda) ||
+                        x.NE_Vehiculo.Descripcion.Contains(Busqueda) ||
+                        x.NE_Vehiculo.NE_Marca.Marca.Contains(Busqueda) ||
+                        x.NE_Vehiculo.Modelo.ToString().Contains(Busqueda) ||
+                        x.NE_Vehiculo.NE_Transmision.Transmision.ToString().Contains(Busqueda) ||
+                       (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta.ToString() : x.NE_Vehiculo.PrecioVenta.ToString()).Contains(Busqueda))
+                       && x.NE_Vehiculo.Activo
+                    ).ToList();
+                    //NE_Bitacora bitacora = new NE_Bitacora()
+                    //{
+                    //    AccionId = ACCION.BUSQUEDA,
+                    //    Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " Busco en la página '" + Busqueda + "'",
+                    //    FechaDeRegistro = DateTime.Now,
+                    //    UsuarioId = Settings.LoggedUser.UsuarioId,
+                    //};
+                    //db.NE_Bitacora.Add(bitacora);
+                    //db.SaveChanges();
+                }
+
+                //Se obtiene el total de los vehiculos
+                Int32 TotalDeVehiculos = ImagenesVehiculo.Count();
+                //Se obtiene el total de paginas a pintar
+                Int32 NumeroDePaginas = (ImagenesVehiculo.Count() / Settings.NUMERO_DE_ITEMS_POR_PAGINA) + 1;
+                //Se obtiene el registro del primer salto de pagina
+                Int32 skip = ((Pagina - 1) * Settings.NUMERO_DE_ITEMS_POR_PAGINA);
+
+                //Se filtra por el paginado de la pagina
+                ImagenesVehiculo = ImagenesVehiculo.Skip(skip).Take(Settings.NUMERO_DE_ITEMS_POR_PAGINA).ToList();
+
+                //Se pintan en los Viebags los montos, para usarlos en la vista
+                ViewBag.TotalDeVehiculos = TotalDeVehiculos;
+                ViewBag.NumeroDePaginas = NumeroDePaginas;
+                ViewBag.PaginaActual = Pagina;
             }
-
-            //Se obtiene el total de los vehiculos
-            Int32 TotalDeVehiculos = ImagenesVehiculo.Count();
-            //Se obtiene el total de paginas a pintar
-            Int32 NumeroDePaginas = (ImagenesVehiculo.Count() / Settings.NUMERO_DE_ITEMS_POR_PAGINA) +1;
-            //Se obtiene el registro del primer salto de pagina
-            Int32 skip = ((Pagina-1) * Settings.NUMERO_DE_ITEMS_POR_PAGINA);
-            
-            //Se filtra por el paginado de la pagina
-            ImagenesVehiculo = ImagenesVehiculo.Skip(skip).Take(Settings.NUMERO_DE_ITEMS_POR_PAGINA).ToList();
-
-            //Se pintan en los Viebags los montos, para usarlos en la vista
-            ViewBag.TotalDeVehiculos = TotalDeVehiculos;
-            ViewBag.NumeroDePaginas = NumeroDePaginas;
-            ViewBag.PaginaActual = Pagina;
+            catch (Exception ex)
+            {
+            }
             return PartialView(ImagenesVehiculo);
         }
 

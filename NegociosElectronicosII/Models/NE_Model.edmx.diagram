@@ -11,11 +11,7 @@
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Carrusel" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Categoria" Width="1.5" PointX="3.75" PointY="15.75" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Color" Width="1.5" PointX="3.75" PointY="2.125" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioProducto" Width="1.5" PointX="5.25" PointY="8.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_ComentarioVehiculo" Width="1.5" PointX="8.25" PointY="6.875" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_CuerpoChat" Width="1.5" PointX="7.5" PointY="18.875" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EmailTemplate" Width="1.5" PointX="0.75" PointY="4.75" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_EncabezadoChat" Width="1.5" PointX="5.25" PointY="18.75" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Encuesta" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_FAQS" Width="1.5" PointX="10.75" PointY="3.75" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Marca" Width="1.5" PointX="3.75" PointY="5.625" />
@@ -28,14 +24,10 @@
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Transmision" Width="1.5" PointX="3.75" PointY="28" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Vehiculo" Width="1.5" PointX="6" PointY="0.75" />
         <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_VehiculoImagen" Width="1.5" PointX="8.25" PointY="2" />
-        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_Visita" Width="1.5" PointX="5.25" PointY="25" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AccionId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoCategoriaId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoColorId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_ColorId" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Producto_Comentario" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Vehiculo_Comentario" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Chat" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_AutoMarcaId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_MarcaId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Product_imagen" />
@@ -62,15 +54,12 @@
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuariosId_Autenticacion" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Bitacora_Usuario" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.CarritoUserId_UserID" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario_Comentario" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_ComentarioVehiculo_Usuario" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Usuario" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.DeseosUsuarioId_UsuarioId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_Recovery_User" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_RolId" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Sexo_NE_Usuario" />
         <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_NE_Venta_NE_Usuario" />
-        <AssociationConnector Association="DB_A453B0_fabiancastanonModel.FK_UsuarioVisita" />
+        <EntityTypeShape EntityType="DB_A453B0_fabiancastanonModel.NE_AutenticacionConEmail" Width="1.5" PointX="13.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

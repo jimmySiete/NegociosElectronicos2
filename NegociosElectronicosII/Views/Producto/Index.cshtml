@@ -84,7 +84,9 @@
                 <td>
                     @Html.ActionLink(Recursos.Edit, "Edit", new { id = item.ProductoId }) |
                     @Html.ActionLink(Recursos.Details, "Details", new { id = item.ProductoId }) |
-                    @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.ProductoId })
+                    @Html.ActionLink(Recursos.Delete, "Delete", new { id = item.ProductoId })|
+                    @Html.ActionLink(Recursos.Imagen, "ImagenCreate", new { id = item.ProductoId })|
+                    @Html.ActionLink("Eliminar imagenes", "DeleteImages", new { id = item.ProductoId })
                 </td>
             </tr>
         }

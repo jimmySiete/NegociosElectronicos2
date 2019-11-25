@@ -10,24 +10,46 @@
                         <article class="gallery-wrap">
                             <div class="img-big-wrap">
                                 <div> 
-                                    <a href="~/Content/ui-ecommerce/images/items/1.jpg" data-fancybox="">
-                                        <img src="~/Content/ui-ecommerce/images/items/1.jpg" />
-                                    </a>
+                                    @if (Model.tipo == 1)
+                                    {
+                                        foreach (var item in Model.vehiculo.NE_VehiculoImagen)
+                                        {
+                                            <a class="imagenOculta" id="imagen_@item.Nombre" style="@(item.Nombre!= Model.vehiculo.NE_VehiculoImagen.First().Nombre?"display:none": String.Empty)" href="@(Url.Content("~/Imagenes/Vehiculo/") + item.Nombre + item.Extension)" data-fancybox="" >
+                                                <img src="@(Url.Content("~/Imagenes/Vehiculo/") + item.Nombre + item.Extension)" />
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (var item in Model.producto.NE_ProductoImagen)
+                                        {
+                                            <a class="imagenOculta" id="imagen_@item.Nombre" style="@(item.Nombre!= Model.producto.NE_ProductoImagen.First().Nombre?"display:none": String.Empty)" href="@(Url.Content("~/Imagenes/Productos/") + item.Nombre + item.Extension)" data-fancybox="">
+                                                <img src="@(Url.Content("~/Imagenes/Productos/") + item.Nombre + item.Extension)" />
+                                            </a>
+                                        }
+                                    }
+                                    
                                 </div>
                             </div> <!-- slider-product.// -->
                             <div class="img-small-wrap">
-                                <div class="item-gallery"> 
-                                    <img src="~/Content/ui-ecommerce/images/items/1.jpg" />
-                                </div>
-                                <div class="item-gallery"> 
-                                    <img src="~/Content/ui-ecommerce/images/items/2.jpg" />
-                                </div>
-                                <div class="item-gallery"> 
-                                    <img src="~/Content/ui-ecommerce/images/items/3.jpg" />
-                                </div>
-                                <div class="item-gallery"> 
-                                    <img src="~/Content/ui-ecommerce/images/items/4.jpg" />
-                                </div>
+                            @if (Model.tipo == 1)
+                            {
+                                foreach (var item in Model.vehiculo.NE_VehiculoImagen)
+                                {
+                                    <div class="item-gallery">
+                                        <img src="@(Url.Content("~/Imagenes/Vehiculo/") + item.Nombre + item.Extension)" onclick="fnMostrarImagen('@item.Nombre')" />
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                foreach (var item in Model.producto.NE_ProductoImagen)
+                                {
+                                    <div class="item-gallery">
+                                        <img src="@(Url.Content("~/Imagenes/Productos/") + item.Nombre + item.Extension)" onclick="fnMostrarImagen('@item.Nombre')" />
+                                    </div>
+                                }
+                            }
                             </div> <!-- slider-nav.// -->
                         </article> <!-- gallery-wrap .end// -->
                     </aside>
@@ -134,39 +156,6 @@
                                 <div class="label-rating">154 orders </div>
                             </div> <!-- rating-wrap.// -->
                             <hr>
-                            @*<div class="row">
-                                <div class="col-sm-5">
-                                    <dl class="dlist-inline">
-                                        <dt>Quantity: </dt>
-                                        <dd>
-                                            <select class="form-control form-control-sm" style="width:70px;">
-                                                <option> 1 </option>
-                                                <option> 2 </option>
-                                                <option> 3 </option>
-                                            </select>
-                                        </dd>
-                                    </dl>  <!-- item-property .// -->
-                                </div> <!-- col.// -->
-                                <div class="col-sm-7">
-                                    <dl class="dlist-inline">
-                                        <dt>Size: </dt>
-                                        <dd>
-                                            <label class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <span class="form-check-label">SM</span>
-                                            </label>
-                                            <label class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <span class="form-check-label">MD</span>
-                                            </label>
-                                            <label class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                                <span class="form-check-label">XXL</span>
-                                            </label>
-                                        </dd>
-                                    </dl>  <!-- item-property .// -->
-                                </div> <!-- col.// -->
-                            </div> <!-- row.// -->*@
                             <hr>
                             @if (Model.tipo == 1)
                             {
@@ -206,4 +195,9 @@
         $("#detallemodal").modal("show");
     });
 
+    function fnMostrarImagen(nombre)
+    {
+        $('.imagenOculta').hide();
+        $('#imagen_'+ nombre).show();
+    }
 </script>

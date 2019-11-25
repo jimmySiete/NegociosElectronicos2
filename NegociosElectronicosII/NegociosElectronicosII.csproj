@@ -250,6 +250,9 @@
     <Compile Include="Models\NE_Autenticacion.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NE_AutenticacionConEmail.cs">
+      <DependentUpon>NE_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\NE_Bitacora.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
@@ -265,19 +268,7 @@
     <Compile Include="Models\NE_Color.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NE_ComentarioProducto.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NE_ComentarioVehiculo.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NE_CuerpoChat.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\NE_EmailTemplate.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NE_EncabezadoChat.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_Encuesta.cs">
@@ -344,9 +335,6 @@
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NE_VentaDetalle.cs">
-      <DependentUpon>NE_Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NE_Visita.cs">
       <DependentUpon>NE_Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OfertaModel.cs" />
@@ -851,7 +839,11 @@
     <Content Include="Views\Estadistica\LosMasBuscadosDetalle.cshtml" />
     <Content Include="Views\Estadistica\ClientesParcial.cshtml" />
     <Content Include="Views\ChangePass\Passwoord.cshtml" />
+    <Content Include="Views\Producto\ImagenCreate.cshtml" />
+    <Content Include="Views\Producto\DeleteImages.cshtml" />
+    <Content Include="Views\Vehiculo\DeleteImages.cshtml" />
     <Content Include="Views\Principal\ListamasBuscados.cshtml" />
+    <Content Include="Views\Login\LoginWithCode.cshtml" />
     <Content Include="Views\Principal\Pedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>

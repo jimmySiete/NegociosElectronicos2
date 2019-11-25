@@ -29,12 +29,12 @@
                         }
                         <div class="input-group w-100">
                             <div class="input-group-append">
-                                <button class="btn btn-warning" type="submit" id="btn_@item.ProductoId" value="@item.ProductoId" onclick="agregar(@item.ProductoId,2,1)">
+                                <button class="btn btn-warning" type="button" id="btn_@item.ProductoId" value="@item.ProductoId" onclick="agregar(@item.ProductoId,2)">
                                     <i class="fa fa-shopping-cart"></i> Agregar al Carrito
                                 </button>
                             </div>
                             <div class="input-group-append">
-                                <button data-original-title="Agregar a Lista de Deseados" type="submit" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
+                                <button data-original-title="Agregar a Lista de Deseados" type="button" id="@item.ProductoId" onclick="agregarDeseo(@item.ProductoId,2)" class="btn btn-outline-success" data-toggle="tooltip">
                                     <i class="fa fa-heart"></i>
                                 </button>
                             </div>

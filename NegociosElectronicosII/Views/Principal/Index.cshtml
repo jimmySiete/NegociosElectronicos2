@@ -135,9 +135,10 @@
         fnPintarGridDeArticulos(1, busqueda);
     }
 
-    function detallesproductos(id,tipo) {
+    function detallesproductos(id, tipo) {
+        fnLoader();
         $("#modalproductos").load("@Url.Action("Detalles","DetallesProducto")", { idprod: id, tipoprod: tipo }, function () {
-
+            $.unblockUI();
         });
     }
 

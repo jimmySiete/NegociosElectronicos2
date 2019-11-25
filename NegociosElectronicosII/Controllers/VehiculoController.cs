@@ -281,7 +281,7 @@ namespace NegociosElectronicosII.Controllers
                     }
                     else
                     {
-                        var name = String.Format("Vehiculo_{0}", id);
+                        var name = String.Format("Vehiculo_{0:ddMMyyyyHHmmss}", DateTime.Now);
                         //var filePath = Server.MapPath("~/Imagenes/Productos/" + postedFile.FileName + extension);
                         var filePath = Server.MapPath("~/Imagenes/Vehiculo/" + name + extension);
 
@@ -295,8 +295,6 @@ namespace NegociosElectronicosII.Controllers
                         db.NE_VehiculoImagen.Add(imagen);
                         db.SaveChanges();
                                 
-                        imagen.Nombre= name = String.Format("Vehiculo_{0}", imagen.VehiculoId);
-                        db.SaveChanges();
                                 
                         postedFile.SaveAs(filePath);
 
@@ -313,7 +311,27 @@ namespace NegociosElectronicosII.Controllers
 
         }
 
+        public ActionResult DeleteImages(Int32 id)
+        {
 
+            return View(db.NE_VehiculoImagen.Where(x => x.VehiculoId == id).ToList());
+        }
+
+        [HttpPost]
+        public ActionResult DeleteImagesPost(Int32 id)
+        {
+            NE_VehiculoImagen prodImagen = db.NE_VehiculoImagen.Find(id);
+            Int32 ID_Base = prodImagen.VehiculoId;
+
+            if (System.IO.File.Exists(Server.MapPath("~/Imagenes/Producto/" + prodImagen.Nombre + prodImagen.Extension)))
+                System.IO.File.Delete(Server.MapPath("~/Imagenes/Producto/" + prodImagen.Nombre + prodImagen.Extension));
+
+
+            db.NE_VehiculoImagen.Remove(prodImagen);
+            db.SaveChanges();
+
+            return RedirectToAction("DeleteImages", new { id = ID_Base });
+        }
 
 
     }
