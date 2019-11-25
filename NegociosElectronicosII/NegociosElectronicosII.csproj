@@ -852,6 +852,7 @@
     <Content Include="Views\Estadistica\ClientesParcial.cshtml" />
     <Content Include="Views\ChangePass\Passwoord.cshtml" />
     <Content Include="Views\Principal\ListamasBuscados.cshtml" />
+    <Content Include="Views\Principal\Pedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

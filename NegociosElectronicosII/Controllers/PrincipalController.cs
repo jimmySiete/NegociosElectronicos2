@@ -354,8 +354,15 @@ namespace NegociosElectronicosII.Controllers
 
             return View(carro);
         }
+        public ActionResult Pedidos()
+        {
+            List<NE_VentaDetalle> venta = new List<NE_VentaDetalle>();
+            NE_Venta nE_venta = db.NE_Venta.Where(x => x.UsuarioId == Settings.LoggedUser.UsuarioId).First();
+            venta = db.NE_VentaDetalle.Where(x => x.VentaId == nE_venta.VentaId).ToList();
+            return View(venta);
+        }
 
-        public ActionResult FaqsPrincipal()
+            public ActionResult FaqsPrincipal()
         {
             return View(db.NE_FAQS.ToList());
         }
