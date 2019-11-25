@@ -119,7 +119,6 @@
 
     function fnChangeMarksMain(MarcaId,Marca)
     {
-        debugger;
         $("#filtroVehiculo").load("@Url.Action("FiltroVehiculoParcial","Principal")", { ID_Marca: MarcaId }, function () {
              @if (Settings.LoggedUser != null) { 
                 @:RegistrarEnBitacora("El usuario " + '@Settings.LoggedUser.CorreoElectronico' + ' dio clic sobre la marca ' + Marca,13);

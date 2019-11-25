@@ -45,16 +45,29 @@ namespace NegociosElectronicosII.Controllers
 
                 if (Settings.LoggedUser != null)
                 {
-                    NE_ArticuloVehiculoVisto vehiculoVisto = new NE_ArticuloVehiculoVisto()
+                    NE_Producto nE_producto = db.NE_Producto.Where(x => x.ProductoId == idprod).First();
+                    NE_Bitacora bitacora = new NE_Bitacora()
                     {
-                        ID_Producto = null,
-                        ID_Usuario = Settings.LoggedUser.UsuarioId,
-                        ID_Vehiculo = idprod,
-                        RecordDate = DateTime.Now
+                        AccionId = ACCION.DETALLES_PRODUCTO,
+                        Descripcion = "el usuario : " + Settings.LoggedUser.CorreoElectronico + " vio más Detalles de '" + nE_producto.NE_Marca.Marca + " " + nE_producto.Nombre + "'",
+                        FechaDeRegistro = DateTime.Now,
+                        UsuarioId = Settings.LoggedUser.UsuarioId,
                     };
-                    db.NE_ArticuloVehiculoVisto.Add(vehiculoVisto);
+                    db.NE_Bitacora.Add(bitacora);
                     db.SaveChanges();
                 }
+                //if (Settings.LoggedUser != null)
+                //{
+                //    NE_ArticuloVehiculoVisto vehiculoVisto = new NE_ArticuloVehiculoVisto()
+                //    {
+                //        ID_Producto = null,
+                //        ID_Usuario = Settings.LoggedUser.UsuarioId,
+                //        ID_Vehiculo = idprod,
+                //        RecordDate = DateTime.Now
+                //    };
+                //    db.NE_ArticuloVehiculoVisto.Add(vehiculoVisto);
+                //    db.SaveChanges();
+                //}
             }
             
             return PartialView(detalles);
