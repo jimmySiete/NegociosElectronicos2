@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<NegociosElectronicosII.Models.NE_ProductoImagen>
+@{
+    List<Int32> Ids = new List<int>();
+}
     <div class="padding-y-sm">
         <span>@ViewBag.TotalDeArticulos resultados de "Productos"</span>
     </div>
     <div class="row-sm">
         @foreach (var item in Model)
         {
-            
+            if (!Ids.Contains(item.ProductoId))
+            {
             <div class="col-md-3 col-sm-6">
                 <figure class="card card-product">
                     <div class="img-wrap">
@@ -50,7 +54,11 @@
                     </figcaption>
                 </figure> <!-- card // -->
             </div> <!-- col // -->
-            
+                if (!Ids.Contains(item.ProductoId))
+                {
+                    Ids.Add(item.ProductoId);
+                }
+            }
         }
     </div>
     <div class="row">

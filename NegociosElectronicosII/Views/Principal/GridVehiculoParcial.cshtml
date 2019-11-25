@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<NegociosElectronicosII.Models.NE_VehiculoImagen>
-
+@{
+    List<Int32> Ids = new List<int>();
+}
 
 <div class="padding-y-sm">
     <span>@ViewBag.TotalDeVehiculos resultados de "Vehiculos"</span>
@@ -7,6 +9,8 @@
 <div class="row-sm">
     @foreach (var item in Model)
     {
+        if (!Ids.Contains(item.VehiculoId))
+        {
         <div class="col-md-3 col-sm-6">
             <figure class="card card-product">
                 <div class="img-wrap">
@@ -55,6 +59,11 @@
                 </figcaption>
             </figure> <!-- card // -->
         </div> <!-- col // -->
+        }
+        if (!Ids.Contains(item.VehiculoId))
+        {
+            Ids.Add(item.VehiculoId);
+        }
     }
 </div>
 <div class="row">

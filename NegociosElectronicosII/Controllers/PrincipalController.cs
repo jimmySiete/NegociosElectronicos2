@@ -197,7 +197,7 @@ namespace NegociosElectronicosII.Controllers
                                     &&
                                     (x.NE_Vehiculo.MarcarComoOferta ? x.NE_Vehiculo.PrecioOFerta : x.NE_Vehiculo.PrecioVenta) < (PrecioFinal <= 0 ? Max : PrecioFinal)
                                 )
-                        )
+                        ).Distinct()
                         .ToList();
                 else
                 {
@@ -222,6 +222,9 @@ namespace NegociosElectronicosII.Controllers
                     //db.NE_Bitacora.Add(bitacora);
                     //db.SaveChanges();
                 }
+
+                //Distinct
+
 
                 //Se obtiene el total de los vehiculos
                 Int32 TotalDeVehiculos = ImagenesVehiculo.Count();
