@@ -3,22 +3,15 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-@*<style>
-    .field-validation-error {
-        color: white !important;
-    }
-
-    .btn {
-        width: 150px;
-        height: 40px;
-        position: center;
+<style>
+    .card-footer {
+        height:390px !important;
     }
 
     .card {
-        background-color: rgb(174, 214, 241 ) !important;
+        height:400px !important;
     }
-</style>*@
-
+</style>
 <div class="card">
     <div class="card-header">
         <div class="form-row">
@@ -74,10 +67,12 @@
             @Recursos.NoCuenta<p id="registro">@Html.ActionLink(Recursos.Registrate, "Create", "Registro")
         </div>
         <div class="d-flex justify-content-center">
-            <p id="forgotpass">@Html.ActionLink(Recursos.ForgotPassword, "RecoveryPass", "Login")</p>
-
-            <br />
-            <a  href="">Iniciar sesion <br />con un codigo</a>
+            <p id="forgotpass">
+                @Html.ActionLink(Recursos.ForgotPassword, "RecoveryPass", "Login")
+                <br />
+                <a href="@(Url.Action("LoginWithCode","Login"))">Iniciar sesion con un codigo</a>
+            </p>
+            
         </div>
     </div>
 

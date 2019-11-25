@@ -843,6 +843,7 @@
     <Content Include="Views\Producto\DeleteImages.cshtml" />
     <Content Include="Views\Vehiculo\DeleteImages.cshtml" />
     <Content Include="Views\Principal\ListamasBuscados.cshtml" />
+    <Content Include="Views\Login\LoginWithCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
