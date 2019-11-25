@@ -26,10 +26,57 @@ namespace NegociosElectronicosII.Controllers
         public PartialViewResult CarruselParcial()
         {
             List<OfertaModel> ofertas = new List<OfertaModel>();
+            List<String> LosMasBuscadosAux = new List<string>();
+            List<String> LosMasBuscados = new List<string>();
+            List<LosMasBuscados> AgrupamientoLosMasBuscados = new List<LosMasBuscados>();
+            List<BusquedaModel> busquedas = new List<BusquedaModel>();
+
+            String Aux = String.Empty;
+
             //se obtienen las imagenes del carrusel
             List<NE_Carrusel> ImagenesCarrusel = db.NE_Carrusel.OrderBy(x => x.Posicion).ToList();
             try
             {
+                //obtener los mas buscados
+                LosMasBuscados= db.NE_Bitacora.Where(x => x.AccionId == ACCION.DETALLES_PRODUCTO).Select(x => x.Descripcion).ToList();
+                foreach (var item in LosMasBuscados)
+                {        
+                    Int32 inicioDeCadena = item.IndexOf("'");
+                    Aux = item.Substring(inicioDeCadena, item.Length-inicioDeCadena);
+                    Aux = Aux.Replace("'", "").Replace("'", "");
+                    LosMasBuscadosAux.Add(Aux);
+                }
+                AgrupamientoLosMasBuscados = LosMasBuscadosAux.GroupBy(x => x)
+                    .Select(x => new LosMasBuscados()
+                    {
+                        Busqueda = x.Key,
+                        CantidadDeVeces = x.Count()
+                    }).ToList().OrderByDescending(x => x.CantidadDeVeces).ToList();
+
+                LosMasBuscados = AgrupamientoLosMasBuscados.Select(x => x.Busqueda).Take(5).ToList();
+
+                List<NE_Vehiculo> vehiculos = db.NE_Vehiculo.Where(x => LosMasBuscados.Contains(x.NE_Marca.Marca + " "+ x.NombreVehiculo + " " + x.Modelo.ToString() )).ToList();
+                List<NE_Producto> productos = db.NE_Producto.Where(x => LosMasBuscados.Contains(x.NE_Marca.Marca + " " + x.Nombre)).ToList();
+
+                foreach (var item in vehiculos)
+                {
+                    busquedas.Add(new BusquedaModel() {
+                        Productos= null,
+                        TipoDeBusqueda= 1,
+                        Vehiculos= item
+                    });
+                }
+
+                foreach (var item in productos)
+                {
+                    busquedas.Add(new BusquedaModel()
+                    {
+                        Productos = item,
+                        TipoDeBusqueda = 2,
+                        Vehiculos = null
+                    });
+                }
+
                 //si hay objetos con oferta, lo agregamos a la lista
                 if (db.NE_Producto.Any(x => x.MarcarComoOferta))
                 {
@@ -72,6 +119,8 @@ namespace NegociosElectronicosII.Controllers
                 ViewBag.Marcas = db.NE_Marca.ToList();
                 //agregar ofertas a ViewBag
                 ViewBag.Ofertas = ofertas.Take(4).ToList();
+                //Lista de los mas buscados
+                ViewBag.LosMasBuscados = busquedas;
 
                 return PartialView(ImagenesCarrusel);
             }
@@ -227,9 +276,9 @@ namespace NegociosElectronicosII.Controllers
 
 
                 //Se obtiene el total de los vehiculos
-                Int32 TotalDeVehiculos = ImagenesVehiculo.Count();
+                Int32 TotalDeVehiculos = ImagenesVehiculo.Select(x => x.VehiculoId).Distinct().Count();
                 //Se obtiene el total de paginas a pintar
-                Int32 NumeroDePaginas = (ImagenesVehiculo.Count() / Settings.NUMERO_DE_ITEMS_POR_PAGINA) + 1;
+                Int32 NumeroDePaginas = (TotalDeVehiculos / Settings.NUMERO_DE_ITEMS_POR_PAGINA) + 1;
                 //Se obtiene el registro del primer salto de pagina
                 Int32 skip = ((Pagina - 1) * Settings.NUMERO_DE_ITEMS_POR_PAGINA);
 
@@ -314,9 +363,9 @@ namespace NegociosElectronicosII.Controllers
                 ).ToList();
 
             //Se obtiene el total de los vehiculos
-            Int32 TotalDeArticulos = ImagenesArticulo.Count();
+            Int32 TotalDeArticulos = ImagenesArticulo.Select(x=>x.ProductoId).Distinct().Count();
             //Se obtiene el total de paginas a pintar
-            Int32 NumeroDePaginas = (ImagenesArticulo.Count() / Settings.NUMERO_DE_ITEMS_POR_PAGINA) + 1;
+            Int32 NumeroDePaginas = (TotalDeArticulos / Settings.NUMERO_DE_ITEMS_POR_PAGINA) + 1;
             //Se obtiene el registro del primer salto de pagina
             Int32 skip = ((Pagina - 1) * Settings.NUMERO_DE_ITEMS_POR_PAGINA);
 

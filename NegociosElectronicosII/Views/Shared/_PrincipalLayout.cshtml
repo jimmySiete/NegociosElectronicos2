@@ -247,13 +247,11 @@
         }
 
         function RegistrarEnBitacora(texto, acciondId) {
-            debugger;
                 $.ajax({
                     url: '@Url.Action("RegistroBitacora", "Base")',
                     data: { texto: texto, AccionId: acciondId },
                     type: 'POST',
                     success: function (response) {
-                        debugger;
                     },
                     error: function () {
                         alert('Error');
